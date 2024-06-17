@@ -1,8 +1,8 @@
-# Open Transit Python API library
+# One Bus Away Python API library
 
-[![PyPI version](https://img.shields.io/pypi/v/TEMP_open-transit.svg)](https://pypi.org/project/TEMP_open-transit/)
+[![PyPI version](https://img.shields.io/pypi/v/onebusaway.svg)](https://pypi.org/project/onebusaway/)
 
-The Open Transit Python library provides convenient access to the Open Transit REST API from any Python 3.7+
+The One Bus Away Python library provides convenient access to the One Bus Away REST API from any Python 3.7+
 application. The library includes type definitions for all request params and response fields,
 and offers both synchronous and asynchronous clients powered by [httpx](https://github.com/encode/httpx).
 
@@ -15,35 +15,53 @@ The REST API documentation can be found [on docs.open-transit.com](https://docs.
 ## Installation
 
 ```sh
-# install from PyPI
-pip install --pre TEMP_open-transit
+# install from this staging repo
+pip install git+ssh://git@github.com/stainless-sdks/open-transit-python.git
 ```
+
+> [!NOTE]
+> Once this package is [published to PyPI](https://app.stainlessapi.com/docs/guides/publish), this will become: `pip install --pre onebusaway`
 
 ## Usage
 
 The full API of this library can be found in [api.md](api.md).
 
 ```python
-from open_transit import OpenTransit
+import os
+from onebusaway import OneBusAway
 
-client = OpenTransit()
+client = OneBusAway(
+    # This is the default and can be omitted
+    api_key=os.environ.get("OPEN_TRANSIT_API_KEY"),
+)
 
-response = client.agencies_with_coverage.list()
+agencies_with_coverage_retrieve_response = client.agencies_with_coverage.retrieve()
+print(agencies_with_coverage_retrieve_response.code)
 ```
+
+While you can provide an `api_key` keyword argument,
+we recommend using [python-dotenv](https://pypi.org/project/python-dotenv/)
+to add `OPEN_TRANSIT_API_KEY="My API Key"` to your `.env` file
+so that your API Key is not stored in source control.
 
 ## Async usage
 
-Simply import `AsyncOpenTransit` instead of `OpenTransit` and use `await` with each API call:
+Simply import `AsyncOneBusAway` instead of `OneBusAway` and use `await` with each API call:
 
 ```python
+import os
 import asyncio
-from open_transit import AsyncOpenTransit
+from onebusaway import AsyncOneBusAway
 
-client = AsyncOpenTransit()
+client = AsyncOneBusAway(
+    # This is the default and can be omitted
+    api_key=os.environ.get("OPEN_TRANSIT_API_KEY"),
+)
 
 
 async def main() -> None:
-    response = await client.agencies_with_coverage.list()
+    agencies_with_coverage_retrieve_response = await client.agencies_with_coverage.retrieve()
+    print(agencies_with_coverage_retrieve_response.code)
 
 
 asyncio.run(main())
@@ -53,36 +71,36 @@ Functionality between the synchronous and asynchronous clients is otherwise iden
 
 ## Using types
 
-Nested request parameters are [TypedDicts](https://docs.python.org/3/library/typing.html#typing.TypedDict). Responses are [Pydantic models](https://docs.pydantic.dev), which provide helper methods for things like:
+Nested request parameters are [TypedDicts](https://docs.python.org/3/library/typing.html#typing.TypedDict). Responses are [Pydantic models](https://docs.pydantic.dev) which also provide helper methods for things like:
 
-- Serializing back into JSON, `model.model_dump_json(indent=2, exclude_unset=True)`
-- Converting to a dictionary, `model.model_dump(exclude_unset=True)`
+- Serializing back into JSON, `model.to_json()`
+- Converting to a dictionary, `model.to_dict()`
 
 Typed requests and responses provide autocomplete and documentation within your editor. If you would like to see type errors in VS Code to help catch bugs earlier, set `python.analysis.typeCheckingMode` to `basic`.
 
 ## Handling errors
 
-When the library is unable to connect to the API (for example, due to network connection problems or a timeout), a subclass of `open_transit.APIConnectionError` is raised.
+When the library is unable to connect to the API (for example, due to network connection problems or a timeout), a subclass of `onebusaway.APIConnectionError` is raised.
 
 When the API returns a non-success status code (that is, 4xx or 5xx
-response), a subclass of `open_transit.APIStatusError` is raised, containing `status_code` and `response` properties.
+response), a subclass of `onebusaway.APIStatusError` is raised, containing `status_code` and `response` properties.
 
-All errors inherit from `open_transit.APIError`.
+All errors inherit from `onebusaway.APIError`.
 
 ```python
-import open_transit
-from open_transit import OpenTransit
+import onebusaway
+from onebusaway import OneBusAway
 
-client = OpenTransit()
+client = OneBusAway()
 
 try:
-    client.agencies_with_coverage.list()
-except open_transit.APIConnectionError as e:
+    client.agencies_with_coverage.retrieve()
+except onebusaway.APIConnectionError as e:
     print("The server could not be reached")
     print(e.__cause__)  # an underlying Exception, likely raised within httpx.
-except open_transit.RateLimitError as e:
+except onebusaway.RateLimitError as e:
     print("A 429 status code was received; we should back off a bit.")
-except open_transit.APIStatusError as e:
+except onebusaway.APIStatusError as e:
     print("Another non-200-range status code was received")
     print(e.status_code)
     print(e.response)
@@ -110,16 +128,16 @@ Connection errors (for example, due to a network connectivity problem), 408 Requ
 You can use the `max_retries` option to configure or disable retry settings:
 
 ```python
-from open_transit import OpenTransit
+from onebusaway import OneBusAway
 
 # Configure the default for all requests:
-client = OpenTransit(
+client = OneBusAway(
     # default is 2
     max_retries=0,
 )
 
 # Or, configure per-request:
-client.with_options(max_retries=5).agencies_with_coverage.list()
+client.with_options(max_retries=5).agencies_with_coverage.retrieve()
 ```
 
 ### Timeouts
@@ -128,21 +146,21 @@ By default requests time out after 1 minute. You can configure this with a `time
 which accepts a float or an [`httpx.Timeout`](https://www.python-httpx.org/advanced/#fine-tuning-the-configuration) object:
 
 ```python
-from open_transit import OpenTransit
+from onebusaway import OneBusAway
 
 # Configure the default for all requests:
-client = OpenTransit(
+client = OneBusAway(
     # 20 seconds (default is 1 minute)
     timeout=20.0,
 )
 
 # More granular control:
-client = OpenTransit(
+client = OneBusAway(
     timeout=httpx.Timeout(60.0, read=5.0, write=10.0, connect=2.0),
 )
 
 # Override per-request:
-client.with_options(timeout=5 * 1000).agencies_with_coverage.list()
+client.with_options(timeout=5.0).agencies_with_coverage.retrieve()
 ```
 
 On timeout, an `APITimeoutError` is thrown.
@@ -155,10 +173,10 @@ Note that requests that time out are [retried twice by default](#retries).
 
 We use the standard library [`logging`](https://docs.python.org/3/library/logging.html) module.
 
-You can enable logging by setting the environment variable `OPEN_TRANSIT_LOG` to `debug`.
+You can enable logging by setting the environment variable `ONE_BUS_AWAY_LOG` to `debug`.
 
 ```shell
-$ export OPEN_TRANSIT_LOG=debug
+$ export ONE_BUS_AWAY_LOG=debug
 ```
 
 ### How to tell whether `None` means `null` or missing
@@ -178,19 +196,19 @@ if response.my_field is None:
 The "raw" Response object can be accessed by prefixing `.with_raw_response.` to any HTTP method call, e.g.,
 
 ```py
-from open_transit import OpenTransit
+from onebusaway import OneBusAway
 
-client = OpenTransit()
-response = client.agencies_with_coverage.with_raw_response.list()
+client = OneBusAway()
+response = client.agencies_with_coverage.with_raw_response.retrieve()
 print(response.headers.get('X-My-Header'))
 
-agencies_with_coverage = response.parse()  # get the object that `agencies_with_coverage.list()` would have returned
-print(agencies_with_coverage)
+agencies_with_coverage = response.parse()  # get the object that `agencies_with_coverage.retrieve()` would have returned
+print(agencies_with_coverage.code)
 ```
 
-These methods return an [`APIResponse`](https://github.com/stainless-sdks/tree/main/src/open_transit/_response.py) object.
+These methods return an [`APIResponse`](https://github.com/stainless-sdks/open-transit-python/tree/main/src/onebusaway/_response.py) object.
 
-The async client returns an [`AsyncAPIResponse`](https://github.com/stainless-sdks/tree/main/src/open_transit/_response.py) with the same structure, the only difference being `await`able methods for reading the response content.
+The async client returns an [`AsyncAPIResponse`](https://github.com/stainless-sdks/open-transit-python/tree/main/src/onebusaway/_response.py) with the same structure, the only difference being `await`able methods for reading the response content.
 
 #### `.with_streaming_response`
 
@@ -199,7 +217,7 @@ The above interface eagerly reads the full response body when you make the reque
 To stream the response body, use `.with_streaming_response` instead, which requires a context manager and only reads the response body once you call `.read()`, `.text()`, `.json()`, `.iter_bytes()`, `.iter_text()`, `.iter_lines()` or `.parse()`. In the async client, these are async methods.
 
 ```python
-with client.agencies_with_coverage.with_streaming_response.list() as response:
+with client.agencies_with_coverage.with_streaming_response.retrieve() as response:
     print(response.headers.get("X-My-Header"))
 
     for line in response.iter_lines():
@@ -210,7 +228,7 @@ The context manager is required so that the response will reliably be closed.
 
 ### Making custom/undocumented requests
 
-This library is typed for convenient access the documented API.
+This library is typed for convenient access to the documented API.
 
 If you need to access undocumented endpoints, params, or response properties, the library can still be used.
 
@@ -252,10 +270,10 @@ You can directly override the [httpx client](https://www.python-httpx.org/api/#c
 - Additional [advanced](https://www.python-httpx.org/advanced/#client-instances) functionality
 
 ```python
-from open_transit import OpenTransit, DefaultHttpxClient
+from onebusaway import OneBusAway, DefaultHttpxClient
 
-client = OpenTransit(
-    # Or use the `OPEN_TRANSIT_BASE_URL` env var
+client = OneBusAway(
+    # Or use the `ONE_BUS_AWAY_BASE_URL` env var
     base_url="http://my.test.server.example.com:8083",
     http_client=DefaultHttpxClient(
         proxies="http://my.test.proxy.example.com",
@@ -278,7 +296,7 @@ This package generally follows [SemVer](https://semver.org/spec/v2.0.0.html) con
 
 We take backwards-compatibility seriously and work hard to ensure you can rely on a smooth upgrade experience.
 
-We are keen for your feedback; please open an [issue](https://www.github.com/stainless-sdks/TEMP_open-transit-python/issues) with questions, bugs, or suggestions.
+We are keen for your feedback; please open an [issue](https://www.github.com/stainless-sdks/open-transit-python/issues) with questions, bugs, or suggestions.
 
 ## Requirements
 

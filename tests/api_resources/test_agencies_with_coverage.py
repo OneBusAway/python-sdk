@@ -7,7 +7,9 @@ from typing import Any, cast
 
 import pytest
 
-from open_transit import OpenTransit, AsyncOpenTransit
+from onebusaway import OneBusAway, AsyncOneBusAway
+from tests.utils import assert_matches_type
+from onebusaway.types import AgenciesWithCoverageRetrieveResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -16,34 +18,27 @@ class TestAgenciesWithCoverage:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    def test_method_list(self, client: OpenTransit) -> None:
-        agencies_with_coverage = client.agencies_with_coverage.list()
-        assert agencies_with_coverage is None
+    def test_method_retrieve(self, client: OneBusAway) -> None:
+        agencies_with_coverage = client.agencies_with_coverage.retrieve()
+        assert_matches_type(AgenciesWithCoverageRetrieveResponse, agencies_with_coverage, path=["response"])
 
     @parametrize
-    def test_method_list_with_all_params(self, client: OpenTransit) -> None:
-        agencies_with_coverage = client.agencies_with_coverage.list(
-            key="string",
-        )
-        assert agencies_with_coverage is None
-
-    @parametrize
-    def test_raw_response_list(self, client: OpenTransit) -> None:
-        response = client.agencies_with_coverage.with_raw_response.list()
+    def test_raw_response_retrieve(self, client: OneBusAway) -> None:
+        response = client.agencies_with_coverage.with_raw_response.retrieve()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         agencies_with_coverage = response.parse()
-        assert agencies_with_coverage is None
+        assert_matches_type(AgenciesWithCoverageRetrieveResponse, agencies_with_coverage, path=["response"])
 
     @parametrize
-    def test_streaming_response_list(self, client: OpenTransit) -> None:
-        with client.agencies_with_coverage.with_streaming_response.list() as response:
+    def test_streaming_response_retrieve(self, client: OneBusAway) -> None:
+        with client.agencies_with_coverage.with_streaming_response.retrieve() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             agencies_with_coverage = response.parse()
-            assert agencies_with_coverage is None
+            assert_matches_type(AgenciesWithCoverageRetrieveResponse, agencies_with_coverage, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -52,33 +47,26 @@ class TestAsyncAgenciesWithCoverage:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    async def test_method_list(self, async_client: AsyncOpenTransit) -> None:
-        agencies_with_coverage = await async_client.agencies_with_coverage.list()
-        assert agencies_with_coverage is None
+    async def test_method_retrieve(self, async_client: AsyncOneBusAway) -> None:
+        agencies_with_coverage = await async_client.agencies_with_coverage.retrieve()
+        assert_matches_type(AgenciesWithCoverageRetrieveResponse, agencies_with_coverage, path=["response"])
 
     @parametrize
-    async def test_method_list_with_all_params(self, async_client: AsyncOpenTransit) -> None:
-        agencies_with_coverage = await async_client.agencies_with_coverage.list(
-            key="string",
-        )
-        assert agencies_with_coverage is None
-
-    @parametrize
-    async def test_raw_response_list(self, async_client: AsyncOpenTransit) -> None:
-        response = await async_client.agencies_with_coverage.with_raw_response.list()
+    async def test_raw_response_retrieve(self, async_client: AsyncOneBusAway) -> None:
+        response = await async_client.agencies_with_coverage.with_raw_response.retrieve()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         agencies_with_coverage = await response.parse()
-        assert agencies_with_coverage is None
+        assert_matches_type(AgenciesWithCoverageRetrieveResponse, agencies_with_coverage, path=["response"])
 
     @parametrize
-    async def test_streaming_response_list(self, async_client: AsyncOpenTransit) -> None:
-        async with async_client.agencies_with_coverage.with_streaming_response.list() as response:
+    async def test_streaming_response_retrieve(self, async_client: AsyncOneBusAway) -> None:
+        async with async_client.agencies_with_coverage.with_streaming_response.retrieve() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             agencies_with_coverage = await response.parse()
-            assert agencies_with_coverage is None
+            assert_matches_type(AgenciesWithCoverageRetrieveResponse, agencies_with_coverage, path=["response"])
 
         assert cast(Any, response.is_closed) is True

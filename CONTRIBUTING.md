@@ -2,7 +2,7 @@
 
 ### With Rye
 
-We use [Rye](https://rye-up.com/) to manage dependencies so we highly recommend [installing it](https://rye-up.com/guide/installation/) as it will automatically provision a Python environment with the expected Python version.
+We use [Rye](https://rye.astral.sh/) to manage dependencies so we highly recommend [installing it](https://rye.astral.sh/guide/installation/) as it will automatically provision a Python environment with the expected Python version.
 
 After installing Rye, you'll just have to run this command:
 
@@ -32,7 +32,7 @@ $ pip install -r requirements-dev.lock
 ## Modifying/Adding code
 
 Most of the SDK is generated code, and any modified code will be overridden on the next generation. The
-`src/open_transit/lib/` and `examples/` directories are exceptions and will never be overridden.
+`src/onebusaway/lib/` and `examples/` directories are exceptions and will never be overridden.
 
 ## Adding and running examples
 
@@ -59,7 +59,7 @@ If you’d like to use the repository from source, you can either install from g
 To install via git:
 
 ```bash
-pip install git+ssh://git@github.com/stainless-sdks/TEMP_open-transit-python.git
+pip install git+ssh://git@github.com/stainless-sdks/open-transit-python.git
 ```
 
 Alternatively, you can build from source and install the wheel file:
@@ -117,7 +117,7 @@ the changes aren't made through the automated pipeline, you may want to make rel
 
 ### Publish with a GitHub workflow
 
-You can release to package managers by using [the `Publish PyPI` GitHub action](https://www.github.com/stainless-sdks/TEMP_open-transit-python/actions/workflows/publish-pypi.yml). This requires a setup organization or repository secret to be set up.
+You can release to package managers by using [the `Publish PyPI` GitHub action](https://www.github.com/stainless-sdks/open-transit-python/actions/workflows/publish-pypi.yml). This requires a setup organization or repository secret to be set up.
 
 ### Publish manually
 
