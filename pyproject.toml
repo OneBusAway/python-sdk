@@ -1,11 +1,11 @@
 [project]
-name = "TEMP_open-transit"
+name = "onebusaway"
 version = "0.0.1-alpha.0"
-description = "The official Python library for the open-transit API"
+description = "The official Python library for the one-bus-away API"
 dynamic = ["readme"]
 license = "Apache-2.0"
 authors = [
-{ name = "Open Transit", email = "dev-feedback@open-transit.com" },
+{ name = "One Bus Away", email = "dev-feedback@open-transit.com" },
 ]
 dependencies = [
     "httpx>=0.23.0, <1",
@@ -39,8 +39,8 @@ classifiers = [
 
 
 [project.urls]
-Homepage = "https://github.com/stainless-sdks/TEMP_open-transit-python"
-Repository = "https://github.com/stainless-sdks/TEMP_open-transit-python"
+Homepage = "https://github.com/stainless-sdks/open-transit-python"
+Repository = "https://github.com/stainless-sdks/open-transit-python"
 
 
 
@@ -48,7 +48,7 @@ Repository = "https://github.com/stainless-sdks/TEMP_open-transit-python"
 managed = true
 # version pins are in requirements-dev.lock
 dev-dependencies = [
-    "pyright",
+    "pyright>=1.1.359",
     "mypy",
     "respx",
     "pytest",
@@ -68,7 +68,7 @@ format = { chain = [
   "fix:ruff",
 ]}
 "format:black" = "black ."
-"format:docs" = "python bin/ruffen-docs.py README.md api.md"
+"format:docs" = "python scripts/utils/ruffen-docs.py README.md api.md"
 "format:ruff" = "ruff format"
 "format:isort" = "isort ."
 
@@ -84,7 +84,7 @@ typecheck = { chain = [
   "typecheck:mypy"
 ]}
 "typecheck:pyright" = "pyright"
-"typecheck:verify-types" = "pyright --verifytypes open_transit --ignoreexternal"
+"typecheck:verify-types" = "pyright --verifytypes onebusaway --ignoreexternal"
 "typecheck:mypy" = "mypy ."
 
 [build-system]
@@ -97,7 +97,7 @@ include = [
 ]
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/open_transit"]
+packages = ["src/onebusaway"]
 
 [tool.hatch.metadata.hooks.fancy-pypi-readme]
 content-type = "text/markdown"
@@ -108,7 +108,7 @@ path = "README.md"
 [[tool.hatch.metadata.hooks.fancy-pypi-readme.substitutions]]
 # replace relative links with absolute links
 pattern = '\[(.+?)\]\(((?!https?://)\S+?)\)'
-replacement = '[\1](https://github.com/stainless-sdks/tree/main/\g<2>)'
+replacement = '[\1](https://github.com/stainless-sdks/open-transit-python/tree/main/\g<2>)'
 
 [tool.black]
 line-length = 120
@@ -161,7 +161,9 @@ select = [
   "T201",
   "T203",
   # misuse of typing.TYPE_CHECKING
-  "TCH004"
+  "TCH004",
+  # import rules
+  "TID251",
 ]
 ignore = [
   # mutable defaults
@@ -177,14 +179,18 @@ ignore-init-module-imports = true
 [tool.ruff.format]
 docstring-code-format = true
 
+[tool.ruff.lint.flake8-tidy-imports.banned-api]
+"functools.lru_cache".msg = "This function does not retain type information for the wrapped function's arguments; The `lru_cache` function from `_utils` should be used instead"
+
 [tool.ruff.lint.isort]
 length-sort = true
 length-sort-straight = true
 combine-as-imports = true
 extra-standard-library = ["typing_extensions"]
-known-first-party = ["open_transit", "tests"]
+known-first-party = ["onebusaway", "tests"]
 
 [tool.ruff.per-file-ignores]
 "bin/**.py" = ["T201", "T203"]
+"scripts/**.py" = ["T201", "T203"]
 "tests/**.py" = ["T201", "T203"]
 "examples/**.py" = ["T201", "T203"]

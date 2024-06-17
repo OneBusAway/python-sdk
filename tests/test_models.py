@@ -7,9 +7,9 @@ import pytest
 import pydantic
 from pydantic import Field
 
-from open_transit._utils import PropertyInfo
-from open_transit._compat import PYDANTIC_V2, parse_obj, model_dump, model_json
-from open_transit._models import BaseModel, construct_type
+from onebusaway._utils import PropertyInfo
+from onebusaway._compat import PYDANTIC_V2, parse_obj, model_dump, model_json
+from onebusaway._models import BaseModel, construct_type
 
 
 class BasicModel(BaseModel):
@@ -31,7 +31,7 @@ def test_directly_nested_model() -> None:
 
     # mismatched types
     m = NestedModel.construct(nested="hello!")
-    assert m.nested == "hello!"
+    assert cast(Any, m.nested) == "hello!"
 
 
 def test_optional_nested_model() -> None:
@@ -48,7 +48,7 @@ def test_optional_nested_model() -> None:
     # mismatched types
     m3 = NestedModel.construct(nested={"foo"})
     assert isinstance(cast(Any, m3.nested), set)
-    assert m3.nested == {"foo"}
+    assert cast(Any, m3.nested) == {"foo"}
 
 
 def test_list_nested_model() -> None:
@@ -323,7 +323,7 @@ def test_list_of_unions() -> None:
     assert len(m.items) == 2
     assert isinstance(m.items[0], Submodel1)
     assert m.items[0].level == -1
-    assert m.items[1] == 156
+    assert cast(Any, m.items[1]) == 156
 
 
 def test_union_of_lists() -> None:
@@ -355,7 +355,7 @@ def test_union_of_lists() -> None:
     assert len(m.items) == 2
     assert isinstance(m.items[0], SubModel1)
     assert m.items[0].level == -1
-    assert m.items[1] == 156
+    assert cast(Any, m.items[1]) == 156
 
 
 def test_dict_of_union() -> None:
@@ -501,6 +501,42 @@ def test_omitted_fields() -> None:
     assert "resource_id" in m.model_fields_set
 
 
+def test_to_dict() -> None:
+    class Model(BaseModel):
+        foo: Optional[str] = Field(alias="FOO", default=None)
+
+    m = Model(FOO="hello")
+    assert m.to_dict() == {"FOO": "hello"}
+    assert m.to_dict(use_api_names=False) == {"foo": "hello"}
+
+    m2 = Model()
+    assert m2.to_dict() == {}
+    assert m2.to_dict(exclude_unset=False) == {"FOO": None}
+    assert m2.to_dict(exclude_unset=False, exclude_none=True) == {}
+    assert m2.to_dict(exclude_unset=False, exclude_defaults=True) == {}
+
+    m3 = Model(FOO=None)
+    assert m3.to_dict() == {"FOO": None}
+    assert m3.to_dict(exclude_none=True) == {}
+    assert m3.to_dict(exclude_defaults=True) == {}
+
+    if PYDANTIC_V2:
+
+        class Model2(BaseModel):
+            created_at: datetime
+
+        time_str = "2024-03-21T11:39:01.275859"
+        m4 = Model2.construct(created_at=time_str)
+        assert m4.to_dict(mode="python") == {"created_at": datetime.fromisoformat(time_str)}
+        assert m4.to_dict(mode="json") == {"created_at": time_str}
+    else:
+        with pytest.raises(ValueError, match="mode is only supported in Pydantic v2"):
+            m.to_dict(mode="json")
+
+        with pytest.raises(ValueError, match="warnings is only supported in Pydantic v2"):
+            m.to_dict(warnings=False)
+
+
 def test_forwards_compat_model_dump_method() -> None:
     class Model(BaseModel):
         foo: Optional[str] = Field(alias="FOO", default=None)
@@ -530,6 +566,34 @@ def test_forwards_compat_model_dump_method() -> None:
 
         with pytest.raises(ValueError, match="warnings is only supported in Pydantic v2"):
             m.model_dump(warnings=False)
+
+
+def test_to_json() -> None:
+    class Model(BaseModel):
+        foo: Optional[str] = Field(alias="FOO", default=None)
+
+    m = Model(FOO="hello")
+    assert json.loads(m.to_json()) == {"FOO": "hello"}
+    assert json.loads(m.to_json(use_api_names=False)) == {"foo": "hello"}
+
+    if PYDANTIC_V2:
+        assert m.to_json(indent=None) == '{"FOO":"hello"}'
+    else:
+        assert m.to_json(indent=None) == '{"FOO": "hello"}'
+
+    m2 = Model()
+    assert json.loads(m2.to_json()) == {}
+    assert json.loads(m2.to_json(exclude_unset=False)) == {"FOO": None}
+    assert json.loads(m2.to_json(exclude_unset=False, exclude_none=True)) == {}
+    assert json.loads(m2.to_json(exclude_unset=False, exclude_defaults=True)) == {}
+
+    m3 = Model(FOO=None)
+    assert json.loads(m3.to_json()) == {"FOO": None}
+    assert json.loads(m3.to_json(exclude_none=True)) == {}
+
+    if not PYDANTIC_V2:
+        with pytest.raises(ValueError, match="warnings is only supported in Pydantic v2"):
+            m.to_json(warnings=False)
 
 
 def test_forwards_compat_model_dump_json_method() -> None:

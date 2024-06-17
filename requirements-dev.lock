@@ -12,7 +12,7 @@ annotated-types==0.6.0
     # via pydantic
 anyio==4.1.0
     # via httpx
-    # via temp-open-transit
+    # via onebusaway
 argcomplete==3.1.2
     # via nox
 attrs==23.1.0
@@ -26,7 +26,7 @@ dirty-equals==0.6.0
 distlib==0.3.7
     # via virtualenv
 distro==1.8.0
-    # via temp-open-transit
+    # via onebusaway
 exceptiongroup==1.1.3
     # via anyio
 filelock==3.12.4
@@ -36,8 +36,8 @@ h11==0.14.0
 httpcore==1.0.2
     # via httpx
 httpx==0.25.2
+    # via onebusaway
     # via respx
-    # via temp-open-transit
 idna==3.4
     # via anyio
     # via httpx
@@ -59,11 +59,11 @@ pluggy==1.3.0
     # via pytest
 py==1.11.0
     # via pytest
-pydantic==2.4.2
-    # via temp-open-transit
-pydantic-core==2.10.1
+pydantic==2.7.1
+    # via onebusaway
+pydantic-core==2.18.2
     # via pydantic
-pyright==1.1.353
+pyright==1.1.364
 pytest==7.1.1
     # via pytest-asyncio
 pytest-asyncio==0.21.1
@@ -80,16 +80,16 @@ six==1.16.0
 sniffio==1.3.0
     # via anyio
     # via httpx
-    # via temp-open-transit
+    # via onebusaway
 time-machine==2.9.0
 tomli==2.0.1
     # via mypy
     # via pytest
 typing-extensions==4.8.0
     # via mypy
+    # via onebusaway
     # via pydantic
     # via pydantic-core
-    # via temp-open-transit
 virtualenv==20.24.5
     # via nox
 zipp==3.17.0
