@@ -14,6 +14,7 @@ __all__ = [
     "DataReferencesAgency",
     "DataReferencesRoute",
     "DataReferencesStop",
+    "DataReferencesTrip",
 ]
 
 
@@ -109,6 +110,30 @@ class DataReferencesStop(BaseModel):
     wheelchair_boarding: Optional[str] = FieldInfo(alias="wheelchairBoarding", default=None)
 
 
+class DataReferencesTrip(BaseModel):
+    id: str
+
+    route_id: str = FieldInfo(alias="routeId")
+
+    block_id: Optional[str] = FieldInfo(alias="blockId", default=None)
+
+    direction_id: Optional[str] = FieldInfo(alias="directionId", default=None)
+
+    peak_offpeak: Optional[int] = FieldInfo(alias="peakOffpeak", default=None)
+
+    route_short_name: Optional[str] = FieldInfo(alias="routeShortName", default=None)
+
+    service_id: Optional[str] = FieldInfo(alias="serviceId", default=None)
+
+    shape_id: Optional[str] = FieldInfo(alias="shapeId", default=None)
+
+    time_zone: Optional[str] = FieldInfo(alias="timeZone", default=None)
+
+    trip_headsign: Optional[str] = FieldInfo(alias="tripHeadsign", default=None)
+
+    trip_short_name: Optional[str] = FieldInfo(alias="tripShortName", default=None)
+
+
 class DataReferences(BaseModel):
     agencies: Optional[List[DataReferencesAgency]] = None
 
@@ -120,7 +145,7 @@ class DataReferences(BaseModel):
 
     stop_times: Optional[List[object]] = FieldInfo(alias="stopTimes", default=None)
 
-    trips: Optional[List[object]] = None
+    trips: Optional[List[DataReferencesTrip]] = None
 
 
 class Data(BaseModel):

@@ -9,6 +9,9 @@ from .stops_for_location_retrieve_response import StopsForLocationRetrieveRespon
 from .agencies_with_coverage_retrieve_response import (
     AgenciesWithCoverageRetrieveResponse as AgenciesWithCoverageRetrieveResponse,
 )
+from .arrivals_and_departures_for_stop_retrieve_params import (
+    ArrivalsAndDeparturesForStopRetrieveParams as ArrivalsAndDeparturesForStopRetrieveParams,
+)
 from .arrivals_and_departures_for_stop_retrieve_response import (
     ArrivalsAndDeparturesForStopRetrieveResponse as ArrivalsAndDeparturesForStopRetrieveResponse,
 )
