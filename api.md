@@ -3,7 +3,7 @@
 Types:
 
 ```python
-from onebusaway.types import AgenciesWithCoverageRetrieveResponse
+from onebusaway.types import Coverage, AgenciesWithCoverageRetrieveResponse
 ```
 
 Methods:
