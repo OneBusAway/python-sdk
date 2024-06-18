@@ -19,19 +19,19 @@ __all__ = [
 
 
 class DataList(BaseModel):
-    id: str
+    id: Optional[str] = None
 
-    code: str
-
-    lat: float
-
-    lon: float
-
-    name: str
+    code: Optional[str] = None
 
     direction: Optional[str] = None
 
+    lat: Optional[float] = None
+
     location_type: Optional[int] = FieldInfo(alias="locationType", default=None)
+
+    lon: Optional[float] = None
+
+    name: Optional[str] = None
 
     parent: Optional[str] = None
 
