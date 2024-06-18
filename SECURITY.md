@@ -20,7 +20,7 @@ or products provided by One Bus Away please follow the respective company's secu
 
 ### One Bus Away Terms and Policies
 
-Please contact dev-feedback@open-transit.com for any questions or concerns regarding security of our services.
+Please contact info@onebusaway.org for any questions or concerns regarding security of our services.
 
 ---
 

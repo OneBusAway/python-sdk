@@ -80,7 +80,7 @@ class OneBusAway(SyncAPIClient):
         # part of our public interface in the future.
         _strict_response_validation: bool = False,
     ) -> None:
-        """Construct a new synchronous one-bus-away client instance.
+        """Construct a new synchronous OneBusAway client instance.
 
         This automatically infers the `api_key` argument from the `OPEN_TRANSIT_API_KEY` environment variable if it is not provided.
         """
@@ -263,7 +263,7 @@ class AsyncOneBusAway(AsyncAPIClient):
         # part of our public interface in the future.
         _strict_response_validation: bool = False,
     ) -> None:
-        """Construct a new async one-bus-away client instance.
+        """Construct a new async OneBusAway client instance.
 
         This automatically infers the `api_key` argument from the `OPEN_TRANSIT_API_KEY` environment variable if it is not provided.
         """
