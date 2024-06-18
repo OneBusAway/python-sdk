@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-from .coverage import Coverage as Coverage
 from .config_retrieve_response import ConfigRetrieveResponse as ConfigRetrieveResponse
 from .current_time_retrieve_response import CurrentTimeRetrieveResponse as CurrentTimeRetrieveResponse
 from .stops_for_location_retrieve_params import StopsForLocationRetrieveParams as StopsForLocationRetrieveParams
