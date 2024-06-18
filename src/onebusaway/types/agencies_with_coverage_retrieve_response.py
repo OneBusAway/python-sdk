@@ -5,17 +5,29 @@ from typing import List, Optional
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
-from .coverage import Coverage
 
 __all__ = [
     "AgenciesWithCoverageRetrieveResponse",
     "Data",
+    "DataList",
     "DataReferences",
     "DataReferencesAgency",
     "DataReferencesRoute",
     "DataReferencesStop",
     "DataReferencesTrip",
 ]
+
+
+class DataList(BaseModel):
+    agency_id: str = FieldInfo(alias="agencyId")
+
+    lat: float
+
+    lat_span: float = FieldInfo(alias="latSpan")
+
+    lon: float
+
+    lon_span: float = FieldInfo(alias="lonSpan")
 
 
 class DataReferencesAgency(BaseModel):
@@ -127,7 +139,7 @@ class DataReferences(BaseModel):
 class Data(BaseModel):
     limit_exceeded: Optional[bool] = FieldInfo(alias="limitExceeded", default=None)
 
-    list: Optional[List[Coverage]] = None
+    list: Optional[List[DataList]] = None
 
     references: Optional[DataReferences] = None
 
