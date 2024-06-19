@@ -4,8 +4,8 @@ from typing import Sequence
 
 import pytest
 
-from open_transit._types import FileTypes
-from open_transit._utils import extract_files
+from onebusaway._types import FileTypes
+from onebusaway._utils import extract_files
 
 
 def test_removes_files_from_input() -> None:

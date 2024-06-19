@@ -6,8 +6,8 @@ import httpx
 import pytest
 import pydantic
 
-from open_transit import BaseModel, OneBusAway, AsyncOneBusAway
-from open_transit._response import (
+from onebusaway import BaseModel, OneBusAway, AsyncOneBusAway
+from onebusaway._response import (
     APIResponse,
     BaseAPIResponse,
     AsyncAPIResponse,
@@ -15,8 +15,8 @@ from open_transit._response import (
     AsyncBinaryAPIResponse,
     extract_response_type,
 )
-from open_transit._streaming import Stream
-from open_transit._base_client import FinalRequestOptions
+from onebusaway._streaming import Stream
+from onebusaway._base_client import FinalRequestOptions
 
 
 class ConcreteBaseAPIResponse(APIResponse[bytes]):
@@ -40,7 +40,7 @@ def test_extract_response_type_direct_classes() -> None:
 def test_extract_response_type_direct_class_missing_type_arg() -> None:
     with pytest.raises(
         RuntimeError,
-        match="Expected type <class 'open_transit._response.AsyncAPIResponse'> to have a type argument at index 0 but it did not",
+        match="Expected type <class 'onebusaway._response.AsyncAPIResponse'> to have a type argument at index 0 but it did not",
     ):
         extract_response_type(AsyncAPIResponse)
 
@@ -72,7 +72,7 @@ def test_response_parse_mismatched_basemodel(client: OneBusAway) -> None:
 
     with pytest.raises(
         TypeError,
-        match="Pydantic models must subclass our base model type, e.g. `from open_transit import BaseModel`",
+        match="Pydantic models must subclass our base model type, e.g. `from onebusaway import BaseModel`",
     ):
         response.parse(to=PydanticModel)
 
@@ -90,7 +90,7 @@ async def test_async_response_parse_mismatched_basemodel(async_client: AsyncOneB
 
     with pytest.raises(
         TypeError,
-        match="Pydantic models must subclass our base model type, e.g. `from open_transit import BaseModel`",
+        match="Pydantic models must subclass our base model type, e.g. `from onebusaway import BaseModel`",
     ):
         await response.parse(to=PydanticModel)
 

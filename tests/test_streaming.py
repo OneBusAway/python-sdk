@@ -5,8 +5,8 @@ from typing import Iterator, AsyncIterator
 import httpx
 import pytest
 
-from open_transit import OneBusAway, AsyncOneBusAway
-from open_transit._streaming import Stream, AsyncStream, ServerSentEvent
+from onebusaway import OneBusAway, AsyncOneBusAway
+from onebusaway._streaming import Stream, AsyncStream, ServerSentEvent
 
 
 @pytest.mark.asyncio

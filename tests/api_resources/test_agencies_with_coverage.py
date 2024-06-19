@@ -7,9 +7,9 @@ from typing import Any, cast
 
 import pytest
 
+from onebusaway import OneBusAway, AsyncOneBusAway
 from tests.utils import assert_matches_type
-from open_transit import OneBusAway, AsyncOneBusAway
-from open_transit.types import AgenciesWithCoverageListResponse
+from onebusaway.types import AgenciesWithCoverageListResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 

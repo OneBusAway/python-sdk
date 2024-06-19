@@ -7,14 +7,14 @@ from typing import TYPE_CHECKING, Iterator, AsyncIterator
 
 import pytest
 
-from open_transit import OneBusAway, AsyncOneBusAway
+from onebusaway import OneBusAway, AsyncOneBusAway
 
 if TYPE_CHECKING:
     from _pytest.fixtures import FixtureRequest
 
 pytest.register_assert_rewrite("tests.utils")
 
-logging.getLogger("open_transit").setLevel(logging.DEBUG)
+logging.getLogger("onebusaway").setLevel(logging.DEBUG)
 
 
 @pytest.fixture(scope="session")

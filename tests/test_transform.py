@@ -8,15 +8,15 @@ from typing_extensions import Required, Annotated, TypedDict
 
 import pytest
 
-from open_transit._types import Base64FileInput
-from open_transit._utils import (
+from onebusaway._types import Base64FileInput
+from onebusaway._utils import (
     PropertyInfo,
     transform as _transform,
     parse_datetime,
     async_transform as _async_transform,
 )
-from open_transit._compat import PYDANTIC_V2
-from open_transit._models import BaseModel
+from onebusaway._compat import PYDANTIC_V2
+from onebusaway._models import BaseModel
 
 _T = TypeVar("_T")
 
