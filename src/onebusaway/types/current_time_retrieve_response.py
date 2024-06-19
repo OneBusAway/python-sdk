@@ -5,27 +5,26 @@ from typing import List, Optional
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
-from .shared.response_wrapper import ResponseWrapper
 
 __all__ = [
     "CurrentTimeRetrieveResponse",
-    "CurrentTimeRetrieveResponseData",
-    "CurrentTimeRetrieveResponseDataEntry",
-    "CurrentTimeRetrieveResponseDataReferences",
-    "CurrentTimeRetrieveResponseDataReferencesAgency",
-    "CurrentTimeRetrieveResponseDataReferencesRoute",
-    "CurrentTimeRetrieveResponseDataReferencesStop",
-    "CurrentTimeRetrieveResponseDataReferencesTrip",
+    "Data",
+    "DataEntry",
+    "DataReferences",
+    "DataReferencesAgency",
+    "DataReferencesRoute",
+    "DataReferencesStop",
+    "DataReferencesTrip",
 ]
 
 
-class CurrentTimeRetrieveResponseDataEntry(BaseModel):
+class DataEntry(BaseModel):
     readable_time: Optional[str] = FieldInfo(alias="readableTime", default=None)
 
     time: Optional[int] = None
 
 
-class CurrentTimeRetrieveResponseDataReferencesAgency(BaseModel):
+class DataReferencesAgency(BaseModel):
     id: str
 
     name: str
@@ -47,7 +46,7 @@ class CurrentTimeRetrieveResponseDataReferencesAgency(BaseModel):
     private_service: Optional[bool] = FieldInfo(alias="privateService", default=None)
 
 
-class CurrentTimeRetrieveResponseDataReferencesRoute(BaseModel):
+class DataReferencesRoute(BaseModel):
     id: Optional[str] = None
 
     agency_id: Optional[str] = FieldInfo(alias="agencyId", default=None)
@@ -69,7 +68,7 @@ class CurrentTimeRetrieveResponseDataReferencesRoute(BaseModel):
     url: Optional[str] = None
 
 
-class CurrentTimeRetrieveResponseDataReferencesStop(BaseModel):
+class DataReferencesStop(BaseModel):
     id: str
 
     code: str
@@ -93,7 +92,7 @@ class CurrentTimeRetrieveResponseDataReferencesStop(BaseModel):
     wheelchair_boarding: Optional[str] = FieldInfo(alias="wheelchairBoarding", default=None)
 
 
-class CurrentTimeRetrieveResponseDataReferencesTrip(BaseModel):
+class DataReferencesTrip(BaseModel):
     id: str
 
     route_id: str = FieldInfo(alias="routeId")
@@ -117,25 +116,33 @@ class CurrentTimeRetrieveResponseDataReferencesTrip(BaseModel):
     trip_short_name: Optional[str] = FieldInfo(alias="tripShortName", default=None)
 
 
-class CurrentTimeRetrieveResponseDataReferences(BaseModel):
-    agencies: Optional[List[CurrentTimeRetrieveResponseDataReferencesAgency]] = None
+class DataReferences(BaseModel):
+    agencies: Optional[List[DataReferencesAgency]] = None
 
-    routes: Optional[List[CurrentTimeRetrieveResponseDataReferencesRoute]] = None
+    routes: Optional[List[DataReferencesRoute]] = None
 
     situations: Optional[List[object]] = None
 
-    stops: Optional[List[CurrentTimeRetrieveResponseDataReferencesStop]] = None
+    stops: Optional[List[DataReferencesStop]] = None
 
     stop_times: Optional[List[object]] = FieldInfo(alias="stopTimes", default=None)
 
-    trips: Optional[List[CurrentTimeRetrieveResponseDataReferencesTrip]] = None
+    trips: Optional[List[DataReferencesTrip]] = None
 
 
-class CurrentTimeRetrieveResponseData(BaseModel):
-    entry: Optional[CurrentTimeRetrieveResponseDataEntry] = None
+class Data(BaseModel):
+    entry: Optional[DataEntry] = None
 
-    references: Optional[CurrentTimeRetrieveResponseDataReferences] = None
+    references: Optional[DataReferences] = None
 
 
-class CurrentTimeRetrieveResponse(ResponseWrapper):
-    data: Optional[CurrentTimeRetrieveResponseData] = None
+class CurrentTimeRetrieveResponse(BaseModel):
+    code: int
+
+    current_time: int = FieldInfo(alias="currentTime")
+
+    text: str
+
+    version: int
+
+    data: Optional[Data] = None

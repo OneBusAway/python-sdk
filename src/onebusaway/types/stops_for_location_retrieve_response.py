@@ -5,21 +5,20 @@ from typing import List, Optional
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
-from .shared.response_wrapper import ResponseWrapper
 
 __all__ = [
     "StopsForLocationRetrieveResponse",
-    "StopsForLocationRetrieveResponseData",
-    "StopsForLocationRetrieveResponseDataList",
-    "StopsForLocationRetrieveResponseDataReferences",
-    "StopsForLocationRetrieveResponseDataReferencesAgency",
-    "StopsForLocationRetrieveResponseDataReferencesRoute",
-    "StopsForLocationRetrieveResponseDataReferencesStop",
-    "StopsForLocationRetrieveResponseDataReferencesTrip",
+    "Data",
+    "DataList",
+    "DataReferences",
+    "DataReferencesAgency",
+    "DataReferencesRoute",
+    "DataReferencesStop",
+    "DataReferencesTrip",
 ]
 
 
-class StopsForLocationRetrieveResponseDataList(BaseModel):
+class DataList(BaseModel):
     id: Optional[str] = None
 
     code: Optional[str] = None
@@ -43,7 +42,7 @@ class StopsForLocationRetrieveResponseDataList(BaseModel):
     wheelchair_boarding: Optional[str] = FieldInfo(alias="wheelchairBoarding", default=None)
 
 
-class StopsForLocationRetrieveResponseDataReferencesAgency(BaseModel):
+class DataReferencesAgency(BaseModel):
     id: str
 
     name: str
@@ -65,7 +64,7 @@ class StopsForLocationRetrieveResponseDataReferencesAgency(BaseModel):
     private_service: Optional[bool] = FieldInfo(alias="privateService", default=None)
 
 
-class StopsForLocationRetrieveResponseDataReferencesRoute(BaseModel):
+class DataReferencesRoute(BaseModel):
     id: Optional[str] = None
 
     agency_id: Optional[str] = FieldInfo(alias="agencyId", default=None)
@@ -87,7 +86,7 @@ class StopsForLocationRetrieveResponseDataReferencesRoute(BaseModel):
     url: Optional[str] = None
 
 
-class StopsForLocationRetrieveResponseDataReferencesStop(BaseModel):
+class DataReferencesStop(BaseModel):
     id: str
 
     code: str
@@ -111,7 +110,7 @@ class StopsForLocationRetrieveResponseDataReferencesStop(BaseModel):
     wheelchair_boarding: Optional[str] = FieldInfo(alias="wheelchairBoarding", default=None)
 
 
-class StopsForLocationRetrieveResponseDataReferencesTrip(BaseModel):
+class DataReferencesTrip(BaseModel):
     id: str
 
     route_id: str = FieldInfo(alias="routeId")
@@ -135,27 +134,35 @@ class StopsForLocationRetrieveResponseDataReferencesTrip(BaseModel):
     trip_short_name: Optional[str] = FieldInfo(alias="tripShortName", default=None)
 
 
-class StopsForLocationRetrieveResponseDataReferences(BaseModel):
-    agencies: Optional[List[StopsForLocationRetrieveResponseDataReferencesAgency]] = None
+class DataReferences(BaseModel):
+    agencies: Optional[List[DataReferencesAgency]] = None
 
-    routes: Optional[List[StopsForLocationRetrieveResponseDataReferencesRoute]] = None
+    routes: Optional[List[DataReferencesRoute]] = None
 
     situations: Optional[List[object]] = None
 
-    stops: Optional[List[StopsForLocationRetrieveResponseDataReferencesStop]] = None
+    stops: Optional[List[DataReferencesStop]] = None
 
     stop_times: Optional[List[object]] = FieldInfo(alias="stopTimes", default=None)
 
-    trips: Optional[List[StopsForLocationRetrieveResponseDataReferencesTrip]] = None
+    trips: Optional[List[DataReferencesTrip]] = None
 
 
-class StopsForLocationRetrieveResponseData(BaseModel):
+class Data(BaseModel):
     limit_exceeded: Optional[bool] = FieldInfo(alias="limitExceeded", default=None)
 
-    list: Optional[List[StopsForLocationRetrieveResponseDataList]] = None
+    list: Optional[List[DataList]] = None
 
-    references: Optional[StopsForLocationRetrieveResponseDataReferences] = None
+    references: Optional[DataReferences] = None
 
 
-class StopsForLocationRetrieveResponse(ResponseWrapper):
-    data: Optional[StopsForLocationRetrieveResponseData] = None
+class StopsForLocationRetrieveResponse(BaseModel):
+    code: int
+
+    current_time: int = FieldInfo(alias="currentTime")
+
+    text: str
+
+    version: int
+
+    data: Optional[Data] = None

@@ -36,6 +36,7 @@ client = OneBusAway(
 )
 
 current_time_retrieve_response = client.current_time.retrieve()
+print(current_time_retrieve_response.code)
 ```
 
 While you can provide an `api_key` keyword argument,
@@ -60,6 +61,7 @@ client = AsyncOneBusAway(
 
 async def main() -> None:
     current_time_retrieve_response = await client.current_time.retrieve()
+    print(current_time_retrieve_response.code)
 
 
 asyncio.run(main())
@@ -201,7 +203,7 @@ response = client.current_time.with_raw_response.retrieve()
 print(response.headers.get('X-My-Header'))
 
 current_time = response.parse()  # get the object that `current_time.retrieve()` would have returned
-print(current_time)
+print(current_time.code)
 ```
 
 These methods return an [`APIResponse`](https://github.com/stainless-sdks/open-transit-python/tree/main/src/onebusaway/_response.py) object.

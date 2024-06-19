@@ -1,9 +1,3 @@
-# Shared Types
-
-```python
-from onebusaway.types import ResponseWrapper
-```
-
 # AgenciesWithCoverage
 
 Types:

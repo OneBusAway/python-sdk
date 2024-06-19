@@ -5,22 +5,21 @@ from typing import List, Optional
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
-from .shared.response_wrapper import ResponseWrapper
 
 __all__ = [
     "ConfigRetrieveResponse",
-    "ConfigRetrieveResponseData",
-    "ConfigRetrieveResponseDataEntry",
-    "ConfigRetrieveResponseDataEntryGitProperties",
-    "ConfigRetrieveResponseDataReferences",
-    "ConfigRetrieveResponseDataReferencesAgency",
-    "ConfigRetrieveResponseDataReferencesRoute",
-    "ConfigRetrieveResponseDataReferencesStop",
-    "ConfigRetrieveResponseDataReferencesTrip",
+    "Data",
+    "DataEntry",
+    "DataEntryGitProperties",
+    "DataReferences",
+    "DataReferencesAgency",
+    "DataReferencesRoute",
+    "DataReferencesStop",
+    "DataReferencesTrip",
 ]
 
 
-class ConfigRetrieveResponseDataEntryGitProperties(BaseModel):
+class DataEntryGitProperties(BaseModel):
     git_branch: Optional[str] = FieldInfo(alias="git.branch", default=None)
 
     git_build_host: Optional[str] = FieldInfo(alias="git.build.host", default=None)
@@ -62,12 +61,10 @@ class ConfigRetrieveResponseDataEntryGitProperties(BaseModel):
     git_tags: Optional[str] = FieldInfo(alias="git.tags", default=None)
 
 
-class ConfigRetrieveResponseDataEntry(BaseModel):
+class DataEntry(BaseModel):
     id: Optional[str] = None
 
-    git_properties: Optional[ConfigRetrieveResponseDataEntryGitProperties] = FieldInfo(
-        alias="gitProperties", default=None
-    )
+    git_properties: Optional[DataEntryGitProperties] = FieldInfo(alias="gitProperties", default=None)
 
     name: Optional[str] = None
 
@@ -76,7 +73,7 @@ class ConfigRetrieveResponseDataEntry(BaseModel):
     service_date_to: Optional[str] = FieldInfo(alias="serviceDateTo", default=None)
 
 
-class ConfigRetrieveResponseDataReferencesAgency(BaseModel):
+class DataReferencesAgency(BaseModel):
     id: str
 
     name: str
@@ -98,7 +95,7 @@ class ConfigRetrieveResponseDataReferencesAgency(BaseModel):
     private_service: Optional[bool] = FieldInfo(alias="privateService", default=None)
 
 
-class ConfigRetrieveResponseDataReferencesRoute(BaseModel):
+class DataReferencesRoute(BaseModel):
     id: Optional[str] = None
 
     agency_id: Optional[str] = FieldInfo(alias="agencyId", default=None)
@@ -120,7 +117,7 @@ class ConfigRetrieveResponseDataReferencesRoute(BaseModel):
     url: Optional[str] = None
 
 
-class ConfigRetrieveResponseDataReferencesStop(BaseModel):
+class DataReferencesStop(BaseModel):
     id: str
 
     code: str
@@ -144,7 +141,7 @@ class ConfigRetrieveResponseDataReferencesStop(BaseModel):
     wheelchair_boarding: Optional[str] = FieldInfo(alias="wheelchairBoarding", default=None)
 
 
-class ConfigRetrieveResponseDataReferencesTrip(BaseModel):
+class DataReferencesTrip(BaseModel):
     id: str
 
     route_id: str = FieldInfo(alias="routeId")
@@ -168,25 +165,33 @@ class ConfigRetrieveResponseDataReferencesTrip(BaseModel):
     trip_short_name: Optional[str] = FieldInfo(alias="tripShortName", default=None)
 
 
-class ConfigRetrieveResponseDataReferences(BaseModel):
-    agencies: Optional[List[ConfigRetrieveResponseDataReferencesAgency]] = None
+class DataReferences(BaseModel):
+    agencies: Optional[List[DataReferencesAgency]] = None
 
-    routes: Optional[List[ConfigRetrieveResponseDataReferencesRoute]] = None
+    routes: Optional[List[DataReferencesRoute]] = None
 
     situations: Optional[List[object]] = None
 
-    stops: Optional[List[ConfigRetrieveResponseDataReferencesStop]] = None
+    stops: Optional[List[DataReferencesStop]] = None
 
     stop_times: Optional[List[object]] = FieldInfo(alias="stopTimes", default=None)
 
-    trips: Optional[List[ConfigRetrieveResponseDataReferencesTrip]] = None
+    trips: Optional[List[DataReferencesTrip]] = None
 
 
-class ConfigRetrieveResponseData(BaseModel):
-    entry: Optional[ConfigRetrieveResponseDataEntry] = None
+class Data(BaseModel):
+    entry: Optional[DataEntry] = None
 
-    references: Optional[ConfigRetrieveResponseDataReferences] = None
+    references: Optional[DataReferences] = None
 
 
-class ConfigRetrieveResponse(ResponseWrapper):
-    data: Optional[ConfigRetrieveResponseData] = None
+class ConfigRetrieveResponse(BaseModel):
+    code: int
+
+    current_time: int = FieldInfo(alias="currentTime")
+
+    text: str
+
+    version: int
+
+    data: Optional[Data] = None

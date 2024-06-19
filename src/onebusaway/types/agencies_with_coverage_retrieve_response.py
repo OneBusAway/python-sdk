@@ -5,21 +5,20 @@ from typing import List, Optional
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
-from .shared.response_wrapper import ResponseWrapper
 
 __all__ = [
     "AgenciesWithCoverageRetrieveResponse",
-    "AgenciesWithCoverageRetrieveResponseData",
-    "AgenciesWithCoverageRetrieveResponseDataList",
-    "AgenciesWithCoverageRetrieveResponseDataReferences",
-    "AgenciesWithCoverageRetrieveResponseDataReferencesAgency",
-    "AgenciesWithCoverageRetrieveResponseDataReferencesRoute",
-    "AgenciesWithCoverageRetrieveResponseDataReferencesStop",
-    "AgenciesWithCoverageRetrieveResponseDataReferencesTrip",
+    "Data",
+    "DataList",
+    "DataReferences",
+    "DataReferencesAgency",
+    "DataReferencesRoute",
+    "DataReferencesStop",
+    "DataReferencesTrip",
 ]
 
 
-class AgenciesWithCoverageRetrieveResponseDataList(BaseModel):
+class DataList(BaseModel):
     agency_id: str = FieldInfo(alias="agencyId")
 
     lat: float
@@ -31,7 +30,7 @@ class AgenciesWithCoverageRetrieveResponseDataList(BaseModel):
     lon_span: float = FieldInfo(alias="lonSpan")
 
 
-class AgenciesWithCoverageRetrieveResponseDataReferencesAgency(BaseModel):
+class DataReferencesAgency(BaseModel):
     id: str
 
     name: str
@@ -53,7 +52,7 @@ class AgenciesWithCoverageRetrieveResponseDataReferencesAgency(BaseModel):
     private_service: Optional[bool] = FieldInfo(alias="privateService", default=None)
 
 
-class AgenciesWithCoverageRetrieveResponseDataReferencesRoute(BaseModel):
+class DataReferencesRoute(BaseModel):
     id: Optional[str] = None
 
     agency_id: Optional[str] = FieldInfo(alias="agencyId", default=None)
@@ -75,7 +74,7 @@ class AgenciesWithCoverageRetrieveResponseDataReferencesRoute(BaseModel):
     url: Optional[str] = None
 
 
-class AgenciesWithCoverageRetrieveResponseDataReferencesStop(BaseModel):
+class DataReferencesStop(BaseModel):
     id: str
 
     code: str
@@ -99,7 +98,7 @@ class AgenciesWithCoverageRetrieveResponseDataReferencesStop(BaseModel):
     wheelchair_boarding: Optional[str] = FieldInfo(alias="wheelchairBoarding", default=None)
 
 
-class AgenciesWithCoverageRetrieveResponseDataReferencesTrip(BaseModel):
+class DataReferencesTrip(BaseModel):
     id: str
 
     route_id: str = FieldInfo(alias="routeId")
@@ -123,27 +122,35 @@ class AgenciesWithCoverageRetrieveResponseDataReferencesTrip(BaseModel):
     trip_short_name: Optional[str] = FieldInfo(alias="tripShortName", default=None)
 
 
-class AgenciesWithCoverageRetrieveResponseDataReferences(BaseModel):
-    agencies: Optional[List[AgenciesWithCoverageRetrieveResponseDataReferencesAgency]] = None
+class DataReferences(BaseModel):
+    agencies: Optional[List[DataReferencesAgency]] = None
 
-    routes: Optional[List[AgenciesWithCoverageRetrieveResponseDataReferencesRoute]] = None
+    routes: Optional[List[DataReferencesRoute]] = None
 
     situations: Optional[List[object]] = None
 
-    stops: Optional[List[AgenciesWithCoverageRetrieveResponseDataReferencesStop]] = None
+    stops: Optional[List[DataReferencesStop]] = None
 
     stop_times: Optional[List[object]] = FieldInfo(alias="stopTimes", default=None)
 
-    trips: Optional[List[AgenciesWithCoverageRetrieveResponseDataReferencesTrip]] = None
+    trips: Optional[List[DataReferencesTrip]] = None
 
 
-class AgenciesWithCoverageRetrieveResponseData(BaseModel):
+class Data(BaseModel):
     limit_exceeded: Optional[bool] = FieldInfo(alias="limitExceeded", default=None)
 
-    list: Optional[List[AgenciesWithCoverageRetrieveResponseDataList]] = None
+    list: Optional[List[DataList]] = None
 
-    references: Optional[AgenciesWithCoverageRetrieveResponseDataReferences] = None
+    references: Optional[DataReferences] = None
 
 
-class AgenciesWithCoverageRetrieveResponse(ResponseWrapper):
-    data: Optional[AgenciesWithCoverageRetrieveResponseData] = None
+class AgenciesWithCoverageRetrieveResponse(BaseModel):
+    code: int
+
+    current_time: int = FieldInfo(alias="currentTime")
+
+    text: str
+
+    version: int
+
+    data: Optional[Data] = None
