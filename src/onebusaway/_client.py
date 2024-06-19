@@ -51,6 +51,7 @@ class OneBusAway(SyncAPIClient):
     current_time: resources.CurrentTimeResource
     stops_for_location: resources.StopsForLocationResource
     arrival_and_departure_for_stop: resources.ArrivalAndDepartureForStopResource
+    arrivals_and_departures_for_stop: resources.ArrivalsAndDeparturesForStopResource
     with_raw_response: OneBusAwayWithRawResponse
     with_streaming_response: OneBusAwayWithStreamedResponse
 
@@ -113,6 +114,7 @@ class OneBusAway(SyncAPIClient):
         self.current_time = resources.CurrentTimeResource(self)
         self.stops_for_location = resources.StopsForLocationResource(self)
         self.arrival_and_departure_for_stop = resources.ArrivalAndDepartureForStopResource(self)
+        self.arrivals_and_departures_for_stop = resources.ArrivalsAndDeparturesForStopResource(self)
         self.with_raw_response = OneBusAwayWithRawResponse(self)
         self.with_streaming_response = OneBusAwayWithStreamedResponse(self)
 
@@ -234,6 +236,7 @@ class AsyncOneBusAway(AsyncAPIClient):
     current_time: resources.AsyncCurrentTimeResource
     stops_for_location: resources.AsyncStopsForLocationResource
     arrival_and_departure_for_stop: resources.AsyncArrivalAndDepartureForStopResource
+    arrivals_and_departures_for_stop: resources.AsyncArrivalsAndDeparturesForStopResource
     with_raw_response: AsyncOneBusAwayWithRawResponse
     with_streaming_response: AsyncOneBusAwayWithStreamedResponse
 
@@ -296,6 +299,7 @@ class AsyncOneBusAway(AsyncAPIClient):
         self.current_time = resources.AsyncCurrentTimeResource(self)
         self.stops_for_location = resources.AsyncStopsForLocationResource(self)
         self.arrival_and_departure_for_stop = resources.AsyncArrivalAndDepartureForStopResource(self)
+        self.arrivals_and_departures_for_stop = resources.AsyncArrivalsAndDeparturesForStopResource(self)
         self.with_raw_response = AsyncOneBusAwayWithRawResponse(self)
         self.with_streaming_response = AsyncOneBusAwayWithStreamedResponse(self)
 
@@ -422,6 +426,9 @@ class OneBusAwayWithRawResponse:
         self.arrival_and_departure_for_stop = resources.ArrivalAndDepartureForStopResourceWithRawResponse(
             client.arrival_and_departure_for_stop
         )
+        self.arrivals_and_departures_for_stop = resources.ArrivalsAndDeparturesForStopResourceWithRawResponse(
+            client.arrivals_and_departures_for_stop
+        )
 
 
 class AsyncOneBusAwayWithRawResponse:
@@ -435,6 +442,9 @@ class AsyncOneBusAwayWithRawResponse:
         self.arrival_and_departure_for_stop = resources.AsyncArrivalAndDepartureForStopResourceWithRawResponse(
             client.arrival_and_departure_for_stop
         )
+        self.arrivals_and_departures_for_stop = resources.AsyncArrivalsAndDeparturesForStopResourceWithRawResponse(
+            client.arrivals_and_departures_for_stop
+        )
 
 
 class OneBusAwayWithStreamedResponse:
@@ -447,6 +457,9 @@ class OneBusAwayWithStreamedResponse:
         self.stops_for_location = resources.StopsForLocationResourceWithStreamingResponse(client.stops_for_location)
         self.arrival_and_departure_for_stop = resources.ArrivalAndDepartureForStopResourceWithStreamingResponse(
             client.arrival_and_departure_for_stop
+        )
+        self.arrivals_and_departures_for_stop = resources.ArrivalsAndDeparturesForStopResourceWithStreamingResponse(
+            client.arrivals_and_departures_for_stop
         )
 
 
@@ -462,6 +475,11 @@ class AsyncOneBusAwayWithStreamedResponse:
         )
         self.arrival_and_departure_for_stop = resources.AsyncArrivalAndDepartureForStopResourceWithStreamingResponse(
             client.arrival_and_departure_for_stop
+        )
+        self.arrivals_and_departures_for_stop = (
+            resources.AsyncArrivalsAndDeparturesForStopResourceWithStreamingResponse(
+                client.arrivals_and_departures_for_stop
+            )
         )
 
 

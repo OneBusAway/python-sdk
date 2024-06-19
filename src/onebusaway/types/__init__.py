@@ -16,3 +16,6 @@ from .arrival_and_departure_for_stop_retrieve_params import (
 from .arrival_and_departure_for_stop_retrieve_response import (
     ArrivalAndDepartureForStopRetrieveResponse as ArrivalAndDepartureForStopRetrieveResponse,
 )
+from .arrivals_and_departures_for_stop_retrieve_response import (
+    ArrivalsAndDeparturesForStopRetrieveResponse as ArrivalsAndDeparturesForStopRetrieveResponse,
+)

@@ -40,6 +40,14 @@ from .arrival_and_departure_for_stop import (
     ArrivalAndDepartureForStopResourceWithStreamingResponse,
     AsyncArrivalAndDepartureForStopResourceWithStreamingResponse,
 )
+from .arrivals_and_departures_for_stop import (
+    ArrivalsAndDeparturesForStopResource,
+    AsyncArrivalsAndDeparturesForStopResource,
+    ArrivalsAndDeparturesForStopResourceWithRawResponse,
+    AsyncArrivalsAndDeparturesForStopResourceWithRawResponse,
+    ArrivalsAndDeparturesForStopResourceWithStreamingResponse,
+    AsyncArrivalsAndDeparturesForStopResourceWithStreamingResponse,
+)
 
 __all__ = [
     "AgenciesWithCoverageResource",
@@ -72,4 +80,10 @@ __all__ = [
     "AsyncArrivalAndDepartureForStopResourceWithRawResponse",
     "ArrivalAndDepartureForStopResourceWithStreamingResponse",
     "AsyncArrivalAndDepartureForStopResourceWithStreamingResponse",
+    "ArrivalsAndDeparturesForStopResource",
+    "AsyncArrivalsAndDeparturesForStopResource",
+    "ArrivalsAndDeparturesForStopResourceWithRawResponse",
+    "AsyncArrivalsAndDeparturesForStopResourceWithRawResponse",
+    "ArrivalsAndDeparturesForStopResourceWithStreamingResponse",
+    "AsyncArrivalsAndDeparturesForStopResourceWithStreamingResponse",
 ]
