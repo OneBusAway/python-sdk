@@ -18,11 +18,11 @@ __all__ = [
 ]
 
 
-class OpenTransitError(Exception):
+class OneBusAwayError(Exception):
     pass
 
 
-class APIError(OpenTransitError):
+class APIError(OneBusAwayError):
     message: str
     request: httpx.Request
 

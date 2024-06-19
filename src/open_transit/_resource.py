@@ -8,13 +8,13 @@ from typing import TYPE_CHECKING
 import anyio
 
 if TYPE_CHECKING:
-    from ._client import OpenTransit, AsyncOpenTransit
+    from ._client import OneBusAway, AsyncOneBusAway
 
 
 class SyncAPIResource:
-    _client: OpenTransit
+    _client: OneBusAway
 
-    def __init__(self, client: OpenTransit) -> None:
+    def __init__(self, client: OneBusAway) -> None:
         self._client = client
         self._get = client.get
         self._post = client.post
@@ -28,9 +28,9 @@ class SyncAPIResource:
 
 
 class AsyncAPIResource:
-    _client: AsyncOpenTransit
+    _client: AsyncOneBusAway
 
-    def __init__(self, client: AsyncOpenTransit) -> None:
+    def __init__(self, client: AsyncOneBusAway) -> None:
         self._client = client
         self._get = client.get
         self._post = client.post

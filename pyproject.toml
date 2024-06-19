@@ -1,11 +1,11 @@
 [project]
 name = "open-transit"
 version = "0.0.1-alpha.0"
-description = "The official Python library for the open-transit API"
+description = "The official Python library for the OneBusAway API"
 dynamic = ["readme"]
 license = "Apache-2.0"
 authors = [
-{ name = "Open Transit", email = "dev-feedback@open-transit.com" },
+{ name = "One Bus Away", email = "info@onebusaway.org" },
 ]
 dependencies = [
     "httpx>=0.23.0, <1",

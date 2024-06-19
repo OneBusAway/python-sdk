@@ -16,7 +16,7 @@ import pytest
 from respx import MockRouter
 from pydantic import ValidationError
 
-from open_transit import OpenTransit, AsyncOpenTransit, APIResponseValidationError
+from open_transit import OneBusAway, AsyncOneBusAway, APIResponseValidationError
 from open_transit._models import BaseModel, FinalRequestOptions
 from open_transit._constants import RAW_RESPONSE_HEADER
 from open_transit._exceptions import APIStatusError, APITimeoutError, APIResponseValidationError
@@ -43,7 +43,7 @@ def _low_retry_timeout(*_args: Any, **_kwargs: Any) -> float:
     return 0.1
 
 
-def _get_open_connections(client: OpenTransit | AsyncOpenTransit) -> int:
+def _get_open_connections(client: OneBusAway | AsyncOneBusAway) -> int:
     transport = client._client._transport
     assert isinstance(transport, httpx.HTTPTransport) or isinstance(transport, httpx.AsyncHTTPTransport)
 
@@ -51,8 +51,8 @@ def _get_open_connections(client: OpenTransit | AsyncOpenTransit) -> int:
     return len(pool._requests)
 
 
-class TestOpenTransit:
-    client = OpenTransit(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+class TestOneBusAway:
+    client = OneBusAway(base_url=base_url, api_key=api_key, _strict_response_validation=True)
 
     @pytest.mark.respx(base_url=base_url)
     def test_raw_response(self, respx_mock: MockRouter) -> None:
@@ -99,7 +99,7 @@ class TestOpenTransit:
         assert isinstance(self.client.timeout, httpx.Timeout)
 
     def test_copy_default_headers(self) -> None:
-        client = OpenTransit(
+        client = OneBusAway(
             base_url=base_url, api_key=api_key, _strict_response_validation=True, default_headers={"X-Foo": "bar"}
         )
         assert client.default_headers["X-Foo"] == "bar"
@@ -133,7 +133,7 @@ class TestOpenTransit:
             client.copy(set_default_headers={}, default_headers={"X-Foo": "Bar"})
 
     def test_copy_default_query(self) -> None:
-        client = OpenTransit(
+        client = OneBusAway(
             base_url=base_url, api_key=api_key, _strict_response_validation=True, default_query={"foo": "bar"}
         )
         assert _get_params(client)["foo"] == "bar"
@@ -258,7 +258,7 @@ class TestOpenTransit:
         assert timeout == httpx.Timeout(100.0)
 
     def test_client_timeout_option(self) -> None:
-        client = OpenTransit(
+        client = OneBusAway(
             base_url=base_url, api_key=api_key, _strict_response_validation=True, timeout=httpx.Timeout(0)
         )
 
@@ -269,7 +269,7 @@ class TestOpenTransit:
     def test_http_client_timeout_option(self) -> None:
         # custom timeout given to the httpx client should be used
         with httpx.Client(timeout=None) as http_client:
-            client = OpenTransit(
+            client = OneBusAway(
                 base_url=base_url, api_key=api_key, _strict_response_validation=True, http_client=http_client
             )
 
@@ -279,7 +279,7 @@ class TestOpenTransit:
 
         # no timeout given to the httpx client should not use the httpx default
         with httpx.Client() as http_client:
-            client = OpenTransit(
+            client = OneBusAway(
                 base_url=base_url, api_key=api_key, _strict_response_validation=True, http_client=http_client
             )
 
@@ -289,7 +289,7 @@ class TestOpenTransit:
 
         # explicitly passing the default timeout currently results in it being ignored
         with httpx.Client(timeout=HTTPX_DEFAULT_TIMEOUT) as http_client:
-            client = OpenTransit(
+            client = OneBusAway(
                 base_url=base_url, api_key=api_key, _strict_response_validation=True, http_client=http_client
             )
 
@@ -300,7 +300,7 @@ class TestOpenTransit:
     async def test_invalid_http_client(self) -> None:
         with pytest.raises(TypeError, match="Invalid `http_client` arg"):
             async with httpx.AsyncClient() as http_client:
-                OpenTransit(
+                OneBusAway(
                     base_url=base_url,
                     api_key=api_key,
                     _strict_response_validation=True,
@@ -308,14 +308,14 @@ class TestOpenTransit:
                 )
 
     def test_default_headers_option(self) -> None:
-        client = OpenTransit(
+        client = OneBusAway(
             base_url=base_url, api_key=api_key, _strict_response_validation=True, default_headers={"X-Foo": "bar"}
         )
         request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
         assert request.headers.get("x-foo") == "bar"
         assert request.headers.get("x-stainless-lang") == "python"
 
-        client2 = OpenTransit(
+        client2 = OneBusAway(
             base_url=base_url,
             api_key=api_key,
             _strict_response_validation=True,
@@ -329,7 +329,7 @@ class TestOpenTransit:
         assert request.headers.get("x-stainless-lang") == "my-overriding-header"
 
     def test_default_query_option(self) -> None:
-        client = OpenTransit(
+        client = OneBusAway(
             base_url=base_url, api_key=api_key, _strict_response_validation=True, default_query={"query_param": "bar"}
         )
         request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
@@ -443,7 +443,7 @@ class TestOpenTransit:
         params = dict(request.url.params)
         assert params == {"foo": "2"}
 
-    def test_multipart_repeating_array(self, client: OpenTransit) -> None:
+    def test_multipart_repeating_array(self, client: OneBusAway) -> None:
         request = client._build_request(
             FinalRequestOptions.construct(
                 method="get",
@@ -530,9 +530,7 @@ class TestOpenTransit:
         assert response.foo == 2
 
     def test_base_url_setter(self) -> None:
-        client = OpenTransit(
-            base_url="https://example.com/from_init", api_key=api_key, _strict_response_validation=True
-        )
+        client = OneBusAway(base_url="https://example.com/from_init", api_key=api_key, _strict_response_validation=True)
         assert client.base_url == "https://example.com/from_init/"
 
         client.base_url = "https://example.com/from_setter"  # type: ignore[assignment]
@@ -540,17 +538,17 @@ class TestOpenTransit:
         assert client.base_url == "https://example.com/from_setter/"
 
     def test_base_url_env(self) -> None:
-        with update_env(OPEN_TRANSIT_BASE_URL="http://localhost:5000/from/env"):
-            client = OpenTransit(api_key=api_key, _strict_response_validation=True)
+        with update_env(ONE_BUS_AWAY_BASE_URL="http://localhost:5000/from/env"):
+            client = OneBusAway(api_key=api_key, _strict_response_validation=True)
             assert client.base_url == "http://localhost:5000/from/env/"
 
     @pytest.mark.parametrize(
         "client",
         [
-            OpenTransit(
+            OneBusAway(
                 base_url="http://localhost:5000/custom/path/", api_key=api_key, _strict_response_validation=True
             ),
-            OpenTransit(
+            OneBusAway(
                 base_url="http://localhost:5000/custom/path/",
                 api_key=api_key,
                 _strict_response_validation=True,
@@ -559,7 +557,7 @@ class TestOpenTransit:
         ],
         ids=["standard", "custom http client"],
     )
-    def test_base_url_trailing_slash(self, client: OpenTransit) -> None:
+    def test_base_url_trailing_slash(self, client: OneBusAway) -> None:
         request = client._build_request(
             FinalRequestOptions(
                 method="post",
@@ -572,10 +570,10 @@ class TestOpenTransit:
     @pytest.mark.parametrize(
         "client",
         [
-            OpenTransit(
+            OneBusAway(
                 base_url="http://localhost:5000/custom/path/", api_key=api_key, _strict_response_validation=True
             ),
-            OpenTransit(
+            OneBusAway(
                 base_url="http://localhost:5000/custom/path/",
                 api_key=api_key,
                 _strict_response_validation=True,
@@ -584,7 +582,7 @@ class TestOpenTransit:
         ],
         ids=["standard", "custom http client"],
     )
-    def test_base_url_no_trailing_slash(self, client: OpenTransit) -> None:
+    def test_base_url_no_trailing_slash(self, client: OneBusAway) -> None:
         request = client._build_request(
             FinalRequestOptions(
                 method="post",
@@ -597,10 +595,10 @@ class TestOpenTransit:
     @pytest.mark.parametrize(
         "client",
         [
-            OpenTransit(
+            OneBusAway(
                 base_url="http://localhost:5000/custom/path/", api_key=api_key, _strict_response_validation=True
             ),
-            OpenTransit(
+            OneBusAway(
                 base_url="http://localhost:5000/custom/path/",
                 api_key=api_key,
                 _strict_response_validation=True,
@@ -609,7 +607,7 @@ class TestOpenTransit:
         ],
         ids=["standard", "custom http client"],
     )
-    def test_absolute_request_url(self, client: OpenTransit) -> None:
+    def test_absolute_request_url(self, client: OneBusAway) -> None:
         request = client._build_request(
             FinalRequestOptions(
                 method="post",
@@ -620,7 +618,7 @@ class TestOpenTransit:
         assert request.url == "https://myapi.com/foo"
 
     def test_copied_client_does_not_close_http(self) -> None:
-        client = OpenTransit(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+        client = OneBusAway(base_url=base_url, api_key=api_key, _strict_response_validation=True)
         assert not client.is_closed()
 
         copied = client.copy()
@@ -631,7 +629,7 @@ class TestOpenTransit:
         assert not client.is_closed()
 
     def test_client_context_manager(self) -> None:
-        client = OpenTransit(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+        client = OneBusAway(base_url=base_url, api_key=api_key, _strict_response_validation=True)
         with client as c2:
             assert c2 is client
             assert not c2.is_closed()
@@ -652,7 +650,7 @@ class TestOpenTransit:
 
     def test_client_max_retries_validation(self) -> None:
         with pytest.raises(TypeError, match=r"max_retries cannot be None"):
-            OpenTransit(
+            OneBusAway(
                 base_url=base_url, api_key=api_key, _strict_response_validation=True, max_retries=cast(Any, None)
             )
 
@@ -663,12 +661,12 @@ class TestOpenTransit:
 
         respx_mock.get("/foo").mock(return_value=httpx.Response(200, text="my-custom-format"))
 
-        strict_client = OpenTransit(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+        strict_client = OneBusAway(base_url=base_url, api_key=api_key, _strict_response_validation=True)
 
         with pytest.raises(APIResponseValidationError):
             strict_client.get("/foo", cast_to=Model)
 
-        client = OpenTransit(base_url=base_url, api_key=api_key, _strict_response_validation=False)
+        client = OneBusAway(base_url=base_url, api_key=api_key, _strict_response_validation=False)
 
         response = client.get("/foo", cast_to=Model)
         assert isinstance(response, str)  # type: ignore[unreachable]
@@ -695,7 +693,7 @@ class TestOpenTransit:
     )
     @mock.patch("time.time", mock.MagicMock(return_value=1696004797))
     def test_parse_retry_after_header(self, remaining_retries: int, retry_after: str, timeout: float) -> None:
-        client = OpenTransit(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+        client = OneBusAway(base_url=base_url, api_key=api_key, _strict_response_validation=True)
 
         headers = httpx.Headers({"retry-after": retry_after})
         options = FinalRequestOptions(method="get", url="/foo", max_retries=3)
@@ -705,11 +703,13 @@ class TestOpenTransit:
     @mock.patch("open_transit._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     def test_retrying_timeout_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
-        respx_mock.get("/api/where/config.json").mock(side_effect=httpx.TimeoutException("Test timeout error"))
+        respx_mock.get("/api/where/current-time.json").mock(side_effect=httpx.TimeoutException("Test timeout error"))
 
         with pytest.raises(APITimeoutError):
             self.client.get(
-                "/api/where/config.json", cast_to=httpx.Response, options={"headers": {RAW_RESPONSE_HEADER: "stream"}}
+                "/api/where/current-time.json",
+                cast_to=httpx.Response,
+                options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
 
         assert _get_open_connections(self.client) == 0
@@ -717,18 +717,20 @@ class TestOpenTransit:
     @mock.patch("open_transit._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     def test_retrying_status_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
-        respx_mock.get("/api/where/config.json").mock(return_value=httpx.Response(500))
+        respx_mock.get("/api/where/current-time.json").mock(return_value=httpx.Response(500))
 
         with pytest.raises(APIStatusError):
             self.client.get(
-                "/api/where/config.json", cast_to=httpx.Response, options={"headers": {RAW_RESPONSE_HEADER: "stream"}}
+                "/api/where/current-time.json",
+                cast_to=httpx.Response,
+                options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
 
         assert _get_open_connections(self.client) == 0
 
 
-class TestAsyncOpenTransit:
-    client = AsyncOpenTransit(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+class TestAsyncOneBusAway:
+    client = AsyncOneBusAway(base_url=base_url, api_key=api_key, _strict_response_validation=True)
 
     @pytest.mark.respx(base_url=base_url)
     @pytest.mark.asyncio
@@ -777,7 +779,7 @@ class TestAsyncOpenTransit:
         assert isinstance(self.client.timeout, httpx.Timeout)
 
     def test_copy_default_headers(self) -> None:
-        client = AsyncOpenTransit(
+        client = AsyncOneBusAway(
             base_url=base_url, api_key=api_key, _strict_response_validation=True, default_headers={"X-Foo": "bar"}
         )
         assert client.default_headers["X-Foo"] == "bar"
@@ -811,7 +813,7 @@ class TestAsyncOpenTransit:
             client.copy(set_default_headers={}, default_headers={"X-Foo": "Bar"})
 
     def test_copy_default_query(self) -> None:
-        client = AsyncOpenTransit(
+        client = AsyncOneBusAway(
             base_url=base_url, api_key=api_key, _strict_response_validation=True, default_query={"foo": "bar"}
         )
         assert _get_params(client)["foo"] == "bar"
@@ -936,7 +938,7 @@ class TestAsyncOpenTransit:
         assert timeout == httpx.Timeout(100.0)
 
     async def test_client_timeout_option(self) -> None:
-        client = AsyncOpenTransit(
+        client = AsyncOneBusAway(
             base_url=base_url, api_key=api_key, _strict_response_validation=True, timeout=httpx.Timeout(0)
         )
 
@@ -947,7 +949,7 @@ class TestAsyncOpenTransit:
     async def test_http_client_timeout_option(self) -> None:
         # custom timeout given to the httpx client should be used
         async with httpx.AsyncClient(timeout=None) as http_client:
-            client = AsyncOpenTransit(
+            client = AsyncOneBusAway(
                 base_url=base_url, api_key=api_key, _strict_response_validation=True, http_client=http_client
             )
 
@@ -957,7 +959,7 @@ class TestAsyncOpenTransit:
 
         # no timeout given to the httpx client should not use the httpx default
         async with httpx.AsyncClient() as http_client:
-            client = AsyncOpenTransit(
+            client = AsyncOneBusAway(
                 base_url=base_url, api_key=api_key, _strict_response_validation=True, http_client=http_client
             )
 
@@ -967,7 +969,7 @@ class TestAsyncOpenTransit:
 
         # explicitly passing the default timeout currently results in it being ignored
         async with httpx.AsyncClient(timeout=HTTPX_DEFAULT_TIMEOUT) as http_client:
-            client = AsyncOpenTransit(
+            client = AsyncOneBusAway(
                 base_url=base_url, api_key=api_key, _strict_response_validation=True, http_client=http_client
             )
 
@@ -978,7 +980,7 @@ class TestAsyncOpenTransit:
     def test_invalid_http_client(self) -> None:
         with pytest.raises(TypeError, match="Invalid `http_client` arg"):
             with httpx.Client() as http_client:
-                AsyncOpenTransit(
+                AsyncOneBusAway(
                     base_url=base_url,
                     api_key=api_key,
                     _strict_response_validation=True,
@@ -986,14 +988,14 @@ class TestAsyncOpenTransit:
                 )
 
     def test_default_headers_option(self) -> None:
-        client = AsyncOpenTransit(
+        client = AsyncOneBusAway(
             base_url=base_url, api_key=api_key, _strict_response_validation=True, default_headers={"X-Foo": "bar"}
         )
         request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
         assert request.headers.get("x-foo") == "bar"
         assert request.headers.get("x-stainless-lang") == "python"
 
-        client2 = AsyncOpenTransit(
+        client2 = AsyncOneBusAway(
             base_url=base_url,
             api_key=api_key,
             _strict_response_validation=True,
@@ -1007,7 +1009,7 @@ class TestAsyncOpenTransit:
         assert request.headers.get("x-stainless-lang") == "my-overriding-header"
 
     def test_default_query_option(self) -> None:
-        client = AsyncOpenTransit(
+        client = AsyncOneBusAway(
             base_url=base_url, api_key=api_key, _strict_response_validation=True, default_query={"query_param": "bar"}
         )
         request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
@@ -1121,7 +1123,7 @@ class TestAsyncOpenTransit:
         params = dict(request.url.params)
         assert params == {"foo": "2"}
 
-    def test_multipart_repeating_array(self, async_client: AsyncOpenTransit) -> None:
+    def test_multipart_repeating_array(self, async_client: AsyncOneBusAway) -> None:
         request = async_client._build_request(
             FinalRequestOptions.construct(
                 method="get",
@@ -1208,7 +1210,7 @@ class TestAsyncOpenTransit:
         assert response.foo == 2
 
     def test_base_url_setter(self) -> None:
-        client = AsyncOpenTransit(
+        client = AsyncOneBusAway(
             base_url="https://example.com/from_init", api_key=api_key, _strict_response_validation=True
         )
         assert client.base_url == "https://example.com/from_init/"
@@ -1218,17 +1220,17 @@ class TestAsyncOpenTransit:
         assert client.base_url == "https://example.com/from_setter/"
 
     def test_base_url_env(self) -> None:
-        with update_env(OPEN_TRANSIT_BASE_URL="http://localhost:5000/from/env"):
-            client = AsyncOpenTransit(api_key=api_key, _strict_response_validation=True)
+        with update_env(ONE_BUS_AWAY_BASE_URL="http://localhost:5000/from/env"):
+            client = AsyncOneBusAway(api_key=api_key, _strict_response_validation=True)
             assert client.base_url == "http://localhost:5000/from/env/"
 
     @pytest.mark.parametrize(
         "client",
         [
-            AsyncOpenTransit(
+            AsyncOneBusAway(
                 base_url="http://localhost:5000/custom/path/", api_key=api_key, _strict_response_validation=True
             ),
-            AsyncOpenTransit(
+            AsyncOneBusAway(
                 base_url="http://localhost:5000/custom/path/",
                 api_key=api_key,
                 _strict_response_validation=True,
@@ -1237,7 +1239,7 @@ class TestAsyncOpenTransit:
         ],
         ids=["standard", "custom http client"],
     )
-    def test_base_url_trailing_slash(self, client: AsyncOpenTransit) -> None:
+    def test_base_url_trailing_slash(self, client: AsyncOneBusAway) -> None:
         request = client._build_request(
             FinalRequestOptions(
                 method="post",
@@ -1250,10 +1252,10 @@ class TestAsyncOpenTransit:
     @pytest.mark.parametrize(
         "client",
         [
-            AsyncOpenTransit(
+            AsyncOneBusAway(
                 base_url="http://localhost:5000/custom/path/", api_key=api_key, _strict_response_validation=True
             ),
-            AsyncOpenTransit(
+            AsyncOneBusAway(
                 base_url="http://localhost:5000/custom/path/",
                 api_key=api_key,
                 _strict_response_validation=True,
@@ -1262,7 +1264,7 @@ class TestAsyncOpenTransit:
         ],
         ids=["standard", "custom http client"],
     )
-    def test_base_url_no_trailing_slash(self, client: AsyncOpenTransit) -> None:
+    def test_base_url_no_trailing_slash(self, client: AsyncOneBusAway) -> None:
         request = client._build_request(
             FinalRequestOptions(
                 method="post",
@@ -1275,10 +1277,10 @@ class TestAsyncOpenTransit:
     @pytest.mark.parametrize(
         "client",
         [
-            AsyncOpenTransit(
+            AsyncOneBusAway(
                 base_url="http://localhost:5000/custom/path/", api_key=api_key, _strict_response_validation=True
             ),
-            AsyncOpenTransit(
+            AsyncOneBusAway(
                 base_url="http://localhost:5000/custom/path/",
                 api_key=api_key,
                 _strict_response_validation=True,
@@ -1287,7 +1289,7 @@ class TestAsyncOpenTransit:
         ],
         ids=["standard", "custom http client"],
     )
-    def test_absolute_request_url(self, client: AsyncOpenTransit) -> None:
+    def test_absolute_request_url(self, client: AsyncOneBusAway) -> None:
         request = client._build_request(
             FinalRequestOptions(
                 method="post",
@@ -1298,7 +1300,7 @@ class TestAsyncOpenTransit:
         assert request.url == "https://myapi.com/foo"
 
     async def test_copied_client_does_not_close_http(self) -> None:
-        client = AsyncOpenTransit(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+        client = AsyncOneBusAway(base_url=base_url, api_key=api_key, _strict_response_validation=True)
         assert not client.is_closed()
 
         copied = client.copy()
@@ -1310,7 +1312,7 @@ class TestAsyncOpenTransit:
         assert not client.is_closed()
 
     async def test_client_context_manager(self) -> None:
-        client = AsyncOpenTransit(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+        client = AsyncOneBusAway(base_url=base_url, api_key=api_key, _strict_response_validation=True)
         async with client as c2:
             assert c2 is client
             assert not c2.is_closed()
@@ -1332,7 +1334,7 @@ class TestAsyncOpenTransit:
 
     async def test_client_max_retries_validation(self) -> None:
         with pytest.raises(TypeError, match=r"max_retries cannot be None"):
-            AsyncOpenTransit(
+            AsyncOneBusAway(
                 base_url=base_url, api_key=api_key, _strict_response_validation=True, max_retries=cast(Any, None)
             )
 
@@ -1344,12 +1346,12 @@ class TestAsyncOpenTransit:
 
         respx_mock.get("/foo").mock(return_value=httpx.Response(200, text="my-custom-format"))
 
-        strict_client = AsyncOpenTransit(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+        strict_client = AsyncOneBusAway(base_url=base_url, api_key=api_key, _strict_response_validation=True)
 
         with pytest.raises(APIResponseValidationError):
             await strict_client.get("/foo", cast_to=Model)
 
-        client = AsyncOpenTransit(base_url=base_url, api_key=api_key, _strict_response_validation=False)
+        client = AsyncOneBusAway(base_url=base_url, api_key=api_key, _strict_response_validation=False)
 
         response = await client.get("/foo", cast_to=Model)
         assert isinstance(response, str)  # type: ignore[unreachable]
@@ -1377,7 +1379,7 @@ class TestAsyncOpenTransit:
     @mock.patch("time.time", mock.MagicMock(return_value=1696004797))
     @pytest.mark.asyncio
     async def test_parse_retry_after_header(self, remaining_retries: int, retry_after: str, timeout: float) -> None:
-        client = AsyncOpenTransit(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+        client = AsyncOneBusAway(base_url=base_url, api_key=api_key, _strict_response_validation=True)
 
         headers = httpx.Headers({"retry-after": retry_after})
         options = FinalRequestOptions(method="get", url="/foo", max_retries=3)
@@ -1387,11 +1389,13 @@ class TestAsyncOpenTransit:
     @mock.patch("open_transit._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     async def test_retrying_timeout_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
-        respx_mock.get("/api/where/config.json").mock(side_effect=httpx.TimeoutException("Test timeout error"))
+        respx_mock.get("/api/where/current-time.json").mock(side_effect=httpx.TimeoutException("Test timeout error"))
 
         with pytest.raises(APITimeoutError):
             await self.client.get(
-                "/api/where/config.json", cast_to=httpx.Response, options={"headers": {RAW_RESPONSE_HEADER: "stream"}}
+                "/api/where/current-time.json",
+                cast_to=httpx.Response,
+                options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
 
         assert _get_open_connections(self.client) == 0
@@ -1399,11 +1403,13 @@ class TestAsyncOpenTransit:
     @mock.patch("open_transit._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     async def test_retrying_status_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
-        respx_mock.get("/api/where/config.json").mock(return_value=httpx.Response(500))
+        respx_mock.get("/api/where/current-time.json").mock(return_value=httpx.Response(500))
 
         with pytest.raises(APIStatusError):
             await self.client.get(
-                "/api/where/config.json", cast_to=httpx.Response, options={"headers": {RAW_RESPONSE_HEADER: "stream"}}
+                "/api/where/current-time.json",
+                cast_to=httpx.Response,
+                options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
 
         assert _get_open_connections(self.client) == 0
