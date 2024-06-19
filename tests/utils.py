@@ -8,8 +8,8 @@ from typing import Any, TypeVar, Iterator, cast
 from datetime import date, datetime
 from typing_extensions import Literal, get_args, get_origin, assert_type
 
-from open_transit._types import NoneType
-from open_transit._utils import (
+from onebusaway._types import NoneType
+from onebusaway._utils import (
     is_dict,
     is_list,
     is_list_type,
@@ -17,8 +17,8 @@ from open_transit._utils import (
     extract_type_arg,
     is_annotated_type,
 )
-from open_transit._compat import PYDANTIC_V2, field_outer_type, get_model_fields
-from open_transit._models import BaseModel
+from onebusaway._compat import PYDANTIC_V2, field_outer_type, get_model_fields
+from onebusaway._models import BaseModel
 
 BaseModelT = TypeVar("BaseModelT", bound=BaseModel)
 

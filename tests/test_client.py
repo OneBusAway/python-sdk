@@ -16,11 +16,11 @@ import pytest
 from respx import MockRouter
 from pydantic import ValidationError
 
-from open_transit import OneBusAway, AsyncOneBusAway, APIResponseValidationError
-from open_transit._models import BaseModel, FinalRequestOptions
-from open_transit._constants import RAW_RESPONSE_HEADER
-from open_transit._exceptions import APIStatusError, APITimeoutError, APIResponseValidationError
-from open_transit._base_client import (
+from onebusaway import OneBusAway, AsyncOneBusAway, APIResponseValidationError
+from onebusaway._models import BaseModel, FinalRequestOptions
+from onebusaway._constants import RAW_RESPONSE_HEADER
+from onebusaway._exceptions import APIStatusError, APITimeoutError, APIResponseValidationError
+from onebusaway._base_client import (
     DEFAULT_TIMEOUT,
     HTTPX_DEFAULT_TIMEOUT,
     BaseClient,
@@ -224,10 +224,10 @@ class TestOneBusAway:
                         # to_raw_response_wrapper leaks through the @functools.wraps() decorator.
                         #
                         # removing the decorator fixes the leak for reasons we don't understand.
-                        "open_transit/_legacy_response.py",
-                        "open_transit/_response.py",
+                        "onebusaway/_legacy_response.py",
+                        "onebusaway/_response.py",
                         # pydantic.BaseModel.model_dump || pydantic.BaseModel.dict leak memory for some reason.
-                        "open_transit/_compat.py",
+                        "onebusaway/_compat.py",
                         # Standard library leaks we don't care about.
                         "/logging/__init__.py",
                     ]
@@ -700,7 +700,7 @@ class TestOneBusAway:
         calculated = client._calculate_retry_timeout(remaining_retries, options, headers)
         assert calculated == pytest.approx(timeout, 0.5 * 0.875)  # pyright: ignore[reportUnknownMemberType]
 
-    @mock.patch("open_transit._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
+    @mock.patch("onebusaway._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     def test_retrying_timeout_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
         respx_mock.get("/api/where/current-time.json").mock(side_effect=httpx.TimeoutException("Test timeout error"))
@@ -714,7 +714,7 @@ class TestOneBusAway:
 
         assert _get_open_connections(self.client) == 0
 
-    @mock.patch("open_transit._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
+    @mock.patch("onebusaway._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     def test_retrying_status_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
         respx_mock.get("/api/where/current-time.json").mock(return_value=httpx.Response(500))
@@ -904,10 +904,10 @@ class TestAsyncOneBusAway:
                         # to_raw_response_wrapper leaks through the @functools.wraps() decorator.
                         #
                         # removing the decorator fixes the leak for reasons we don't understand.
-                        "open_transit/_legacy_response.py",
-                        "open_transit/_response.py",
+                        "onebusaway/_legacy_response.py",
+                        "onebusaway/_response.py",
                         # pydantic.BaseModel.model_dump || pydantic.BaseModel.dict leak memory for some reason.
-                        "open_transit/_compat.py",
+                        "onebusaway/_compat.py",
                         # Standard library leaks we don't care about.
                         "/logging/__init__.py",
                     ]
@@ -1386,7 +1386,7 @@ class TestAsyncOneBusAway:
         calculated = client._calculate_retry_timeout(remaining_retries, options, headers)
         assert calculated == pytest.approx(timeout, 0.5 * 0.875)  # pyright: ignore[reportUnknownMemberType]
 
-    @mock.patch("open_transit._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
+    @mock.patch("onebusaway._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     async def test_retrying_timeout_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
         respx_mock.get("/api/where/current-time.json").mock(side_effect=httpx.TimeoutException("Test timeout error"))
@@ -1400,7 +1400,7 @@ class TestAsyncOneBusAway:
 
         assert _get_open_connections(self.client) == 0
 
-    @mock.patch("open_transit._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
+    @mock.patch("onebusaway._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     async def test_retrying_status_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
         respx_mock.get("/api/where/current-time.json").mock(return_value=httpx.Response(500))

@@ -1,6 +1,6 @@
 # One Bus Away Python API library
 
-[![PyPI version](https://img.shields.io/pypi/v/open-transit.svg)](https://pypi.org/project/open-transit/)
+[![PyPI version](https://img.shields.io/pypi/v/onebusaway.svg)](https://pypi.org/project/onebusaway/)
 
 The One Bus Away Python library provides convenient access to the One Bus Away REST API from any Python 3.7+
 application. The library includes type definitions for all request params and response fields,
@@ -20,7 +20,7 @@ pip install git+ssh://git@github.com/stainless-sdks/open-transit-python.git
 ```
 
 > [!NOTE]
-> Once this package is [published to PyPI](https://app.stainlessapi.com/docs/guides/publish), this will become: `pip install --pre open-transit`
+> Once this package is [published to PyPI](https://app.stainlessapi.com/docs/guides/publish), this will become: `pip install --pre onebusaway`
 
 ## Usage
 
@@ -28,7 +28,7 @@ The full API of this library can be found in [api.md](api.md).
 
 ```python
 import os
-from open_transit import OneBusAway
+from onebusaway import OneBusAway
 
 client = OneBusAway(
     # This is the default and can be omitted
@@ -50,7 +50,7 @@ Simply import `AsyncOneBusAway` instead of `OneBusAway` and use `await` with eac
 ```python
 import os
 import asyncio
-from open_transit import AsyncOneBusAway
+from onebusaway import AsyncOneBusAway
 
 client = AsyncOneBusAway(
     # This is the default and can be omitted
@@ -78,27 +78,27 @@ Typed requests and responses provide autocomplete and documentation within your 
 
 ## Handling errors
 
-When the library is unable to connect to the API (for example, due to network connection problems or a timeout), a subclass of `open_transit.APIConnectionError` is raised.
+When the library is unable to connect to the API (for example, due to network connection problems or a timeout), a subclass of `onebusaway.APIConnectionError` is raised.
 
 When the API returns a non-success status code (that is, 4xx or 5xx
-response), a subclass of `open_transit.APIStatusError` is raised, containing `status_code` and `response` properties.
+response), a subclass of `onebusaway.APIStatusError` is raised, containing `status_code` and `response` properties.
 
-All errors inherit from `open_transit.APIError`.
+All errors inherit from `onebusaway.APIError`.
 
 ```python
-import open_transit
-from open_transit import OneBusAway
+import onebusaway
+from onebusaway import OneBusAway
 
 client = OneBusAway()
 
 try:
     client.current_time.retrieve()
-except open_transit.APIConnectionError as e:
+except onebusaway.APIConnectionError as e:
     print("The server could not be reached")
     print(e.__cause__)  # an underlying Exception, likely raised within httpx.
-except open_transit.RateLimitError as e:
+except onebusaway.RateLimitError as e:
     print("A 429 status code was received; we should back off a bit.")
-except open_transit.APIStatusError as e:
+except onebusaway.APIStatusError as e:
     print("Another non-200-range status code was received")
     print(e.status_code)
     print(e.response)
@@ -126,7 +126,7 @@ Connection errors (for example, due to a network connectivity problem), 408 Requ
 You can use the `max_retries` option to configure or disable retry settings:
 
 ```python
-from open_transit import OneBusAway
+from onebusaway import OneBusAway
 
 # Configure the default for all requests:
 client = OneBusAway(
@@ -144,7 +144,7 @@ By default requests time out after 1 minute. You can configure this with a `time
 which accepts a float or an [`httpx.Timeout`](https://www.python-httpx.org/advanced/#fine-tuning-the-configuration) object:
 
 ```python
-from open_transit import OneBusAway
+from onebusaway import OneBusAway
 
 # Configure the default for all requests:
 client = OneBusAway(
@@ -194,7 +194,7 @@ if response.my_field is None:
 The "raw" Response object can be accessed by prefixing `.with_raw_response.` to any HTTP method call, e.g.,
 
 ```py
-from open_transit import OneBusAway
+from onebusaway import OneBusAway
 
 client = OneBusAway()
 response = client.current_time.with_raw_response.retrieve()
@@ -204,9 +204,9 @@ current_time = response.parse()  # get the object that `current_time.retrieve()`
 print(current_time)
 ```
 
-These methods return an [`APIResponse`](https://github.com/stainless-sdks/open-transit-python/tree/main/src/open_transit/_response.py) object.
+These methods return an [`APIResponse`](https://github.com/stainless-sdks/open-transit-python/tree/main/src/onebusaway/_response.py) object.
 
-The async client returns an [`AsyncAPIResponse`](https://github.com/stainless-sdks/open-transit-python/tree/main/src/open_transit/_response.py) with the same structure, the only difference being `await`able methods for reading the response content.
+The async client returns an [`AsyncAPIResponse`](https://github.com/stainless-sdks/open-transit-python/tree/main/src/onebusaway/_response.py) with the same structure, the only difference being `await`able methods for reading the response content.
 
 #### `.with_streaming_response`
 
@@ -268,7 +268,7 @@ You can directly override the [httpx client](https://www.python-httpx.org/api/#c
 - Additional [advanced](https://www.python-httpx.org/advanced/#client-instances) functionality
 
 ```python
-from open_transit import OneBusAway, DefaultHttpxClient
+from onebusaway import OneBusAway, DefaultHttpxClient
 
 client = OneBusAway(
     # Or use the `ONE_BUS_AWAY_BASE_URL` env var
