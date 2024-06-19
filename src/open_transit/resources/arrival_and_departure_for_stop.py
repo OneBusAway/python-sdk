@@ -4,26 +4,24 @@ from __future__ import annotations
 
 import httpx
 
-from ...._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from ...._utils import (
+from ..types import arrival_and_departure_for_stop_retrieve_params
+from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._utils import (
     maybe_transform,
     async_maybe_transform,
 )
-from ...._compat import cached_property
-from ...._resource import SyncAPIResource, AsyncAPIResource
-from ...._response import (
+from .._compat import cached_property
+from .._resource import SyncAPIResource, AsyncAPIResource
+from .._response import (
     to_raw_response_wrapper,
     to_streamed_response_wrapper,
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ...._base_client import (
+from .._base_client import (
     make_request_options,
 )
-from ....types.api.where import arrival_and_departure_for_stop_retrieve_params
-from ....types.api.where.arrival_and_departure_for_stop_retrieve_response import (
-    ArrivalAndDepartureForStopRetrieveResponse,
-)
+from ..types.arrival_and_departure_for_stop_retrieve_response import ArrivalAndDepartureForStopRetrieveResponse
 
 __all__ = ["ArrivalAndDepartureForStopResource", "AsyncArrivalAndDepartureForStopResource"]
 

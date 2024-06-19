@@ -9,7 +9,7 @@ import pytest
 
 from tests.utils import assert_matches_type
 from open_transit import OneBusAway, AsyncOneBusAway
-from open_transit.types.api.where import (
+from open_transit.types import (
     ArrivalAndDepartureForStopRetrieveResponse,
 )
 
@@ -21,7 +21,7 @@ class TestArrivalAndDepartureForStop:
 
     @parametrize
     def test_method_retrieve(self, client: OneBusAway) -> None:
-        arrival_and_departure_for_stop = client.api.where.arrival_and_departure_for_stop.retrieve(
+        arrival_and_departure_for_stop = client.arrival_and_departure_for_stop.retrieve(
             "string",
             service_date=0,
             trip_id="string",
@@ -32,7 +32,7 @@ class TestArrivalAndDepartureForStop:
 
     @parametrize
     def test_method_retrieve_with_all_params(self, client: OneBusAway) -> None:
-        arrival_and_departure_for_stop = client.api.where.arrival_and_departure_for_stop.retrieve(
+        arrival_and_departure_for_stop = client.arrival_and_departure_for_stop.retrieve(
             "string",
             service_date=0,
             trip_id="string",
@@ -46,7 +46,7 @@ class TestArrivalAndDepartureForStop:
 
     @parametrize
     def test_raw_response_retrieve(self, client: OneBusAway) -> None:
-        response = client.api.where.arrival_and_departure_for_stop.with_raw_response.retrieve(
+        response = client.arrival_and_departure_for_stop.with_raw_response.retrieve(
             "string",
             service_date=0,
             trip_id="string",
@@ -61,7 +61,7 @@ class TestArrivalAndDepartureForStop:
 
     @parametrize
     def test_streaming_response_retrieve(self, client: OneBusAway) -> None:
-        with client.api.where.arrival_and_departure_for_stop.with_streaming_response.retrieve(
+        with client.arrival_and_departure_for_stop.with_streaming_response.retrieve(
             "string",
             service_date=0,
             trip_id="string",
@@ -79,7 +79,7 @@ class TestArrivalAndDepartureForStop:
     @parametrize
     def test_path_params_retrieve(self, client: OneBusAway) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `stop_id` but received ''"):
-            client.api.where.arrival_and_departure_for_stop.with_raw_response.retrieve(
+            client.arrival_and_departure_for_stop.with_raw_response.retrieve(
                 "",
                 service_date=0,
                 trip_id="string",
@@ -91,7 +91,7 @@ class TestAsyncArrivalAndDepartureForStop:
 
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncOneBusAway) -> None:
-        arrival_and_departure_for_stop = await async_client.api.where.arrival_and_departure_for_stop.retrieve(
+        arrival_and_departure_for_stop = await async_client.arrival_and_departure_for_stop.retrieve(
             "string",
             service_date=0,
             trip_id="string",
@@ -102,7 +102,7 @@ class TestAsyncArrivalAndDepartureForStop:
 
     @parametrize
     async def test_method_retrieve_with_all_params(self, async_client: AsyncOneBusAway) -> None:
-        arrival_and_departure_for_stop = await async_client.api.where.arrival_and_departure_for_stop.retrieve(
+        arrival_and_departure_for_stop = await async_client.arrival_and_departure_for_stop.retrieve(
             "string",
             service_date=0,
             trip_id="string",
@@ -116,7 +116,7 @@ class TestAsyncArrivalAndDepartureForStop:
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncOneBusAway) -> None:
-        response = await async_client.api.where.arrival_and_departure_for_stop.with_raw_response.retrieve(
+        response = await async_client.arrival_and_departure_for_stop.with_raw_response.retrieve(
             "string",
             service_date=0,
             trip_id="string",
@@ -131,7 +131,7 @@ class TestAsyncArrivalAndDepartureForStop:
 
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncOneBusAway) -> None:
-        async with async_client.api.where.arrival_and_departure_for_stop.with_streaming_response.retrieve(
+        async with async_client.arrival_and_departure_for_stop.with_streaming_response.retrieve(
             "string",
             service_date=0,
             trip_id="string",
@@ -149,7 +149,7 @@ class TestAsyncArrivalAndDepartureForStop:
     @parametrize
     async def test_path_params_retrieve(self, async_client: AsyncOneBusAway) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `stop_id` but received ''"):
-            await async_client.api.where.arrival_and_departure_for_stop.with_raw_response.retrieve(
+            await async_client.arrival_and_departure_for_stop.with_raw_response.retrieve(
                 "",
                 service_date=0,
                 trip_id="string",

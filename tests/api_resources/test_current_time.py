@@ -9,7 +9,7 @@ import pytest
 
 from tests.utils import assert_matches_type
 from open_transit import OneBusAway, AsyncOneBusAway
-from open_transit.types.api.where import CurrentTimeRetrieveResponse
+from open_transit.types import CurrentTimeRetrieveResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -19,12 +19,12 @@ class TestCurrentTime:
 
     @parametrize
     def test_method_retrieve(self, client: OneBusAway) -> None:
-        current_time = client.api.where.current_time.retrieve()
+        current_time = client.current_time.retrieve()
         assert_matches_type(CurrentTimeRetrieveResponse, current_time, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: OneBusAway) -> None:
-        response = client.api.where.current_time.with_raw_response.retrieve()
+        response = client.current_time.with_raw_response.retrieve()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -33,7 +33,7 @@ class TestCurrentTime:
 
     @parametrize
     def test_streaming_response_retrieve(self, client: OneBusAway) -> None:
-        with client.api.where.current_time.with_streaming_response.retrieve() as response:
+        with client.current_time.with_streaming_response.retrieve() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -48,12 +48,12 @@ class TestAsyncCurrentTime:
 
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncOneBusAway) -> None:
-        current_time = await async_client.api.where.current_time.retrieve()
+        current_time = await async_client.current_time.retrieve()
         assert_matches_type(CurrentTimeRetrieveResponse, current_time, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncOneBusAway) -> None:
-        response = await async_client.api.where.current_time.with_raw_response.retrieve()
+        response = await async_client.current_time.with_raw_response.retrieve()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -62,7 +62,7 @@ class TestAsyncCurrentTime:
 
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncOneBusAway) -> None:
-        async with async_client.api.where.current_time.with_streaming_response.retrieve() as response:
+        async with async_client.current_time.with_streaming_response.retrieve() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 

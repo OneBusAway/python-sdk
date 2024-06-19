@@ -9,7 +9,7 @@ import pytest
 
 from tests.utils import assert_matches_type
 from open_transit import OneBusAway, AsyncOneBusAway
-from open_transit.types.api.where import StopsForLocationListResponse
+from open_transit.types import StopsForLocationListResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -19,14 +19,14 @@ class TestStopsForLocation:
 
     @parametrize
     def test_method_list(self, client: OneBusAway) -> None:
-        stops_for_location = client.api.where.stops_for_location.list(
+        stops_for_location = client.stops_for_location.list(
             key="string",
         )
         assert_matches_type(StopsForLocationListResponse, stops_for_location, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: OneBusAway) -> None:
-        stops_for_location = client.api.where.stops_for_location.list(
+        stops_for_location = client.stops_for_location.list(
             key="string",
             lat=0,
             lon=0,
@@ -35,7 +35,7 @@ class TestStopsForLocation:
 
     @parametrize
     def test_raw_response_list(self, client: OneBusAway) -> None:
-        response = client.api.where.stops_for_location.with_raw_response.list(
+        response = client.stops_for_location.with_raw_response.list(
             key="string",
         )
 
@@ -46,7 +46,7 @@ class TestStopsForLocation:
 
     @parametrize
     def test_streaming_response_list(self, client: OneBusAway) -> None:
-        with client.api.where.stops_for_location.with_streaming_response.list(
+        with client.stops_for_location.with_streaming_response.list(
             key="string",
         ) as response:
             assert not response.is_closed
@@ -63,14 +63,14 @@ class TestAsyncStopsForLocation:
 
     @parametrize
     async def test_method_list(self, async_client: AsyncOneBusAway) -> None:
-        stops_for_location = await async_client.api.where.stops_for_location.list(
+        stops_for_location = await async_client.stops_for_location.list(
             key="string",
         )
         assert_matches_type(StopsForLocationListResponse, stops_for_location, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncOneBusAway) -> None:
-        stops_for_location = await async_client.api.where.stops_for_location.list(
+        stops_for_location = await async_client.stops_for_location.list(
             key="string",
             lat=0,
             lon=0,
@@ -79,7 +79,7 @@ class TestAsyncStopsForLocation:
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncOneBusAway) -> None:
-        response = await async_client.api.where.stops_for_location.with_raw_response.list(
+        response = await async_client.stops_for_location.with_raw_response.list(
             key="string",
         )
 
@@ -90,7 +90,7 @@ class TestAsyncStopsForLocation:
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncOneBusAway) -> None:
-        async with async_client.api.where.stops_for_location.with_streaming_response.list(
+        async with async_client.stops_for_location.with_streaming_response.list(
             key="string",
         ) as response:
             assert not response.is_closed

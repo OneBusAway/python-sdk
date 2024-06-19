@@ -4,8 +4,8 @@ from typing import List, Optional
 
 from pydantic import Field as FieldInfo
 
-from ...._models import BaseModel
-from ...shared.response_wrapper import ResponseWrapper
+from .._models import BaseModel
+from .shared.response_wrapper import ResponseWrapper
 
 __all__ = [
     "StopsForLocationListResponse",
