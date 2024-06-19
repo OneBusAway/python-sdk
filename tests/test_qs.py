@@ -4,7 +4,7 @@ from urllib.parse import unquote
 
 import pytest
 
-from onebusaway._qs import Querystring, stringify
+from open_transit._qs import Querystring, stringify
 
 
 def test_empty() -> None:

@@ -7,9 +7,9 @@ import pytest
 import pydantic
 from pydantic import Field
 
-from onebusaway._utils import PropertyInfo
-from onebusaway._compat import PYDANTIC_V2, parse_obj, model_dump, model_json
-from onebusaway._models import BaseModel, construct_type
+from open_transit._utils import PropertyInfo
+from open_transit._compat import PYDANTIC_V2, parse_obj, model_dump, model_json
+from open_transit._models import BaseModel, construct_type
 
 
 class BasicModel(BaseModel):

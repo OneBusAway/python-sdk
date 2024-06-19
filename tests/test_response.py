@@ -6,8 +6,8 @@ import httpx
 import pytest
 import pydantic
 
-from onebusaway import BaseModel, OneBusAway, AsyncOneBusAway
-from onebusaway._response import (
+from open_transit import BaseModel, OpenTransit, AsyncOpenTransit
+from open_transit._response import (
     APIResponse,
     BaseAPIResponse,
     AsyncAPIResponse,
@@ -15,8 +15,8 @@ from onebusaway._response import (
     AsyncBinaryAPIResponse,
     extract_response_type,
 )
-from onebusaway._streaming import Stream
-from onebusaway._base_client import FinalRequestOptions
+from open_transit._streaming import Stream
+from open_transit._base_client import FinalRequestOptions
 
 
 class ConcreteBaseAPIResponse(APIResponse[bytes]):
@@ -40,7 +40,7 @@ def test_extract_response_type_direct_classes() -> None:
 def test_extract_response_type_direct_class_missing_type_arg() -> None:
     with pytest.raises(
         RuntimeError,
-        match="Expected type <class 'onebusaway._response.AsyncAPIResponse'> to have a type argument at index 0 but it did not",
+        match="Expected type <class 'open_transit._response.AsyncAPIResponse'> to have a type argument at index 0 but it did not",
     ):
         extract_response_type(AsyncAPIResponse)
 
@@ -60,7 +60,7 @@ class PydanticModel(pydantic.BaseModel):
     ...
 
 
-def test_response_parse_mismatched_basemodel(client: OneBusAway) -> None:
+def test_response_parse_mismatched_basemodel(client: OpenTransit) -> None:
     response = APIResponse(
         raw=httpx.Response(200, content=b"foo"),
         client=client,
@@ -72,13 +72,13 @@ def test_response_parse_mismatched_basemodel(client: OneBusAway) -> None:
 
     with pytest.raises(
         TypeError,
-        match="Pydantic models must subclass our base model type, e.g. `from onebusaway import BaseModel`",
+        match="Pydantic models must subclass our base model type, e.g. `from open_transit import BaseModel`",
     ):
         response.parse(to=PydanticModel)
 
 
 @pytest.mark.asyncio
-async def test_async_response_parse_mismatched_basemodel(async_client: AsyncOneBusAway) -> None:
+async def test_async_response_parse_mismatched_basemodel(async_client: AsyncOpenTransit) -> None:
     response = AsyncAPIResponse(
         raw=httpx.Response(200, content=b"foo"),
         client=async_client,
@@ -90,12 +90,12 @@ async def test_async_response_parse_mismatched_basemodel(async_client: AsyncOneB
 
     with pytest.raises(
         TypeError,
-        match="Pydantic models must subclass our base model type, e.g. `from onebusaway import BaseModel`",
+        match="Pydantic models must subclass our base model type, e.g. `from open_transit import BaseModel`",
     ):
         await response.parse(to=PydanticModel)
 
 
-def test_response_parse_custom_stream(client: OneBusAway) -> None:
+def test_response_parse_custom_stream(client: OpenTransit) -> None:
     response = APIResponse(
         raw=httpx.Response(200, content=b"foo"),
         client=client,
@@ -110,7 +110,7 @@ def test_response_parse_custom_stream(client: OneBusAway) -> None:
 
 
 @pytest.mark.asyncio
-async def test_async_response_parse_custom_stream(async_client: AsyncOneBusAway) -> None:
+async def test_async_response_parse_custom_stream(async_client: AsyncOpenTransit) -> None:
     response = AsyncAPIResponse(
         raw=httpx.Response(200, content=b"foo"),
         client=async_client,
@@ -129,7 +129,7 @@ class CustomModel(BaseModel):
     bar: int
 
 
-def test_response_parse_custom_model(client: OneBusAway) -> None:
+def test_response_parse_custom_model(client: OpenTransit) -> None:
     response = APIResponse(
         raw=httpx.Response(200, content=json.dumps({"foo": "hello!", "bar": 2})),
         client=client,
@@ -145,7 +145,7 @@ def test_response_parse_custom_model(client: OneBusAway) -> None:
 
 
 @pytest.mark.asyncio
-async def test_async_response_parse_custom_model(async_client: AsyncOneBusAway) -> None:
+async def test_async_response_parse_custom_model(async_client: AsyncOpenTransit) -> None:
     response = AsyncAPIResponse(
         raw=httpx.Response(200, content=json.dumps({"foo": "hello!", "bar": 2})),
         client=async_client,
@@ -160,7 +160,7 @@ async def test_async_response_parse_custom_model(async_client: AsyncOneBusAway) 
     assert obj.bar == 2
 
 
-def test_response_parse_annotated_type(client: OneBusAway) -> None:
+def test_response_parse_annotated_type(client: OpenTransit) -> None:
     response = APIResponse(
         raw=httpx.Response(200, content=json.dumps({"foo": "hello!", "bar": 2})),
         client=client,
@@ -177,7 +177,7 @@ def test_response_parse_annotated_type(client: OneBusAway) -> None:
     assert obj.bar == 2
 
 
-async def test_async_response_parse_annotated_type(async_client: AsyncOneBusAway) -> None:
+async def test_async_response_parse_annotated_type(async_client: AsyncOpenTransit) -> None:
     response = AsyncAPIResponse(
         raw=httpx.Response(200, content=json.dumps({"foo": "hello!", "bar": 2})),
         client=async_client,
