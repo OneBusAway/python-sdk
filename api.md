@@ -1,3 +1,9 @@
+# Shared Types
+
+```python
+from onebusaway.types import References, ResponseWrapper
+```
+
 # AgenciesWithCoverage
 
 Types:
@@ -68,4 +74,4 @@ from onebusaway.types import ArrivalsAndDeparturesForStopRetrieveResponse
 
 Methods:
 
-- <code title="get /api/where/arrivals-and-departures-for-stop/{stopID}">client.arrivals_and_departures_for_stop.<a href="./src/onebusaway/resources/arrivals_and_departures_for_stop.py">retrieve</a>(stop_id) -> <a href="./src/onebusaway/types/arrivals_and_departures_for_stop_retrieve_response.py">ArrivalsAndDeparturesForStopRetrieveResponse</a></code>
+- <code title="get /api/where/arrivals-and-departures-for-stop/{stopID}.json">client.arrivals_and_departures_for_stop.<a href="./src/onebusaway/resources/arrivals_and_departures_for_stop.py">retrieve</a>(stop_id) -> <a href="./src/onebusaway/types/arrivals_and_departures_for_stop_retrieve_response.py">ArrivalsAndDeparturesForStopRetrieveResponse</a></code>

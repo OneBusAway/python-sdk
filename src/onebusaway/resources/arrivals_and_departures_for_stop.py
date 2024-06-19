@@ -56,7 +56,7 @@ class ArrivalsAndDeparturesForStopResource(SyncAPIResource):
         if not stop_id:
             raise ValueError(f"Expected a non-empty value for `stop_id` but received {stop_id!r}")
         return self._get(
-            f"/api/where/arrivals-and-departures-for-stop/{stop_id}",
+            f"/api/where/arrivals-and-departures-for-stop/stopID.json",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -99,7 +99,7 @@ class AsyncArrivalsAndDeparturesForStopResource(AsyncAPIResource):
         if not stop_id:
             raise ValueError(f"Expected a non-empty value for `stop_id` but received {stop_id!r}")
         return await self._get(
-            f"/api/where/arrivals-and-departures-for-stop/{stop_id}",
+            f"/api/where/arrivals-and-departures-for-stop/stopID.json",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
