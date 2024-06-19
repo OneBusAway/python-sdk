@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from .shared import References as References, ResponseWrapper as ResponseWrapper
+from .shared import ResponseWrapper as ResponseWrapper
 from .config_retrieve_response import ConfigRetrieveResponse as ConfigRetrieveResponse
 from .current_time_retrieve_response import CurrentTimeRetrieveResponse as CurrentTimeRetrieveResponse
 from .stops_for_location_retrieve_params import StopsForLocationRetrieveParams as StopsForLocationRetrieveParams
