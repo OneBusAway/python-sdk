@@ -25,7 +25,7 @@ from ._utils import (
 )
 from ._version import __version__
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
-from ._exceptions import APIStatusError, OpenTransitError
+from ._exceptions import APIStatusError, OneBusAwayError
 from ._base_client import (
     DEFAULT_MAX_RETRIES,
     SyncAPIClient,
@@ -38,17 +38,17 @@ __all__ = [
     "ProxiesTypes",
     "RequestOptions",
     "resources",
-    "OpenTransit",
-    "AsyncOpenTransit",
+    "OneBusAway",
+    "AsyncOneBusAway",
     "Client",
     "AsyncClient",
 ]
 
 
-class OpenTransit(SyncAPIClient):
-    where: resources.WhereResource
-    with_raw_response: OpenTransitWithRawResponse
-    with_streaming_response: OpenTransitWithStreamedResponse
+class OneBusAway(SyncAPIClient):
+    api: resources.APIResource
+    with_raw_response: OneBusAwayWithRawResponse
+    with_streaming_response: OneBusAwayWithStreamedResponse
 
     # client options
     api_key: str
@@ -76,20 +76,20 @@ class OpenTransit(SyncAPIClient):
         # part of our public interface in the future.
         _strict_response_validation: bool = False,
     ) -> None:
-        """Construct a new synchronous open-transit client instance.
+        """Construct a new synchronous OneBusAway client instance.
 
-        This automatically infers the `api_key` argument from the `OPEN_TRANSIT_API_KEY` environment variable if it is not provided.
+        This automatically infers the `api_key` argument from the `ONEBUSAWAY_API_KEY` environment variable if it is not provided.
         """
         if api_key is None:
-            api_key = os.environ.get("OPEN_TRANSIT_API_KEY")
+            api_key = os.environ.get("ONEBUSAWAY_API_KEY")
         if api_key is None:
-            raise OpenTransitError(
-                "The api_key client option must be set either by passing api_key to the client or by setting the OPEN_TRANSIT_API_KEY environment variable"
+            raise OneBusAwayError(
+                "The api_key client option must be set either by passing api_key to the client or by setting the ONEBUSAWAY_API_KEY environment variable"
             )
         self.api_key = api_key
 
         if base_url is None:
-            base_url = os.environ.get("OPEN_TRANSIT_BASE_URL")
+            base_url = os.environ.get("ONE_BUS_AWAY_BASE_URL")
         if base_url is None:
             base_url = f"https://api.pugetsound.onebusaway.org"
 
@@ -104,9 +104,9 @@ class OpenTransit(SyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
-        self.where = resources.WhereResource(self)
-        self.with_raw_response = OpenTransitWithRawResponse(self)
-        self.with_streaming_response = OpenTransitWithStreamedResponse(self)
+        self.api = resources.APIResource(self)
+        self.with_raw_response = OneBusAwayWithRawResponse(self)
+        self.with_streaming_response = OneBusAwayWithStreamedResponse(self)
 
     @property
     @override
@@ -220,10 +220,10 @@ class OpenTransit(SyncAPIClient):
         return APIStatusError(err_msg, response=response, body=body)
 
 
-class AsyncOpenTransit(AsyncAPIClient):
-    where: resources.AsyncWhereResource
-    with_raw_response: AsyncOpenTransitWithRawResponse
-    with_streaming_response: AsyncOpenTransitWithStreamedResponse
+class AsyncOneBusAway(AsyncAPIClient):
+    api: resources.AsyncAPIResource
+    with_raw_response: AsyncOneBusAwayWithRawResponse
+    with_streaming_response: AsyncOneBusAwayWithStreamedResponse
 
     # client options
     api_key: str
@@ -251,20 +251,20 @@ class AsyncOpenTransit(AsyncAPIClient):
         # part of our public interface in the future.
         _strict_response_validation: bool = False,
     ) -> None:
-        """Construct a new async open-transit client instance.
+        """Construct a new async OneBusAway client instance.
 
-        This automatically infers the `api_key` argument from the `OPEN_TRANSIT_API_KEY` environment variable if it is not provided.
+        This automatically infers the `api_key` argument from the `ONEBUSAWAY_API_KEY` environment variable if it is not provided.
         """
         if api_key is None:
-            api_key = os.environ.get("OPEN_TRANSIT_API_KEY")
+            api_key = os.environ.get("ONEBUSAWAY_API_KEY")
         if api_key is None:
-            raise OpenTransitError(
-                "The api_key client option must be set either by passing api_key to the client or by setting the OPEN_TRANSIT_API_KEY environment variable"
+            raise OneBusAwayError(
+                "The api_key client option must be set either by passing api_key to the client or by setting the ONEBUSAWAY_API_KEY environment variable"
             )
         self.api_key = api_key
 
         if base_url is None:
-            base_url = os.environ.get("OPEN_TRANSIT_BASE_URL")
+            base_url = os.environ.get("ONE_BUS_AWAY_BASE_URL")
         if base_url is None:
             base_url = f"https://api.pugetsound.onebusaway.org"
 
@@ -279,9 +279,9 @@ class AsyncOpenTransit(AsyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
-        self.where = resources.AsyncWhereResource(self)
-        self.with_raw_response = AsyncOpenTransitWithRawResponse(self)
-        self.with_streaming_response = AsyncOpenTransitWithStreamedResponse(self)
+        self.api = resources.AsyncAPIResource(self)
+        self.with_raw_response = AsyncOneBusAwayWithRawResponse(self)
+        self.with_streaming_response = AsyncOneBusAwayWithStreamedResponse(self)
 
     @property
     @override
@@ -395,26 +395,26 @@ class AsyncOpenTransit(AsyncAPIClient):
         return APIStatusError(err_msg, response=response, body=body)
 
 
-class OpenTransitWithRawResponse:
-    def __init__(self, client: OpenTransit) -> None:
-        self.where = resources.WhereResourceWithRawResponse(client.where)
+class OneBusAwayWithRawResponse:
+    def __init__(self, client: OneBusAway) -> None:
+        self.api = resources.APIResourceWithRawResponse(client.api)
 
 
-class AsyncOpenTransitWithRawResponse:
-    def __init__(self, client: AsyncOpenTransit) -> None:
-        self.where = resources.AsyncWhereResourceWithRawResponse(client.where)
+class AsyncOneBusAwayWithRawResponse:
+    def __init__(self, client: AsyncOneBusAway) -> None:
+        self.api = resources.AsyncAPIResourceWithRawResponse(client.api)
 
 
-class OpenTransitWithStreamedResponse:
-    def __init__(self, client: OpenTransit) -> None:
-        self.where = resources.WhereResourceWithStreamingResponse(client.where)
+class OneBusAwayWithStreamedResponse:
+    def __init__(self, client: OneBusAway) -> None:
+        self.api = resources.APIResourceWithStreamingResponse(client.api)
 
 
-class AsyncOpenTransitWithStreamedResponse:
-    def __init__(self, client: AsyncOpenTransit) -> None:
-        self.where = resources.AsyncWhereResourceWithStreamingResponse(client.where)
+class AsyncOneBusAwayWithStreamedResponse:
+    def __init__(self, client: AsyncOneBusAway) -> None:
+        self.api = resources.AsyncAPIResourceWithStreamingResponse(client.api)
 
 
-Client = OpenTransit
+Client = OneBusAway
 
-AsyncClient = AsyncOpenTransit
+AsyncClient = AsyncOneBusAway

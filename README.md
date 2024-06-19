@@ -1,8 +1,8 @@
-# Open Transit Python API library
+# One Bus Away Python API library
 
 [![PyPI version](https://img.shields.io/pypi/v/open-transit.svg)](https://pypi.org/project/open-transit/)
 
-The Open Transit Python library provides convenient access to the Open Transit REST API from any Python 3.7+
+The One Bus Away Python library provides convenient access to the One Bus Away REST API from any Python 3.7+
 application. The library includes type definitions for all request params and response fields,
 and offers both synchronous and asynchronous clients powered by [httpx](https://github.com/encode/httpx).
 
@@ -10,7 +10,7 @@ It is generated with [Stainless](https://www.stainlessapi.com/).
 
 ## Documentation
 
-The REST API documentation can be found [on docs.open-transit.com](https://docs.open-transit.com). The full API of this library can be found in [api.md](api.md).
+The REST API documentation can be found [on developer.onebusaway.org](https://developer.onebusaway.org). The full API of this library can be found in [api.md](api.md).
 
 ## Installation
 
@@ -28,40 +28,38 @@ The full API of this library can be found in [api.md](api.md).
 
 ```python
 import os
-from open_transit import OpenTransit
+from open_transit import OneBusAway
 
-client = OpenTransit(
+client = OneBusAway(
     # This is the default and can be omitted
-    api_key=os.environ.get("OPEN_TRANSIT_API_KEY"),
+    api_key=os.environ.get("ONEBUSAWAY_API_KEY"),
 )
 
-config_retrieve_response = client.where.config.retrieve()
-print(config_retrieve_response.code)
+current_time_retrieve_response = client.api.where.current_time.retrieve()
 ```
 
 While you can provide an `api_key` keyword argument,
 we recommend using [python-dotenv](https://pypi.org/project/python-dotenv/)
-to add `OPEN_TRANSIT_API_KEY="My API Key"` to your `.env` file
+to add `ONEBUSAWAY_API_KEY="My API Key"` to your `.env` file
 so that your API Key is not stored in source control.
 
 ## Async usage
 
-Simply import `AsyncOpenTransit` instead of `OpenTransit` and use `await` with each API call:
+Simply import `AsyncOneBusAway` instead of `OneBusAway` and use `await` with each API call:
 
 ```python
 import os
 import asyncio
-from open_transit import AsyncOpenTransit
+from open_transit import AsyncOneBusAway
 
-client = AsyncOpenTransit(
+client = AsyncOneBusAway(
     # This is the default and can be omitted
-    api_key=os.environ.get("OPEN_TRANSIT_API_KEY"),
+    api_key=os.environ.get("ONEBUSAWAY_API_KEY"),
 )
 
 
 async def main() -> None:
-    config_retrieve_response = await client.where.config.retrieve()
-    print(config_retrieve_response.code)
+    current_time_retrieve_response = await client.api.where.current_time.retrieve()
 
 
 asyncio.run(main())
@@ -89,12 +87,12 @@ All errors inherit from `open_transit.APIError`.
 
 ```python
 import open_transit
-from open_transit import OpenTransit
+from open_transit import OneBusAway
 
-client = OpenTransit()
+client = OneBusAway()
 
 try:
-    client.where.config.retrieve()
+    client.api.where.current_time.retrieve()
 except open_transit.APIConnectionError as e:
     print("The server could not be reached")
     print(e.__cause__)  # an underlying Exception, likely raised within httpx.
@@ -128,16 +126,16 @@ Connection errors (for example, due to a network connectivity problem), 408 Requ
 You can use the `max_retries` option to configure or disable retry settings:
 
 ```python
-from open_transit import OpenTransit
+from open_transit import OneBusAway
 
 # Configure the default for all requests:
-client = OpenTransit(
+client = OneBusAway(
     # default is 2
     max_retries=0,
 )
 
 # Or, configure per-request:
-client.with_options(max_retries=5).where.config.retrieve()
+client.with_options(max_retries=5).api.where.current_time.retrieve()
 ```
 
 ### Timeouts
@@ -146,21 +144,21 @@ By default requests time out after 1 minute. You can configure this with a `time
 which accepts a float or an [`httpx.Timeout`](https://www.python-httpx.org/advanced/#fine-tuning-the-configuration) object:
 
 ```python
-from open_transit import OpenTransit
+from open_transit import OneBusAway
 
 # Configure the default for all requests:
-client = OpenTransit(
+client = OneBusAway(
     # 20 seconds (default is 1 minute)
     timeout=20.0,
 )
 
 # More granular control:
-client = OpenTransit(
+client = OneBusAway(
     timeout=httpx.Timeout(60.0, read=5.0, write=10.0, connect=2.0),
 )
 
 # Override per-request:
-client.with_options(timeout=5.0).where.config.retrieve()
+client.with_options(timeout=5.0).api.where.current_time.retrieve()
 ```
 
 On timeout, an `APITimeoutError` is thrown.
@@ -173,10 +171,10 @@ Note that requests that time out are [retried twice by default](#retries).
 
 We use the standard library [`logging`](https://docs.python.org/3/library/logging.html) module.
 
-You can enable logging by setting the environment variable `OPEN_TRANSIT_LOG` to `debug`.
+You can enable logging by setting the environment variable `ONE_BUS_AWAY_LOG` to `debug`.
 
 ```shell
-$ export OPEN_TRANSIT_LOG=debug
+$ export ONE_BUS_AWAY_LOG=debug
 ```
 
 ### How to tell whether `None` means `null` or missing
@@ -196,14 +194,14 @@ if response.my_field is None:
 The "raw" Response object can be accessed by prefixing `.with_raw_response.` to any HTTP method call, e.g.,
 
 ```py
-from open_transit import OpenTransit
+from open_transit import OneBusAway
 
-client = OpenTransit()
-response = client.where.config.with_raw_response.retrieve()
+client = OneBusAway()
+response = client.api.where.current_time.with_raw_response.retrieve()
 print(response.headers.get('X-My-Header'))
 
-config = response.parse()  # get the object that `where.config.retrieve()` would have returned
-print(config.code)
+current_time = response.parse()  # get the object that `api.where.current_time.retrieve()` would have returned
+print(current_time)
 ```
 
 These methods return an [`APIResponse`](https://github.com/stainless-sdks/open-transit-python/tree/main/src/open_transit/_response.py) object.
@@ -217,7 +215,7 @@ The above interface eagerly reads the full response body when you make the reque
 To stream the response body, use `.with_streaming_response` instead, which requires a context manager and only reads the response body once you call `.read()`, `.text()`, `.json()`, `.iter_bytes()`, `.iter_text()`, `.iter_lines()` or `.parse()`. In the async client, these are async methods.
 
 ```python
-with client.where.config.with_streaming_response.retrieve() as response:
+with client.api.where.current_time.with_streaming_response.retrieve() as response:
     print(response.headers.get("X-My-Header"))
 
     for line in response.iter_lines():
@@ -270,10 +268,10 @@ You can directly override the [httpx client](https://www.python-httpx.org/api/#c
 - Additional [advanced](https://www.python-httpx.org/advanced/#client-instances) functionality
 
 ```python
-from open_transit import OpenTransit, DefaultHttpxClient
+from open_transit import OneBusAway, DefaultHttpxClient
 
-client = OpenTransit(
-    # Or use the `OPEN_TRANSIT_BASE_URL` env var
+client = OneBusAway(
+    # Or use the `ONE_BUS_AWAY_BASE_URL` env var
     base_url="http://my.test.server.example.com:8083",
     http_client=DefaultHttpxClient(
         proxies="http://my.test.proxy.example.com",

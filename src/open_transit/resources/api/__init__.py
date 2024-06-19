@@ -8,8 +8,22 @@ from .api import (
     APIResourceWithStreamingResponse,
     AsyncAPIResourceWithStreamingResponse,
 )
+from .where import (
+    WhereResource,
+    AsyncWhereResource,
+    WhereResourceWithRawResponse,
+    AsyncWhereResourceWithRawResponse,
+    WhereResourceWithStreamingResponse,
+    AsyncWhereResourceWithStreamingResponse,
+)
 
 __all__ = [
+    "WhereResource",
+    "AsyncWhereResource",
+    "WhereResourceWithRawResponse",
+    "AsyncWhereResourceWithRawResponse",
+    "WhereResourceWithStreamingResponse",
+    "AsyncWhereResourceWithStreamingResponse",
     "APIResource",
     "AsyncAPIResource",
     "APIResourceWithRawResponse",
