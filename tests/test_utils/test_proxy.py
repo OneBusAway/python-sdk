@@ -2,7 +2,7 @@ import operator
 from typing import Any
 from typing_extensions import override
 
-from onebusaway._utils import LazyProxy
+from open_transit._utils import LazyProxy
 
 
 class RecursiveLazyProxy(LazyProxy[Any]):

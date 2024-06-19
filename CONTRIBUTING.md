@@ -32,7 +32,7 @@ $ pip install -r requirements-dev.lock
 ## Modifying/Adding code
 
 Most of the SDK is generated code, and any modified code will be overridden on the next generation. The
-`src/onebusaway/lib/` and `examples/` directories are exceptions and will never be overridden.
+`src/open_transit/lib/` and `examples/` directories are exceptions and will never be overridden.
 
 ## Adding and running examples
 

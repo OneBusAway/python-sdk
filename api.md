@@ -1,59 +1,75 @@
-# AgenciesWithCoverage
+# Where
+
+## AgenciesWithCoverage
 
 Types:
 
 ```python
-from onebusaway.types import AgenciesWithCoverageRetrieveResponse
+from open_transit.types.where import AgenciesWithCoverageListResponse
 ```
 
 Methods:
 
-- <code title="get /api/where/agencies-with-coverage.json">client.agencies_with_coverage.<a href="./src/onebusaway/resources/agencies_with_coverage.py">retrieve</a>() -> <a href="./src/onebusaway/types/agencies_with_coverage_retrieve_response.py">AgenciesWithCoverageRetrieveResponse</a></code>
+- <code title="get /api/where/agencies-with-coverage.json">client.where.agencies_with_coverage.<a href="./src/open_transit/resources/where/agencies_with_coverage.py">list</a>() -> <a href="./src/open_transit/types/where/agencies_with_coverage_list_response.py">AgenciesWithCoverageListResponse</a></code>
 
-# Config
+## Config
 
 Types:
 
 ```python
-from onebusaway.types import ConfigRetrieveResponse
+from open_transit.types.where import ConfigRetrieveResponse
 ```
 
 Methods:
 
-- <code title="get /api/where/config.json">client.config.<a href="./src/onebusaway/resources/config.py">retrieve</a>() -> <a href="./src/onebusaway/types/config_retrieve_response.py">ConfigRetrieveResponse</a></code>
+- <code title="get /api/where/config.json">client.where.config.<a href="./src/open_transit/resources/where/config.py">retrieve</a>() -> <a href="./src/open_transit/types/where/config_retrieve_response.py">ConfigRetrieveResponse</a></code>
 
-# CurrentTime
+## CurrentTime
 
 Types:
 
 ```python
-from onebusaway.types import CurrentTimeRetrieveResponse
+from open_transit.types.where import CurrentTimeRetrieveResponse
 ```
 
 Methods:
 
-- <code title="get /api/where/current-time.json">client.current_time.<a href="./src/onebusaway/resources/current_time.py">retrieve</a>() -> <a href="./src/onebusaway/types/current_time_retrieve_response.py">CurrentTimeRetrieveResponse</a></code>
+- <code title="get /api/where/current-time.json">client.where.current_time.<a href="./src/open_transit/resources/where/current_time.py">retrieve</a>() -> <a href="./src/open_transit/types/where/current_time_retrieve_response.py">CurrentTimeRetrieveResponse</a></code>
 
-# StopsForLocation
+## StopsForLocation
 
 Types:
 
 ```python
-from onebusaway.types import StopsForLocationRetrieveResponse
+from open_transit.types.where import StopsForLocationListResponse
 ```
 
 Methods:
 
-- <code title="get /api/where/stops-for-location.json">client.stops_for_location.<a href="./src/onebusaway/resources/stops_for_location.py">retrieve</a>(\*\*<a href="src/onebusaway/types/stops_for_location_retrieve_params.py">params</a>) -> <a href="./src/onebusaway/types/stops_for_location_retrieve_response.py">StopsForLocationRetrieveResponse</a></code>
+- <code title="get /api/where/stops-for-location.json">client.where.stops_for_location.<a href="./src/open_transit/resources/where/stops_for_location.py">list</a>(\*\*<a href="src/open_transit/types/where/stops_for_location_list_params.py">params</a>) -> <a href="./src/open_transit/types/where/stops_for_location_list_response.py">StopsForLocationListResponse</a></code>
 
-# ArrivalsAndDeparturesForStop
+## Stop
+
+### ArrivalAndDeparture
 
 Types:
 
 ```python
-from onebusaway.types import ArrivalsAndDeparturesForStopRetrieveResponse
+from open_transit.types.where.stop import ArrivalAndDepartureRetrieveResponse
 ```
 
 Methods:
 
-- <code title="get /api/where/arrival-and-departure-for-stop/{stopID}.json">client.arrivals_and_departures_for_stop.<a href="./src/onebusaway/resources/arrivals_and_departures_for_stop.py">retrieve</a>(stop_id, \*\*<a href="src/onebusaway/types/arrivals_and_departures_for_stop_retrieve_params.py">params</a>) -> <a href="./src/onebusaway/types/arrivals_and_departures_for_stop_retrieve_response.py">ArrivalsAndDeparturesForStopRetrieveResponse</a></code>
+- <code title="get /api/where/arrival-and-departure-for-stop/{stopID}.json">client.where.stop.arrival_and_departure.<a href="./src/open_transit/resources/where/stop/arrival_and_departure.py">retrieve</a>(stop_id, \*\*<a href="src/open_transit/types/where/stop/arrival_and_departure_retrieve_params.py">params</a>) -> <a href="./src/open_transit/types/where/stop/arrival_and_departure_retrieve_response.py">ArrivalAndDepartureRetrieveResponse</a></code>
+
+### ArrivalsAndDepartures
+
+Types:
+
+```python
+from open_transit.types.where.stop import ArrivalsAndDepartureListResponse
+```
+
+Methods:
+
+- <code title="get /api/where/arrivals-and-departures-for-stop/{stopID}.json">client.where.stop.arrivals_and_departures.<a href="./src/open_transit/resources/where/stop/arrivals_and_departures.py">list</a>(stop_id) -> <a href="./src/open_transit/types/where/stop/arrivals_and_departure_list_response.py">ArrivalsAndDepartureListResponse</a></code>

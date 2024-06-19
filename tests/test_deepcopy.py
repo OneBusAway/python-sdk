@@ -1,4 +1,4 @@
-from onebusaway._utils import deepcopy_minimal
+from open_transit._utils import deepcopy_minimal
 
 
 def assert_different_identities(obj1: object, obj2: object) -> None:
