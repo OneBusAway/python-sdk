@@ -1,7 +1,7 @@
 # Shared Types
 
 ```python
-from onebusaway.types import ResponseWrapper
+from onebusaway.types import References, ResponseWrapper
 ```
 
 # AgenciesWithCoverage
