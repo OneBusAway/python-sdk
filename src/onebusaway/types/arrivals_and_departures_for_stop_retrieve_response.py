@@ -8,34 +8,34 @@ from .._models import BaseModel
 from .shared.response_wrapper import ResponseWrapper
 
 __all__ = [
-    "ArrivalsAndDeparturesForStopListResponse",
-    "ArrivalsAndDeparturesForStopListResponseData",
-    "ArrivalsAndDeparturesForStopListResponseDataEntry",
-    "ArrivalsAndDeparturesForStopListResponseDataEntryArrivalsAndDeparture",
-    "ArrivalsAndDeparturesForStopListResponseDataEntryArrivalsAndDepartureTripStatus",
-    "ArrivalsAndDeparturesForStopListResponseDataEntryArrivalsAndDepartureTripStatusLastKnownLocation",
-    "ArrivalsAndDeparturesForStopListResponseDataEntryArrivalsAndDepartureTripStatusPosition",
-    "ArrivalsAndDeparturesForStopListResponseDataEntryReferences",
-    "ArrivalsAndDeparturesForStopListResponseDataEntryReferencesAgency",
-    "ArrivalsAndDeparturesForStopListResponseDataEntryReferencesRoute",
-    "ArrivalsAndDeparturesForStopListResponseDataEntryReferencesStop",
-    "ArrivalsAndDeparturesForStopListResponseDataEntryReferencesTrip",
+    "ArrivalsAndDeparturesForStopRetrieveResponse",
+    "ArrivalsAndDeparturesForStopRetrieveResponseData",
+    "ArrivalsAndDeparturesForStopRetrieveResponseDataEntry",
+    "ArrivalsAndDeparturesForStopRetrieveResponseDataEntryArrivalsAndDeparture",
+    "ArrivalsAndDeparturesForStopRetrieveResponseDataEntryArrivalsAndDepartureTripStatus",
+    "ArrivalsAndDeparturesForStopRetrieveResponseDataEntryArrivalsAndDepartureTripStatusLastKnownLocation",
+    "ArrivalsAndDeparturesForStopRetrieveResponseDataEntryArrivalsAndDepartureTripStatusPosition",
+    "ArrivalsAndDeparturesForStopRetrieveResponseDataEntryReferences",
+    "ArrivalsAndDeparturesForStopRetrieveResponseDataEntryReferencesAgency",
+    "ArrivalsAndDeparturesForStopRetrieveResponseDataEntryReferencesRoute",
+    "ArrivalsAndDeparturesForStopRetrieveResponseDataEntryReferencesStop",
+    "ArrivalsAndDeparturesForStopRetrieveResponseDataEntryReferencesTrip",
 ]
 
 
-class ArrivalsAndDeparturesForStopListResponseDataEntryArrivalsAndDepartureTripStatusLastKnownLocation(BaseModel):
+class ArrivalsAndDeparturesForStopRetrieveResponseDataEntryArrivalsAndDepartureTripStatusLastKnownLocation(BaseModel):
     lat: Optional[float] = None
 
     lon: Optional[float] = None
 
 
-class ArrivalsAndDeparturesForStopListResponseDataEntryArrivalsAndDepartureTripStatusPosition(BaseModel):
+class ArrivalsAndDeparturesForStopRetrieveResponseDataEntryArrivalsAndDepartureTripStatusPosition(BaseModel):
     lat: Optional[float] = None
 
     lon: Optional[float] = None
 
 
-class ArrivalsAndDeparturesForStopListResponseDataEntryArrivalsAndDepartureTripStatus(BaseModel):
+class ArrivalsAndDeparturesForStopRetrieveResponseDataEntryArrivalsAndDepartureTripStatus(BaseModel):
     active_trip_id: Optional[str] = FieldInfo(alias="activeTripId", default=None)
 
     block_trip_sequence: Optional[int] = FieldInfo(alias="blockTripSequence", default=None)
@@ -51,7 +51,7 @@ class ArrivalsAndDeparturesForStopListResponseDataEntryArrivalsAndDepartureTripS
     last_known_distance_along_trip: Optional[float] = FieldInfo(alias="lastKnownDistanceAlongTrip", default=None)
 
     last_known_location: Optional[
-        ArrivalsAndDeparturesForStopListResponseDataEntryArrivalsAndDepartureTripStatusLastKnownLocation
+        ArrivalsAndDeparturesForStopRetrieveResponseDataEntryArrivalsAndDepartureTripStatusLastKnownLocation
     ] = FieldInfo(alias="lastKnownLocation", default=None)
 
     last_known_orientation: Optional[float] = FieldInfo(alias="lastKnownOrientation", default=None)
@@ -74,7 +74,9 @@ class ArrivalsAndDeparturesForStopListResponseDataEntryArrivalsAndDepartureTripS
 
     phase: Optional[str] = None
 
-    position: Optional[ArrivalsAndDeparturesForStopListResponseDataEntryArrivalsAndDepartureTripStatusPosition] = None
+    position: Optional[
+        ArrivalsAndDeparturesForStopRetrieveResponseDataEntryArrivalsAndDepartureTripStatusPosition
+    ] = None
 
     predicted: Optional[bool] = None
 
@@ -93,7 +95,7 @@ class ArrivalsAndDeparturesForStopListResponseDataEntryArrivalsAndDepartureTripS
     vehicle_id: Optional[str] = FieldInfo(alias="vehicleId", default=None)
 
 
-class ArrivalsAndDeparturesForStopListResponseDataEntryArrivalsAndDeparture(BaseModel):
+class ArrivalsAndDeparturesForStopRetrieveResponseDataEntryArrivalsAndDeparture(BaseModel):
     actual_track: Optional[str] = FieldInfo(alias="actualTrack", default=None)
 
     arrival_enabled: Optional[bool] = FieldInfo(alias="arrivalEnabled", default=None)
@@ -158,14 +160,14 @@ class ArrivalsAndDeparturesForStopListResponseDataEntryArrivalsAndDeparture(Base
 
     trip_id: Optional[str] = FieldInfo(alias="tripId", default=None)
 
-    trip_status: Optional[ArrivalsAndDeparturesForStopListResponseDataEntryArrivalsAndDepartureTripStatus] = FieldInfo(
-        alias="tripStatus", default=None
-    )
+    trip_status: Optional[
+        ArrivalsAndDeparturesForStopRetrieveResponseDataEntryArrivalsAndDepartureTripStatus
+    ] = FieldInfo(alias="tripStatus", default=None)
 
     vehicle_id: Optional[str] = FieldInfo(alias="vehicleId", default=None)
 
 
-class ArrivalsAndDeparturesForStopListResponseDataEntryReferencesAgency(BaseModel):
+class ArrivalsAndDeparturesForStopRetrieveResponseDataEntryReferencesAgency(BaseModel):
     id: str
 
     name: str
@@ -187,7 +189,7 @@ class ArrivalsAndDeparturesForStopListResponseDataEntryReferencesAgency(BaseMode
     private_service: Optional[bool] = FieldInfo(alias="privateService", default=None)
 
 
-class ArrivalsAndDeparturesForStopListResponseDataEntryReferencesRoute(BaseModel):
+class ArrivalsAndDeparturesForStopRetrieveResponseDataEntryReferencesRoute(BaseModel):
     id: Optional[str] = None
 
     agency_id: Optional[str] = FieldInfo(alias="agencyId", default=None)
@@ -209,7 +211,7 @@ class ArrivalsAndDeparturesForStopListResponseDataEntryReferencesRoute(BaseModel
     url: Optional[str] = None
 
 
-class ArrivalsAndDeparturesForStopListResponseDataEntryReferencesStop(BaseModel):
+class ArrivalsAndDeparturesForStopRetrieveResponseDataEntryReferencesStop(BaseModel):
     id: str
 
     code: str
@@ -233,7 +235,7 @@ class ArrivalsAndDeparturesForStopListResponseDataEntryReferencesStop(BaseModel)
     wheelchair_boarding: Optional[str] = FieldInfo(alias="wheelchairBoarding", default=None)
 
 
-class ArrivalsAndDeparturesForStopListResponseDataEntryReferencesTrip(BaseModel):
+class ArrivalsAndDeparturesForStopRetrieveResponseDataEntryReferencesTrip(BaseModel):
     id: str
 
     route_id: str = FieldInfo(alias="routeId")
@@ -257,31 +259,31 @@ class ArrivalsAndDeparturesForStopListResponseDataEntryReferencesTrip(BaseModel)
     trip_short_name: Optional[str] = FieldInfo(alias="tripShortName", default=None)
 
 
-class ArrivalsAndDeparturesForStopListResponseDataEntryReferences(BaseModel):
-    agencies: Optional[List[ArrivalsAndDeparturesForStopListResponseDataEntryReferencesAgency]] = None
+class ArrivalsAndDeparturesForStopRetrieveResponseDataEntryReferences(BaseModel):
+    agencies: Optional[List[ArrivalsAndDeparturesForStopRetrieveResponseDataEntryReferencesAgency]] = None
 
-    routes: Optional[List[ArrivalsAndDeparturesForStopListResponseDataEntryReferencesRoute]] = None
+    routes: Optional[List[ArrivalsAndDeparturesForStopRetrieveResponseDataEntryReferencesRoute]] = None
 
     situations: Optional[List[object]] = None
 
-    stops: Optional[List[ArrivalsAndDeparturesForStopListResponseDataEntryReferencesStop]] = None
+    stops: Optional[List[ArrivalsAndDeparturesForStopRetrieveResponseDataEntryReferencesStop]] = None
 
     stop_times: Optional[List[object]] = FieldInfo(alias="stopTimes", default=None)
 
-    trips: Optional[List[ArrivalsAndDeparturesForStopListResponseDataEntryReferencesTrip]] = None
+    trips: Optional[List[ArrivalsAndDeparturesForStopRetrieveResponseDataEntryReferencesTrip]] = None
 
 
-class ArrivalsAndDeparturesForStopListResponseDataEntry(BaseModel):
+class ArrivalsAndDeparturesForStopRetrieveResponseDataEntry(BaseModel):
     arrivals_and_departures: Optional[
-        List[ArrivalsAndDeparturesForStopListResponseDataEntryArrivalsAndDeparture]
+        List[ArrivalsAndDeparturesForStopRetrieveResponseDataEntryArrivalsAndDeparture]
     ] = FieldInfo(alias="arrivalsAndDepartures", default=None)
 
-    references: Optional[ArrivalsAndDeparturesForStopListResponseDataEntryReferences] = None
+    references: Optional[ArrivalsAndDeparturesForStopRetrieveResponseDataEntryReferences] = None
 
 
-class ArrivalsAndDeparturesForStopListResponseData(BaseModel):
-    entry: Optional[ArrivalsAndDeparturesForStopListResponseDataEntry] = None
+class ArrivalsAndDeparturesForStopRetrieveResponseData(BaseModel):
+    entry: Optional[ArrivalsAndDeparturesForStopRetrieveResponseDataEntry] = None
 
 
-class ArrivalsAndDeparturesForStopListResponse(ResponseWrapper):
-    data: Optional[ArrivalsAndDeparturesForStopListResponseData] = None
+class ArrivalsAndDeparturesForStopRetrieveResponse(ResponseWrapper):
+    data: Optional[ArrivalsAndDeparturesForStopRetrieveResponseData] = None

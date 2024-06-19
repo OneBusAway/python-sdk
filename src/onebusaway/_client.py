@@ -121,7 +121,7 @@ class OneBusAway(SyncAPIClient):
     @property
     @override
     def qs(self) -> Querystring:
-        return Querystring(array_format="comma")
+        return Querystring(array_format="repeat")
 
     @property
     def auth_headers(self) -> httpx.Auth:
@@ -306,7 +306,7 @@ class AsyncOneBusAway(AsyncAPIClient):
     @property
     @override
     def qs(self) -> Querystring:
-        return Querystring(array_format="comma")
+        return Querystring(array_format="repeat")
 
     @property
     def auth_headers(self) -> httpx.Auth:

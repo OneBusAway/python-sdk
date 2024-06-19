@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import httpx
 
-from ..types import stops_for_location_list_params
+from ..types import stops_for_location_retrieve_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import (
     maybe_transform,
@@ -21,7 +21,7 @@ from .._response import (
 from .._base_client import (
     make_request_options,
 )
-from ..types.stops_for_location_list_response import StopsForLocationListResponse
+from ..types.stops_for_location_retrieve_response import StopsForLocationRetrieveResponse
 
 __all__ = ["StopsForLocationResource", "AsyncStopsForLocationResource"]
 
@@ -35,7 +35,7 @@ class StopsForLocationResource(SyncAPIResource):
     def with_streaming_response(self) -> StopsForLocationResourceWithStreamingResponse:
         return StopsForLocationResourceWithStreamingResponse(self)
 
-    def list(
+    def retrieve(
         self,
         *,
         key: str,
@@ -47,7 +47,7 @@ class StopsForLocationResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> StopsForLocationListResponse:
+    ) -> StopsForLocationRetrieveResponse:
         """
         stops-for-location
 
@@ -73,10 +73,10 @@ class StopsForLocationResource(SyncAPIResource):
                         "lat": lat,
                         "lon": lon,
                     },
-                    stops_for_location_list_params.StopsForLocationListParams,
+                    stops_for_location_retrieve_params.StopsForLocationRetrieveParams,
                 ),
             ),
-            cast_to=StopsForLocationListResponse,
+            cast_to=StopsForLocationRetrieveResponse,
         )
 
 
@@ -89,7 +89,7 @@ class AsyncStopsForLocationResource(AsyncAPIResource):
     def with_streaming_response(self) -> AsyncStopsForLocationResourceWithStreamingResponse:
         return AsyncStopsForLocationResourceWithStreamingResponse(self)
 
-    async def list(
+    async def retrieve(
         self,
         *,
         key: str,
@@ -101,7 +101,7 @@ class AsyncStopsForLocationResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> StopsForLocationListResponse:
+    ) -> StopsForLocationRetrieveResponse:
         """
         stops-for-location
 
@@ -127,10 +127,10 @@ class AsyncStopsForLocationResource(AsyncAPIResource):
                         "lat": lat,
                         "lon": lon,
                     },
-                    stops_for_location_list_params.StopsForLocationListParams,
+                    stops_for_location_retrieve_params.StopsForLocationRetrieveParams,
                 ),
             ),
-            cast_to=StopsForLocationListResponse,
+            cast_to=StopsForLocationRetrieveResponse,
         )
 
 
@@ -138,8 +138,8 @@ class StopsForLocationResourceWithRawResponse:
     def __init__(self, stops_for_location: StopsForLocationResource) -> None:
         self._stops_for_location = stops_for_location
 
-        self.list = to_raw_response_wrapper(
-            stops_for_location.list,
+        self.retrieve = to_raw_response_wrapper(
+            stops_for_location.retrieve,
         )
 
 
@@ -147,8 +147,8 @@ class AsyncStopsForLocationResourceWithRawResponse:
     def __init__(self, stops_for_location: AsyncStopsForLocationResource) -> None:
         self._stops_for_location = stops_for_location
 
-        self.list = async_to_raw_response_wrapper(
-            stops_for_location.list,
+        self.retrieve = async_to_raw_response_wrapper(
+            stops_for_location.retrieve,
         )
 
 
@@ -156,8 +156,8 @@ class StopsForLocationResourceWithStreamingResponse:
     def __init__(self, stops_for_location: StopsForLocationResource) -> None:
         self._stops_for_location = stops_for_location
 
-        self.list = to_streamed_response_wrapper(
-            stops_for_location.list,
+        self.retrieve = to_streamed_response_wrapper(
+            stops_for_location.retrieve,
         )
 
 
@@ -165,6 +165,6 @@ class AsyncStopsForLocationResourceWithStreamingResponse:
     def __init__(self, stops_for_location: AsyncStopsForLocationResource) -> None:
         self._stops_for_location = stops_for_location
 
-        self.list = async_to_streamed_response_wrapper(
-            stops_for_location.list,
+        self.retrieve = async_to_streamed_response_wrapper(
+            stops_for_location.retrieve,
         )

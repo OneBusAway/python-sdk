@@ -4,10 +4,10 @@ from __future__ import annotations
 
 from typing_extensions import Required, TypedDict
 
-__all__ = ["StopsForLocationListParams"]
+__all__ = ["StopsForLocationRetrieveParams"]
 
 
-class StopsForLocationListParams(TypedDict, total=False):
+class StopsForLocationRetrieveParams(TypedDict, total=False):
     key: Required[str]
 
     lat: float

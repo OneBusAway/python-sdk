@@ -8,18 +8,18 @@ from .._models import BaseModel
 from .shared.response_wrapper import ResponseWrapper
 
 __all__ = [
-    "StopsForLocationListResponse",
-    "StopsForLocationListResponseData",
-    "StopsForLocationListResponseDataList",
-    "StopsForLocationListResponseDataReferences",
-    "StopsForLocationListResponseDataReferencesAgency",
-    "StopsForLocationListResponseDataReferencesRoute",
-    "StopsForLocationListResponseDataReferencesStop",
-    "StopsForLocationListResponseDataReferencesTrip",
+    "StopsForLocationRetrieveResponse",
+    "StopsForLocationRetrieveResponseData",
+    "StopsForLocationRetrieveResponseDataList",
+    "StopsForLocationRetrieveResponseDataReferences",
+    "StopsForLocationRetrieveResponseDataReferencesAgency",
+    "StopsForLocationRetrieveResponseDataReferencesRoute",
+    "StopsForLocationRetrieveResponseDataReferencesStop",
+    "StopsForLocationRetrieveResponseDataReferencesTrip",
 ]
 
 
-class StopsForLocationListResponseDataList(BaseModel):
+class StopsForLocationRetrieveResponseDataList(BaseModel):
     id: Optional[str] = None
 
     code: Optional[str] = None
@@ -43,7 +43,7 @@ class StopsForLocationListResponseDataList(BaseModel):
     wheelchair_boarding: Optional[str] = FieldInfo(alias="wheelchairBoarding", default=None)
 
 
-class StopsForLocationListResponseDataReferencesAgency(BaseModel):
+class StopsForLocationRetrieveResponseDataReferencesAgency(BaseModel):
     id: str
 
     name: str
@@ -65,7 +65,7 @@ class StopsForLocationListResponseDataReferencesAgency(BaseModel):
     private_service: Optional[bool] = FieldInfo(alias="privateService", default=None)
 
 
-class StopsForLocationListResponseDataReferencesRoute(BaseModel):
+class StopsForLocationRetrieveResponseDataReferencesRoute(BaseModel):
     id: Optional[str] = None
 
     agency_id: Optional[str] = FieldInfo(alias="agencyId", default=None)
@@ -87,7 +87,7 @@ class StopsForLocationListResponseDataReferencesRoute(BaseModel):
     url: Optional[str] = None
 
 
-class StopsForLocationListResponseDataReferencesStop(BaseModel):
+class StopsForLocationRetrieveResponseDataReferencesStop(BaseModel):
     id: str
 
     code: str
@@ -111,7 +111,7 @@ class StopsForLocationListResponseDataReferencesStop(BaseModel):
     wheelchair_boarding: Optional[str] = FieldInfo(alias="wheelchairBoarding", default=None)
 
 
-class StopsForLocationListResponseDataReferencesTrip(BaseModel):
+class StopsForLocationRetrieveResponseDataReferencesTrip(BaseModel):
     id: str
 
     route_id: str = FieldInfo(alias="routeId")
@@ -135,27 +135,27 @@ class StopsForLocationListResponseDataReferencesTrip(BaseModel):
     trip_short_name: Optional[str] = FieldInfo(alias="tripShortName", default=None)
 
 
-class StopsForLocationListResponseDataReferences(BaseModel):
-    agencies: Optional[List[StopsForLocationListResponseDataReferencesAgency]] = None
+class StopsForLocationRetrieveResponseDataReferences(BaseModel):
+    agencies: Optional[List[StopsForLocationRetrieveResponseDataReferencesAgency]] = None
 
-    routes: Optional[List[StopsForLocationListResponseDataReferencesRoute]] = None
+    routes: Optional[List[StopsForLocationRetrieveResponseDataReferencesRoute]] = None
 
     situations: Optional[List[object]] = None
 
-    stops: Optional[List[StopsForLocationListResponseDataReferencesStop]] = None
+    stops: Optional[List[StopsForLocationRetrieveResponseDataReferencesStop]] = None
 
     stop_times: Optional[List[object]] = FieldInfo(alias="stopTimes", default=None)
 
-    trips: Optional[List[StopsForLocationListResponseDataReferencesTrip]] = None
+    trips: Optional[List[StopsForLocationRetrieveResponseDataReferencesTrip]] = None
 
 
-class StopsForLocationListResponseData(BaseModel):
+class StopsForLocationRetrieveResponseData(BaseModel):
     limit_exceeded: Optional[bool] = FieldInfo(alias="limitExceeded", default=None)
 
-    list: Optional[List[StopsForLocationListResponseDataList]] = None
+    list: Optional[List[StopsForLocationRetrieveResponseDataList]] = None
 
-    references: Optional[StopsForLocationListResponseDataReferences] = None
+    references: Optional[StopsForLocationRetrieveResponseDataReferences] = None
 
 
-class StopsForLocationListResponse(ResponseWrapper):
-    data: Optional[StopsForLocationListResponseData] = None
+class StopsForLocationRetrieveResponse(ResponseWrapper):
+    data: Optional[StopsForLocationRetrieveResponseData] = None

@@ -16,7 +16,7 @@ from .._response import (
 from .._base_client import (
     make_request_options,
 )
-from ..types.arrivals_and_departures_for_stop_list_response import ArrivalsAndDeparturesForStopListResponse
+from ..types.arrivals_and_departures_for_stop_retrieve_response import ArrivalsAndDeparturesForStopRetrieveResponse
 
 __all__ = ["ArrivalsAndDeparturesForStopResource", "AsyncArrivalsAndDeparturesForStopResource"]
 
@@ -30,7 +30,7 @@ class ArrivalsAndDeparturesForStopResource(SyncAPIResource):
     def with_streaming_response(self) -> ArrivalsAndDeparturesForStopResourceWithStreamingResponse:
         return ArrivalsAndDeparturesForStopResourceWithStreamingResponse(self)
 
-    def list(
+    def retrieve(
         self,
         stop_id: str,
         *,
@@ -40,9 +40,9 @@ class ArrivalsAndDeparturesForStopResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ArrivalsAndDeparturesForStopListResponse:
+    ) -> ArrivalsAndDeparturesForStopRetrieveResponse:
         """
-        arrival-and-departure-for-stop
+        arrivals-and-departures-for-stop
 
         Args:
           extra_headers: Send extra headers
@@ -60,7 +60,7 @@ class ArrivalsAndDeparturesForStopResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ArrivalsAndDeparturesForStopListResponse,
+            cast_to=ArrivalsAndDeparturesForStopRetrieveResponse,
         )
 
 
@@ -73,7 +73,7 @@ class AsyncArrivalsAndDeparturesForStopResource(AsyncAPIResource):
     def with_streaming_response(self) -> AsyncArrivalsAndDeparturesForStopResourceWithStreamingResponse:
         return AsyncArrivalsAndDeparturesForStopResourceWithStreamingResponse(self)
 
-    async def list(
+    async def retrieve(
         self,
         stop_id: str,
         *,
@@ -83,9 +83,9 @@ class AsyncArrivalsAndDeparturesForStopResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ArrivalsAndDeparturesForStopListResponse:
+    ) -> ArrivalsAndDeparturesForStopRetrieveResponse:
         """
-        arrival-and-departure-for-stop
+        arrivals-and-departures-for-stop
 
         Args:
           extra_headers: Send extra headers
@@ -103,7 +103,7 @@ class AsyncArrivalsAndDeparturesForStopResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ArrivalsAndDeparturesForStopListResponse,
+            cast_to=ArrivalsAndDeparturesForStopRetrieveResponse,
         )
 
 
@@ -111,8 +111,8 @@ class ArrivalsAndDeparturesForStopResourceWithRawResponse:
     def __init__(self, arrivals_and_departures_for_stop: ArrivalsAndDeparturesForStopResource) -> None:
         self._arrivals_and_departures_for_stop = arrivals_and_departures_for_stop
 
-        self.list = to_raw_response_wrapper(
-            arrivals_and_departures_for_stop.list,
+        self.retrieve = to_raw_response_wrapper(
+            arrivals_and_departures_for_stop.retrieve,
         )
 
 
@@ -120,8 +120,8 @@ class AsyncArrivalsAndDeparturesForStopResourceWithRawResponse:
     def __init__(self, arrivals_and_departures_for_stop: AsyncArrivalsAndDeparturesForStopResource) -> None:
         self._arrivals_and_departures_for_stop = arrivals_and_departures_for_stop
 
-        self.list = async_to_raw_response_wrapper(
-            arrivals_and_departures_for_stop.list,
+        self.retrieve = async_to_raw_response_wrapper(
+            arrivals_and_departures_for_stop.retrieve,
         )
 
 
@@ -129,8 +129,8 @@ class ArrivalsAndDeparturesForStopResourceWithStreamingResponse:
     def __init__(self, arrivals_and_departures_for_stop: ArrivalsAndDeparturesForStopResource) -> None:
         self._arrivals_and_departures_for_stop = arrivals_and_departures_for_stop
 
-        self.list = to_streamed_response_wrapper(
-            arrivals_and_departures_for_stop.list,
+        self.retrieve = to_streamed_response_wrapper(
+            arrivals_and_departures_for_stop.retrieve,
         )
 
 
@@ -138,6 +138,6 @@ class AsyncArrivalsAndDeparturesForStopResourceWithStreamingResponse:
     def __init__(self, arrivals_and_departures_for_stop: AsyncArrivalsAndDeparturesForStopResource) -> None:
         self._arrivals_and_departures_for_stop = arrivals_and_departures_for_stop
 
-        self.list = async_to_streamed_response_wrapper(
-            arrivals_and_departures_for_stop.list,
+        self.retrieve = async_to_streamed_response_wrapper(
+            arrivals_and_departures_for_stop.retrieve,
         )
