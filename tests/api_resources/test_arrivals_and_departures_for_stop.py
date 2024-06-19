@@ -9,7 +9,7 @@ import pytest
 
 from tests.utils import assert_matches_type
 from open_transit import OneBusAway, AsyncOneBusAway
-from open_transit.types.api.where import ArrivalsAndDeparturesForStopListResponse
+from open_transit.types import ArrivalsAndDeparturesForStopListResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -19,7 +19,7 @@ class TestArrivalsAndDeparturesForStop:
 
     @parametrize
     def test_method_list(self, client: OneBusAway) -> None:
-        arrivals_and_departures_for_stop = client.api.where.arrivals_and_departures_for_stop.list(
+        arrivals_and_departures_for_stop = client.arrivals_and_departures_for_stop.list(
             "string",
         )
         assert_matches_type(
@@ -28,7 +28,7 @@ class TestArrivalsAndDeparturesForStop:
 
     @parametrize
     def test_raw_response_list(self, client: OneBusAway) -> None:
-        response = client.api.where.arrivals_and_departures_for_stop.with_raw_response.list(
+        response = client.arrivals_and_departures_for_stop.with_raw_response.list(
             "string",
         )
 
@@ -41,7 +41,7 @@ class TestArrivalsAndDeparturesForStop:
 
     @parametrize
     def test_streaming_response_list(self, client: OneBusAway) -> None:
-        with client.api.where.arrivals_and_departures_for_stop.with_streaming_response.list(
+        with client.arrivals_and_departures_for_stop.with_streaming_response.list(
             "string",
         ) as response:
             assert not response.is_closed
@@ -57,7 +57,7 @@ class TestArrivalsAndDeparturesForStop:
     @parametrize
     def test_path_params_list(self, client: OneBusAway) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `stop_id` but received ''"):
-            client.api.where.arrivals_and_departures_for_stop.with_raw_response.list(
+            client.arrivals_and_departures_for_stop.with_raw_response.list(
                 "",
             )
 
@@ -67,7 +67,7 @@ class TestAsyncArrivalsAndDeparturesForStop:
 
     @parametrize
     async def test_method_list(self, async_client: AsyncOneBusAway) -> None:
-        arrivals_and_departures_for_stop = await async_client.api.where.arrivals_and_departures_for_stop.list(
+        arrivals_and_departures_for_stop = await async_client.arrivals_and_departures_for_stop.list(
             "string",
         )
         assert_matches_type(
@@ -76,7 +76,7 @@ class TestAsyncArrivalsAndDeparturesForStop:
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncOneBusAway) -> None:
-        response = await async_client.api.where.arrivals_and_departures_for_stop.with_raw_response.list(
+        response = await async_client.arrivals_and_departures_for_stop.with_raw_response.list(
             "string",
         )
 
@@ -89,7 +89,7 @@ class TestAsyncArrivalsAndDeparturesForStop:
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncOneBusAway) -> None:
-        async with async_client.api.where.arrivals_and_departures_for_stop.with_streaming_response.list(
+        async with async_client.arrivals_and_departures_for_stop.with_streaming_response.list(
             "string",
         ) as response:
             assert not response.is_closed
@@ -105,6 +105,6 @@ class TestAsyncArrivalsAndDeparturesForStop:
     @parametrize
     async def test_path_params_list(self, async_client: AsyncOneBusAway) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `stop_id` but received ''"):
-            await async_client.api.where.arrivals_and_departures_for_stop.with_raw_response.list(
+            await async_client.arrivals_and_departures_for_stop.with_raw_response.list(
                 "",
             )

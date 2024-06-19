@@ -4,34 +4,28 @@ from typing import List, Optional
 
 from pydantic import Field as FieldInfo
 
-from ...._models import BaseModel
-from ...shared.response_wrapper import ResponseWrapper
+from .._models import BaseModel
+from .shared.response_wrapper import ResponseWrapper
 
 __all__ = [
-    "AgenciesWithCoverageListResponse",
-    "AgenciesWithCoverageListResponseData",
-    "AgenciesWithCoverageListResponseDataList",
-    "AgenciesWithCoverageListResponseDataReferences",
-    "AgenciesWithCoverageListResponseDataReferencesAgency",
-    "AgenciesWithCoverageListResponseDataReferencesRoute",
-    "AgenciesWithCoverageListResponseDataReferencesStop",
-    "AgenciesWithCoverageListResponseDataReferencesTrip",
+    "CurrentTimeRetrieveResponse",
+    "CurrentTimeRetrieveResponseData",
+    "CurrentTimeRetrieveResponseDataEntry",
+    "CurrentTimeRetrieveResponseDataReferences",
+    "CurrentTimeRetrieveResponseDataReferencesAgency",
+    "CurrentTimeRetrieveResponseDataReferencesRoute",
+    "CurrentTimeRetrieveResponseDataReferencesStop",
+    "CurrentTimeRetrieveResponseDataReferencesTrip",
 ]
 
 
-class AgenciesWithCoverageListResponseDataList(BaseModel):
-    agency_id: str = FieldInfo(alias="agencyId")
+class CurrentTimeRetrieveResponseDataEntry(BaseModel):
+    readable_time: Optional[str] = FieldInfo(alias="readableTime", default=None)
 
-    lat: float
-
-    lat_span: float = FieldInfo(alias="latSpan")
-
-    lon: float
-
-    lon_span: float = FieldInfo(alias="lonSpan")
+    time: Optional[int] = None
 
 
-class AgenciesWithCoverageListResponseDataReferencesAgency(BaseModel):
+class CurrentTimeRetrieveResponseDataReferencesAgency(BaseModel):
     id: str
 
     name: str
@@ -53,7 +47,7 @@ class AgenciesWithCoverageListResponseDataReferencesAgency(BaseModel):
     private_service: Optional[bool] = FieldInfo(alias="privateService", default=None)
 
 
-class AgenciesWithCoverageListResponseDataReferencesRoute(BaseModel):
+class CurrentTimeRetrieveResponseDataReferencesRoute(BaseModel):
     id: Optional[str] = None
 
     agency_id: Optional[str] = FieldInfo(alias="agencyId", default=None)
@@ -75,7 +69,7 @@ class AgenciesWithCoverageListResponseDataReferencesRoute(BaseModel):
     url: Optional[str] = None
 
 
-class AgenciesWithCoverageListResponseDataReferencesStop(BaseModel):
+class CurrentTimeRetrieveResponseDataReferencesStop(BaseModel):
     id: str
 
     code: str
@@ -99,7 +93,7 @@ class AgenciesWithCoverageListResponseDataReferencesStop(BaseModel):
     wheelchair_boarding: Optional[str] = FieldInfo(alias="wheelchairBoarding", default=None)
 
 
-class AgenciesWithCoverageListResponseDataReferencesTrip(BaseModel):
+class CurrentTimeRetrieveResponseDataReferencesTrip(BaseModel):
     id: str
 
     route_id: str = FieldInfo(alias="routeId")
@@ -123,27 +117,25 @@ class AgenciesWithCoverageListResponseDataReferencesTrip(BaseModel):
     trip_short_name: Optional[str] = FieldInfo(alias="tripShortName", default=None)
 
 
-class AgenciesWithCoverageListResponseDataReferences(BaseModel):
-    agencies: Optional[List[AgenciesWithCoverageListResponseDataReferencesAgency]] = None
+class CurrentTimeRetrieveResponseDataReferences(BaseModel):
+    agencies: Optional[List[CurrentTimeRetrieveResponseDataReferencesAgency]] = None
 
-    routes: Optional[List[AgenciesWithCoverageListResponseDataReferencesRoute]] = None
+    routes: Optional[List[CurrentTimeRetrieveResponseDataReferencesRoute]] = None
 
     situations: Optional[List[object]] = None
 
-    stops: Optional[List[AgenciesWithCoverageListResponseDataReferencesStop]] = None
+    stops: Optional[List[CurrentTimeRetrieveResponseDataReferencesStop]] = None
 
     stop_times: Optional[List[object]] = FieldInfo(alias="stopTimes", default=None)
 
-    trips: Optional[List[AgenciesWithCoverageListResponseDataReferencesTrip]] = None
+    trips: Optional[List[CurrentTimeRetrieveResponseDataReferencesTrip]] = None
 
 
-class AgenciesWithCoverageListResponseData(BaseModel):
-    limit_exceeded: Optional[bool] = FieldInfo(alias="limitExceeded", default=None)
+class CurrentTimeRetrieveResponseData(BaseModel):
+    entry: Optional[CurrentTimeRetrieveResponseDataEntry] = None
 
-    list: Optional[List[AgenciesWithCoverageListResponseDataList]] = None
-
-    references: Optional[AgenciesWithCoverageListResponseDataReferences] = None
+    references: Optional[CurrentTimeRetrieveResponseDataReferences] = None
 
 
-class AgenciesWithCoverageListResponse(ResponseWrapper):
-    data: Optional[AgenciesWithCoverageListResponseData] = None
+class CurrentTimeRetrieveResponse(ResponseWrapper):
+    data: Optional[CurrentTimeRetrieveResponseData] = None

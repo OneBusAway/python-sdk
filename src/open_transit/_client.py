@@ -46,7 +46,12 @@ __all__ = [
 
 
 class OneBusAway(SyncAPIClient):
-    api: resources.APIResource
+    agencies_with_coverage: resources.AgenciesWithCoverageResource
+    config: resources.ConfigResource
+    current_time: resources.CurrentTimeResource
+    stops_for_location: resources.StopsForLocationResource
+    arrival_and_departure_for_stop: resources.ArrivalAndDepartureForStopResource
+    arrivals_and_departures_for_stop: resources.ArrivalsAndDeparturesForStopResource
     with_raw_response: OneBusAwayWithRawResponse
     with_streaming_response: OneBusAwayWithStreamedResponse
 
@@ -104,7 +109,12 @@ class OneBusAway(SyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
-        self.api = resources.APIResource(self)
+        self.agencies_with_coverage = resources.AgenciesWithCoverageResource(self)
+        self.config = resources.ConfigResource(self)
+        self.current_time = resources.CurrentTimeResource(self)
+        self.stops_for_location = resources.StopsForLocationResource(self)
+        self.arrival_and_departure_for_stop = resources.ArrivalAndDepartureForStopResource(self)
+        self.arrivals_and_departures_for_stop = resources.ArrivalsAndDeparturesForStopResource(self)
         self.with_raw_response = OneBusAwayWithRawResponse(self)
         self.with_streaming_response = OneBusAwayWithStreamedResponse(self)
 
@@ -221,7 +231,12 @@ class OneBusAway(SyncAPIClient):
 
 
 class AsyncOneBusAway(AsyncAPIClient):
-    api: resources.AsyncAPIResource
+    agencies_with_coverage: resources.AsyncAgenciesWithCoverageResource
+    config: resources.AsyncConfigResource
+    current_time: resources.AsyncCurrentTimeResource
+    stops_for_location: resources.AsyncStopsForLocationResource
+    arrival_and_departure_for_stop: resources.AsyncArrivalAndDepartureForStopResource
+    arrivals_and_departures_for_stop: resources.AsyncArrivalsAndDeparturesForStopResource
     with_raw_response: AsyncOneBusAwayWithRawResponse
     with_streaming_response: AsyncOneBusAwayWithStreamedResponse
 
@@ -279,7 +294,12 @@ class AsyncOneBusAway(AsyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
-        self.api = resources.AsyncAPIResource(self)
+        self.agencies_with_coverage = resources.AsyncAgenciesWithCoverageResource(self)
+        self.config = resources.AsyncConfigResource(self)
+        self.current_time = resources.AsyncCurrentTimeResource(self)
+        self.stops_for_location = resources.AsyncStopsForLocationResource(self)
+        self.arrival_and_departure_for_stop = resources.AsyncArrivalAndDepartureForStopResource(self)
+        self.arrivals_and_departures_for_stop = resources.AsyncArrivalsAndDeparturesForStopResource(self)
         self.with_raw_response = AsyncOneBusAwayWithRawResponse(self)
         self.with_streaming_response = AsyncOneBusAwayWithStreamedResponse(self)
 
@@ -397,22 +417,70 @@ class AsyncOneBusAway(AsyncAPIClient):
 
 class OneBusAwayWithRawResponse:
     def __init__(self, client: OneBusAway) -> None:
-        self.api = resources.APIResourceWithRawResponse(client.api)
+        self.agencies_with_coverage = resources.AgenciesWithCoverageResourceWithRawResponse(
+            client.agencies_with_coverage
+        )
+        self.config = resources.ConfigResourceWithRawResponse(client.config)
+        self.current_time = resources.CurrentTimeResourceWithRawResponse(client.current_time)
+        self.stops_for_location = resources.StopsForLocationResourceWithRawResponse(client.stops_for_location)
+        self.arrival_and_departure_for_stop = resources.ArrivalAndDepartureForStopResourceWithRawResponse(
+            client.arrival_and_departure_for_stop
+        )
+        self.arrivals_and_departures_for_stop = resources.ArrivalsAndDeparturesForStopResourceWithRawResponse(
+            client.arrivals_and_departures_for_stop
+        )
 
 
 class AsyncOneBusAwayWithRawResponse:
     def __init__(self, client: AsyncOneBusAway) -> None:
-        self.api = resources.AsyncAPIResourceWithRawResponse(client.api)
+        self.agencies_with_coverage = resources.AsyncAgenciesWithCoverageResourceWithRawResponse(
+            client.agencies_with_coverage
+        )
+        self.config = resources.AsyncConfigResourceWithRawResponse(client.config)
+        self.current_time = resources.AsyncCurrentTimeResourceWithRawResponse(client.current_time)
+        self.stops_for_location = resources.AsyncStopsForLocationResourceWithRawResponse(client.stops_for_location)
+        self.arrival_and_departure_for_stop = resources.AsyncArrivalAndDepartureForStopResourceWithRawResponse(
+            client.arrival_and_departure_for_stop
+        )
+        self.arrivals_and_departures_for_stop = resources.AsyncArrivalsAndDeparturesForStopResourceWithRawResponse(
+            client.arrivals_and_departures_for_stop
+        )
 
 
 class OneBusAwayWithStreamedResponse:
     def __init__(self, client: OneBusAway) -> None:
-        self.api = resources.APIResourceWithStreamingResponse(client.api)
+        self.agencies_with_coverage = resources.AgenciesWithCoverageResourceWithStreamingResponse(
+            client.agencies_with_coverage
+        )
+        self.config = resources.ConfigResourceWithStreamingResponse(client.config)
+        self.current_time = resources.CurrentTimeResourceWithStreamingResponse(client.current_time)
+        self.stops_for_location = resources.StopsForLocationResourceWithStreamingResponse(client.stops_for_location)
+        self.arrival_and_departure_for_stop = resources.ArrivalAndDepartureForStopResourceWithStreamingResponse(
+            client.arrival_and_departure_for_stop
+        )
+        self.arrivals_and_departures_for_stop = resources.ArrivalsAndDeparturesForStopResourceWithStreamingResponse(
+            client.arrivals_and_departures_for_stop
+        )
 
 
 class AsyncOneBusAwayWithStreamedResponse:
     def __init__(self, client: AsyncOneBusAway) -> None:
-        self.api = resources.AsyncAPIResourceWithStreamingResponse(client.api)
+        self.agencies_with_coverage = resources.AsyncAgenciesWithCoverageResourceWithStreamingResponse(
+            client.agencies_with_coverage
+        )
+        self.config = resources.AsyncConfigResourceWithStreamingResponse(client.config)
+        self.current_time = resources.AsyncCurrentTimeResourceWithStreamingResponse(client.current_time)
+        self.stops_for_location = resources.AsyncStopsForLocationResourceWithStreamingResponse(
+            client.stops_for_location
+        )
+        self.arrival_and_departure_for_stop = resources.AsyncArrivalAndDepartureForStopResourceWithStreamingResponse(
+            client.arrival_and_departure_for_stop
+        )
+        self.arrivals_and_departures_for_stop = (
+            resources.AsyncArrivalsAndDeparturesForStopResourceWithStreamingResponse(
+                client.arrivals_and_departures_for_stop
+            )
+        )
 
 
 Client = OneBusAway

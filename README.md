@@ -35,7 +35,7 @@ client = OneBusAway(
     api_key=os.environ.get("ONEBUSAWAY_API_KEY"),
 )
 
-current_time_retrieve_response = client.api.where.current_time.retrieve()
+current_time_retrieve_response = client.current_time.retrieve()
 ```
 
 While you can provide an `api_key` keyword argument,
@@ -59,7 +59,7 @@ client = AsyncOneBusAway(
 
 
 async def main() -> None:
-    current_time_retrieve_response = await client.api.where.current_time.retrieve()
+    current_time_retrieve_response = await client.current_time.retrieve()
 
 
 asyncio.run(main())
@@ -92,7 +92,7 @@ from open_transit import OneBusAway
 client = OneBusAway()
 
 try:
-    client.api.where.current_time.retrieve()
+    client.current_time.retrieve()
 except open_transit.APIConnectionError as e:
     print("The server could not be reached")
     print(e.__cause__)  # an underlying Exception, likely raised within httpx.
@@ -135,7 +135,7 @@ client = OneBusAway(
 )
 
 # Or, configure per-request:
-client.with_options(max_retries=5).api.where.current_time.retrieve()
+client.with_options(max_retries=5).current_time.retrieve()
 ```
 
 ### Timeouts
@@ -158,7 +158,7 @@ client = OneBusAway(
 )
 
 # Override per-request:
-client.with_options(timeout=5.0).api.where.current_time.retrieve()
+client.with_options(timeout=5.0).current_time.retrieve()
 ```
 
 On timeout, an `APITimeoutError` is thrown.
@@ -197,10 +197,10 @@ The "raw" Response object can be accessed by prefixing `.with_raw_response.` to 
 from open_transit import OneBusAway
 
 client = OneBusAway()
-response = client.api.where.current_time.with_raw_response.retrieve()
+response = client.current_time.with_raw_response.retrieve()
 print(response.headers.get('X-My-Header'))
 
-current_time = response.parse()  # get the object that `api.where.current_time.retrieve()` would have returned
+current_time = response.parse()  # get the object that `current_time.retrieve()` would have returned
 print(current_time)
 ```
 
@@ -215,7 +215,7 @@ The above interface eagerly reads the full response body when you make the reque
 To stream the response body, use `.with_streaming_response` instead, which requires a context manager and only reads the response body once you call `.read()`, `.text()`, `.json()`, `.iter_bytes()`, `.iter_text()`, `.iter_lines()` or `.parse()`. In the async client, these are async methods.
 
 ```python
-with client.api.where.current_time.with_streaming_response.retrieve() as response:
+with client.current_time.with_streaming_response.retrieve() as response:
     print(response.headers.get("X-My-Header"))
 
     for line in response.iter_lines():

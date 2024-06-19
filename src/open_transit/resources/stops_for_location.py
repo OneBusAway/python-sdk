@@ -4,24 +4,24 @@ from __future__ import annotations
 
 import httpx
 
-from ...._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from ...._utils import (
+from ..types import stops_for_location_list_params
+from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._utils import (
     maybe_transform,
     async_maybe_transform,
 )
-from ...._compat import cached_property
-from ...._resource import SyncAPIResource, AsyncAPIResource
-from ...._response import (
+from .._compat import cached_property
+from .._resource import SyncAPIResource, AsyncAPIResource
+from .._response import (
     to_raw_response_wrapper,
     to_streamed_response_wrapper,
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ...._base_client import (
+from .._base_client import (
     make_request_options,
 )
-from ....types.api.where import stops_for_location_list_params
-from ....types.api.where.stops_for_location_list_response import StopsForLocationListResponse
+from ..types.stops_for_location_list_response import StopsForLocationListResponse
 
 __all__ = ["StopsForLocationResource", "AsyncStopsForLocationResource"]
 
