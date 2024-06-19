@@ -8,18 +8,18 @@ from .._models import BaseModel
 from .shared.response_wrapper import ResponseWrapper
 
 __all__ = [
-    "AgenciesWithCoverageListResponse",
-    "AgenciesWithCoverageListResponseData",
-    "AgenciesWithCoverageListResponseDataList",
-    "AgenciesWithCoverageListResponseDataReferences",
-    "AgenciesWithCoverageListResponseDataReferencesAgency",
-    "AgenciesWithCoverageListResponseDataReferencesRoute",
-    "AgenciesWithCoverageListResponseDataReferencesStop",
-    "AgenciesWithCoverageListResponseDataReferencesTrip",
+    "AgenciesWithCoverageRetrieveResponse",
+    "AgenciesWithCoverageRetrieveResponseData",
+    "AgenciesWithCoverageRetrieveResponseDataList",
+    "AgenciesWithCoverageRetrieveResponseDataReferences",
+    "AgenciesWithCoverageRetrieveResponseDataReferencesAgency",
+    "AgenciesWithCoverageRetrieveResponseDataReferencesRoute",
+    "AgenciesWithCoverageRetrieveResponseDataReferencesStop",
+    "AgenciesWithCoverageRetrieveResponseDataReferencesTrip",
 ]
 
 
-class AgenciesWithCoverageListResponseDataList(BaseModel):
+class AgenciesWithCoverageRetrieveResponseDataList(BaseModel):
     agency_id: str = FieldInfo(alias="agencyId")
 
     lat: float
@@ -31,7 +31,7 @@ class AgenciesWithCoverageListResponseDataList(BaseModel):
     lon_span: float = FieldInfo(alias="lonSpan")
 
 
-class AgenciesWithCoverageListResponseDataReferencesAgency(BaseModel):
+class AgenciesWithCoverageRetrieveResponseDataReferencesAgency(BaseModel):
     id: str
 
     name: str
@@ -53,7 +53,7 @@ class AgenciesWithCoverageListResponseDataReferencesAgency(BaseModel):
     private_service: Optional[bool] = FieldInfo(alias="privateService", default=None)
 
 
-class AgenciesWithCoverageListResponseDataReferencesRoute(BaseModel):
+class AgenciesWithCoverageRetrieveResponseDataReferencesRoute(BaseModel):
     id: Optional[str] = None
 
     agency_id: Optional[str] = FieldInfo(alias="agencyId", default=None)
@@ -75,7 +75,7 @@ class AgenciesWithCoverageListResponseDataReferencesRoute(BaseModel):
     url: Optional[str] = None
 
 
-class AgenciesWithCoverageListResponseDataReferencesStop(BaseModel):
+class AgenciesWithCoverageRetrieveResponseDataReferencesStop(BaseModel):
     id: str
 
     code: str
@@ -99,7 +99,7 @@ class AgenciesWithCoverageListResponseDataReferencesStop(BaseModel):
     wheelchair_boarding: Optional[str] = FieldInfo(alias="wheelchairBoarding", default=None)
 
 
-class AgenciesWithCoverageListResponseDataReferencesTrip(BaseModel):
+class AgenciesWithCoverageRetrieveResponseDataReferencesTrip(BaseModel):
     id: str
 
     route_id: str = FieldInfo(alias="routeId")
@@ -123,27 +123,27 @@ class AgenciesWithCoverageListResponseDataReferencesTrip(BaseModel):
     trip_short_name: Optional[str] = FieldInfo(alias="tripShortName", default=None)
 
 
-class AgenciesWithCoverageListResponseDataReferences(BaseModel):
-    agencies: Optional[List[AgenciesWithCoverageListResponseDataReferencesAgency]] = None
+class AgenciesWithCoverageRetrieveResponseDataReferences(BaseModel):
+    agencies: Optional[List[AgenciesWithCoverageRetrieveResponseDataReferencesAgency]] = None
 
-    routes: Optional[List[AgenciesWithCoverageListResponseDataReferencesRoute]] = None
+    routes: Optional[List[AgenciesWithCoverageRetrieveResponseDataReferencesRoute]] = None
 
     situations: Optional[List[object]] = None
 
-    stops: Optional[List[AgenciesWithCoverageListResponseDataReferencesStop]] = None
+    stops: Optional[List[AgenciesWithCoverageRetrieveResponseDataReferencesStop]] = None
 
     stop_times: Optional[List[object]] = FieldInfo(alias="stopTimes", default=None)
 
-    trips: Optional[List[AgenciesWithCoverageListResponseDataReferencesTrip]] = None
+    trips: Optional[List[AgenciesWithCoverageRetrieveResponseDataReferencesTrip]] = None
 
 
-class AgenciesWithCoverageListResponseData(BaseModel):
+class AgenciesWithCoverageRetrieveResponseData(BaseModel):
     limit_exceeded: Optional[bool] = FieldInfo(alias="limitExceeded", default=None)
 
-    list: Optional[List[AgenciesWithCoverageListResponseDataList]] = None
+    list: Optional[List[AgenciesWithCoverageRetrieveResponseDataList]] = None
 
-    references: Optional[AgenciesWithCoverageListResponseDataReferences] = None
+    references: Optional[AgenciesWithCoverageRetrieveResponseDataReferences] = None
 
 
-class AgenciesWithCoverageListResponse(ResponseWrapper):
-    data: Optional[AgenciesWithCoverageListResponseData] = None
+class AgenciesWithCoverageRetrieveResponse(ResponseWrapper):
+    data: Optional[AgenciesWithCoverageRetrieveResponseData] = None

@@ -16,7 +16,7 @@ from .._response import (
 from .._base_client import (
     make_request_options,
 )
-from ..types.agencies_with_coverage_list_response import AgenciesWithCoverageListResponse
+from ..types.agencies_with_coverage_retrieve_response import AgenciesWithCoverageRetrieveResponse
 
 __all__ = ["AgenciesWithCoverageResource", "AsyncAgenciesWithCoverageResource"]
 
@@ -30,7 +30,7 @@ class AgenciesWithCoverageResource(SyncAPIResource):
     def with_streaming_response(self) -> AgenciesWithCoverageResourceWithStreamingResponse:
         return AgenciesWithCoverageResourceWithStreamingResponse(self)
 
-    def list(
+    def retrieve(
         self,
         *,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -39,14 +39,14 @@ class AgenciesWithCoverageResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AgenciesWithCoverageListResponse:
+    ) -> AgenciesWithCoverageRetrieveResponse:
         """Retrieve Agencies with Coverage"""
         return self._get(
             "/api/where/agencies-with-coverage.json",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=AgenciesWithCoverageListResponse,
+            cast_to=AgenciesWithCoverageRetrieveResponse,
         )
 
 
@@ -59,7 +59,7 @@ class AsyncAgenciesWithCoverageResource(AsyncAPIResource):
     def with_streaming_response(self) -> AsyncAgenciesWithCoverageResourceWithStreamingResponse:
         return AsyncAgenciesWithCoverageResourceWithStreamingResponse(self)
 
-    async def list(
+    async def retrieve(
         self,
         *,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -68,14 +68,14 @@ class AsyncAgenciesWithCoverageResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AgenciesWithCoverageListResponse:
+    ) -> AgenciesWithCoverageRetrieveResponse:
         """Retrieve Agencies with Coverage"""
         return await self._get(
             "/api/where/agencies-with-coverage.json",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=AgenciesWithCoverageListResponse,
+            cast_to=AgenciesWithCoverageRetrieveResponse,
         )
 
 
@@ -83,8 +83,8 @@ class AgenciesWithCoverageResourceWithRawResponse:
     def __init__(self, agencies_with_coverage: AgenciesWithCoverageResource) -> None:
         self._agencies_with_coverage = agencies_with_coverage
 
-        self.list = to_raw_response_wrapper(
-            agencies_with_coverage.list,
+        self.retrieve = to_raw_response_wrapper(
+            agencies_with_coverage.retrieve,
         )
 
 
@@ -92,8 +92,8 @@ class AsyncAgenciesWithCoverageResourceWithRawResponse:
     def __init__(self, agencies_with_coverage: AsyncAgenciesWithCoverageResource) -> None:
         self._agencies_with_coverage = agencies_with_coverage
 
-        self.list = async_to_raw_response_wrapper(
-            agencies_with_coverage.list,
+        self.retrieve = async_to_raw_response_wrapper(
+            agencies_with_coverage.retrieve,
         )
 
 
@@ -101,8 +101,8 @@ class AgenciesWithCoverageResourceWithStreamingResponse:
     def __init__(self, agencies_with_coverage: AgenciesWithCoverageResource) -> None:
         self._agencies_with_coverage = agencies_with_coverage
 
-        self.list = to_streamed_response_wrapper(
-            agencies_with_coverage.list,
+        self.retrieve = to_streamed_response_wrapper(
+            agencies_with_coverage.retrieve,
         )
 
 
@@ -110,6 +110,6 @@ class AsyncAgenciesWithCoverageResourceWithStreamingResponse:
     def __init__(self, agencies_with_coverage: AsyncAgenciesWithCoverageResource) -> None:
         self._agencies_with_coverage = agencies_with_coverage
 
-        self.list = async_to_streamed_response_wrapper(
-            agencies_with_coverage.list,
+        self.retrieve = async_to_streamed_response_wrapper(
+            agencies_with_coverage.retrieve,
         )
