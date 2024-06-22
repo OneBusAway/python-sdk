@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from onebusaway import OneBusAway, AsyncOneBusAway
+from onebusaway import OnebusawaySDK, AsyncOnebusawaySDK
 from tests.utils import assert_matches_type
 from onebusaway.types import CurrentTimeRetrieveResponse
 
@@ -18,12 +18,12 @@ class TestCurrentTime:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    def test_method_retrieve(self, client: OneBusAway) -> None:
+    def test_method_retrieve(self, client: OnebusawaySDK) -> None:
         current_time = client.current_time.retrieve()
         assert_matches_type(CurrentTimeRetrieveResponse, current_time, path=["response"])
 
     @parametrize
-    def test_raw_response_retrieve(self, client: OneBusAway) -> None:
+    def test_raw_response_retrieve(self, client: OnebusawaySDK) -> None:
         response = client.current_time.with_raw_response.retrieve()
 
         assert response.is_closed is True
@@ -32,7 +32,7 @@ class TestCurrentTime:
         assert_matches_type(CurrentTimeRetrieveResponse, current_time, path=["response"])
 
     @parametrize
-    def test_streaming_response_retrieve(self, client: OneBusAway) -> None:
+    def test_streaming_response_retrieve(self, client: OnebusawaySDK) -> None:
         with client.current_time.with_streaming_response.retrieve() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -47,12 +47,12 @@ class TestAsyncCurrentTime:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    async def test_method_retrieve(self, async_client: AsyncOneBusAway) -> None:
+    async def test_method_retrieve(self, async_client: AsyncOnebusawaySDK) -> None:
         current_time = await async_client.current_time.retrieve()
         assert_matches_type(CurrentTimeRetrieveResponse, current_time, path=["response"])
 
     @parametrize
-    async def test_raw_response_retrieve(self, async_client: AsyncOneBusAway) -> None:
+    async def test_raw_response_retrieve(self, async_client: AsyncOnebusawaySDK) -> None:
         response = await async_client.current_time.with_raw_response.retrieve()
 
         assert response.is_closed is True
@@ -61,7 +61,7 @@ class TestAsyncCurrentTime:
         assert_matches_type(CurrentTimeRetrieveResponse, current_time, path=["response"])
 
     @parametrize
-    async def test_streaming_response_retrieve(self, async_client: AsyncOneBusAway) -> None:
+    async def test_streaming_response_retrieve(self, async_client: AsyncOnebusawaySDK) -> None:
         async with async_client.current_time.with_streaming_response.retrieve() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

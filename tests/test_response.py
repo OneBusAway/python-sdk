@@ -6,7 +6,7 @@ import httpx
 import pytest
 import pydantic
 
-from onebusaway import BaseModel, OneBusAway, AsyncOneBusAway
+from onebusaway import BaseModel, OnebusawaySDK, AsyncOnebusawaySDK
 from onebusaway._response import (
     APIResponse,
     BaseAPIResponse,
@@ -60,7 +60,7 @@ class PydanticModel(pydantic.BaseModel):
     ...
 
 
-def test_response_parse_mismatched_basemodel(client: OneBusAway) -> None:
+def test_response_parse_mismatched_basemodel(client: OnebusawaySDK) -> None:
     response = APIResponse(
         raw=httpx.Response(200, content=b"foo"),
         client=client,
@@ -78,7 +78,7 @@ def test_response_parse_mismatched_basemodel(client: OneBusAway) -> None:
 
 
 @pytest.mark.asyncio
-async def test_async_response_parse_mismatched_basemodel(async_client: AsyncOneBusAway) -> None:
+async def test_async_response_parse_mismatched_basemodel(async_client: AsyncOnebusawaySDK) -> None:
     response = AsyncAPIResponse(
         raw=httpx.Response(200, content=b"foo"),
         client=async_client,
@@ -95,7 +95,7 @@ async def test_async_response_parse_mismatched_basemodel(async_client: AsyncOneB
         await response.parse(to=PydanticModel)
 
 
-def test_response_parse_custom_stream(client: OneBusAway) -> None:
+def test_response_parse_custom_stream(client: OnebusawaySDK) -> None:
     response = APIResponse(
         raw=httpx.Response(200, content=b"foo"),
         client=client,
@@ -110,7 +110,7 @@ def test_response_parse_custom_stream(client: OneBusAway) -> None:
 
 
 @pytest.mark.asyncio
-async def test_async_response_parse_custom_stream(async_client: AsyncOneBusAway) -> None:
+async def test_async_response_parse_custom_stream(async_client: AsyncOnebusawaySDK) -> None:
     response = AsyncAPIResponse(
         raw=httpx.Response(200, content=b"foo"),
         client=async_client,
@@ -129,7 +129,7 @@ class CustomModel(BaseModel):
     bar: int
 
 
-def test_response_parse_custom_model(client: OneBusAway) -> None:
+def test_response_parse_custom_model(client: OnebusawaySDK) -> None:
     response = APIResponse(
         raw=httpx.Response(200, content=json.dumps({"foo": "hello!", "bar": 2})),
         client=client,
@@ -145,7 +145,7 @@ def test_response_parse_custom_model(client: OneBusAway) -> None:
 
 
 @pytest.mark.asyncio
-async def test_async_response_parse_custom_model(async_client: AsyncOneBusAway) -> None:
+async def test_async_response_parse_custom_model(async_client: AsyncOnebusawaySDK) -> None:
     response = AsyncAPIResponse(
         raw=httpx.Response(200, content=json.dumps({"foo": "hello!", "bar": 2})),
         client=async_client,
@@ -160,7 +160,7 @@ async def test_async_response_parse_custom_model(async_client: AsyncOneBusAway) 
     assert obj.bar == 2
 
 
-def test_response_parse_annotated_type(client: OneBusAway) -> None:
+def test_response_parse_annotated_type(client: OnebusawaySDK) -> None:
     response = APIResponse(
         raw=httpx.Response(200, content=json.dumps({"foo": "hello!", "bar": 2})),
         client=client,
@@ -177,7 +177,7 @@ def test_response_parse_annotated_type(client: OneBusAway) -> None:
     assert obj.bar == 2
 
 
-async def test_async_response_parse_annotated_type(async_client: AsyncOneBusAway) -> None:
+async def test_async_response_parse_annotated_type(async_client: AsyncOnebusawaySDK) -> None:
     response = AsyncAPIResponse(
         raw=httpx.Response(200, content=json.dumps({"foo": "hello!", "bar": 2})),
         client=async_client,
