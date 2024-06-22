@@ -18,11 +18,11 @@ __all__ = [
 ]
 
 
-class OneBusAwayError(Exception):
+class OnebusawaySDKError(Exception):
     pass
 
 
-class APIError(OneBusAwayError):
+class APIError(OnebusawaySDKError):
     message: str
     request: httpx.Request
 

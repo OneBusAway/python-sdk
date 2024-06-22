@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from onebusaway import OneBusAway, AsyncOneBusAway
+from onebusaway import OnebusawaySDK, AsyncOnebusawaySDK
 from tests.utils import assert_matches_type
 from onebusaway.types import StopsForLocationRetrieveResponse
 
@@ -18,14 +18,14 @@ class TestStopsForLocation:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    def test_method_retrieve(self, client: OneBusAway) -> None:
+    def test_method_retrieve(self, client: OnebusawaySDK) -> None:
         stops_for_location = client.stops_for_location.retrieve(
             key="string",
         )
         assert_matches_type(StopsForLocationRetrieveResponse, stops_for_location, path=["response"])
 
     @parametrize
-    def test_method_retrieve_with_all_params(self, client: OneBusAway) -> None:
+    def test_method_retrieve_with_all_params(self, client: OnebusawaySDK) -> None:
         stops_for_location = client.stops_for_location.retrieve(
             key="string",
             lat=0,
@@ -34,7 +34,7 @@ class TestStopsForLocation:
         assert_matches_type(StopsForLocationRetrieveResponse, stops_for_location, path=["response"])
 
     @parametrize
-    def test_raw_response_retrieve(self, client: OneBusAway) -> None:
+    def test_raw_response_retrieve(self, client: OnebusawaySDK) -> None:
         response = client.stops_for_location.with_raw_response.retrieve(
             key="string",
         )
@@ -45,7 +45,7 @@ class TestStopsForLocation:
         assert_matches_type(StopsForLocationRetrieveResponse, stops_for_location, path=["response"])
 
     @parametrize
-    def test_streaming_response_retrieve(self, client: OneBusAway) -> None:
+    def test_streaming_response_retrieve(self, client: OnebusawaySDK) -> None:
         with client.stops_for_location.with_streaming_response.retrieve(
             key="string",
         ) as response:
@@ -62,14 +62,14 @@ class TestAsyncStopsForLocation:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    async def test_method_retrieve(self, async_client: AsyncOneBusAway) -> None:
+    async def test_method_retrieve(self, async_client: AsyncOnebusawaySDK) -> None:
         stops_for_location = await async_client.stops_for_location.retrieve(
             key="string",
         )
         assert_matches_type(StopsForLocationRetrieveResponse, stops_for_location, path=["response"])
 
     @parametrize
-    async def test_method_retrieve_with_all_params(self, async_client: AsyncOneBusAway) -> None:
+    async def test_method_retrieve_with_all_params(self, async_client: AsyncOnebusawaySDK) -> None:
         stops_for_location = await async_client.stops_for_location.retrieve(
             key="string",
             lat=0,
@@ -78,7 +78,7 @@ class TestAsyncStopsForLocation:
         assert_matches_type(StopsForLocationRetrieveResponse, stops_for_location, path=["response"])
 
     @parametrize
-    async def test_raw_response_retrieve(self, async_client: AsyncOneBusAway) -> None:
+    async def test_raw_response_retrieve(self, async_client: AsyncOnebusawaySDK) -> None:
         response = await async_client.stops_for_location.with_raw_response.retrieve(
             key="string",
         )
@@ -89,7 +89,7 @@ class TestAsyncStopsForLocation:
         assert_matches_type(StopsForLocationRetrieveResponse, stops_for_location, path=["response"])
 
     @parametrize
-    async def test_streaming_response_retrieve(self, async_client: AsyncOneBusAway) -> None:
+    async def test_streaming_response_retrieve(self, async_client: AsyncOnebusawaySDK) -> None:
         async with async_client.stops_for_location.with_streaming_response.retrieve(
             key="string",
         ) as response:

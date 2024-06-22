@@ -7,7 +7,7 @@ from typing import Any, cast
 
 import pytest
 
-from onebusaway import OneBusAway, AsyncOneBusAway
+from onebusaway import OnebusawaySDK, AsyncOnebusawaySDK
 from tests.utils import assert_matches_type
 from onebusaway.types import AgenciesWithCoverageRetrieveResponse
 
@@ -18,12 +18,12 @@ class TestAgenciesWithCoverage:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    def test_method_retrieve(self, client: OneBusAway) -> None:
+    def test_method_retrieve(self, client: OnebusawaySDK) -> None:
         agencies_with_coverage = client.agencies_with_coverage.retrieve()
         assert_matches_type(AgenciesWithCoverageRetrieveResponse, agencies_with_coverage, path=["response"])
 
     @parametrize
-    def test_raw_response_retrieve(self, client: OneBusAway) -> None:
+    def test_raw_response_retrieve(self, client: OnebusawaySDK) -> None:
         response = client.agencies_with_coverage.with_raw_response.retrieve()
 
         assert response.is_closed is True
@@ -32,7 +32,7 @@ class TestAgenciesWithCoverage:
         assert_matches_type(AgenciesWithCoverageRetrieveResponse, agencies_with_coverage, path=["response"])
 
     @parametrize
-    def test_streaming_response_retrieve(self, client: OneBusAway) -> None:
+    def test_streaming_response_retrieve(self, client: OnebusawaySDK) -> None:
         with client.agencies_with_coverage.with_streaming_response.retrieve() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -47,12 +47,12 @@ class TestAsyncAgenciesWithCoverage:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    async def test_method_retrieve(self, async_client: AsyncOneBusAway) -> None:
+    async def test_method_retrieve(self, async_client: AsyncOnebusawaySDK) -> None:
         agencies_with_coverage = await async_client.agencies_with_coverage.retrieve()
         assert_matches_type(AgenciesWithCoverageRetrieveResponse, agencies_with_coverage, path=["response"])
 
     @parametrize
-    async def test_raw_response_retrieve(self, async_client: AsyncOneBusAway) -> None:
+    async def test_raw_response_retrieve(self, async_client: AsyncOnebusawaySDK) -> None:
         response = await async_client.agencies_with_coverage.with_raw_response.retrieve()
 
         assert response.is_closed is True
@@ -61,7 +61,7 @@ class TestAsyncAgenciesWithCoverage:
         assert_matches_type(AgenciesWithCoverageRetrieveResponse, agencies_with_coverage, path=["response"])
 
     @parametrize
-    async def test_streaming_response_retrieve(self, async_client: AsyncOneBusAway) -> None:
+    async def test_streaming_response_retrieve(self, async_client: AsyncOnebusawaySDK) -> None:
         async with async_client.agencies_with_coverage.with_streaming_response.retrieve() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

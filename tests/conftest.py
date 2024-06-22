@@ -7,7 +7,7 @@ from typing import TYPE_CHECKING, Iterator, AsyncIterator
 
 import pytest
 
-from onebusaway import OneBusAway, AsyncOneBusAway
+from onebusaway import OnebusawaySDK, AsyncOnebusawaySDK
 
 if TYPE_CHECKING:
     from _pytest.fixtures import FixtureRequest
@@ -30,20 +30,20 @@ api_key = "My API Key"
 
 
 @pytest.fixture(scope="session")
-def client(request: FixtureRequest) -> Iterator[OneBusAway]:
+def client(request: FixtureRequest) -> Iterator[OnebusawaySDK]:
     strict = getattr(request, "param", True)
     if not isinstance(strict, bool):
         raise TypeError(f"Unexpected fixture parameter type {type(strict)}, expected {bool}")
 
-    with OneBusAway(base_url=base_url, api_key=api_key, _strict_response_validation=strict) as client:
+    with OnebusawaySDK(base_url=base_url, api_key=api_key, _strict_response_validation=strict) as client:
         yield client
 
 
 @pytest.fixture(scope="session")
-async def async_client(request: FixtureRequest) -> AsyncIterator[AsyncOneBusAway]:
+async def async_client(request: FixtureRequest) -> AsyncIterator[AsyncOnebusawaySDK]:
     strict = getattr(request, "param", True)
     if not isinstance(strict, bool):
         raise TypeError(f"Unexpected fixture parameter type {type(strict)}, expected {bool}")
 
-    async with AsyncOneBusAway(base_url=base_url, api_key=api_key, _strict_response_validation=strict) as client:
+    async with AsyncOnebusawaySDK(base_url=base_url, api_key=api_key, _strict_response_validation=strict) as client:
         yield client

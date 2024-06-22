@@ -25,7 +25,7 @@ from ._utils import (
 )
 from ._version import __version__
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
-from ._exceptions import APIStatusError, OneBusAwayError
+from ._exceptions import APIStatusError, OnebusawaySDKError
 from ._base_client import (
     DEFAULT_MAX_RETRIES,
     SyncAPIClient,
@@ -38,22 +38,22 @@ __all__ = [
     "ProxiesTypes",
     "RequestOptions",
     "resources",
-    "OneBusAway",
-    "AsyncOneBusAway",
+    "OnebusawaySDK",
+    "AsyncOnebusawaySDK",
     "Client",
     "AsyncClient",
 ]
 
 
-class OneBusAway(SyncAPIClient):
+class OnebusawaySDK(SyncAPIClient):
     agencies_with_coverage: resources.AgenciesWithCoverageResource
     config: resources.ConfigResource
     current_time: resources.CurrentTimeResource
     stops_for_location: resources.StopsForLocationResource
     arrival_and_departure_for_stop: resources.ArrivalAndDepartureForStopResource
     arrivals_and_departures_for_stop: resources.ArrivalsAndDeparturesForStopResource
-    with_raw_response: OneBusAwayWithRawResponse
-    with_streaming_response: OneBusAwayWithStreamedResponse
+    with_raw_response: OnebusawaySDKWithRawResponse
+    with_streaming_response: OnebusawaySDKWithStreamedResponse
 
     # client options
     api_key: str
@@ -81,20 +81,20 @@ class OneBusAway(SyncAPIClient):
         # part of our public interface in the future.
         _strict_response_validation: bool = False,
     ) -> None:
-        """Construct a new synchronous OneBusAway client instance.
+        """Construct a new synchronous onebusaway-sdk client instance.
 
         This automatically infers the `api_key` argument from the `ONEBUSAWAY_API_KEY` environment variable if it is not provided.
         """
         if api_key is None:
             api_key = os.environ.get("ONEBUSAWAY_API_KEY")
         if api_key is None:
-            raise OneBusAwayError(
+            raise OnebusawaySDKError(
                 "The api_key client option must be set either by passing api_key to the client or by setting the ONEBUSAWAY_API_KEY environment variable"
             )
         self.api_key = api_key
 
         if base_url is None:
-            base_url = os.environ.get("ONE_BUS_AWAY_BASE_URL")
+            base_url = os.environ.get("ONEBUSAWAY_SDK_BASE_URL")
         if base_url is None:
             base_url = f"https://api.pugetsound.onebusaway.org"
 
@@ -115,8 +115,8 @@ class OneBusAway(SyncAPIClient):
         self.stops_for_location = resources.StopsForLocationResource(self)
         self.arrival_and_departure_for_stop = resources.ArrivalAndDepartureForStopResource(self)
         self.arrivals_and_departures_for_stop = resources.ArrivalsAndDeparturesForStopResource(self)
-        self.with_raw_response = OneBusAwayWithRawResponse(self)
-        self.with_streaming_response = OneBusAwayWithStreamedResponse(self)
+        self.with_raw_response = OnebusawaySDKWithRawResponse(self)
+        self.with_streaming_response = OnebusawaySDKWithStreamedResponse(self)
 
     @property
     @override
@@ -230,15 +230,15 @@ class OneBusAway(SyncAPIClient):
         return APIStatusError(err_msg, response=response, body=body)
 
 
-class AsyncOneBusAway(AsyncAPIClient):
+class AsyncOnebusawaySDK(AsyncAPIClient):
     agencies_with_coverage: resources.AsyncAgenciesWithCoverageResource
     config: resources.AsyncConfigResource
     current_time: resources.AsyncCurrentTimeResource
     stops_for_location: resources.AsyncStopsForLocationResource
     arrival_and_departure_for_stop: resources.AsyncArrivalAndDepartureForStopResource
     arrivals_and_departures_for_stop: resources.AsyncArrivalsAndDeparturesForStopResource
-    with_raw_response: AsyncOneBusAwayWithRawResponse
-    with_streaming_response: AsyncOneBusAwayWithStreamedResponse
+    with_raw_response: AsyncOnebusawaySDKWithRawResponse
+    with_streaming_response: AsyncOnebusawaySDKWithStreamedResponse
 
     # client options
     api_key: str
@@ -266,20 +266,20 @@ class AsyncOneBusAway(AsyncAPIClient):
         # part of our public interface in the future.
         _strict_response_validation: bool = False,
     ) -> None:
-        """Construct a new async OneBusAway client instance.
+        """Construct a new async onebusaway-sdk client instance.
 
         This automatically infers the `api_key` argument from the `ONEBUSAWAY_API_KEY` environment variable if it is not provided.
         """
         if api_key is None:
             api_key = os.environ.get("ONEBUSAWAY_API_KEY")
         if api_key is None:
-            raise OneBusAwayError(
+            raise OnebusawaySDKError(
                 "The api_key client option must be set either by passing api_key to the client or by setting the ONEBUSAWAY_API_KEY environment variable"
             )
         self.api_key = api_key
 
         if base_url is None:
-            base_url = os.environ.get("ONE_BUS_AWAY_BASE_URL")
+            base_url = os.environ.get("ONEBUSAWAY_SDK_BASE_URL")
         if base_url is None:
             base_url = f"https://api.pugetsound.onebusaway.org"
 
@@ -300,8 +300,8 @@ class AsyncOneBusAway(AsyncAPIClient):
         self.stops_for_location = resources.AsyncStopsForLocationResource(self)
         self.arrival_and_departure_for_stop = resources.AsyncArrivalAndDepartureForStopResource(self)
         self.arrivals_and_departures_for_stop = resources.AsyncArrivalsAndDeparturesForStopResource(self)
-        self.with_raw_response = AsyncOneBusAwayWithRawResponse(self)
-        self.with_streaming_response = AsyncOneBusAwayWithStreamedResponse(self)
+        self.with_raw_response = AsyncOnebusawaySDKWithRawResponse(self)
+        self.with_streaming_response = AsyncOnebusawaySDKWithStreamedResponse(self)
 
     @property
     @override
@@ -415,8 +415,8 @@ class AsyncOneBusAway(AsyncAPIClient):
         return APIStatusError(err_msg, response=response, body=body)
 
 
-class OneBusAwayWithRawResponse:
-    def __init__(self, client: OneBusAway) -> None:
+class OnebusawaySDKWithRawResponse:
+    def __init__(self, client: OnebusawaySDK) -> None:
         self.agencies_with_coverage = resources.AgenciesWithCoverageResourceWithRawResponse(
             client.agencies_with_coverage
         )
@@ -431,8 +431,8 @@ class OneBusAwayWithRawResponse:
         )
 
 
-class AsyncOneBusAwayWithRawResponse:
-    def __init__(self, client: AsyncOneBusAway) -> None:
+class AsyncOnebusawaySDKWithRawResponse:
+    def __init__(self, client: AsyncOnebusawaySDK) -> None:
         self.agencies_with_coverage = resources.AsyncAgenciesWithCoverageResourceWithRawResponse(
             client.agencies_with_coverage
         )
@@ -447,8 +447,8 @@ class AsyncOneBusAwayWithRawResponse:
         )
 
 
-class OneBusAwayWithStreamedResponse:
-    def __init__(self, client: OneBusAway) -> None:
+class OnebusawaySDKWithStreamedResponse:
+    def __init__(self, client: OnebusawaySDK) -> None:
         self.agencies_with_coverage = resources.AgenciesWithCoverageResourceWithStreamingResponse(
             client.agencies_with_coverage
         )
@@ -463,8 +463,8 @@ class OneBusAwayWithStreamedResponse:
         )
 
 
-class AsyncOneBusAwayWithStreamedResponse:
-    def __init__(self, client: AsyncOneBusAway) -> None:
+class AsyncOnebusawaySDKWithStreamedResponse:
+    def __init__(self, client: AsyncOnebusawaySDK) -> None:
         self.agencies_with_coverage = resources.AsyncAgenciesWithCoverageResourceWithStreamingResponse(
             client.agencies_with_coverage
         )
@@ -483,6 +483,6 @@ class AsyncOneBusAwayWithStreamedResponse:
         )
 
 
-Client = OneBusAway
+Client = OnebusawaySDK
 
-AsyncClient = AsyncOneBusAway
+AsyncClient = AsyncOnebusawaySDK
