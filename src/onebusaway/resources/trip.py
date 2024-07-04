@@ -56,7 +56,7 @@ class TripResource(SyncAPIResource):
         if not trip_id:
             raise ValueError(f"Expected a non-empty value for `trip_id` but received {trip_id!r}")
         return self._get(
-            f"/api/where/trip/tripID.json",
+            f"/api/where/trip/{trip_id}.json",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
