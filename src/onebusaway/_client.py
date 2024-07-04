@@ -47,11 +47,14 @@ __all__ = [
 
 class OnebusawaySDK(SyncAPIClient):
     agencies_with_coverage: resources.AgenciesWithCoverageResource
+    agency: resources.AgencyResource
     config: resources.ConfigResource
     current_time: resources.CurrentTimeResource
     stops_for_location: resources.StopsForLocationResource
-    arrival_and_departure_for_stop: resources.ArrivalAndDepartureForStopResource
-    arrivals_and_departures_for_stop: resources.ArrivalsAndDeparturesForStopResource
+    route: resources.RouteResource
+    arrival_and_departure: resources.ArrivalAndDepartureResource
+    trip: resources.TripResource
+    trips_for_location: resources.TripsForLocationResource
     with_raw_response: OnebusawaySDKWithRawResponse
     with_streaming_response: OnebusawaySDKWithStreamedResponse
 
@@ -110,11 +113,14 @@ class OnebusawaySDK(SyncAPIClient):
         )
 
         self.agencies_with_coverage = resources.AgenciesWithCoverageResource(self)
+        self.agency = resources.AgencyResource(self)
         self.config = resources.ConfigResource(self)
         self.current_time = resources.CurrentTimeResource(self)
         self.stops_for_location = resources.StopsForLocationResource(self)
-        self.arrival_and_departure_for_stop = resources.ArrivalAndDepartureForStopResource(self)
-        self.arrivals_and_departures_for_stop = resources.ArrivalsAndDeparturesForStopResource(self)
+        self.route = resources.RouteResource(self)
+        self.arrival_and_departure = resources.ArrivalAndDepartureResource(self)
+        self.trip = resources.TripResource(self)
+        self.trips_for_location = resources.TripsForLocationResource(self)
         self.with_raw_response = OnebusawaySDKWithRawResponse(self)
         self.with_streaming_response = OnebusawaySDKWithStreamedResponse(self)
 
@@ -232,11 +238,14 @@ class OnebusawaySDK(SyncAPIClient):
 
 class AsyncOnebusawaySDK(AsyncAPIClient):
     agencies_with_coverage: resources.AsyncAgenciesWithCoverageResource
+    agency: resources.AsyncAgencyResource
     config: resources.AsyncConfigResource
     current_time: resources.AsyncCurrentTimeResource
     stops_for_location: resources.AsyncStopsForLocationResource
-    arrival_and_departure_for_stop: resources.AsyncArrivalAndDepartureForStopResource
-    arrivals_and_departures_for_stop: resources.AsyncArrivalsAndDeparturesForStopResource
+    route: resources.AsyncRouteResource
+    arrival_and_departure: resources.AsyncArrivalAndDepartureResource
+    trip: resources.AsyncTripResource
+    trips_for_location: resources.AsyncTripsForLocationResource
     with_raw_response: AsyncOnebusawaySDKWithRawResponse
     with_streaming_response: AsyncOnebusawaySDKWithStreamedResponse
 
@@ -295,11 +304,14 @@ class AsyncOnebusawaySDK(AsyncAPIClient):
         )
 
         self.agencies_with_coverage = resources.AsyncAgenciesWithCoverageResource(self)
+        self.agency = resources.AsyncAgencyResource(self)
         self.config = resources.AsyncConfigResource(self)
         self.current_time = resources.AsyncCurrentTimeResource(self)
         self.stops_for_location = resources.AsyncStopsForLocationResource(self)
-        self.arrival_and_departure_for_stop = resources.AsyncArrivalAndDepartureForStopResource(self)
-        self.arrivals_and_departures_for_stop = resources.AsyncArrivalsAndDeparturesForStopResource(self)
+        self.route = resources.AsyncRouteResource(self)
+        self.arrival_and_departure = resources.AsyncArrivalAndDepartureResource(self)
+        self.trip = resources.AsyncTripResource(self)
+        self.trips_for_location = resources.AsyncTripsForLocationResource(self)
         self.with_raw_response = AsyncOnebusawaySDKWithRawResponse(self)
         self.with_streaming_response = AsyncOnebusawaySDKWithStreamedResponse(self)
 
@@ -420,15 +432,14 @@ class OnebusawaySDKWithRawResponse:
         self.agencies_with_coverage = resources.AgenciesWithCoverageResourceWithRawResponse(
             client.agencies_with_coverage
         )
+        self.agency = resources.AgencyResourceWithRawResponse(client.agency)
         self.config = resources.ConfigResourceWithRawResponse(client.config)
         self.current_time = resources.CurrentTimeResourceWithRawResponse(client.current_time)
         self.stops_for_location = resources.StopsForLocationResourceWithRawResponse(client.stops_for_location)
-        self.arrival_and_departure_for_stop = resources.ArrivalAndDepartureForStopResourceWithRawResponse(
-            client.arrival_and_departure_for_stop
-        )
-        self.arrivals_and_departures_for_stop = resources.ArrivalsAndDeparturesForStopResourceWithRawResponse(
-            client.arrivals_and_departures_for_stop
-        )
+        self.route = resources.RouteResourceWithRawResponse(client.route)
+        self.arrival_and_departure = resources.ArrivalAndDepartureResourceWithRawResponse(client.arrival_and_departure)
+        self.trip = resources.TripResourceWithRawResponse(client.trip)
+        self.trips_for_location = resources.TripsForLocationResourceWithRawResponse(client.trips_for_location)
 
 
 class AsyncOnebusawaySDKWithRawResponse:
@@ -436,15 +447,16 @@ class AsyncOnebusawaySDKWithRawResponse:
         self.agencies_with_coverage = resources.AsyncAgenciesWithCoverageResourceWithRawResponse(
             client.agencies_with_coverage
         )
+        self.agency = resources.AsyncAgencyResourceWithRawResponse(client.agency)
         self.config = resources.AsyncConfigResourceWithRawResponse(client.config)
         self.current_time = resources.AsyncCurrentTimeResourceWithRawResponse(client.current_time)
         self.stops_for_location = resources.AsyncStopsForLocationResourceWithRawResponse(client.stops_for_location)
-        self.arrival_and_departure_for_stop = resources.AsyncArrivalAndDepartureForStopResourceWithRawResponse(
-            client.arrival_and_departure_for_stop
+        self.route = resources.AsyncRouteResourceWithRawResponse(client.route)
+        self.arrival_and_departure = resources.AsyncArrivalAndDepartureResourceWithRawResponse(
+            client.arrival_and_departure
         )
-        self.arrivals_and_departures_for_stop = resources.AsyncArrivalsAndDeparturesForStopResourceWithRawResponse(
-            client.arrivals_and_departures_for_stop
-        )
+        self.trip = resources.AsyncTripResourceWithRawResponse(client.trip)
+        self.trips_for_location = resources.AsyncTripsForLocationResourceWithRawResponse(client.trips_for_location)
 
 
 class OnebusawaySDKWithStreamedResponse:
@@ -452,15 +464,16 @@ class OnebusawaySDKWithStreamedResponse:
         self.agencies_with_coverage = resources.AgenciesWithCoverageResourceWithStreamingResponse(
             client.agencies_with_coverage
         )
+        self.agency = resources.AgencyResourceWithStreamingResponse(client.agency)
         self.config = resources.ConfigResourceWithStreamingResponse(client.config)
         self.current_time = resources.CurrentTimeResourceWithStreamingResponse(client.current_time)
         self.stops_for_location = resources.StopsForLocationResourceWithStreamingResponse(client.stops_for_location)
-        self.arrival_and_departure_for_stop = resources.ArrivalAndDepartureForStopResourceWithStreamingResponse(
-            client.arrival_and_departure_for_stop
+        self.route = resources.RouteResourceWithStreamingResponse(client.route)
+        self.arrival_and_departure = resources.ArrivalAndDepartureResourceWithStreamingResponse(
+            client.arrival_and_departure
         )
-        self.arrivals_and_departures_for_stop = resources.ArrivalsAndDeparturesForStopResourceWithStreamingResponse(
-            client.arrivals_and_departures_for_stop
-        )
+        self.trip = resources.TripResourceWithStreamingResponse(client.trip)
+        self.trips_for_location = resources.TripsForLocationResourceWithStreamingResponse(client.trips_for_location)
 
 
 class AsyncOnebusawaySDKWithStreamedResponse:
@@ -468,18 +481,19 @@ class AsyncOnebusawaySDKWithStreamedResponse:
         self.agencies_with_coverage = resources.AsyncAgenciesWithCoverageResourceWithStreamingResponse(
             client.agencies_with_coverage
         )
+        self.agency = resources.AsyncAgencyResourceWithStreamingResponse(client.agency)
         self.config = resources.AsyncConfigResourceWithStreamingResponse(client.config)
         self.current_time = resources.AsyncCurrentTimeResourceWithStreamingResponse(client.current_time)
         self.stops_for_location = resources.AsyncStopsForLocationResourceWithStreamingResponse(
             client.stops_for_location
         )
-        self.arrival_and_departure_for_stop = resources.AsyncArrivalAndDepartureForStopResourceWithStreamingResponse(
-            client.arrival_and_departure_for_stop
+        self.route = resources.AsyncRouteResourceWithStreamingResponse(client.route)
+        self.arrival_and_departure = resources.AsyncArrivalAndDepartureResourceWithStreamingResponse(
+            client.arrival_and_departure
         )
-        self.arrivals_and_departures_for_stop = (
-            resources.AsyncArrivalsAndDeparturesForStopResourceWithStreamingResponse(
-                client.arrivals_and_departures_for_stop
-            )
+        self.trip = resources.AsyncTripResourceWithStreamingResponse(client.trip)
+        self.trips_for_location = resources.AsyncTripsForLocationResourceWithStreamingResponse(
+            client.trips_for_location
         )
 
 

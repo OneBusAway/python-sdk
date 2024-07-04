@@ -16,6 +16,18 @@ Methods:
 
 - <code title="get /api/where/agencies-with-coverage.json">client.agencies_with_coverage.<a href="./src/onebusaway/resources/agencies_with_coverage.py">retrieve</a>() -> <a href="./src/onebusaway/types/agencies_with_coverage_retrieve_response.py">AgenciesWithCoverageRetrieveResponse</a></code>
 
+# Agency
+
+Types:
+
+```python
+from onebusaway.types import AgencyRetrieveResponse
+```
+
+Methods:
+
+- <code title="get /api/where/agency/{agencyID}.json">client.agency.<a href="./src/onebusaway/resources/agency.py">retrieve</a>(agency_id) -> <a href="./src/onebusaway/types/agency_retrieve_response.py">AgencyRetrieveResponse</a></code>
+
 # Config
 
 Types:
@@ -52,26 +64,54 @@ Methods:
 
 - <code title="get /api/where/stops-for-location.json">client.stops_for_location.<a href="./src/onebusaway/resources/stops_for_location.py">retrieve</a>(\*\*<a href="src/onebusaway/types/stops_for_location_retrieve_params.py">params</a>) -> <a href="./src/onebusaway/types/stops_for_location_retrieve_response.py">StopsForLocationRetrieveResponse</a></code>
 
-# ArrivalAndDepartureForStop
+# Route
 
 Types:
 
 ```python
-from onebusaway.types import ArrivalAndDepartureForStopRetrieveResponse
+from onebusaway.types import RouteRetrieveResponse
 ```
 
 Methods:
 
-- <code title="get /api/where/arrival-and-departure-for-stop/{stopID}.json">client.arrival_and_departure_for_stop.<a href="./src/onebusaway/resources/arrival_and_departure_for_stop.py">retrieve</a>(stop_id, \*\*<a href="src/onebusaway/types/arrival_and_departure_for_stop_retrieve_params.py">params</a>) -> <a href="./src/onebusaway/types/arrival_and_departure_for_stop_retrieve_response.py">ArrivalAndDepartureForStopRetrieveResponse</a></code>
+- <code title="get /api/where/route/{routeID}.json">client.route.<a href="./src/onebusaway/resources/route.py">retrieve</a>(route_id) -> <a href="./src/onebusaway/types/route_retrieve_response.py">RouteRetrieveResponse</a></code>
 
-# ArrivalsAndDeparturesForStop
+# ArrivalAndDeparture
 
 Types:
 
 ```python
-from onebusaway.types import ArrivalsAndDeparturesForStopRetrieveResponse
+from onebusaway.types import (
+    ArrivalAndDepartureSearchAllForStopResponse,
+    ArrivalAndDepartureSearchForStopResponse,
+)
 ```
 
 Methods:
 
-- <code title="get /api/where/arrivals-and-departures-for-stop/{stopID}.json">client.arrivals_and_departures_for_stop.<a href="./src/onebusaway/resources/arrivals_and_departures_for_stop.py">retrieve</a>(stop_id) -> <a href="./src/onebusaway/types/arrivals_and_departures_for_stop_retrieve_response.py">ArrivalsAndDeparturesForStopRetrieveResponse</a></code>
+- <code title="get /api/where/arrivals-and-departures-for-stop/{stopID}.json">client.arrival_and_departure.<a href="./src/onebusaway/resources/arrival_and_departure.py">search_all_for_stop</a>(stop_id, \*\*<a href="src/onebusaway/types/arrival_and_departure_search_all_for_stop_params.py">params</a>) -> <a href="./src/onebusaway/types/arrival_and_departure_search_all_for_stop_response.py">ArrivalAndDepartureSearchAllForStopResponse</a></code>
+- <code title="get /api/where/arrival-and-departure-for-stop/{stopID}.json">client.arrival_and_departure.<a href="./src/onebusaway/resources/arrival_and_departure.py">search_for_stop</a>(stop_id, \*\*<a href="src/onebusaway/types/arrival_and_departure_search_for_stop_params.py">params</a>) -> <a href="./src/onebusaway/types/arrival_and_departure_search_for_stop_response.py">ArrivalAndDepartureSearchForStopResponse</a></code>
+
+# Trip
+
+Types:
+
+```python
+from onebusaway.types import TripRetrieveResponse
+```
+
+Methods:
+
+- <code title="get /api/where/trip/{tripID}.json">client.trip.<a href="./src/onebusaway/resources/trip.py">retrieve</a>(trip_id) -> <a href="./src/onebusaway/types/trip_retrieve_response.py">TripRetrieveResponse</a></code>
+
+# TripsForLocation
+
+Types:
+
+```python
+from onebusaway.types import TripsForLocationRetrieveResponse
+```
+
+Methods:
+
+- <code title="get /api/where/trips-for-location.json">client.trips_for_location.<a href="./src/onebusaway/resources/trips_for_location.py">retrieve</a>(\*\*<a href="src/onebusaway/types/trips_for_location_retrieve_params.py">params</a>) -> <a href="./src/onebusaway/types/trips_for_location_retrieve_response.py">TripsForLocationRetrieveResponse</a></code>

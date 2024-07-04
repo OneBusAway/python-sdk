@@ -1,12 +1,29 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from typing import List, Optional
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
 
-__all__ = ["References", "Agency", "Route", "Stop", "Trip"]
+__all__ = [
+    "References",
+    "Agency",
+    "Route",
+    "Situation",
+    "SituationActiveWindow",
+    "SituationAllAffect",
+    "SituationConsequence",
+    "SituationConsequenceConditionDetails",
+    "SituationConsequenceConditionDetailsDiversionPath",
+    "SituationDescription",
+    "SituationPublicationWindow",
+    "SituationSummary",
+    "SituationURL",
+    "Stop",
+    "Trip",
+]
 
 
 class Agency(BaseModel):
@@ -51,6 +68,129 @@ class Route(BaseModel):
     type: Optional[int] = None
 
     url: Optional[str] = None
+
+
+class SituationActiveWindow(BaseModel):
+    from_: Optional[int] = FieldInfo(alias="from", default=None)
+    """Start time of the active window as a Unix timestamp."""
+
+    to: Optional[int] = None
+    """End time of the active window as a Unix timestamp."""
+
+
+class SituationAllAffect(BaseModel):
+    agency_id: Optional[str] = FieldInfo(alias="agencyId", default=None)
+    """Identifier for the agency."""
+
+    application_id: Optional[str] = FieldInfo(alias="applicationId", default=None)
+    """Identifier for the application."""
+
+    direction_id: Optional[str] = FieldInfo(alias="directionId", default=None)
+    """Identifier for the direction."""
+
+    route_id: Optional[str] = FieldInfo(alias="routeId", default=None)
+    """Identifier for the route."""
+
+    stop_id: Optional[str] = FieldInfo(alias="stopId", default=None)
+    """Identifier for the stop."""
+
+    trip_id: Optional[str] = FieldInfo(alias="tripId", default=None)
+    """Identifier for the trip."""
+
+
+class SituationConsequenceConditionDetailsDiversionPath(BaseModel):
+    length: Optional[int] = None
+    """Length of the diversion path."""
+
+    levels: Optional[str] = None
+    """Levels of the diversion path."""
+
+    points: Optional[str] = None
+    """Points of the diversion path."""
+
+
+class SituationConsequenceConditionDetails(BaseModel):
+    diversion_path: Optional[SituationConsequenceConditionDetailsDiversionPath] = FieldInfo(
+        alias="diversionPath", default=None
+    )
+
+    diversion_stop_ids: Optional[List[str]] = FieldInfo(alias="diversionStopIds", default=None)
+
+
+class SituationConsequence(BaseModel):
+    condition: Optional[str] = None
+    """Condition of the consequence."""
+
+    condition_details: Optional[SituationConsequenceConditionDetails] = FieldInfo(
+        alias="conditionDetails", default=None
+    )
+
+
+class SituationDescription(BaseModel):
+    lang: Optional[str] = None
+    """Language of the description."""
+
+    value: Optional[str] = None
+    """Longer description of the situation."""
+
+
+class SituationPublicationWindow(BaseModel):
+    from_: int = FieldInfo(alias="from")
+    """Start time of the time window as a Unix timestamp."""
+
+    to: int
+    """End time of the time window as a Unix timestamp."""
+
+
+class SituationSummary(BaseModel):
+    lang: Optional[str] = None
+    """Language of the summary."""
+
+    value: Optional[str] = None
+    """Short summary of the situation."""
+
+
+class SituationURL(BaseModel):
+    lang: Optional[str] = None
+    """Language of the URL."""
+
+    value: Optional[str] = None
+    """URL for more information about the situation."""
+
+
+class Situation(BaseModel):
+    id: str
+    """Unique identifier for the situation."""
+
+    creation_time: int = FieldInfo(alias="creationTime")
+    """Unix timestamp of when this situation was created."""
+
+    active_windows: Optional[List[SituationActiveWindow]] = FieldInfo(alias="activeWindows", default=None)
+
+    all_affects: Optional[List[SituationAllAffect]] = FieldInfo(alias="allAffects", default=None)
+
+    consequence_message: Optional[str] = FieldInfo(alias="consequenceMessage", default=None)
+    """Message regarding the consequence of the situation."""
+
+    consequences: Optional[List[SituationConsequence]] = None
+
+    description: Optional[SituationDescription] = None
+
+    publication_windows: Optional[List[SituationPublicationWindow]] = FieldInfo(
+        alias="publicationWindows", default=None
+    )
+
+    reason: Optional[
+        Literal["equipmentReason", "environmentReason", "personnelReason", "miscellaneousReason", "securityAlert"]
+    ] = None
+    """Reason for the service alert, taken from TPEG codes."""
+
+    severity: Optional[str] = None
+    """Severity of the situation."""
+
+    summary: Optional[SituationSummary] = None
+
+    url: Optional[SituationURL] = None
 
 
 class Stop(BaseModel):
@@ -106,7 +246,7 @@ class References(BaseModel):
 
     routes: Optional[List[Route]] = None
 
-    situations: Optional[List[object]] = None
+    situations: Optional[List[Situation]] = None
 
     stops: Optional[List[Stop]] = None
 
