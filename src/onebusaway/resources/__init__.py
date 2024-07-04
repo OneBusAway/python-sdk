@@ -1,5 +1,29 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+from .trip import (
+    TripResource,
+    AsyncTripResource,
+    TripResourceWithRawResponse,
+    AsyncTripResourceWithRawResponse,
+    TripResourceWithStreamingResponse,
+    AsyncTripResourceWithStreamingResponse,
+)
+from .route import (
+    RouteResource,
+    AsyncRouteResource,
+    RouteResourceWithRawResponse,
+    AsyncRouteResourceWithRawResponse,
+    RouteResourceWithStreamingResponse,
+    AsyncRouteResourceWithStreamingResponse,
+)
+from .agency import (
+    AgencyResource,
+    AsyncAgencyResource,
+    AgencyResourceWithRawResponse,
+    AsyncAgencyResourceWithRawResponse,
+    AgencyResourceWithStreamingResponse,
+    AsyncAgencyResourceWithStreamingResponse,
+)
 from .config import (
     ConfigResource,
     AsyncConfigResource,
@@ -24,6 +48,22 @@ from .stops_for_location import (
     StopsForLocationResourceWithStreamingResponse,
     AsyncStopsForLocationResourceWithStreamingResponse,
 )
+from .trips_for_location import (
+    TripsForLocationResource,
+    AsyncTripsForLocationResource,
+    TripsForLocationResourceWithRawResponse,
+    AsyncTripsForLocationResourceWithRawResponse,
+    TripsForLocationResourceWithStreamingResponse,
+    AsyncTripsForLocationResourceWithStreamingResponse,
+)
+from .arrival_and_departure import (
+    ArrivalAndDepartureResource,
+    AsyncArrivalAndDepartureResource,
+    ArrivalAndDepartureResourceWithRawResponse,
+    AsyncArrivalAndDepartureResourceWithRawResponse,
+    ArrivalAndDepartureResourceWithStreamingResponse,
+    AsyncArrivalAndDepartureResourceWithStreamingResponse,
+)
 from .agencies_with_coverage import (
     AgenciesWithCoverageResource,
     AsyncAgenciesWithCoverageResource,
@@ -31,22 +71,6 @@ from .agencies_with_coverage import (
     AsyncAgenciesWithCoverageResourceWithRawResponse,
     AgenciesWithCoverageResourceWithStreamingResponse,
     AsyncAgenciesWithCoverageResourceWithStreamingResponse,
-)
-from .arrival_and_departure_for_stop import (
-    ArrivalAndDepartureForStopResource,
-    AsyncArrivalAndDepartureForStopResource,
-    ArrivalAndDepartureForStopResourceWithRawResponse,
-    AsyncArrivalAndDepartureForStopResourceWithRawResponse,
-    ArrivalAndDepartureForStopResourceWithStreamingResponse,
-    AsyncArrivalAndDepartureForStopResourceWithStreamingResponse,
-)
-from .arrivals_and_departures_for_stop import (
-    ArrivalsAndDeparturesForStopResource,
-    AsyncArrivalsAndDeparturesForStopResource,
-    ArrivalsAndDeparturesForStopResourceWithRawResponse,
-    AsyncArrivalsAndDeparturesForStopResourceWithRawResponse,
-    ArrivalsAndDeparturesForStopResourceWithStreamingResponse,
-    AsyncArrivalsAndDeparturesForStopResourceWithStreamingResponse,
 )
 
 __all__ = [
@@ -56,6 +80,12 @@ __all__ = [
     "AsyncAgenciesWithCoverageResourceWithRawResponse",
     "AgenciesWithCoverageResourceWithStreamingResponse",
     "AsyncAgenciesWithCoverageResourceWithStreamingResponse",
+    "AgencyResource",
+    "AsyncAgencyResource",
+    "AgencyResourceWithRawResponse",
+    "AsyncAgencyResourceWithRawResponse",
+    "AgencyResourceWithStreamingResponse",
+    "AsyncAgencyResourceWithStreamingResponse",
     "ConfigResource",
     "AsyncConfigResource",
     "ConfigResourceWithRawResponse",
@@ -74,16 +104,28 @@ __all__ = [
     "AsyncStopsForLocationResourceWithRawResponse",
     "StopsForLocationResourceWithStreamingResponse",
     "AsyncStopsForLocationResourceWithStreamingResponse",
-    "ArrivalAndDepartureForStopResource",
-    "AsyncArrivalAndDepartureForStopResource",
-    "ArrivalAndDepartureForStopResourceWithRawResponse",
-    "AsyncArrivalAndDepartureForStopResourceWithRawResponse",
-    "ArrivalAndDepartureForStopResourceWithStreamingResponse",
-    "AsyncArrivalAndDepartureForStopResourceWithStreamingResponse",
-    "ArrivalsAndDeparturesForStopResource",
-    "AsyncArrivalsAndDeparturesForStopResource",
-    "ArrivalsAndDeparturesForStopResourceWithRawResponse",
-    "AsyncArrivalsAndDeparturesForStopResourceWithRawResponse",
-    "ArrivalsAndDeparturesForStopResourceWithStreamingResponse",
-    "AsyncArrivalsAndDeparturesForStopResourceWithStreamingResponse",
+    "RouteResource",
+    "AsyncRouteResource",
+    "RouteResourceWithRawResponse",
+    "AsyncRouteResourceWithRawResponse",
+    "RouteResourceWithStreamingResponse",
+    "AsyncRouteResourceWithStreamingResponse",
+    "ArrivalAndDepartureResource",
+    "AsyncArrivalAndDepartureResource",
+    "ArrivalAndDepartureResourceWithRawResponse",
+    "AsyncArrivalAndDepartureResourceWithRawResponse",
+    "ArrivalAndDepartureResourceWithStreamingResponse",
+    "AsyncArrivalAndDepartureResourceWithStreamingResponse",
+    "TripResource",
+    "AsyncTripResource",
+    "TripResourceWithRawResponse",
+    "AsyncTripResourceWithRawResponse",
+    "TripResourceWithStreamingResponse",
+    "AsyncTripResourceWithStreamingResponse",
+    "TripsForLocationResource",
+    "AsyncTripsForLocationResource",
+    "TripsForLocationResourceWithRawResponse",
+    "AsyncTripsForLocationResourceWithRawResponse",
+    "TripsForLocationResourceWithStreamingResponse",
+    "AsyncTripsForLocationResourceWithStreamingResponse",
 ]
