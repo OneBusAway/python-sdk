@@ -8,10 +8,10 @@ from typing_extensions import Annotated, TypedDict
 
 from .._utils import PropertyInfo
 
-__all__ = ["ArrivalAndDepartureSearchAllForStopParams"]
+__all__ = ["ArrivalAndDepartureListParams"]
 
 
-class ArrivalAndDepartureSearchAllForStopParams(TypedDict, total=False):
+class ArrivalAndDepartureListParams(TypedDict, total=False):
     minutes_after: Annotated[int, PropertyInfo(alias="minutesAfter")]
     """Include vehicles arriving or departing in the next n minutes."""
 

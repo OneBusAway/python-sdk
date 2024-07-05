@@ -6,10 +6,10 @@ from typing_extensions import Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
 
-__all__ = ["ArrivalAndDepartureSearchForStopParams"]
+__all__ = ["ArrivalAndDepartureRetrieveParams"]
 
 
-class ArrivalAndDepartureSearchForStopParams(TypedDict, total=False):
+class ArrivalAndDepartureRetrieveParams(TypedDict, total=False):
     service_date: Required[Annotated[int, PropertyInfo(alias="serviceDate")]]
 
     trip_id: Required[Annotated[str, PropertyInfo(alias="tripId")]]

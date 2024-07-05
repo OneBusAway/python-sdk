@@ -81,16 +81,13 @@ Methods:
 Types:
 
 ```python
-from onebusaway.types import (
-    ArrivalAndDepartureSearchAllForStopResponse,
-    ArrivalAndDepartureSearchForStopResponse,
-)
+from onebusaway.types import ArrivalAndDepartureRetrieveResponse, ArrivalAndDepartureListResponse
 ```
 
 Methods:
 
-- <code title="get /api/where/arrivals-and-departures-for-stop/{stopID}.json">client.arrival_and_departure.<a href="./src/onebusaway/resources/arrival_and_departure.py">search_all_for_stop</a>(stop_id, \*\*<a href="src/onebusaway/types/arrival_and_departure_search_all_for_stop_params.py">params</a>) -> <a href="./src/onebusaway/types/arrival_and_departure_search_all_for_stop_response.py">ArrivalAndDepartureSearchAllForStopResponse</a></code>
-- <code title="get /api/where/arrival-and-departure-for-stop/{stopID}.json">client.arrival_and_departure.<a href="./src/onebusaway/resources/arrival_and_departure.py">search_for_stop</a>(stop_id, \*\*<a href="src/onebusaway/types/arrival_and_departure_search_for_stop_params.py">params</a>) -> <a href="./src/onebusaway/types/arrival_and_departure_search_for_stop_response.py">ArrivalAndDepartureSearchForStopResponse</a></code>
+- <code title="get /api/where/arrival-and-departure-for-stop/{stopID}.json">client.arrival_and_departure.<a href="./src/onebusaway/resources/arrival_and_departure.py">retrieve</a>(stop_id, \*\*<a href="src/onebusaway/types/arrival_and_departure_retrieve_params.py">params</a>) -> <a href="./src/onebusaway/types/arrival_and_departure_retrieve_response.py">ArrivalAndDepartureRetrieveResponse</a></code>
+- <code title="get /api/where/arrivals-and-departures-for-stop/{stopID}.json">client.arrival_and_departure.<a href="./src/onebusaway/resources/arrival_and_departure.py">list</a>(stop_id, \*\*<a href="src/onebusaway/types/arrival_and_departure_list_params.py">params</a>) -> <a href="./src/onebusaway/types/arrival_and_departure_list_response.py">ArrivalAndDepartureListResponse</a></code>
 
 # Trip
 

@@ -7,10 +7,7 @@ from datetime import datetime
 
 import httpx
 
-from ..types import (
-    arrival_and_departure_search_for_stop_params,
-    arrival_and_departure_search_all_for_stop_params,
-)
+from ..types import arrival_and_departure_list_params, arrival_and_departure_retrieve_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import (
     maybe_transform,
@@ -27,8 +24,8 @@ from .._response import (
 from .._base_client import (
     make_request_options,
 )
-from ..types.arrival_and_departure_search_for_stop_response import ArrivalAndDepartureSearchForStopResponse
-from ..types.arrival_and_departure_search_all_for_stop_response import ArrivalAndDepartureSearchAllForStopResponse
+from ..types.arrival_and_departure_list_response import ArrivalAndDepartureListResponse
+from ..types.arrival_and_departure_retrieve_response import ArrivalAndDepartureRetrieveResponse
 
 __all__ = ["ArrivalAndDepartureResource", "AsyncArrivalAndDepartureResource"]
 
@@ -42,7 +39,58 @@ class ArrivalAndDepartureResource(SyncAPIResource):
     def with_streaming_response(self) -> ArrivalAndDepartureResourceWithStreamingResponse:
         return ArrivalAndDepartureResourceWithStreamingResponse(self)
 
-    def search_all_for_stop(
+    def retrieve(
+        self,
+        stop_id: str,
+        *,
+        service_date: int,
+        trip_id: str,
+        stop_sequence: int | NotGiven = NOT_GIVEN,
+        time: int | NotGiven = NOT_GIVEN,
+        vehicle_id: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> ArrivalAndDepartureRetrieveResponse:
+        """
+        arrival-and-departure-for-stop
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not stop_id:
+            raise ValueError(f"Expected a non-empty value for `stop_id` but received {stop_id!r}")
+        return self._get(
+            f"/api/where/arrival-and-departure-for-stop/stopID.json",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "service_date": service_date,
+                        "trip_id": trip_id,
+                        "stop_sequence": stop_sequence,
+                        "time": time,
+                        "vehicle_id": vehicle_id,
+                    },
+                    arrival_and_departure_retrieve_params.ArrivalAndDepartureRetrieveParams,
+                ),
+            ),
+            cast_to=ArrivalAndDepartureRetrieveResponse,
+        )
+
+    def list(
         self,
         stop_id: str,
         *,
@@ -55,7 +103,7 @@ class ArrivalAndDepartureResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ArrivalAndDepartureSearchAllForStopResponse:
+    ) -> ArrivalAndDepartureListResponse:
         """
         arrivals-and-departures-for-stop
 
@@ -89,13 +137,23 @@ class ArrivalAndDepartureResource(SyncAPIResource):
                         "minutes_before": minutes_before,
                         "time": time,
                     },
-                    arrival_and_departure_search_all_for_stop_params.ArrivalAndDepartureSearchAllForStopParams,
+                    arrival_and_departure_list_params.ArrivalAndDepartureListParams,
                 ),
             ),
-            cast_to=ArrivalAndDepartureSearchAllForStopResponse,
+            cast_to=ArrivalAndDepartureListResponse,
         )
 
-    def search_for_stop(
+
+class AsyncArrivalAndDepartureResource(AsyncAPIResource):
+    @cached_property
+    def with_raw_response(self) -> AsyncArrivalAndDepartureResourceWithRawResponse:
+        return AsyncArrivalAndDepartureResourceWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> AsyncArrivalAndDepartureResourceWithStreamingResponse:
+        return AsyncArrivalAndDepartureResourceWithStreamingResponse(self)
+
+    async def retrieve(
         self,
         stop_id: str,
         *,
@@ -110,7 +168,7 @@ class ArrivalAndDepartureResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ArrivalAndDepartureSearchForStopResponse:
+    ) -> ArrivalAndDepartureRetrieveResponse:
         """
         arrival-and-departure-for-stop
 
@@ -125,14 +183,14 @@ class ArrivalAndDepartureResource(SyncAPIResource):
         """
         if not stop_id:
             raise ValueError(f"Expected a non-empty value for `stop_id` but received {stop_id!r}")
-        return self._get(
+        return await self._get(
             f"/api/where/arrival-and-departure-for-stop/{stop_id}.json",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform(
+                query=await async_maybe_transform(
                     {
                         "service_date": service_date,
                         "trip_id": trip_id,
@@ -140,23 +198,13 @@ class ArrivalAndDepartureResource(SyncAPIResource):
                         "time": time,
                         "vehicle_id": vehicle_id,
                     },
-                    arrival_and_departure_search_for_stop_params.ArrivalAndDepartureSearchForStopParams,
+                    arrival_and_departure_retrieve_params.ArrivalAndDepartureRetrieveParams,
                 ),
             ),
-            cast_to=ArrivalAndDepartureSearchForStopResponse,
+            cast_to=ArrivalAndDepartureRetrieveResponse,
         )
 
-
-class AsyncArrivalAndDepartureResource(AsyncAPIResource):
-    @cached_property
-    def with_raw_response(self) -> AsyncArrivalAndDepartureResourceWithRawResponse:
-        return AsyncArrivalAndDepartureResourceWithRawResponse(self)
-
-    @cached_property
-    def with_streaming_response(self) -> AsyncArrivalAndDepartureResourceWithStreamingResponse:
-        return AsyncArrivalAndDepartureResourceWithStreamingResponse(self)
-
-    async def search_all_for_stop(
+    async def list(
         self,
         stop_id: str,
         *,
@@ -169,7 +217,7 @@ class AsyncArrivalAndDepartureResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ArrivalAndDepartureSearchAllForStopResponse:
+    ) -> ArrivalAndDepartureListResponse:
         """
         arrivals-and-departures-for-stop
 
@@ -203,61 +251,10 @@ class AsyncArrivalAndDepartureResource(AsyncAPIResource):
                         "minutes_before": minutes_before,
                         "time": time,
                     },
-                    arrival_and_departure_search_all_for_stop_params.ArrivalAndDepartureSearchAllForStopParams,
+                    arrival_and_departure_list_params.ArrivalAndDepartureListParams,
                 ),
             ),
-            cast_to=ArrivalAndDepartureSearchAllForStopResponse,
-        )
-
-    async def search_for_stop(
-        self,
-        stop_id: str,
-        *,
-        service_date: int,
-        trip_id: str,
-        stop_sequence: int | NotGiven = NOT_GIVEN,
-        time: int | NotGiven = NOT_GIVEN,
-        vehicle_id: str | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ArrivalAndDepartureSearchForStopResponse:
-        """
-        arrival-and-departure-for-stop
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not stop_id:
-            raise ValueError(f"Expected a non-empty value for `stop_id` but received {stop_id!r}")
-        return await self._get(
-            f"/api/where/arrival-and-departure-for-stop/stopID.json",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {
-                        "service_date": service_date,
-                        "trip_id": trip_id,
-                        "stop_sequence": stop_sequence,
-                        "time": time,
-                        "vehicle_id": vehicle_id,
-                    },
-                    arrival_and_departure_search_for_stop_params.ArrivalAndDepartureSearchForStopParams,
-                ),
-            ),
-            cast_to=ArrivalAndDepartureSearchForStopResponse,
+            cast_to=ArrivalAndDepartureListResponse,
         )
 
 
@@ -265,11 +262,11 @@ class ArrivalAndDepartureResourceWithRawResponse:
     def __init__(self, arrival_and_departure: ArrivalAndDepartureResource) -> None:
         self._arrival_and_departure = arrival_and_departure
 
-        self.search_all_for_stop = to_raw_response_wrapper(
-            arrival_and_departure.search_all_for_stop,
+        self.retrieve = to_raw_response_wrapper(
+            arrival_and_departure.retrieve,
         )
-        self.search_for_stop = to_raw_response_wrapper(
-            arrival_and_departure.search_for_stop,
+        self.list = to_raw_response_wrapper(
+            arrival_and_departure.list,
         )
 
 
@@ -277,11 +274,11 @@ class AsyncArrivalAndDepartureResourceWithRawResponse:
     def __init__(self, arrival_and_departure: AsyncArrivalAndDepartureResource) -> None:
         self._arrival_and_departure = arrival_and_departure
 
-        self.search_all_for_stop = async_to_raw_response_wrapper(
-            arrival_and_departure.search_all_for_stop,
+        self.retrieve = async_to_raw_response_wrapper(
+            arrival_and_departure.retrieve,
         )
-        self.search_for_stop = async_to_raw_response_wrapper(
-            arrival_and_departure.search_for_stop,
+        self.list = async_to_raw_response_wrapper(
+            arrival_and_departure.list,
         )
 
 
@@ -289,11 +286,11 @@ class ArrivalAndDepartureResourceWithStreamingResponse:
     def __init__(self, arrival_and_departure: ArrivalAndDepartureResource) -> None:
         self._arrival_and_departure = arrival_and_departure
 
-        self.search_all_for_stop = to_streamed_response_wrapper(
-            arrival_and_departure.search_all_for_stop,
+        self.retrieve = to_streamed_response_wrapper(
+            arrival_and_departure.retrieve,
         )
-        self.search_for_stop = to_streamed_response_wrapper(
-            arrival_and_departure.search_for_stop,
+        self.list = to_streamed_response_wrapper(
+            arrival_and_departure.list,
         )
 
 
@@ -301,9 +298,9 @@ class AsyncArrivalAndDepartureResourceWithStreamingResponse:
     def __init__(self, arrival_and_departure: AsyncArrivalAndDepartureResource) -> None:
         self._arrival_and_departure = arrival_and_departure
 
-        self.search_all_for_stop = async_to_streamed_response_wrapper(
-            arrival_and_departure.search_all_for_stop,
+        self.retrieve = async_to_streamed_response_wrapper(
+            arrival_and_departure.retrieve,
         )
-        self.search_for_stop = async_to_streamed_response_wrapper(
-            arrival_and_departure.search_for_stop,
+        self.list = async_to_streamed_response_wrapper(
+            arrival_and_departure.list,
         )
