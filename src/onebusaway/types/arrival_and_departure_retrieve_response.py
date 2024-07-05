@@ -9,16 +9,16 @@ from .shared.references import References
 from .shared.response_wrapper import ResponseWrapper
 
 __all__ = [
-    "ArrivalAndDepartureSearchForStopResponse",
-    "ArrivalAndDepartureSearchForStopResponseData",
-    "ArrivalAndDepartureSearchForStopResponseDataEntry",
-    "ArrivalAndDepartureSearchForStopResponseDataEntryTripStatus",
-    "ArrivalAndDepartureSearchForStopResponseDataEntryTripStatusLastKnownLocation",
-    "ArrivalAndDepartureSearchForStopResponseDataEntryTripStatusPosition",
+    "ArrivalAndDepartureRetrieveResponse",
+    "ArrivalAndDepartureRetrieveResponseData",
+    "ArrivalAndDepartureRetrieveResponseDataEntry",
+    "ArrivalAndDepartureRetrieveResponseDataEntryTripStatus",
+    "ArrivalAndDepartureRetrieveResponseDataEntryTripStatusLastKnownLocation",
+    "ArrivalAndDepartureRetrieveResponseDataEntryTripStatusPosition",
 ]
 
 
-class ArrivalAndDepartureSearchForStopResponseDataEntryTripStatusLastKnownLocation(BaseModel):
+class ArrivalAndDepartureRetrieveResponseDataEntryTripStatusLastKnownLocation(BaseModel):
     lat: Optional[float] = None
     """Latitude of the last known location of the transit vehicle."""
 
@@ -26,7 +26,7 @@ class ArrivalAndDepartureSearchForStopResponseDataEntryTripStatusLastKnownLocati
     """Longitude of the last known location of the transit vehicle."""
 
 
-class ArrivalAndDepartureSearchForStopResponseDataEntryTripStatusPosition(BaseModel):
+class ArrivalAndDepartureRetrieveResponseDataEntryTripStatusPosition(BaseModel):
     lat: Optional[float] = None
     """Latitude of the current position of the transit vehicle."""
 
@@ -34,7 +34,7 @@ class ArrivalAndDepartureSearchForStopResponseDataEntryTripStatusPosition(BaseMo
     """Longitude of the current position of the transit vehicle."""
 
 
-class ArrivalAndDepartureSearchForStopResponseDataEntryTripStatus(BaseModel):
+class ArrivalAndDepartureRetrieveResponseDataEntryTripStatus(BaseModel):
     active_trip_id: Optional[str] = FieldInfo(alias="activeTripId", default=None)
     """Trip ID of the trip the vehicle is actively serving."""
 
@@ -62,9 +62,9 @@ class ArrivalAndDepartureSearchForStopResponseDataEntryTripStatus(BaseModel):
     vehicle.
     """
 
-    last_known_location: Optional[
-        ArrivalAndDepartureSearchForStopResponseDataEntryTripStatusLastKnownLocation
-    ] = FieldInfo(alias="lastKnownLocation", default=None)
+    last_known_location: Optional[ArrivalAndDepartureRetrieveResponseDataEntryTripStatusLastKnownLocation] = FieldInfo(
+        alias="lastKnownLocation", default=None
+    )
     """Last known location of the transit vehicle."""
 
     last_known_orientation: Optional[float] = FieldInfo(alias="lastKnownOrientation", default=None)
@@ -100,7 +100,7 @@ class ArrivalAndDepartureSearchForStopResponseDataEntryTripStatus(BaseModel):
     phase: Optional[str] = None
     """Current journey phase of the trip."""
 
-    position: Optional[ArrivalAndDepartureSearchForStopResponseDataEntryTripStatusPosition] = None
+    position: Optional[ArrivalAndDepartureRetrieveResponseDataEntryTripStatusPosition] = None
     """Current position of the transit vehicle."""
 
     predicted: Optional[bool] = None
@@ -134,7 +134,7 @@ class ArrivalAndDepartureSearchForStopResponseDataEntryTripStatus(BaseModel):
     """ID of the transit vehicle currently serving the trip."""
 
 
-class ArrivalAndDepartureSearchForStopResponseDataEntry(BaseModel):
+class ArrivalAndDepartureRetrieveResponseDataEntry(BaseModel):
     actual_track: Optional[str] = FieldInfo(alias="actualTrack", default=None)
     """The actual track information of the arriving transit vehicle."""
 
@@ -255,7 +255,7 @@ class ArrivalAndDepartureSearchForStopResponseDataEntry(BaseModel):
     trip_id: Optional[str] = FieldInfo(alias="tripId", default=None)
     """The ID of the trip for the arriving vehicle."""
 
-    trip_status: Optional[ArrivalAndDepartureSearchForStopResponseDataEntryTripStatus] = FieldInfo(
+    trip_status: Optional[ArrivalAndDepartureRetrieveResponseDataEntryTripStatus] = FieldInfo(
         alias="tripStatus", default=None
     )
     """Trip-specific status for the arriving transit vehicle."""
@@ -264,11 +264,11 @@ class ArrivalAndDepartureSearchForStopResponseDataEntry(BaseModel):
     """ID of the transit vehicle serving this trip."""
 
 
-class ArrivalAndDepartureSearchForStopResponseData(BaseModel):
-    entry: Optional[ArrivalAndDepartureSearchForStopResponseDataEntry] = None
+class ArrivalAndDepartureRetrieveResponseData(BaseModel):
+    entry: Optional[ArrivalAndDepartureRetrieveResponseDataEntry] = None
 
     references: Optional[References] = None
 
 
-class ArrivalAndDepartureSearchForStopResponse(ResponseWrapper):
-    data: Optional[ArrivalAndDepartureSearchForStopResponseData] = None
+class ArrivalAndDepartureRetrieveResponse(ResponseWrapper):
+    data: Optional[ArrivalAndDepartureRetrieveResponseData] = None
