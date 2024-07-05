@@ -56,7 +56,7 @@ class RouteResource(SyncAPIResource):
         if not route_id:
             raise ValueError(f"Expected a non-empty value for `route_id` but received {route_id!r}")
         return self._get(
-            f"/api/where/route/routeID.json",
+            f"/api/where/route/{route_id}.json",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -99,7 +99,7 @@ class AsyncRouteResource(AsyncAPIResource):
         if not route_id:
             raise ValueError(f"Expected a non-empty value for `route_id` but received {route_id!r}")
         return await self._get(
-            f"/api/where/route/{route_id}.json",
+            f"/api/where/route/routeID.json",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
