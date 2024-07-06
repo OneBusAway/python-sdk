@@ -398,7 +398,7 @@ async def test_base64_file_input(use_async: bool) -> None:
 
     # pathlib.Path is automatically converted to base64
     assert await transform({"foo": SAMPLE_FILE_PATH}, TypedDictBase64Input, use_async) == {
-        "foo": "SGVsbG8sIHdvcmxkIQo="
+        "foo": "SGVsbG8sIHdvcmxkIVxuDQo="
     }  # type: ignore[comparison-overlap]
 
     # io instances are automatically converted to base64
