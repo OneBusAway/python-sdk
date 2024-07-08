@@ -56,7 +56,7 @@ class AgencyResource(SyncAPIResource):
         if not agency_id:
             raise ValueError(f"Expected a non-empty value for `agency_id` but received {agency_id!r}")
         return self._get(
-            f"/api/where/agency/agencyID.json",
+            f"/api/where/agency/{agency_id}.json",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -99,7 +99,7 @@ class AsyncAgencyResource(AsyncAPIResource):
         if not agency_id:
             raise ValueError(f"Expected a non-empty value for `agency_id` but received {agency_id!r}")
         return await self._get(
-            f"/api/where/agency/agencyID.json",
+            f"/api/where/agency/{agency_id}.json",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
