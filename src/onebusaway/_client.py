@@ -51,6 +51,7 @@ class OnebusawaySDK(SyncAPIClient):
     config: resources.ConfigResource
     current_time: resources.CurrentTimeResource
     stops_for_location: resources.StopsForLocationResource
+    stops_for_route: resources.StopsForRouteResource
     route: resources.RouteResource
     arrival_and_departure: resources.ArrivalAndDepartureResource
     trip: resources.TripResource
@@ -117,6 +118,7 @@ class OnebusawaySDK(SyncAPIClient):
         self.config = resources.ConfigResource(self)
         self.current_time = resources.CurrentTimeResource(self)
         self.stops_for_location = resources.StopsForLocationResource(self)
+        self.stops_for_route = resources.StopsForRouteResource(self)
         self.route = resources.RouteResource(self)
         self.arrival_and_departure = resources.ArrivalAndDepartureResource(self)
         self.trip = resources.TripResource(self)
@@ -130,9 +132,8 @@ class OnebusawaySDK(SyncAPIClient):
         return Querystring(array_format="repeat")
 
     @property
-    @override
-    def auth_headers(self) -> dict[str, str]:
-        return {}
+    def auth_headers(self) -> httpx.Auth:
+        raise NotImplementedError("This auth method has not been implemented yet.")
 
     @property
     @override
@@ -243,6 +244,7 @@ class AsyncOnebusawaySDK(AsyncAPIClient):
     config: resources.AsyncConfigResource
     current_time: resources.AsyncCurrentTimeResource
     stops_for_location: resources.AsyncStopsForLocationResource
+    stops_for_route: resources.AsyncStopsForRouteResource
     route: resources.AsyncRouteResource
     arrival_and_departure: resources.AsyncArrivalAndDepartureResource
     trip: resources.AsyncTripResource
@@ -309,6 +311,7 @@ class AsyncOnebusawaySDK(AsyncAPIClient):
         self.config = resources.AsyncConfigResource(self)
         self.current_time = resources.AsyncCurrentTimeResource(self)
         self.stops_for_location = resources.AsyncStopsForLocationResource(self)
+        self.stops_for_route = resources.AsyncStopsForRouteResource(self)
         self.route = resources.AsyncRouteResource(self)
         self.arrival_and_departure = resources.AsyncArrivalAndDepartureResource(self)
         self.trip = resources.AsyncTripResource(self)
@@ -322,9 +325,8 @@ class AsyncOnebusawaySDK(AsyncAPIClient):
         return Querystring(array_format="repeat")
 
     @property
-    @override
-    def auth_headers(self) -> dict[str, str]:
-        return {}
+    def auth_headers(self) -> httpx.Auth:
+        raise NotImplementedError("This auth method has not been implemented yet.")
 
     @property
     @override
@@ -438,6 +440,7 @@ class OnebusawaySDKWithRawResponse:
         self.config = resources.ConfigResourceWithRawResponse(client.config)
         self.current_time = resources.CurrentTimeResourceWithRawResponse(client.current_time)
         self.stops_for_location = resources.StopsForLocationResourceWithRawResponse(client.stops_for_location)
+        self.stops_for_route = resources.StopsForRouteResourceWithRawResponse(client.stops_for_route)
         self.route = resources.RouteResourceWithRawResponse(client.route)
         self.arrival_and_departure = resources.ArrivalAndDepartureResourceWithRawResponse(client.arrival_and_departure)
         self.trip = resources.TripResourceWithRawResponse(client.trip)
@@ -453,6 +456,7 @@ class AsyncOnebusawaySDKWithRawResponse:
         self.config = resources.AsyncConfigResourceWithRawResponse(client.config)
         self.current_time = resources.AsyncCurrentTimeResourceWithRawResponse(client.current_time)
         self.stops_for_location = resources.AsyncStopsForLocationResourceWithRawResponse(client.stops_for_location)
+        self.stops_for_route = resources.AsyncStopsForRouteResourceWithRawResponse(client.stops_for_route)
         self.route = resources.AsyncRouteResourceWithRawResponse(client.route)
         self.arrival_and_departure = resources.AsyncArrivalAndDepartureResourceWithRawResponse(
             client.arrival_and_departure
@@ -470,6 +474,7 @@ class OnebusawaySDKWithStreamedResponse:
         self.config = resources.ConfigResourceWithStreamingResponse(client.config)
         self.current_time = resources.CurrentTimeResourceWithStreamingResponse(client.current_time)
         self.stops_for_location = resources.StopsForLocationResourceWithStreamingResponse(client.stops_for_location)
+        self.stops_for_route = resources.StopsForRouteResourceWithStreamingResponse(client.stops_for_route)
         self.route = resources.RouteResourceWithStreamingResponse(client.route)
         self.arrival_and_departure = resources.ArrivalAndDepartureResourceWithStreamingResponse(
             client.arrival_and_departure
@@ -489,6 +494,7 @@ class AsyncOnebusawaySDKWithStreamedResponse:
         self.stops_for_location = resources.AsyncStopsForLocationResourceWithStreamingResponse(
             client.stops_for_location
         )
+        self.stops_for_route = resources.AsyncStopsForRouteResourceWithStreamingResponse(client.stops_for_route)
         self.route = resources.AsyncRouteResourceWithStreamingResponse(client.route)
         self.arrival_and_departure = resources.AsyncArrivalAndDepartureResourceWithStreamingResponse(
             client.arrival_and_departure

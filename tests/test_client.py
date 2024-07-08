@@ -2,13 +2,12 @@
 
 from __future__ import annotations
 
-# import gc
+import gc
 import os
 import json
 import asyncio
 import inspect
-
-# import tracemalloc
+import tracemalloc
 from typing import Any, Union, cast
 from unittest import mock
 
@@ -157,7 +156,7 @@ class TestOnebusawaySDK:
 
         # completely overrides already set values
         copied = client.copy(set_default_query={})
-        assert _get_params(copied) == {"key": api_key}
+        assert _get_params(copied) == {}
 
         copied = client.copy(set_default_query={"bar": "Robert"})
         assert _get_params(copied)["bar"] == "Robert"
@@ -167,7 +166,7 @@ class TestOnebusawaySDK:
             # TODO: update
             match="`default_query` and `set_default_query` arguments are mutually exclusive",
         ):
-            client.copy(set_default_query={}, default_query={"foo": "Bar", "key": api_key})
+            client.copy(set_default_query={}, default_query={"foo": "Bar"})
 
     def test_copy_signature(self) -> None:
         # ensure the same parameters that can be passed to the client are defined in the `.copy()` method
@@ -185,67 +184,67 @@ class TestOnebusawaySDK:
             copy_param = copy_signature.parameters.get(name)
             assert copy_param is not None, f"copy() signature is missing the {name} param"
 
-    # def test_copy_build_request(self) -> None:
-    #     options = FinalRequestOptions(method="get", url="/foo")
+    def test_copy_build_request(self) -> None:
+        options = FinalRequestOptions(method="get", url="/foo")
 
-    #     def build_request(options: FinalRequestOptions) -> None:
-    #         client = self.client.copy()
-    #         client._build_request(options)
+        def build_request(options: FinalRequestOptions) -> None:
+            client = self.client.copy()
+            client._build_request(options)
 
-    #     # ensure that the machinery is warmed up before tracing starts.
-    #     build_request(options)
-    #     gc.collect()
+        # ensure that the machinery is warmed up before tracing starts.
+        build_request(options)
+        gc.collect()
 
-    #     tracemalloc.start(1000)
+        tracemalloc.start(1000)
 
-    #     snapshot_before = tracemalloc.take_snapshot()
+        snapshot_before = tracemalloc.take_snapshot()
 
-    #     ITERATIONS = 10
-    #     for _ in range(ITERATIONS):
-    #         build_request(options)
+        ITERATIONS = 10
+        for _ in range(ITERATIONS):
+            build_request(options)
 
-    #     gc.collect()
-    #     snapshot_after = tracemalloc.take_snapshot()
+        gc.collect()
+        snapshot_after = tracemalloc.take_snapshot()
 
-    #     tracemalloc.stop()
+        tracemalloc.stop()
 
-    #     def add_leak(leaks: list[tracemalloc.StatisticDiff], diff: tracemalloc.StatisticDiff) -> None:
-    #         if diff.count == 0:
-    #             # Avoid false positives by considering only leaks (i.e. allocations that persist).
-    #             return
+        def add_leak(leaks: list[tracemalloc.StatisticDiff], diff: tracemalloc.StatisticDiff) -> None:
+            if diff.count == 0:
+                # Avoid false positives by considering only leaks (i.e. allocations that persist).
+                return
 
-    #         if diff.count % ITERATIONS != 0:
-    #             # Avoid false positives by considering only leaks that appear per iteration.
-    #             return
+            if diff.count % ITERATIONS != 0:
+                # Avoid false positives by considering only leaks that appear per iteration.
+                return
 
-    #         for frame in diff.traceback:
-    #             if any(
-    #                 frame.filename.endswith(fragment)
-    #                 for fragment in [
-    #                     # to_raw_response_wrapper leaks through the @functools.wraps() decorator.
-    #                     #
-    #                     # removing the decorator fixes the leak for reasons we don't understand.
-    #                     "onebusaway/_legacy_response.py",
-    #                     "onebusaway/_response.py",
-    #                     # pydantic.BaseModel.model_dump || pydantic.BaseModel.dict leak memory for some reason.
-    #                     "onebusaway/_compat.py",
-    #                     # Standard library leaks we don't care about.
-    #                     "/logging/__init__.py",
-    #                 ]
-    #             ):
-    #                 return
+            for frame in diff.traceback:
+                if any(
+                    frame.filename.endswith(fragment)
+                    for fragment in [
+                        # to_raw_response_wrapper leaks through the @functools.wraps() decorator.
+                        #
+                        # removing the decorator fixes the leak for reasons we don't understand.
+                        "onebusaway/_legacy_response.py",
+                        "onebusaway/_response.py",
+                        # pydantic.BaseModel.model_dump || pydantic.BaseModel.dict leak memory for some reason.
+                        "onebusaway/_compat.py",
+                        # Standard library leaks we don't care about.
+                        "/logging/__init__.py",
+                    ]
+                ):
+                    return
 
-    #         leaks.append(diff)
+            leaks.append(diff)
 
-    #     leaks: list[tracemalloc.StatisticDiff] = []
-    #     for diff in snapshot_after.compare_to(snapshot_before, "traceback"):
-    #         add_leak(leaks, diff)
-    #     if leaks:
-    #         for leak in leaks:
-    #             print("MEMORY LEAK:", leak)
-    #             for frame in leak.traceback:
-    #                 print(frame)
-    #         raise AssertionError()
+        leaks: list[tracemalloc.StatisticDiff] = []
+        for diff in snapshot_after.compare_to(snapshot_before, "traceback"):
+            add_leak(leaks, diff)
+        if leaks:
+            for leak in leaks:
+                print("MEMORY LEAK:", leak)
+                for frame in leak.traceback:
+                    print(frame)
+            raise AssertionError()
 
     def test_request_timeout(self) -> None:
         request = self.client._build_request(FinalRequestOptions(method="get", url="/foo"))
@@ -335,7 +334,7 @@ class TestOnebusawaySDK:
         )
         request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
         url = httpx.URL(request.url)
-        assert dict(url.params) == {"query_param": "bar", "key": api_key}
+        assert dict(url.params) == {"query_param": "bar"}
 
         request = client._build_request(
             FinalRequestOptions(
@@ -345,7 +344,7 @@ class TestOnebusawaySDK:
             )
         )
         url = httpx.URL(request.url)
-        assert dict(url.params) == {"foo": "baz", "query_param": "overriden", "key": api_key}
+        assert dict(url.params) == {"foo": "baz", "query_param": "overriden"}
 
     def test_request_extra_json(self) -> None:
         request = self.client._build_request(
@@ -414,7 +413,7 @@ class TestOnebusawaySDK:
             ),
         )
         params = dict(request.url.params)
-        assert params == {"my_query_param": "Foo", "key": api_key}
+        assert params == {"my_query_param": "Foo"}
 
         # if both `query` and `extra_query` are given, they are merged
         request = self.client._build_request(
@@ -428,7 +427,7 @@ class TestOnebusawaySDK:
             ),
         )
         params = dict(request.url.params)
-        assert params == {"bar": "1", "foo": "2", "key": api_key}
+        assert params == {"bar": "1", "foo": "2"}
 
         # `extra_query` takes priority over `query` when keys clash
         request = self.client._build_request(
@@ -442,7 +441,7 @@ class TestOnebusawaySDK:
             ),
         )
         params = dict(request.url.params)
-        assert params == {"foo": "2", "key": api_key}
+        assert params == {"foo": "2"}
 
     def test_multipart_repeating_array(self, client: OnebusawaySDK) -> None:
         request = client._build_request(
@@ -568,8 +567,7 @@ class TestOnebusawaySDK:
                 json_data={"foo": "bar"},
             ),
         )
-        expected_url = f"http://localhost:5000/custom/path/foo?key={client.api_key}"
-        assert request.url == expected_url
+        assert request.url == "http://localhost:5000/custom/path/foo"
 
     @pytest.mark.parametrize(
         "client",
@@ -594,8 +592,7 @@ class TestOnebusawaySDK:
                 json_data={"foo": "bar"},
             ),
         )
-        expected_url = f"http://localhost:5000/custom/path/foo?key={client.api_key}"
-        assert request.url == expected_url
+        assert request.url == "http://localhost:5000/custom/path/foo"
 
     @pytest.mark.parametrize(
         "client",
@@ -620,8 +617,7 @@ class TestOnebusawaySDK:
                 json_data={"foo": "bar"},
             ),
         )
-        expected_url = f"https://myapi.com/foo?key={client.api_key}"
-        assert request.url == expected_url
+        assert request.url == "https://myapi.com/foo"
 
     def test_copied_client_does_not_close_http(self) -> None:
         client = OnebusawaySDK(base_url=base_url, api_key=api_key, _strict_response_validation=True)
@@ -842,7 +838,7 @@ class TestAsyncOnebusawaySDK:
 
         # completely overrides already set values
         copied = client.copy(set_default_query={})
-        assert _get_params(copied) == {"key": api_key}
+        assert _get_params(copied) == {}
 
         copied = client.copy(set_default_query={"bar": "Robert"})
         assert _get_params(copied)["bar"] == "Robert"
@@ -870,67 +866,67 @@ class TestAsyncOnebusawaySDK:
             copy_param = copy_signature.parameters.get(name)
             assert copy_param is not None, f"copy() signature is missing the {name} param"
 
-    # def test_copy_build_request(self) -> None:
-    #     options = FinalRequestOptions(method="get", url="/foo")
+    def test_copy_build_request(self) -> None:
+        options = FinalRequestOptions(method="get", url="/foo")
 
-    #     def build_request(options: FinalRequestOptions) -> None:
-    #         client = self.client.copy()
-    #         client._build_request(options)
+        def build_request(options: FinalRequestOptions) -> None:
+            client = self.client.copy()
+            client._build_request(options)
 
-    #     ensure that the machinery is warmed up before tracing starts.
-    #     build_request(options)
-    #     gc.collect()
+        # ensure that the machinery is warmed up before tracing starts.
+        build_request(options)
+        gc.collect()
 
-    #     tracemalloc.start(1000)
+        tracemalloc.start(1000)
 
-    #     snapshot_before = tracemalloc.take_snapshot()
+        snapshot_before = tracemalloc.take_snapshot()
 
-    #     ITERATIONS = 10
-    #     for _ in range(ITERATIONS):
-    #         build_request(options)
+        ITERATIONS = 10
+        for _ in range(ITERATIONS):
+            build_request(options)
 
-    #     gc.collect()
-    #     snapshot_after = tracemalloc.take_snapshot()
+        gc.collect()
+        snapshot_after = tracemalloc.take_snapshot()
 
-    #     tracemalloc.stop()
+        tracemalloc.stop()
 
-    #     def add_leak(leaks: list[tracemalloc.StatisticDiff], diff: tracemalloc.StatisticDiff) -> None:
-    #         if diff.count == 0:
-    #             Avoid false positives by considering only leaks (i.e. allocations that persist).
-    #             return
+        def add_leak(leaks: list[tracemalloc.StatisticDiff], diff: tracemalloc.StatisticDiff) -> None:
+            if diff.count == 0:
+                # Avoid false positives by considering only leaks (i.e. allocations that persist).
+                return
 
-    #         if diff.count % ITERATIONS != 0:
-    #             Avoid false positives by considering only leaks that appear per iteration.
-    #             return
+            if diff.count % ITERATIONS != 0:
+                # Avoid false positives by considering only leaks that appear per iteration.
+                return
 
-    #         for frame in diff.traceback:
-    #             if any(
-    #                 frame.filename.endswith(fragment)
-    #                 for fragment in [
-    #                     to_raw_response_wrapper leaks through the @functools.wraps() decorator.
+            for frame in diff.traceback:
+                if any(
+                    frame.filename.endswith(fragment)
+                    for fragment in [
+                        # to_raw_response_wrapper leaks through the @functools.wraps() decorator.
+                        #
+                        # removing the decorator fixes the leak for reasons we don't understand.
+                        "onebusaway/_legacy_response.py",
+                        "onebusaway/_response.py",
+                        # pydantic.BaseModel.model_dump || pydantic.BaseModel.dict leak memory for some reason.
+                        "onebusaway/_compat.py",
+                        # Standard library leaks we don't care about.
+                        "/logging/__init__.py",
+                    ]
+                ):
+                    return
 
-    #                     removing the decorator fixes the leak for reasons we don't understand.
-    #                     "onebusaway/_legacy_response.py",
-    #                     "onebusaway/_response.py",
-    #                     pydantic.BaseModel.model_dump || pydantic.BaseModel.dict leak memory for some reason.
-    #                     "onebusaway/_compat.py",
-    #                     Standard library leaks we don't care about.
-    #                     "/logging/__init__.py",
-    #                 ]
-    #             ):
-    #                 return
+            leaks.append(diff)
 
-    #         leaks.append(diff)
-
-    #     leaks: list[tracemalloc.StatisticDiff] = []
-    #     for diff in snapshot_after.compare_to(snapshot_before, "traceback"):
-    #         add_leak(leaks, diff)
-    #     if leaks:
-    #         for leak in leaks:
-    #             print("MEMORY LEAK:", leak)
-    #             for frame in leak.traceback:
-    #                 print(frame)
-    #         raise AssertionError()
+        leaks: list[tracemalloc.StatisticDiff] = []
+        for diff in snapshot_after.compare_to(snapshot_before, "traceback"):
+            add_leak(leaks, diff)
+        if leaks:
+            for leak in leaks:
+                print("MEMORY LEAK:", leak)
+                for frame in leak.traceback:
+                    print(frame)
+            raise AssertionError()
 
     async def test_request_timeout(self) -> None:
         request = self.client._build_request(FinalRequestOptions(method="get", url="/foo"))
@@ -1020,18 +1016,17 @@ class TestAsyncOnebusawaySDK:
         )
         request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
         url = httpx.URL(request.url)
-        # Include the 'key' in the expected params
-        assert dict(url.params) == {"query_param": "bar", "key": api_key}
+        assert dict(url.params) == {"query_param": "bar"}
 
         request = client._build_request(
             FinalRequestOptions(
                 method="get",
                 url="/foo",
-                params={"foo": "baz", "query_param": "overriden", "key": api_key},
+                params={"foo": "baz", "query_param": "overriden"},
             )
         )
         url = httpx.URL(request.url)
-        assert dict(url.params) == {"foo": "baz", "query_param": "overriden", "key": api_key}
+        assert dict(url.params) == {"foo": "baz", "query_param": "overriden"}
 
     def test_request_extra_json(self) -> None:
         request = self.client._build_request(
@@ -1100,7 +1095,7 @@ class TestAsyncOnebusawaySDK:
             ),
         )
         params = dict(request.url.params)
-        assert params == {"my_query_param": "Foo", "key": api_key}
+        assert params == {"my_query_param": "Foo"}
 
         # if both `query` and `extra_query` are given, they are merged
         request = self.client._build_request(
@@ -1114,7 +1109,8 @@ class TestAsyncOnebusawaySDK:
             ),
         )
         params = dict(request.url.params)
-        assert params == {"bar": "1", "foo": "2", "key": api_key}
+        assert params == {"bar": "1", "foo": "2"}
+
         # `extra_query` takes priority over `query` when keys clash
         request = self.client._build_request(
             FinalRequestOptions(
@@ -1127,7 +1123,7 @@ class TestAsyncOnebusawaySDK:
             ),
         )
         params = dict(request.url.params)
-        assert params == {"foo": "2", "key": api_key}
+        assert params == {"foo": "2"}
 
     def test_multipart_repeating_array(self, async_client: AsyncOnebusawaySDK) -> None:
         request = async_client._build_request(
@@ -1253,8 +1249,7 @@ class TestAsyncOnebusawaySDK:
                 json_data={"foo": "bar"},
             ),
         )
-        excepted_url = f"http://localhost:5000/custom/path/foo?key={client.api_key}"
-        assert request.url == excepted_url
+        assert request.url == "http://localhost:5000/custom/path/foo"
 
     @pytest.mark.parametrize(
         "client",
@@ -1279,9 +1274,7 @@ class TestAsyncOnebusawaySDK:
                 json_data={"foo": "bar"},
             ),
         )
-
-        expected_url = f"http://localhost:5000/custom/path/foo?key={client.api_key}"
-        assert request.url == expected_url
+        assert request.url == "http://localhost:5000/custom/path/foo"
 
     @pytest.mark.parametrize(
         "client",
@@ -1306,8 +1299,7 @@ class TestAsyncOnebusawaySDK:
                 json_data={"foo": "bar"},
             ),
         )
-        expected_url = f"https://myapi.com/foo?key={client.api_key}"
-        assert request.url == expected_url
+        assert request.url == "https://myapi.com/foo"
 
     async def test_copied_client_does_not_close_http(self) -> None:
         client = AsyncOnebusawaySDK(base_url=base_url, api_key=api_key, _strict_response_validation=True)

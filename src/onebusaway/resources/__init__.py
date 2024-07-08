@@ -40,6 +40,14 @@ from .current_time import (
     CurrentTimeResourceWithStreamingResponse,
     AsyncCurrentTimeResourceWithStreamingResponse,
 )
+from .stops_for_route import (
+    StopsForRouteResource,
+    AsyncStopsForRouteResource,
+    StopsForRouteResourceWithRawResponse,
+    AsyncStopsForRouteResourceWithRawResponse,
+    StopsForRouteResourceWithStreamingResponse,
+    AsyncStopsForRouteResourceWithStreamingResponse,
+)
 from .stops_for_location import (
     StopsForLocationResource,
     AsyncStopsForLocationResource,
@@ -104,6 +112,12 @@ __all__ = [
     "AsyncStopsForLocationResourceWithRawResponse",
     "StopsForLocationResourceWithStreamingResponse",
     "AsyncStopsForLocationResourceWithStreamingResponse",
+    "StopsForRouteResource",
+    "AsyncStopsForRouteResource",
+    "StopsForRouteResourceWithRawResponse",
+    "AsyncStopsForRouteResourceWithRawResponse",
+    "StopsForRouteResourceWithStreamingResponse",
+    "AsyncStopsForRouteResourceWithStreamingResponse",
     "RouteResource",
     "AsyncRouteResource",
     "RouteResourceWithRawResponse",
