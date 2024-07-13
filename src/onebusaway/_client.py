@@ -56,6 +56,7 @@ class OnebusawaySDK(SyncAPIClient):
     arrival_and_departure: resources.ArrivalAndDepartureResource
     trip: resources.TripResource
     trips_for_location: resources.TripsForLocationResource
+    trip_details: resources.TripDetailsResource
     with_raw_response: OnebusawaySDKWithRawResponse
     with_streaming_response: OnebusawaySDKWithStreamedResponse
 
@@ -123,6 +124,7 @@ class OnebusawaySDK(SyncAPIClient):
         self.arrival_and_departure = resources.ArrivalAndDepartureResource(self)
         self.trip = resources.TripResource(self)
         self.trips_for_location = resources.TripsForLocationResource(self)
+        self.trip_details = resources.TripDetailsResource(self)
         self.with_raw_response = OnebusawaySDKWithRawResponse(self)
         self.with_streaming_response = OnebusawaySDKWithStreamedResponse(self)
 
@@ -132,9 +134,8 @@ class OnebusawaySDK(SyncAPIClient):
         return Querystring(array_format="repeat")
 
     @property
-    @override
-    def auth_headers(self) -> dict[str, str]:
-        return {}
+    def auth_headers(self) -> httpx.Auth:
+        raise NotImplementedError("This auth method has not been implemented yet.")
 
     @property
     @override
@@ -250,6 +251,7 @@ class AsyncOnebusawaySDK(AsyncAPIClient):
     arrival_and_departure: resources.AsyncArrivalAndDepartureResource
     trip: resources.AsyncTripResource
     trips_for_location: resources.AsyncTripsForLocationResource
+    trip_details: resources.AsyncTripDetailsResource
     with_raw_response: AsyncOnebusawaySDKWithRawResponse
     with_streaming_response: AsyncOnebusawaySDKWithStreamedResponse
 
@@ -317,6 +319,7 @@ class AsyncOnebusawaySDK(AsyncAPIClient):
         self.arrival_and_departure = resources.AsyncArrivalAndDepartureResource(self)
         self.trip = resources.AsyncTripResource(self)
         self.trips_for_location = resources.AsyncTripsForLocationResource(self)
+        self.trip_details = resources.AsyncTripDetailsResource(self)
         self.with_raw_response = AsyncOnebusawaySDKWithRawResponse(self)
         self.with_streaming_response = AsyncOnebusawaySDKWithStreamedResponse(self)
 
@@ -326,9 +329,8 @@ class AsyncOnebusawaySDK(AsyncAPIClient):
         return Querystring(array_format="repeat")
 
     @property
-    @override
-    def auth_headers(self) -> dict[str, str]:
-        return {}
+    def auth_headers(self) -> httpx.Auth:
+        raise NotImplementedError("This auth method has not been implemented yet.")
 
     @property
     @override
@@ -447,6 +449,7 @@ class OnebusawaySDKWithRawResponse:
         self.arrival_and_departure = resources.ArrivalAndDepartureResourceWithRawResponse(client.arrival_and_departure)
         self.trip = resources.TripResourceWithRawResponse(client.trip)
         self.trips_for_location = resources.TripsForLocationResourceWithRawResponse(client.trips_for_location)
+        self.trip_details = resources.TripDetailsResourceWithRawResponse(client.trip_details)
 
 
 class AsyncOnebusawaySDKWithRawResponse:
@@ -465,6 +468,7 @@ class AsyncOnebusawaySDKWithRawResponse:
         )
         self.trip = resources.AsyncTripResourceWithRawResponse(client.trip)
         self.trips_for_location = resources.AsyncTripsForLocationResourceWithRawResponse(client.trips_for_location)
+        self.trip_details = resources.AsyncTripDetailsResourceWithRawResponse(client.trip_details)
 
 
 class OnebusawaySDKWithStreamedResponse:
@@ -483,6 +487,7 @@ class OnebusawaySDKWithStreamedResponse:
         )
         self.trip = resources.TripResourceWithStreamingResponse(client.trip)
         self.trips_for_location = resources.TripsForLocationResourceWithStreamingResponse(client.trips_for_location)
+        self.trip_details = resources.TripDetailsResourceWithStreamingResponse(client.trip_details)
 
 
 class AsyncOnebusawaySDKWithStreamedResponse:
@@ -505,6 +510,7 @@ class AsyncOnebusawaySDKWithStreamedResponse:
         self.trips_for_location = resources.AsyncTripsForLocationResourceWithStreamingResponse(
             client.trips_for_location
         )
+        self.trip_details = resources.AsyncTripDetailsResourceWithStreamingResponse(client.trip_details)
 
 
 Client = OnebusawaySDK

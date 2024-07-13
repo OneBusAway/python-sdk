@@ -124,3 +124,15 @@ from onebusaway.types import TripsForLocationRetrieveResponse
 Methods:
 
 - <code title="get /api/where/trips-for-location.json">client.trips_for_location.<a href="./src/onebusaway/resources/trips_for_location.py">retrieve</a>(\*\*<a href="src/onebusaway/types/trips_for_location_retrieve_params.py">params</a>) -> <a href="./src/onebusaway/types/trips_for_location_retrieve_response.py">TripsForLocationRetrieveResponse</a></code>
+
+# TripDetails
+
+Types:
+
+```python
+from onebusaway.types import TripDetailRetrieveResponse
+```
+
+Methods:
+
+- <code title="get /api/where/trip-details/{tripID}.json">client.trip_details.<a href="./src/onebusaway/resources/trip_details.py">retrieve</a>(trip_id, \*\*<a href="src/onebusaway/types/trip_detail_retrieve_params.py">params</a>) -> <a href="./src/onebusaway/types/trip_detail_retrieve_response.py">TripDetailRetrieveResponse</a></code>

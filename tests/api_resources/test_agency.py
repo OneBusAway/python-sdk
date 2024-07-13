@@ -20,14 +20,14 @@ class TestAgency:
     @parametrize
     def test_method_retrieve(self, client: OnebusawaySDK) -> None:
         agency = client.agency.retrieve(
-            "string",
+            "agencyID",
         )
         assert_matches_type(AgencyRetrieveResponse, agency, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: OnebusawaySDK) -> None:
         response = client.agency.with_raw_response.retrieve(
-            "string",
+            "agencyID",
         )
 
         assert response.is_closed is True
@@ -38,7 +38,7 @@ class TestAgency:
     @parametrize
     def test_streaming_response_retrieve(self, client: OnebusawaySDK) -> None:
         with client.agency.with_streaming_response.retrieve(
-            "string",
+            "agencyID",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -62,14 +62,14 @@ class TestAsyncAgency:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncOnebusawaySDK) -> None:
         agency = await async_client.agency.retrieve(
-            "string",
+            "agencyID",
         )
         assert_matches_type(AgencyRetrieveResponse, agency, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncOnebusawaySDK) -> None:
         response = await async_client.agency.with_raw_response.retrieve(
-            "string",
+            "agencyID",
         )
 
         assert response.is_closed is True
@@ -80,7 +80,7 @@ class TestAsyncAgency:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncOnebusawaySDK) -> None:
         async with async_client.agency.with_streaming_response.retrieve(
-            "string",
+            "agencyID",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

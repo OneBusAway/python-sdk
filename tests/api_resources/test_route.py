@@ -20,14 +20,14 @@ class TestRoute:
     @parametrize
     def test_method_retrieve(self, client: OnebusawaySDK) -> None:
         route = client.route.retrieve(
-            "string",
+            "routeID",
         )
         assert_matches_type(RouteRetrieveResponse, route, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: OnebusawaySDK) -> None:
         response = client.route.with_raw_response.retrieve(
-            "string",
+            "routeID",
         )
 
         assert response.is_closed is True
@@ -38,7 +38,7 @@ class TestRoute:
     @parametrize
     def test_streaming_response_retrieve(self, client: OnebusawaySDK) -> None:
         with client.route.with_streaming_response.retrieve(
-            "string",
+            "routeID",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -62,14 +62,14 @@ class TestAsyncRoute:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncOnebusawaySDK) -> None:
         route = await async_client.route.retrieve(
-            "string",
+            "routeID",
         )
         assert_matches_type(RouteRetrieveResponse, route, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncOnebusawaySDK) -> None:
         response = await async_client.route.with_raw_response.retrieve(
-            "string",
+            "routeID",
         )
 
         assert response.is_closed is True
@@ -80,7 +80,7 @@ class TestAsyncRoute:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncOnebusawaySDK) -> None:
         async with async_client.route.with_streaming_response.retrieve(
-            "string",
+            "routeID",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
