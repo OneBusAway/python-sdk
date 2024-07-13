@@ -18,9 +18,7 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import (
-    make_request_options,
-)
+from .._base_client import make_request_options
 from ..types.stops_for_route_list_response import StopsForRouteListResponse
 
 __all__ = ["StopsForRouteResource", "AsyncStopsForRouteResource"]
@@ -67,7 +65,7 @@ class StopsForRouteResource(SyncAPIResource):
         if not route_id:
             raise ValueError(f"Expected a non-empty value for `route_id` but received {route_id!r}")
         return self._get(
-            f"/api/where/stops-for-route/{route_id}.json",
+            f"/api/where/stops-for-route/routeID.json",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -126,7 +124,7 @@ class AsyncStopsForRouteResource(AsyncAPIResource):
         if not route_id:
             raise ValueError(f"Expected a non-empty value for `route_id` but received {route_id!r}")
         return await self._get(
-            f"/api/where/stops-for-route/{route_id}.json",
+            f"/api/where/stops-for-route/routeID.json",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,

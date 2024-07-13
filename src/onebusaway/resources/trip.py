@@ -13,9 +13,7 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import (
-    make_request_options,
-)
+from .._base_client import make_request_options
 from ..types.trip_retrieve_response import TripRetrieveResponse
 
 __all__ = ["TripResource", "AsyncTripResource"]
@@ -56,7 +54,7 @@ class TripResource(SyncAPIResource):
         if not trip_id:
             raise ValueError(f"Expected a non-empty value for `trip_id` but received {trip_id!r}")
         return self._get(
-            f"/api/where/trip/{trip_id}.json",
+            f"/api/where/trip/tripID.json",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -99,7 +97,7 @@ class AsyncTripResource(AsyncAPIResource):
         if not trip_id:
             raise ValueError(f"Expected a non-empty value for `trip_id` but received {trip_id!r}")
         return await self._get(
-            f"/api/where/trip/{trip_id}.json",
+            f"/api/where/trip/tripID.json",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

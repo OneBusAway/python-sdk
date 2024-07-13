@@ -21,9 +21,7 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import (
-    make_request_options,
-)
+from .._base_client import make_request_options
 from ..types.arrival_and_departure_list_response import ArrivalAndDepartureListResponse
 from ..types.arrival_and_departure_retrieve_response import ArrivalAndDepartureRetrieveResponse
 
@@ -70,7 +68,7 @@ class ArrivalAndDepartureResource(SyncAPIResource):
         if not stop_id:
             raise ValueError(f"Expected a non-empty value for `stop_id` but received {stop_id!r}")
         return self._get(
-            f"/api/where/arrival-and-departure-for-stop/{stop_id}.json",
+            f"/api/where/arrival-and-departure-for-stop/stopID.json",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -125,7 +123,7 @@ class ArrivalAndDepartureResource(SyncAPIResource):
         if not stop_id:
             raise ValueError(f"Expected a non-empty value for `stop_id` but received {stop_id!r}")
         return self._get(
-            f"/api/where/arrivals-and-departures-for-stop/{stop_id}.json",
+            f"/api/where/arrivals-and-departures-for-stop/stopID.json",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -184,7 +182,7 @@ class AsyncArrivalAndDepartureResource(AsyncAPIResource):
         if not stop_id:
             raise ValueError(f"Expected a non-empty value for `stop_id` but received {stop_id!r}")
         return await self._get(
-            f"/api/where/arrival-and-departure-for-stop/{stop_id}.json",
+            f"/api/where/arrival-and-departure-for-stop/stopID.json",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -239,7 +237,7 @@ class AsyncArrivalAndDepartureResource(AsyncAPIResource):
         if not stop_id:
             raise ValueError(f"Expected a non-empty value for `stop_id` but received {stop_id!r}")
         return await self._get(
-            f"/api/where/arrivals-and-departures-for-stop/{stop_id}.json",
+            f"/api/where/arrivals-and-departures-for-stop/stopID.json",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,

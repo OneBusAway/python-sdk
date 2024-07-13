@@ -22,6 +22,7 @@ __all__ = [
     "SituationSummary",
     "SituationURL",
     "Stop",
+    "StopTime",
     "Trip",
 ]
 
@@ -217,6 +218,20 @@ class Stop(BaseModel):
     wheelchair_boarding: Optional[str] = FieldInfo(alias="wheelchairBoarding", default=None)
 
 
+class StopTime(BaseModel):
+    arrival_time: Optional[int] = FieldInfo(alias="arrivalTime", default=None)
+
+    departure_time: Optional[int] = FieldInfo(alias="departureTime", default=None)
+
+    distance_along_trip: Optional[float] = FieldInfo(alias="distanceAlongTrip", default=None)
+
+    historical_occupancy: Optional[str] = FieldInfo(alias="historicalOccupancy", default=None)
+
+    stop_headsign: Optional[str] = FieldInfo(alias="stopHeadsign", default=None)
+
+    stop_id: Optional[str] = FieldInfo(alias="stopId", default=None)
+
+
 class Trip(BaseModel):
     id: str
 
@@ -250,6 +265,6 @@ class References(BaseModel):
 
     stops: Optional[List[Stop]] = None
 
-    stop_times: Optional[List[object]] = FieldInfo(alias="stopTimes", default=None)
+    stop_times: Optional[List[StopTime]] = FieldInfo(alias="stopTimes", default=None)
 
     trips: Optional[List[Trip]] = None
