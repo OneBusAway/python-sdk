@@ -56,6 +56,14 @@ from .stops_for_route import (
     StopsForRouteResourceWithStreamingResponse,
     AsyncStopsForRouteResourceWithStreamingResponse,
 )
+from .trip_for_vehicle import (
+    TripForVehicleResource,
+    AsyncTripForVehicleResource,
+    TripForVehicleResourceWithRawResponse,
+    AsyncTripForVehicleResourceWithRawResponse,
+    TripForVehicleResourceWithStreamingResponse,
+    AsyncTripForVehicleResourceWithStreamingResponse,
+)
 from .stops_for_location import (
     StopsForLocationResource,
     AsyncStopsForLocationResource,
@@ -156,4 +164,10 @@ __all__ = [
     "AsyncTripDetailsResourceWithRawResponse",
     "TripDetailsResourceWithStreamingResponse",
     "AsyncTripDetailsResourceWithStreamingResponse",
+    "TripForVehicleResource",
+    "AsyncTripForVehicleResource",
+    "TripForVehicleResourceWithRawResponse",
+    "AsyncTripForVehicleResourceWithRawResponse",
+    "TripForVehicleResourceWithStreamingResponse",
+    "AsyncTripForVehicleResourceWithStreamingResponse",
 ]
