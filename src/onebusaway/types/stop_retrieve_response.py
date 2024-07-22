@@ -8,15 +8,10 @@ from .._models import BaseModel
 from .shared.references import References
 from .shared.response_wrapper import ResponseWrapper
 
-__all__ = [
-    "StopRetrieveResponse",
-    "StopRetrieveResponseData",
-    "StopRetrieveResponseDataData",
-    "StopRetrieveResponseDataDataEntry",
-]
+__all__ = ["StopRetrieveResponse", "StopRetrieveResponseData", "StopRetrieveResponseDataEntry"]
 
 
-class StopRetrieveResponseDataDataEntry(BaseModel):
+class StopRetrieveResponseDataEntry(BaseModel):
     id: str
 
     code: str
@@ -40,14 +35,10 @@ class StopRetrieveResponseDataDataEntry(BaseModel):
     wheelchair_boarding: Optional[str] = FieldInfo(alias="wheelchairBoarding", default=None)
 
 
-class StopRetrieveResponseDataData(BaseModel):
-    entry: Optional[StopRetrieveResponseDataDataEntry] = None
+class StopRetrieveResponseData(BaseModel):
+    entry: Optional[StopRetrieveResponseDataEntry] = None
 
     references: Optional[References] = None
-
-
-class StopRetrieveResponseData(BaseModel):
-    data: Optional[StopRetrieveResponseDataData] = None
 
 
 class StopRetrieveResponse(ResponseWrapper):
