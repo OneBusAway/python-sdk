@@ -52,6 +52,7 @@ class OnebusawaySDK(SyncAPIClient):
     current_time: resources.CurrentTimeResource
     stops_for_location: resources.StopsForLocationResource
     stops_for_route: resources.StopsForRouteResource
+    stop: resources.StopResource
     route: resources.RouteResource
     arrival_and_departure: resources.ArrivalAndDepartureResource
     trip: resources.TripResource
@@ -121,6 +122,7 @@ class OnebusawaySDK(SyncAPIClient):
         self.current_time = resources.CurrentTimeResource(self)
         self.stops_for_location = resources.StopsForLocationResource(self)
         self.stops_for_route = resources.StopsForRouteResource(self)
+        self.stop = resources.StopResource(self)
         self.route = resources.RouteResource(self)
         self.arrival_and_departure = resources.ArrivalAndDepartureResource(self)
         self.trip = resources.TripResource(self)
@@ -250,6 +252,7 @@ class AsyncOnebusawaySDK(AsyncAPIClient):
     current_time: resources.AsyncCurrentTimeResource
     stops_for_location: resources.AsyncStopsForLocationResource
     stops_for_route: resources.AsyncStopsForRouteResource
+    stop: resources.AsyncStopResource
     route: resources.AsyncRouteResource
     arrival_and_departure: resources.AsyncArrivalAndDepartureResource
     trip: resources.AsyncTripResource
@@ -319,6 +322,7 @@ class AsyncOnebusawaySDK(AsyncAPIClient):
         self.current_time = resources.AsyncCurrentTimeResource(self)
         self.stops_for_location = resources.AsyncStopsForLocationResource(self)
         self.stops_for_route = resources.AsyncStopsForRouteResource(self)
+        self.stop = resources.AsyncStopResource(self)
         self.route = resources.AsyncRouteResource(self)
         self.arrival_and_departure = resources.AsyncArrivalAndDepartureResource(self)
         self.trip = resources.AsyncTripResource(self)
@@ -451,6 +455,7 @@ class OnebusawaySDKWithRawResponse:
         self.current_time = resources.CurrentTimeResourceWithRawResponse(client.current_time)
         self.stops_for_location = resources.StopsForLocationResourceWithRawResponse(client.stops_for_location)
         self.stops_for_route = resources.StopsForRouteResourceWithRawResponse(client.stops_for_route)
+        self.stop = resources.StopResourceWithRawResponse(client.stop)
         self.route = resources.RouteResourceWithRawResponse(client.route)
         self.arrival_and_departure = resources.ArrivalAndDepartureResourceWithRawResponse(client.arrival_and_departure)
         self.trip = resources.TripResourceWithRawResponse(client.trip)
@@ -469,6 +474,7 @@ class AsyncOnebusawaySDKWithRawResponse:
         self.current_time = resources.AsyncCurrentTimeResourceWithRawResponse(client.current_time)
         self.stops_for_location = resources.AsyncStopsForLocationResourceWithRawResponse(client.stops_for_location)
         self.stops_for_route = resources.AsyncStopsForRouteResourceWithRawResponse(client.stops_for_route)
+        self.stop = resources.AsyncStopResourceWithRawResponse(client.stop)
         self.route = resources.AsyncRouteResourceWithRawResponse(client.route)
         self.arrival_and_departure = resources.AsyncArrivalAndDepartureResourceWithRawResponse(
             client.arrival_and_departure
@@ -489,6 +495,7 @@ class OnebusawaySDKWithStreamedResponse:
         self.current_time = resources.CurrentTimeResourceWithStreamingResponse(client.current_time)
         self.stops_for_location = resources.StopsForLocationResourceWithStreamingResponse(client.stops_for_location)
         self.stops_for_route = resources.StopsForRouteResourceWithStreamingResponse(client.stops_for_route)
+        self.stop = resources.StopResourceWithStreamingResponse(client.stop)
         self.route = resources.RouteResourceWithStreamingResponse(client.route)
         self.arrival_and_departure = resources.ArrivalAndDepartureResourceWithStreamingResponse(
             client.arrival_and_departure
@@ -511,6 +518,7 @@ class AsyncOnebusawaySDKWithStreamedResponse:
             client.stops_for_location
         )
         self.stops_for_route = resources.AsyncStopsForRouteResourceWithStreamingResponse(client.stops_for_route)
+        self.stop = resources.AsyncStopResourceWithStreamingResponse(client.stop)
         self.route = resources.AsyncRouteResourceWithStreamingResponse(client.route)
         self.arrival_and_departure = resources.AsyncArrivalAndDepartureResourceWithStreamingResponse(
             client.arrival_and_departure
