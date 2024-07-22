@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 from .shared import References as References, ResponseWrapper as ResponseWrapper
-from .stop_retrieve_response import StopRetrieveResponse as StopRetrieveResponse
 from .trip_retrieve_response import TripRetrieveResponse as TripRetrieveResponse
 from .route_retrieve_response import RouteRetrieveResponse as RouteRetrieveResponse
 from .agency_retrieve_response import AgencyRetrieveResponse as AgencyRetrieveResponse

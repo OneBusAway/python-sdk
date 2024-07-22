@@ -1,13 +1,5 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from .stop import (
-    StopResource,
-    AsyncStopResource,
-    StopResourceWithRawResponse,
-    AsyncStopResourceWithRawResponse,
-    StopResourceWithStreamingResponse,
-    AsyncStopResourceWithStreamingResponse,
-)
 from .trip import (
     TripResource,
     AsyncTripResource,
@@ -142,12 +134,6 @@ __all__ = [
     "AsyncStopsForRouteResourceWithRawResponse",
     "StopsForRouteResourceWithStreamingResponse",
     "AsyncStopsForRouteResourceWithStreamingResponse",
-    "StopResource",
-    "AsyncStopResource",
-    "StopResourceWithRawResponse",
-    "AsyncStopResourceWithRawResponse",
-    "StopResourceWithStreamingResponse",
-    "AsyncStopResourceWithStreamingResponse",
     "RouteResource",
     "AsyncRouteResource",
     "RouteResourceWithRawResponse",
