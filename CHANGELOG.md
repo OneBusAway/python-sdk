@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.0-alpha.2 (2024-07-22)
+
+Full Changelog: [v0.1.0-alpha.1...v0.1.0-alpha.2](https://github.com/OneBusAway/python-sdk/compare/v0.1.0-alpha.1...v0.1.0-alpha.2)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#4](https://github.com/OneBusAway/python-sdk/issues/4)) ([fc1679d](https://github.com/OneBusAway/python-sdk/commit/fc1679d6086747ac91152587e272d6b2b32a97fd))
+* **api:** OpenAPI spec update via Stainless API ([#6](https://github.com/OneBusAway/python-sdk/issues/6)) ([b6a54cf](https://github.com/OneBusAway/python-sdk/commit/b6a54cfdac1ecfb398e20a4efa90294bde711490))
+* **api:** OpenAPI spec update via Stainless API ([#7](https://github.com/OneBusAway/python-sdk/issues/7)) ([448c0e3](https://github.com/OneBusAway/python-sdk/commit/448c0e3847375dcdb86f9cda1e8206f64910e6e9))
+* **api:** OpenAPI spec update via Stainless API ([#8](https://github.com/OneBusAway/python-sdk/issues/8)) ([361ab73](https://github.com/OneBusAway/python-sdk/commit/361ab733efaef27d9553cabde2844ffb95296979))
+* refactor: Remove print statement from main_sync function ([b72a7a1](https://github.com/OneBusAway/python-sdk/commit/b72a7a16aaf67c5d265cb995181e1abea6d7fed2))
+* refactor: Remove print statement from main_sync function ([dcd9e3b](https://github.com/OneBusAway/python-sdk/commit/dcd9e3b609078c5fcbb9682ae4f92849bc7291cf))
+
 ## 0.1.0-alpha.1 (2024-07-14)
 
 Full Changelog: [v0.0.1-alpha.0...v0.1.0-alpha.1](https://github.com/OneBusAway/python-sdk/compare/v0.0.1-alpha.0...v0.1.0-alpha.1)
