@@ -13,5 +13,4 @@ def main_sync() -> None:
         print("Agency data or entry is None.")
 
 if __name__ == "__main__":
-    print("Running synchronous main function:")
     main_sync()
