@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.1.0-alpha.3 (2024-07-27)
+
+Full Changelog: [v0.1.0-alpha.2...v0.1.0-alpha.3](https://github.com/OneBusAway/python-sdk/compare/v0.1.0-alpha.2...v0.1.0-alpha.3)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#10](https://github.com/OneBusAway/python-sdk/issues/10)) ([72b1a9c](https://github.com/OneBusAway/python-sdk/commit/72b1a9cead47f18491e1119a836088e20bb0d5f4))
+
+
+### Chores
+
+* **internal:** refactor release doctor script ([#12](https://github.com/OneBusAway/python-sdk/issues/12)) ([ee1f10f](https://github.com/OneBusAway/python-sdk/commit/ee1f10fc42fbda4a4df01d58636d5b6c8209fc70))
+* **tests:** update prism version ([#13](https://github.com/OneBusAway/python-sdk/issues/13)) ([4298ff4](https://github.com/OneBusAway/python-sdk/commit/4298ff401d952e2ed17674b59001bb5d1146ae6d))
+
 ## 0.1.0-alpha.2 (2024-07-22)
 
 Full Changelog: [v0.1.0-alpha.1...v0.1.0-alpha.2](https://github.com/OneBusAway/python-sdk/compare/v0.1.0-alpha.1...v0.1.0-alpha.2)
