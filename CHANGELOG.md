@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.5 (2024-07-28)
+
+Full Changelog: [v0.1.0-alpha.4...v0.1.0-alpha.5](https://github.com/OneBusAway/python-sdk/compare/v0.1.0-alpha.4...v0.1.0-alpha.5)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#18](https://github.com/OneBusAway/python-sdk/issues/18)) ([e209b47](https://github.com/OneBusAway/python-sdk/commit/e209b47d717f9ad08a688587b1bae46cb71fab54))
+
 ## 0.1.0-alpha.4 (2024-07-27)
 
 Full Changelog: [v0.1.0-alpha.3...v0.1.0-alpha.4](https://github.com/OneBusAway/python-sdk/compare/v0.1.0-alpha.3...v0.1.0-alpha.4)
