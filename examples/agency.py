@@ -1,5 +1,3 @@
-
-
 import onebusaway
 
 
@@ -11,6 +9,7 @@ def main_sync() -> None:
         print(agency.data.entry)
     else:
         print("Agency data or entry is None.")
+
 
 if __name__ == "__main__":
     main_sync()

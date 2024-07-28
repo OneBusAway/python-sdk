@@ -1,5 +1,3 @@
-
-
 import onebusaway
 
 
@@ -11,6 +9,7 @@ def main_sync() -> None:
         print(stop.data.entry)
     else:
         print("stop not found")
+
 
 if __name__ == "__main__":
     main_sync()
