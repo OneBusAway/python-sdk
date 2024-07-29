@@ -48,6 +48,7 @@ __all__ = [
 class OnebusawaySDK(SyncAPIClient):
     agencies_with_coverage: resources.AgenciesWithCoverageResource
     agency: resources.AgencyResource
+    vehicles_for_agency: resources.VehiclesForAgencyResource
     config: resources.ConfigResource
     current_time: resources.CurrentTimeResource
     stops_for_location: resources.StopsForLocationResource
@@ -119,6 +120,7 @@ class OnebusawaySDK(SyncAPIClient):
 
         self.agencies_with_coverage = resources.AgenciesWithCoverageResource(self)
         self.agency = resources.AgencyResource(self)
+        self.vehicles_for_agency = resources.VehiclesForAgencyResource(self)
         self.config = resources.ConfigResource(self)
         self.current_time = resources.CurrentTimeResource(self)
         self.stops_for_location = resources.StopsForLocationResource(self)
@@ -250,6 +252,7 @@ class OnebusawaySDK(SyncAPIClient):
 class AsyncOnebusawaySDK(AsyncAPIClient):
     agencies_with_coverage: resources.AsyncAgenciesWithCoverageResource
     agency: resources.AsyncAgencyResource
+    vehicles_for_agency: resources.AsyncVehiclesForAgencyResource
     config: resources.AsyncConfigResource
     current_time: resources.AsyncCurrentTimeResource
     stops_for_location: resources.AsyncStopsForLocationResource
@@ -321,6 +324,7 @@ class AsyncOnebusawaySDK(AsyncAPIClient):
 
         self.agencies_with_coverage = resources.AsyncAgenciesWithCoverageResource(self)
         self.agency = resources.AsyncAgencyResource(self)
+        self.vehicles_for_agency = resources.AsyncVehiclesForAgencyResource(self)
         self.config = resources.AsyncConfigResource(self)
         self.current_time = resources.AsyncCurrentTimeResource(self)
         self.stops_for_location = resources.AsyncStopsForLocationResource(self)
@@ -455,6 +459,7 @@ class OnebusawaySDKWithRawResponse:
             client.agencies_with_coverage
         )
         self.agency = resources.AgencyResourceWithRawResponse(client.agency)
+        self.vehicles_for_agency = resources.VehiclesForAgencyResourceWithRawResponse(client.vehicles_for_agency)
         self.config = resources.ConfigResourceWithRawResponse(client.config)
         self.current_time = resources.CurrentTimeResourceWithRawResponse(client.current_time)
         self.stops_for_location = resources.StopsForLocationResourceWithRawResponse(client.stops_for_location)
@@ -475,6 +480,7 @@ class AsyncOnebusawaySDKWithRawResponse:
             client.agencies_with_coverage
         )
         self.agency = resources.AsyncAgencyResourceWithRawResponse(client.agency)
+        self.vehicles_for_agency = resources.AsyncVehiclesForAgencyResourceWithRawResponse(client.vehicles_for_agency)
         self.config = resources.AsyncConfigResourceWithRawResponse(client.config)
         self.current_time = resources.AsyncCurrentTimeResourceWithRawResponse(client.current_time)
         self.stops_for_location = resources.AsyncStopsForLocationResourceWithRawResponse(client.stops_for_location)
@@ -497,6 +503,7 @@ class OnebusawaySDKWithStreamedResponse:
             client.agencies_with_coverage
         )
         self.agency = resources.AgencyResourceWithStreamingResponse(client.agency)
+        self.vehicles_for_agency = resources.VehiclesForAgencyResourceWithStreamingResponse(client.vehicles_for_agency)
         self.config = resources.ConfigResourceWithStreamingResponse(client.config)
         self.current_time = resources.CurrentTimeResourceWithStreamingResponse(client.current_time)
         self.stops_for_location = resources.StopsForLocationResourceWithStreamingResponse(client.stops_for_location)
@@ -519,6 +526,9 @@ class AsyncOnebusawaySDKWithStreamedResponse:
             client.agencies_with_coverage
         )
         self.agency = resources.AsyncAgencyResourceWithStreamingResponse(client.agency)
+        self.vehicles_for_agency = resources.AsyncVehiclesForAgencyResourceWithStreamingResponse(
+            client.vehicles_for_agency
+        )
         self.config = resources.AsyncConfigResourceWithStreamingResponse(client.config)
         self.current_time = resources.AsyncCurrentTimeResourceWithStreamingResponse(client.current_time)
         self.stops_for_location = resources.AsyncStopsForLocationResourceWithStreamingResponse(
