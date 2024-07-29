@@ -28,6 +28,18 @@ Methods:
 
 - <code title="get /api/where/agency/{agencyID}.json">client.agency.<a href="./src/onebusaway/resources/agency.py">retrieve</a>(agency_id) -> <a href="./src/onebusaway/types/agency_retrieve_response.py">AgencyRetrieveResponse</a></code>
 
+# VehiclesForAgency
+
+Types:
+
+```python
+from onebusaway.types import VehiclesForAgencyListResponse
+```
+
+Methods:
+
+- <code title="get /api/where/vehicles-for-agency/{agencyID}.json">client.vehicles_for_agency.<a href="./src/onebusaway/resources/vehicles_for_agency.py">list</a>(agency_id, \*\*<a href="src/onebusaway/types/vehicles_for_agency_list_params.py">params</a>) -> <a href="./src/onebusaway/types/vehicles_for_agency_list_response.py">VehiclesForAgencyListResponse</a></code>
+
 # Config
 
 Types:
