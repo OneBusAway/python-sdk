@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.1.0-alpha.6 (2024-07-29)
+
+Full Changelog: [v0.1.0-alpha.5...v0.1.0-alpha.6](https://github.com/OneBusAway/python-sdk/compare/v0.1.0-alpha.5...v0.1.0-alpha.6)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#22](https://github.com/OneBusAway/python-sdk/issues/22)) ([54e9f2a](https://github.com/OneBusAway/python-sdk/commit/54e9f2aefaf7a88392bf23ec3301efd2191013a7))
+* **api:** OpenAPI spec update via Stainless API ([#25](https://github.com/OneBusAway/python-sdk/issues/25)) ([64e3e43](https://github.com/OneBusAway/python-sdk/commit/64e3e4396b25d8d80ddee38ec99cda8409b0f597))
+
+
+### Chores
+
+* **internal:** add type construction helper ([#24](https://github.com/OneBusAway/python-sdk/issues/24)) ([92184d0](https://github.com/OneBusAway/python-sdk/commit/92184d0e99d1ed3b9ccc13adf5aaa7bc6ddb334b))
+
 ## 0.1.0-alpha.5 (2024-07-28)
 
 Full Changelog: [v0.1.0-alpha.4...v0.1.0-alpha.5](https://github.com/OneBusAway/python-sdk/compare/v0.1.0-alpha.4...v0.1.0-alpha.5)
