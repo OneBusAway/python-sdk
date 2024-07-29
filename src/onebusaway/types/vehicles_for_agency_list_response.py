@@ -154,6 +154,16 @@ class VehiclesForAgencyListResponseDataList(BaseModel):
 
     vehicle_id: str = FieldInfo(alias="vehicleId")
 
+    occupancy_capacity: Optional[int] = FieldInfo(alias="occupancyCapacity", default=None)
+
+    occupancy_count: Optional[int] = FieldInfo(alias="occupancyCount", default=None)
+
+    occupancy_status: Optional[str] = FieldInfo(alias="occupancyStatus", default=None)
+
+    phase: Optional[str] = None
+
+    status: Optional[str] = None
+
 
 class VehiclesForAgencyListResponseData(BaseModel):
     list: List[VehiclesForAgencyListResponseDataList]
