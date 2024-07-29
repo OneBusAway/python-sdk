@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.7 (2024-07-29)
+
+Full Changelog: [v0.1.0-alpha.6...v0.1.0-alpha.7](https://github.com/OneBusAway/python-sdk/compare/v0.1.0-alpha.6...v0.1.0-alpha.7)
+
+### Chores
+
+* **internal:** add type construction helper ([#27](https://github.com/OneBusAway/python-sdk/issues/27)) ([ceb8e94](https://github.com/OneBusAway/python-sdk/commit/ceb8e94522516242dc400c281133c053ddcc7961))
+
 ## 0.1.0-alpha.6 (2024-07-29)
 
 Full Changelog: [v0.1.0-alpha.5...v0.1.0-alpha.6](https://github.com/OneBusAway/python-sdk/compare/v0.1.0-alpha.5...v0.1.0-alpha.6)
