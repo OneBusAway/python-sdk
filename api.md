@@ -112,6 +112,18 @@ Methods:
 
 - <code title="get /api/where/stop-ids-for-agency/{agencyID}.json">client.stop_ids_for_agency.<a href="./src/onebusaway/resources/stop_ids_for_agency.py">list</a>(agency_id) -> <a href="./src/onebusaway/types/stop_ids_for_agency_list_response.py">StopIDsForAgencyListResponse</a></code>
 
+# ScheduleForStop
+
+Types:
+
+```python
+from onebusaway.types import ScheduleForStopRetrieveResponse
+```
+
+Methods:
+
+- <code title="get /api/where/schedule-for-stop/{stopID}.json">client.schedule_for_stop.<a href="./src/onebusaway/resources/schedule_for_stop.py">retrieve</a>(stop_id, \*\*<a href="src/onebusaway/types/schedule_for_stop_retrieve_params.py">params</a>) -> <a href="./src/onebusaway/types/schedule_for_stop_retrieve_response.py">ScheduleForStopRetrieveResponse</a></code>
+
 # Route
 
 Types:
