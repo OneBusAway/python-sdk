@@ -1,6 +1,6 @@
 from onebusaway import OnebusawaySDK
 from helpers.load_env import load_settings
-
+from pprint import pprint
 
 # Load settings from .env file, if it exists. If not, we'll use the
 # Puget Sound server URL (which is also the default in the SDK) and
@@ -13,9 +13,6 @@ settings = load_settings({
 # Create a new instance of the OneBusAway SDK with the settings we loaded.
 oba = OnebusawaySDK(**settings)
 
-agency_id = "40" # Link Light Rail in the Seattle area.
-
-stop_ids = oba.stop_ids_for_agency.list(agency_id)
-if stop_ids.data and stop_ids.data.list:
-    for stop_id in stop_ids.data.list:
-        print(stop_id)
+trip_id = "40_608344966"
+response = oba.trip_details.retrieve(trip_id)
+pprint(response.data)

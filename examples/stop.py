@@ -1,15 +1,20 @@
-import onebusaway
+from onebusaway import OnebusawaySDK
+from helpers.load_env import load_settings
+from pprint import pprint
 
+# Load settings from .env file, if it exists. If not, we'll use the
+# Puget Sound server URL (which is also the default in the SDK) and
+# the 'TEST' API key.
+settings = load_settings({
+    "api_key": "TEST",
+    "base_url": "https://api.pugetsound.onebusaway.org/",
+})
 
-def main_sync() -> None:
-    client = onebusaway.OnebusawaySDK(api_key="TEST")
-    stop = client.stop.retrieve("1_75403")
+# Create a new instance of the OneBusAway SDK with the settings we loaded.
+oba = OnebusawaySDK(**settings)
 
-    if stop.data and stop.data.entry:
-        print(stop.data.entry)
-    else:
-        print("stop not found")
+stop_id = "1_75403"
+stop = oba.stop.retrieve(stop_id)
 
-
-if __name__ == "__main__":
-    main_sync()
+if stop.data and stop.data.entry:
+    pprint(stop.data.entry)

@@ -1,5 +1,6 @@
 from onebusaway import OnebusawaySDK
 from helpers.load_env import load_settings
+from pprint import pprint
 
 
 # Load settings from .env file, if it exists. If not, we'll use the
@@ -13,9 +14,8 @@ settings = load_settings({
 # Create a new instance of the OneBusAway SDK with the settings we loaded.
 oba = OnebusawaySDK(**settings)
 
-agency_id = "40" # Link Light Rail in the Seattle area.
+route_id = '1_100224'
+response = oba.stops_for_route.list(route_id)
 
-stop_ids = oba.stop_ids_for_agency.list(agency_id)
-if stop_ids.data and stop_ids.data.list:
-    for stop_id in stop_ids.data.list:
-        print(stop_id)
+if response and response.data:
+  pprint(response.data)
