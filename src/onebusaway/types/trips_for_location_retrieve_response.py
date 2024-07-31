@@ -26,15 +26,15 @@ class TripsForLocationRetrieveResponseDataList(BaseModel):
 
 
 class TripsForLocationRetrieveResponseData(BaseModel):
+    list: List[TripsForLocationRetrieveResponseDataList]
+
+    references: References
+
     limit_exceeded: Optional[bool] = FieldInfo(alias="limitExceeded", default=None)
     """Indicates if the limit of trips has been exceeded"""
 
-    list: Optional[List[TripsForLocationRetrieveResponseDataList]] = None
-
     out_of_range: Optional[bool] = FieldInfo(alias="outOfRange", default=None)
     """Indicates if the search location is out of range"""
-
-    references: Optional[References] = None
 
 
 class TripsForLocationRetrieveResponse(ResponseWrapper):

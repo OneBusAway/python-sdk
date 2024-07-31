@@ -265,9 +265,9 @@ class ArrivalAndDepartureRetrieveResponseDataEntry(BaseModel):
 
 
 class ArrivalAndDepartureRetrieveResponseData(BaseModel):
-    entry: Optional[ArrivalAndDepartureRetrieveResponseDataEntry] = None
+    entry: ArrivalAndDepartureRetrieveResponseDataEntry
 
-    references: Optional[References] = None
+    references: References
 
 
 class ArrivalAndDepartureRetrieveResponse(ResponseWrapper):

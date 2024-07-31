@@ -32,9 +32,9 @@ class RouteRetrieveResponseDataEntry(BaseModel):
 
 
 class RouteRetrieveResponseData(BaseModel):
-    entry: Optional[RouteRetrieveResponseDataEntry] = None
+    entry: RouteRetrieveResponseDataEntry
 
-    references: Optional[References] = None
+    references: References
 
 
 class RouteRetrieveResponse(ResponseWrapper):
