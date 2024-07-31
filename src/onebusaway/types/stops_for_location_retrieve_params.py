@@ -2,14 +2,12 @@
 
 from __future__ import annotations
 
-from typing_extensions import Required, TypedDict
+from typing_extensions import TypedDict
 
 __all__ = ["StopsForLocationRetrieveParams"]
 
 
 class StopsForLocationRetrieveParams(TypedDict, total=False):
-    key: Required[str]
-
     lat: float
 
     lon: float

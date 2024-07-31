@@ -36,7 +36,6 @@ class StopsForLocationResource(SyncAPIResource):
     def retrieve(
         self,
         *,
-        key: str,
         lat: float | NotGiven = NOT_GIVEN,
         lon: float | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -67,7 +66,6 @@ class StopsForLocationResource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
-                        "key": key,
                         "lat": lat,
                         "lon": lon,
                     },
@@ -90,7 +88,6 @@ class AsyncStopsForLocationResource(AsyncAPIResource):
     async def retrieve(
         self,
         *,
-        key: str,
         lat: float | NotGiven = NOT_GIVEN,
         lon: float | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -121,7 +118,6 @@ class AsyncStopsForLocationResource(AsyncAPIResource):
                 timeout=timeout,
                 query=await async_maybe_transform(
                     {
-                        "key": key,
                         "lat": lat,
                         "lon": lon,
                     },
