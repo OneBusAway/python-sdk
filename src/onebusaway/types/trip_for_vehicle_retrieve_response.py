@@ -179,9 +179,9 @@ class TripForVehicleRetrieveResponseDataEntry(BaseModel):
 
 
 class TripForVehicleRetrieveResponseData(BaseModel):
-    entry: Optional[TripForVehicleRetrieveResponseDataEntry] = None
+    entry: TripForVehicleRetrieveResponseDataEntry
 
-    references: Optional[References] = None
+    references: References
 
 
 class TripForVehicleRetrieveResponse(ResponseWrapper):
