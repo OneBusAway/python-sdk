@@ -34,11 +34,11 @@ class AgencyRetrieveResponseDataEntry(BaseModel):
 
 
 class AgencyRetrieveResponseData(BaseModel):
-    entry: Optional[AgencyRetrieveResponseDataEntry] = None
+    entry: AgencyRetrieveResponseDataEntry
+
+    references: References
 
     limit_exceeded: Optional[bool] = FieldInfo(alias="limitExceeded", default=None)
-
-    references: Optional[References] = None
 
 
 class AgencyRetrieveResponse(ResponseWrapper):
