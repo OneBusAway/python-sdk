@@ -40,11 +40,11 @@ class StopsForLocationRetrieveResponseDataList(BaseModel):
 
 
 class StopsForLocationRetrieveResponseData(BaseModel):
+    list: List[StopsForLocationRetrieveResponseDataList]
+
+    references: References
+
     limit_exceeded: Optional[bool] = FieldInfo(alias="limitExceeded", default=None)
-
-    list: Optional[List[StopsForLocationRetrieveResponseDataList]] = None
-
-    references: Optional[References] = None
 
 
 class StopsForLocationRetrieveResponse(ResponseWrapper):

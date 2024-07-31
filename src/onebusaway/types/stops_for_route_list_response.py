@@ -72,4 +72,4 @@ class StopsForRouteListResponseData(BaseModel):
 
 
 class StopsForRouteListResponse(ResponseWrapper):
-    data: Optional[StopsForRouteListResponseData] = None
+    data: StopsForRouteListResponseData

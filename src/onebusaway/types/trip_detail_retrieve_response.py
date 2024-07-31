@@ -179,9 +179,9 @@ class TripDetailRetrieveResponseDataEntry(BaseModel):
 
 
 class TripDetailRetrieveResponseData(BaseModel):
-    entry: Optional[TripDetailRetrieveResponseDataEntry] = None
+    entry: TripDetailRetrieveResponseDataEntry
 
-    references: Optional[References] = None
+    references: References
 
 
 class TripDetailRetrieveResponse(ResponseWrapper):
