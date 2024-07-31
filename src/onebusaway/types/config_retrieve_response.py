@@ -73,9 +73,9 @@ class ConfigRetrieveResponseDataEntry(BaseModel):
 
 
 class ConfigRetrieveResponseData(BaseModel):
-    entry: Optional[ConfigRetrieveResponseDataEntry] = None
+    entry: ConfigRetrieveResponseDataEntry
 
-    references: Optional[References] = None
+    references: References
 
 
 class ConfigRetrieveResponse(ResponseWrapper):
