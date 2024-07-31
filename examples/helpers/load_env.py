@@ -1,5 +1,6 @@
+from typing import Any, Dict, Optional
 from pathlib import Path
-from typing import Optional, Dict, Any
+
 
 def load_settings(default_settings: Dict[str, Any]) -> Dict[str, Any]:
     """
@@ -17,6 +18,7 @@ def load_settings(default_settings: Dict[str, Any]) -> Dict[str, Any]:
     else:
         return default_settings
 
+
 def load_env() -> Optional[Dict[str, Any]]:
     """
     Loads environment variables from a .env file located in the parent directory of the current file.
@@ -25,12 +27,13 @@ def load_env() -> Optional[Dict[str, Any]]:
         A dictionary containing the loaded environment variables, or None if the .env file does not exist.
     """
     dirname = Path(__file__).resolve().parent
-    env_path = dirname.parent / '.env'
+    env_path = dirname.parent / ".env"
 
     if env_path.exists():
         return load_env_from_path(str(env_path))
     else:
         return None
+
 
 def load_env_from_path(file_path: str) -> Dict[str, str]:
     """
@@ -45,17 +48,17 @@ def load_env_from_path(file_path: str) -> Dict[str, str]:
 
     """
     env = {}
-    with open(file_path, 'r', encoding='utf8') as file:
+    with open(file_path, "r", encoding="utf8") as file:
         lines = file.readlines()
 
     for line in lines:
         # Remove comments and trim whitespace
-        trimmed_line = line.split('#')[0].strip()
+        trimmed_line = line.split("#")[0].strip()
 
         if not trimmed_line:
             continue
 
-        key_value = trimmed_line.split('=', 1)
+        key_value = trimmed_line.split("=", 1)
         if len(key_value) != 2:
             continue
 
