@@ -18,9 +18,9 @@ class CurrentTimeRetrieveResponseDataEntry(BaseModel):
 
 
 class CurrentTimeRetrieveResponseData(BaseModel):
-    entry: Optional[CurrentTimeRetrieveResponseDataEntry] = None
+    entry: CurrentTimeRetrieveResponseDataEntry
 
-    references: Optional[References] = None
+    references: References
 
 
 class CurrentTimeRetrieveResponse(ResponseWrapper):

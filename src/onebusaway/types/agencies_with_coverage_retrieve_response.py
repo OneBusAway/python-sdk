@@ -28,11 +28,11 @@ class AgenciesWithCoverageRetrieveResponseDataList(BaseModel):
 
 
 class AgenciesWithCoverageRetrieveResponseData(BaseModel):
+    list: List[AgenciesWithCoverageRetrieveResponseDataList]
+
+    references: References
+
     limit_exceeded: Optional[bool] = FieldInfo(alias="limitExceeded", default=None)
-
-    list: Optional[List[AgenciesWithCoverageRetrieveResponseDataList]] = None
-
-    references: Optional[References] = None
 
 
 class AgenciesWithCoverageRetrieveResponse(ResponseWrapper):

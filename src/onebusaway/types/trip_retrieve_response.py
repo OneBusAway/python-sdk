@@ -36,9 +36,9 @@ class TripRetrieveResponseDataEntry(BaseModel):
 
 
 class TripRetrieveResponseData(BaseModel):
-    entry: Optional[TripRetrieveResponseDataEntry] = None
+    entry: TripRetrieveResponseDataEntry
 
-    references: Optional[References] = None
+    references: References
 
 
 class TripRetrieveResponse(ResponseWrapper):

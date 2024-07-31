@@ -266,15 +266,15 @@ class ArrivalAndDepartureListResponseDataEntryArrivalsAndDeparture(BaseModel):
 
 
 class ArrivalAndDepartureListResponseDataEntry(BaseModel):
-    arrivals_and_departures: Optional[List[ArrivalAndDepartureListResponseDataEntryArrivalsAndDeparture]] = FieldInfo(
-        alias="arrivalsAndDepartures", default=None
+    arrivals_and_departures: List[ArrivalAndDepartureListResponseDataEntryArrivalsAndDeparture] = FieldInfo(
+        alias="arrivalsAndDepartures"
     )
 
 
 class ArrivalAndDepartureListResponseData(BaseModel):
-    entry: Optional[ArrivalAndDepartureListResponseDataEntry] = None
+    entry: ArrivalAndDepartureListResponseDataEntry
 
-    references: Optional[References] = None
+    references: References
 
 
 class ArrivalAndDepartureListResponse(ResponseWrapper):

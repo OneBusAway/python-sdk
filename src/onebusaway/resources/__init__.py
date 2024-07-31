@@ -72,6 +72,14 @@ from .trip_for_vehicle import (
     TripForVehicleResourceWithStreamingResponse,
     AsyncTripForVehicleResourceWithStreamingResponse,
 )
+from .schedule_for_stop import (
+    ScheduleForStopResource,
+    AsyncScheduleForStopResource,
+    ScheduleForStopResourceWithRawResponse,
+    AsyncScheduleForStopResourceWithRawResponse,
+    ScheduleForStopResourceWithStreamingResponse,
+    AsyncScheduleForStopResourceWithStreamingResponse,
+)
 from .stops_for_location import (
     StopsForLocationResource,
     AsyncStopsForLocationResource,
@@ -176,6 +184,12 @@ __all__ = [
     "AsyncStopIDsForAgencyResourceWithRawResponse",
     "StopIDsForAgencyResourceWithStreamingResponse",
     "AsyncStopIDsForAgencyResourceWithStreamingResponse",
+    "ScheduleForStopResource",
+    "AsyncScheduleForStopResource",
+    "ScheduleForStopResourceWithRawResponse",
+    "AsyncScheduleForStopResourceWithRawResponse",
+    "ScheduleForStopResourceWithStreamingResponse",
+    "AsyncScheduleForStopResourceWithStreamingResponse",
     "RouteResource",
     "AsyncRouteResource",
     "RouteResourceWithRawResponse",
