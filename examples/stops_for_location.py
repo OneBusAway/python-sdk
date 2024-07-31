@@ -1,22 +1,25 @@
-from onebusaway import OnebusawaySDK
+
 from helpers.load_env import load_settings
-from pprint import pprint
+
+from onebusaway import OnebusawaySDK
 
 # Load settings from .env file, if it exists. If not, we'll use the
 # Puget Sound server URL (which is also the default in the SDK) and
 # the 'TEST' API key.
-settings = load_settings({
-    "api_key": "TEST",
-    "base_url": "https://api.pugetsound.onebusaway.org/",
-})
+settings = load_settings(
+    {
+        "api_key": "TEST",
+        "base_url": "https://api.pugetsound.onebusaway.org/",
+    }
+)
 
 # Create a new instance of the OneBusAway SDK with the settings we loaded.
 oba = OnebusawaySDK(**settings)
 
 space_needle_stops = oba.stops_for_location.retrieve(
-    key="TEST", # TODO FIXME: I shouldn't have to specify the API key here.
+    key="TEST",  # TODO FIXME: I shouldn't have to specify the API key here.
     lat=47.6205,
-    lon=-122.3493
+    lon=-122.3493,
 )
 
 stops = space_needle_stops.data.list
