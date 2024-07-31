@@ -36,9 +36,9 @@ class StopRetrieveResponseDataEntry(BaseModel):
 
 
 class StopRetrieveResponseData(BaseModel):
-    entry: Optional[StopRetrieveResponseDataEntry] = None
+    entry: StopRetrieveResponseDataEntry
 
-    references: Optional[References] = None
+    references: References
 
 
 class StopRetrieveResponse(ResponseWrapper):
