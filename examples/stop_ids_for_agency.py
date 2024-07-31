@@ -5,7 +5,7 @@ def main_sync() -> None:
     client = onebusaway.OnebusawaySDK(api_key="TEST")
     agency_id = "40"
     stop_ids = client.stop_ids_for_agency.list(agency_id)
-    if stop_ids.data and stop_ids.data.list is not None:
+    if stop_ids.data:
         for stop_id in stop_ids.data.list:
             print(stop_id)
 

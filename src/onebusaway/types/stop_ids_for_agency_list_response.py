@@ -12,11 +12,11 @@ __all__ = ["StopIDsForAgencyListResponse", "StopIDsForAgencyListResponseData"]
 
 
 class StopIDsForAgencyListResponseData(BaseModel):
+    list: List[str]
+
+    references: References
+
     limit_exceeded: Optional[bool] = FieldInfo(alias="limitExceeded", default=None)
-
-    list: Optional[List[str]] = None
-
-    references: Optional[References] = None
 
 
 class StopIDsForAgencyListResponse(ResponseWrapper):
