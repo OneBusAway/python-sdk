@@ -278,4 +278,4 @@ class ArrivalAndDepartureListResponseData(BaseModel):
 
 
 class ArrivalAndDepartureListResponse(ResponseWrapper):
-    data: Optional[ArrivalAndDepartureListResponseData] = None
+    data: ArrivalAndDepartureListResponseData

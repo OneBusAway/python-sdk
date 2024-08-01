@@ -271,4 +271,4 @@ class ArrivalAndDepartureRetrieveResponseData(BaseModel):
 
 
 class ArrivalAndDepartureRetrieveResponse(ResponseWrapper):
-    data: Optional[ArrivalAndDepartureRetrieveResponseData] = None
+    data: ArrivalAndDepartureRetrieveResponseData

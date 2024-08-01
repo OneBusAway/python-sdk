@@ -42,4 +42,4 @@ class AgencyRetrieveResponseData(BaseModel):
 
 
 class AgencyRetrieveResponse(ResponseWrapper):
-    data: Optional[AgencyRetrieveResponseData] = None
+    data: AgencyRetrieveResponseData
