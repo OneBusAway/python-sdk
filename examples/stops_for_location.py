@@ -1,8 +1,8 @@
+from typing import Any
+
 from helpers.load_env import load_settings
 
 from onebusaway import OnebusawaySDK
-
-from typing import Any
 
 # Load settings from .env file, if it exists. If not, we'll use the
 # Puget Sound server URL (which is also the default in the SDK) and
