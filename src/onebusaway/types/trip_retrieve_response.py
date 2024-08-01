@@ -42,4 +42,4 @@ class TripRetrieveResponseData(BaseModel):
 
 
 class TripRetrieveResponse(ResponseWrapper):
-    data: Optional[TripRetrieveResponseData] = None
+    data: TripRetrieveResponseData

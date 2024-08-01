@@ -79,4 +79,4 @@ class ConfigRetrieveResponseData(BaseModel):
 
 
 class ConfigRetrieveResponse(ResponseWrapper):
-    data: Optional[ConfigRetrieveResponseData] = None
+    data: ConfigRetrieveResponseData
