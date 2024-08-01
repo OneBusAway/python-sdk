@@ -174,4 +174,4 @@ class VehiclesForAgencyListResponseData(BaseModel):
 
 
 class VehiclesForAgencyListResponse(ResponseWrapper):
-    data: Optional[VehiclesForAgencyListResponseData] = None
+    data: VehiclesForAgencyListResponseData

@@ -185,4 +185,4 @@ class TripForVehicleRetrieveResponseData(BaseModel):
 
 
 class TripForVehicleRetrieveResponse(ResponseWrapper):
-    data: Optional[TripForVehicleRetrieveResponseData] = None
+    data: TripForVehicleRetrieveResponseData
