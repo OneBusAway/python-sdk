@@ -42,4 +42,4 @@ class StopRetrieveResponseData(BaseModel):
 
 
 class StopRetrieveResponse(ResponseWrapper):
-    data: Optional[StopRetrieveResponseData] = None
+    data: StopRetrieveResponseData

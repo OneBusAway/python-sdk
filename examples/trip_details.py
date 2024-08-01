@@ -17,8 +17,6 @@ settings = load_settings(
 # Create a new instance of the OneBusAway SDK with the settings we loaded.
 oba = OnebusawaySDK(**settings)
 
-stop_id = "1_75403"
-stop = oba.stop.retrieve(stop_id)
-
-if stop.data and stop.data.entry:
-    pprint(stop.data.entry)
+trip_id = "40_608344966"
+response = oba.trip_details.retrieve(trip_id)
+pprint(response.data)

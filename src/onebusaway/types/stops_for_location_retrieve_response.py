@@ -48,4 +48,4 @@ class StopsForLocationRetrieveResponseData(BaseModel):
 
 
 class StopsForLocationRetrieveResponse(ResponseWrapper):
-    data: Optional[StopsForLocationRetrieveResponseData] = None
+    data: StopsForLocationRetrieveResponseData

@@ -36,4 +36,4 @@ class AgenciesWithCoverageRetrieveResponseData(BaseModel):
 
 
 class AgenciesWithCoverageRetrieveResponse(ResponseWrapper):
-    data: Optional[AgenciesWithCoverageRetrieveResponseData] = None
+    data: AgenciesWithCoverageRetrieveResponseData

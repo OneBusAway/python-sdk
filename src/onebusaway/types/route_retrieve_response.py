@@ -38,4 +38,4 @@ class RouteRetrieveResponseData(BaseModel):
 
 
 class RouteRetrieveResponse(ResponseWrapper):
-    data: Optional[RouteRetrieveResponseData] = None
+    data: RouteRetrieveResponseData
