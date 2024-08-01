@@ -17,7 +17,6 @@ settings = load_settings(
 oba = OnebusawaySDK(**settings)
 
 space_needle_stops = oba.stops_for_location.retrieve(
-    key="TEST",  # TODO FIXME: I shouldn't have to specify the API key here.
     lat=47.6205,
     lon=-122.3493,
 )
