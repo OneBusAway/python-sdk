@@ -257,14 +257,14 @@ class Trip(BaseModel):
 
 
 class References(BaseModel):
-    agencies: Optional[List[Agency]] = None
+    agencies: List[Agency]
 
-    routes: Optional[List[Route]] = None
+    routes: List[Route]
 
-    situations: Optional[List[Situation]] = None
+    situations: List[Situation]
 
-    stops: Optional[List[Stop]] = None
+    stops: List[Stop]
 
-    stop_times: Optional[List[StopTime]] = FieldInfo(alias="stopTimes", default=None)
+    stop_times: List[StopTime] = FieldInfo(alias="stopTimes")
 
-    trips: Optional[List[Trip]] = None
+    trips: List[Trip]
