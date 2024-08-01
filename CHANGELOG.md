@@ -7,6 +7,7 @@ Full Changelog: [v0.1.0-alpha.10...v0.1.0-alpha.11](https://github.com/OneBusAwa
 ### Features
 
 -   **api:** OpenAPI spec update via Stainless API ([#43](https://github.com/OneBusAway/python-sdk/issues/43)) ([d80d795](https://github.com/OneBusAway/python-sdk/commit/d80d795cf0dfce32a27986630065fcf3f93a0eaa))
+-   **api:** OpenAPI spec update via Stainless API ([#44](https://github.com/OneBusAway/python-sdk/issues/44)) ([c79102d](https://github.com/OneBusAway/python-sdk/commit/c79102d2c079e23c77dd4583485b967cf8eaddc1))
 -   chore: Refactor code by removing unnecessary blank lines ([9dfffd8](https://github.com/OneBusAway/python-sdk/commit/9dfffd881f9bbe738a2af883ef1dae8db68c7eb7))
 -   various codegen changes ([1cba822](https://github.com/OneBusAway/python-sdk/commit/1cba822390c0a6e2c2d8f3f9e101215a1abc22cc))
 
