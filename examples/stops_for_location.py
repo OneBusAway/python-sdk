@@ -1,9 +1,8 @@
-
-
 from helpers.load_env import load_settings
 
 from onebusaway import OnebusawaySDK
 
+from typing import Any
 
 # Load settings from .env file, if it exists. If not, we'll use the
 # Puget Sound server URL (which is also the default in the SDK) and
@@ -36,7 +35,8 @@ for stop in stops:
     print("  Routes:")
 
     for route_id in stop.route_ids:
-        route = reference_map[route_id]
+        # TODO: add type to route
+        route: Any = reference_map[route_id]
 
         # Get a string that looks like "D Line - Blue Ridge/Crown Hill - Ballard - Downtown Seattle"
         description = [route.null_safe_short_name, route.description]
