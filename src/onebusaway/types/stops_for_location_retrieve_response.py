@@ -16,36 +16,36 @@ __all__ = [
 
 
 class StopsForLocationRetrieveResponseDataList(BaseModel):
-    id: Optional[str] = None
+    id: str
+
+    lat: float
+
+    lon: float
+
+    name: str
+
+    parent: str
+
+    route_ids: List[str] = FieldInfo(alias="routeIds")
+
+    static_route_ids: List[str] = FieldInfo(alias="staticRouteIds")
 
     code: Optional[str] = None
 
     direction: Optional[str] = None
 
-    lat: Optional[float] = None
-
     location_type: Optional[int] = FieldInfo(alias="locationType", default=None)
-
-    lon: Optional[float] = None
-
-    name: Optional[str] = None
-
-    parent: Optional[str] = None
-
-    route_ids: Optional[List[str]] = FieldInfo(alias="routeIds", default=None)
-
-    static_route_ids: Optional[List[str]] = FieldInfo(alias="staticRouteIds", default=None)
 
     wheelchair_boarding: Optional[str] = FieldInfo(alias="wheelchairBoarding", default=None)
 
 
 class StopsForLocationRetrieveResponseData(BaseModel):
+    limit_exceeded: bool = FieldInfo(alias="limitExceeded")
+
     list: List[StopsForLocationRetrieveResponseDataList]
 
     references: References
 
-    limit_exceeded: Optional[bool] = FieldInfo(alias="limitExceeded", default=None)
-
 
 class StopsForLocationRetrieveResponse(ResponseWrapper):
-    data: Optional[StopsForLocationRetrieveResponseData] = None
+    data: StopsForLocationRetrieveResponseData

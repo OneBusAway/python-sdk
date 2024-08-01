@@ -20,4 +20,4 @@ class StopIDsForAgencyListResponseData(BaseModel):
 
 
 class StopIDsForAgencyListResponse(ResponseWrapper):
-    data: Optional[StopIDsForAgencyListResponseData] = None
+    data: StopIDsForAgencyListResponseData

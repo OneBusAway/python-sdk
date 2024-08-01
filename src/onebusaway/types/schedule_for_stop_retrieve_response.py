@@ -86,4 +86,4 @@ class ScheduleForStopRetrieveResponseData(BaseModel):
 
 
 class ScheduleForStopRetrieveResponse(ResponseWrapper):
-    data: Optional[ScheduleForStopRetrieveResponseData] = None
+    data: ScheduleForStopRetrieveResponseData

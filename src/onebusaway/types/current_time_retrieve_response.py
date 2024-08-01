@@ -24,4 +24,4 @@ class CurrentTimeRetrieveResponseData(BaseModel):
 
 
 class CurrentTimeRetrieveResponse(ResponseWrapper):
-    data: Optional[CurrentTimeRetrieveResponseData] = None
+    data: CurrentTimeRetrieveResponseData

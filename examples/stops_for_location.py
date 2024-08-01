@@ -1,3 +1,5 @@
+from typing import Any
+
 from helpers.load_env import load_settings
 
 from onebusaway import OnebusawaySDK
@@ -16,7 +18,6 @@ settings = load_settings(
 oba = OnebusawaySDK(**settings)
 
 space_needle_stops = oba.stops_for_location.retrieve(
-    key="TEST",  # TODO FIXME: I shouldn't have to specify the API key here.
     lat=47.6205,
     lon=-122.3493,
 )
@@ -26,18 +27,19 @@ references = space_needle_stops.data.references
 
 # make it easy to look up routes by ID.
 reference_map = {}
-for route in references.routes:
-    reference_map[route.id] = route
+for ref_route in references.routes:
+    reference_map[ref_route.id] = ref_route
 
 for stop in stops:
     print(f"{stop.name} ({stop.lat}, {stop.lon})")
     print("  Routes:")
 
     for route_id in stop.route_ids:
-        route = reference_map[route_id]
+        # TODO: add type to route
+        route: Any = reference_map[route_id]
 
         # Get a string that looks like "D Line - Blue Ridge/Crown Hill - Ballard - Downtown Seattle"
-        description = [route.null_safe_short_name, route.description]
-        description = [e for e in description if e]
-        description = " - ".join(description)
-        print(f"    {description}")
+        description_list = [route.null_safe_short_name, route.description]
+        description_list = [e for e in description_list if e]
+        description_str = " - ".join(description_list)
+        print(f"    {description_str}")

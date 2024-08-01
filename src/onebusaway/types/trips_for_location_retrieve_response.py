@@ -38,4 +38,4 @@ class TripsForLocationRetrieveResponseData(BaseModel):
 
 
 class TripsForLocationRetrieveResponse(ResponseWrapper):
-    data: Optional[TripsForLocationRetrieveResponseData] = None
+    data: TripsForLocationRetrieveResponseData
