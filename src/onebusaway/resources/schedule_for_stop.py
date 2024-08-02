@@ -66,7 +66,7 @@ class ScheduleForStopResource(SyncAPIResource):
         if not stop_id:
             raise ValueError(f"Expected a non-empty value for `stop_id` but received {stop_id!r}")
         return self._get(
-            f"/api/where/schedule-for-stop/stopID.json",
+            f"/api/where/schedule-for-stop/{stop_id}.json",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -117,7 +117,7 @@ class AsyncScheduleForStopResource(AsyncAPIResource):
         if not stop_id:
             raise ValueError(f"Expected a non-empty value for `stop_id` but received {stop_id!r}")
         return await self._get(
-            f"/api/where/schedule-for-stop/stopID.json",
+            f"/api/where/schedule-for-stop/{stop_id}.json",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,

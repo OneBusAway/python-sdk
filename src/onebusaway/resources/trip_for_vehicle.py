@@ -74,7 +74,7 @@ class TripForVehicleResource(SyncAPIResource):
         if not vehicle_id:
             raise ValueError(f"Expected a non-empty value for `vehicle_id` but received {vehicle_id!r}")
         return self._get(
-            f"/api/where/trip-for-vehicle/vehicleID.json",
+            f"/api/where/trip-for-vehicle/{vehicle_id}.json",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -144,7 +144,7 @@ class AsyncTripForVehicleResource(AsyncAPIResource):
         if not vehicle_id:
             raise ValueError(f"Expected a non-empty value for `vehicle_id` but received {vehicle_id!r}")
         return await self._get(
-            f"/api/where/trip-for-vehicle/vehicleID.json",
+            f"/api/where/trip-for-vehicle/{vehicle_id}.json",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
