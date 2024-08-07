@@ -58,6 +58,7 @@ class OnebusawaySDK(SyncAPIClient):
     schedule_for_stop: resources.ScheduleForStopResource
     route: resources.RouteResource
     route_ids_for_agency: resources.RouteIDsForAgencyResource
+    routes_for_agency: resources.RoutesForAgencyResource
     arrival_and_departure: resources.ArrivalAndDepartureResource
     trip: resources.TripResource
     trips_for_location: resources.TripsForLocationResource
@@ -132,6 +133,7 @@ class OnebusawaySDK(SyncAPIClient):
         self.schedule_for_stop = resources.ScheduleForStopResource(self)
         self.route = resources.RouteResource(self)
         self.route_ids_for_agency = resources.RouteIDsForAgencyResource(self)
+        self.routes_for_agency = resources.RoutesForAgencyResource(self)
         self.arrival_and_departure = resources.ArrivalAndDepartureResource(self)
         self.trip = resources.TripResource(self)
         self.trips_for_location = resources.TripsForLocationResource(self)
@@ -265,6 +267,7 @@ class AsyncOnebusawaySDK(AsyncAPIClient):
     schedule_for_stop: resources.AsyncScheduleForStopResource
     route: resources.AsyncRouteResource
     route_ids_for_agency: resources.AsyncRouteIDsForAgencyResource
+    routes_for_agency: resources.AsyncRoutesForAgencyResource
     arrival_and_departure: resources.AsyncArrivalAndDepartureResource
     trip: resources.AsyncTripResource
     trips_for_location: resources.AsyncTripsForLocationResource
@@ -339,6 +342,7 @@ class AsyncOnebusawaySDK(AsyncAPIClient):
         self.schedule_for_stop = resources.AsyncScheduleForStopResource(self)
         self.route = resources.AsyncRouteResource(self)
         self.route_ids_for_agency = resources.AsyncRouteIDsForAgencyResource(self)
+        self.routes_for_agency = resources.AsyncRoutesForAgencyResource(self)
         self.arrival_and_departure = resources.AsyncArrivalAndDepartureResource(self)
         self.trip = resources.AsyncTripResource(self)
         self.trips_for_location = resources.AsyncTripsForLocationResource(self)
@@ -475,6 +479,7 @@ class OnebusawaySDKWithRawResponse:
         self.schedule_for_stop = resources.ScheduleForStopResourceWithRawResponse(client.schedule_for_stop)
         self.route = resources.RouteResourceWithRawResponse(client.route)
         self.route_ids_for_agency = resources.RouteIDsForAgencyResourceWithRawResponse(client.route_ids_for_agency)
+        self.routes_for_agency = resources.RoutesForAgencyResourceWithRawResponse(client.routes_for_agency)
         self.arrival_and_departure = resources.ArrivalAndDepartureResourceWithRawResponse(client.arrival_and_departure)
         self.trip = resources.TripResourceWithRawResponse(client.trip)
         self.trips_for_location = resources.TripsForLocationResourceWithRawResponse(client.trips_for_location)
@@ -498,6 +503,7 @@ class AsyncOnebusawaySDKWithRawResponse:
         self.schedule_for_stop = resources.AsyncScheduleForStopResourceWithRawResponse(client.schedule_for_stop)
         self.route = resources.AsyncRouteResourceWithRawResponse(client.route)
         self.route_ids_for_agency = resources.AsyncRouteIDsForAgencyResourceWithRawResponse(client.route_ids_for_agency)
+        self.routes_for_agency = resources.AsyncRoutesForAgencyResourceWithRawResponse(client.routes_for_agency)
         self.arrival_and_departure = resources.AsyncArrivalAndDepartureResourceWithRawResponse(
             client.arrival_and_departure
         )
@@ -525,6 +531,7 @@ class OnebusawaySDKWithStreamedResponse:
         self.route_ids_for_agency = resources.RouteIDsForAgencyResourceWithStreamingResponse(
             client.route_ids_for_agency
         )
+        self.routes_for_agency = resources.RoutesForAgencyResourceWithStreamingResponse(client.routes_for_agency)
         self.arrival_and_departure = resources.ArrivalAndDepartureResourceWithStreamingResponse(
             client.arrival_and_departure
         )
@@ -558,6 +565,7 @@ class AsyncOnebusawaySDKWithStreamedResponse:
         self.route_ids_for_agency = resources.AsyncRouteIDsForAgencyResourceWithStreamingResponse(
             client.route_ids_for_agency
         )
+        self.routes_for_agency = resources.AsyncRoutesForAgencyResourceWithStreamingResponse(client.routes_for_agency)
         self.arrival_and_departure = resources.AsyncArrivalAndDepartureResourceWithStreamingResponse(
             client.arrival_and_departure
         )

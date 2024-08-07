@@ -148,6 +148,18 @@ Methods:
 
 - <code title="get /api/where/route-ids-for-agency/{agencyID}.json">client.route_ids_for_agency.<a href="./src/onebusaway/resources/route_ids_for_agency.py">list</a>(agency_id) -> <a href="./src/onebusaway/types/route_ids_for_agency_list_response.py">RouteIDsForAgencyListResponse</a></code>
 
+# RoutesForAgency
+
+Types:
+
+```python
+from onebusaway.types import RoutesForAgencyListResponse
+```
+
+Methods:
+
+- <code title="get /api/where/routes-for-agency/{agencyID}.json">client.routes_for_agency.<a href="./src/onebusaway/resources/routes_for_agency.py">list</a>(agency_id) -> <a href="./src/onebusaway/types/routes_for_agency_list_response.py">RoutesForAgencyListResponse</a></code>
+
 # ArrivalAndDeparture
 
 Types:
