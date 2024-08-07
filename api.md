@@ -160,6 +160,18 @@ Methods:
 
 - <code title="get /api/where/routes-for-agency/{agencyID}.json">client.routes_for_agency.<a href="./src/onebusaway/resources/routes_for_agency.py">list</a>(agency_id) -> <a href="./src/onebusaway/types/routes_for_agency_list_response.py">RoutesForAgencyListResponse</a></code>
 
+# ScheduleForRoute
+
+Types:
+
+```python
+from onebusaway.types import ScheduleForRouteRetrieveResponse
+```
+
+Methods:
+
+- <code title="get /api/where/schedule-for-route/{routeID}.json">client.schedule_for_route.<a href="./src/onebusaway/resources/schedule_for_route.py">retrieve</a>(route_id, \*\*<a href="src/onebusaway/types/schedule_for_route_retrieve_params.py">params</a>) -> <a href="./src/onebusaway/types/schedule_for_route_retrieve_response.py">ScheduleForRouteRetrieveResponse</a></code>
+
 # ArrivalAndDeparture
 
 Types:
