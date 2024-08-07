@@ -112,6 +112,14 @@ from .trips_for_location import (
     TripsForLocationResourceWithStreamingResponse,
     AsyncTripsForLocationResourceWithStreamingResponse,
 )
+from .routes_for_location import (
+    RoutesForLocationResource,
+    AsyncRoutesForLocationResource,
+    RoutesForLocationResourceWithRawResponse,
+    AsyncRoutesForLocationResourceWithRawResponse,
+    RoutesForLocationResourceWithStreamingResponse,
+    AsyncRoutesForLocationResourceWithStreamingResponse,
+)
 from .stop_ids_for_agency import (
     StopIDsForAgencyResource,
     AsyncStopIDsForAgencyResource,
@@ -226,6 +234,12 @@ __all__ = [
     "AsyncRouteIDsForAgencyResourceWithRawResponse",
     "RouteIDsForAgencyResourceWithStreamingResponse",
     "AsyncRouteIDsForAgencyResourceWithStreamingResponse",
+    "RoutesForLocationResource",
+    "AsyncRoutesForLocationResource",
+    "RoutesForLocationResourceWithRawResponse",
+    "AsyncRoutesForLocationResourceWithRawResponse",
+    "RoutesForLocationResourceWithStreamingResponse",
+    "AsyncRoutesForLocationResourceWithStreamingResponse",
     "RoutesForAgencyResource",
     "AsyncRoutesForAgencyResource",
     "RoutesForAgencyResourceWithRawResponse",
