@@ -112,6 +112,14 @@ from .vehicles_for_agency import (
     VehiclesForAgencyResourceWithStreamingResponse,
     AsyncVehiclesForAgencyResourceWithStreamingResponse,
 )
+from .route_ids_for_agency import (
+    RouteIDsForAgencyResource,
+    AsyncRouteIDsForAgencyResource,
+    RouteIDsForAgencyResourceWithRawResponse,
+    AsyncRouteIDsForAgencyResourceWithRawResponse,
+    RouteIDsForAgencyResourceWithStreamingResponse,
+    AsyncRouteIDsForAgencyResourceWithStreamingResponse,
+)
 from .arrival_and_departure import (
     ArrivalAndDepartureResource,
     AsyncArrivalAndDepartureResource,
@@ -196,6 +204,12 @@ __all__ = [
     "AsyncRouteResourceWithRawResponse",
     "RouteResourceWithStreamingResponse",
     "AsyncRouteResourceWithStreamingResponse",
+    "RouteIDsForAgencyResource",
+    "AsyncRouteIDsForAgencyResource",
+    "RouteIDsForAgencyResourceWithRawResponse",
+    "AsyncRouteIDsForAgencyResourceWithRawResponse",
+    "RouteIDsForAgencyResourceWithStreamingResponse",
+    "AsyncRouteIDsForAgencyResourceWithStreamingResponse",
     "ArrivalAndDepartureResource",
     "AsyncArrivalAndDepartureResource",
     "ArrivalAndDepartureResourceWithRawResponse",
