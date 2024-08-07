@@ -88,6 +88,14 @@ from .schedule_for_stop import (
     ScheduleForStopResourceWithStreamingResponse,
     AsyncScheduleForStopResourceWithStreamingResponse,
 )
+from .schedule_for_route import (
+    ScheduleForRouteResource,
+    AsyncScheduleForRouteResource,
+    ScheduleForRouteResourceWithRawResponse,
+    AsyncScheduleForRouteResourceWithRawResponse,
+    ScheduleForRouteResourceWithStreamingResponse,
+    AsyncScheduleForRouteResourceWithStreamingResponse,
+)
 from .stops_for_location import (
     StopsForLocationResource,
     AsyncStopsForLocationResource,
@@ -224,6 +232,12 @@ __all__ = [
     "AsyncRoutesForAgencyResourceWithRawResponse",
     "RoutesForAgencyResourceWithStreamingResponse",
     "AsyncRoutesForAgencyResourceWithStreamingResponse",
+    "ScheduleForRouteResource",
+    "AsyncScheduleForRouteResource",
+    "ScheduleForRouteResourceWithRawResponse",
+    "AsyncScheduleForRouteResourceWithRawResponse",
+    "ScheduleForRouteResourceWithStreamingResponse",
+    "AsyncScheduleForRouteResourceWithStreamingResponse",
     "ArrivalAndDepartureResource",
     "AsyncArrivalAndDepartureResource",
     "ArrivalAndDepartureResourceWithRawResponse",
