@@ -1,5 +1,27 @@
 # Changelog
 
+## 0.1.0-alpha.12 (2024-08-08)
+
+Full Changelog: [v0.1.0-alpha.11...v0.1.0-alpha.12](https://github.com/OneBusAway/python-sdk/compare/v0.1.0-alpha.11...v0.1.0-alpha.12)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#48](https://github.com/OneBusAway/python-sdk/issues/48)) ([a5c305c](https://github.com/OneBusAway/python-sdk/commit/a5c305c7a5614588dd3fb14607dd2489aab8b3c6))
+* **api:** OpenAPI spec update via Stainless API ([#55](https://github.com/OneBusAway/python-sdk/issues/55)) ([9adae4d](https://github.com/OneBusAway/python-sdk/commit/9adae4de96b8ea11ff8e2d7c251183580f86cf8a))
+* **api:** OpenAPI spec update via Stainless API ([#56](https://github.com/OneBusAway/python-sdk/issues/56)) ([1882cdc](https://github.com/OneBusAway/python-sdk/commit/1882cdc8a4da9705c853ed6f5d5e8d73a4b9276c))
+* **api:** OpenAPI spec update via Stainless API ([#57](https://github.com/OneBusAway/python-sdk/issues/57)) ([5c8a7ee](https://github.com/OneBusAway/python-sdk/commit/5c8a7ee00dcd4ab6a3a9b6800fe10f7447d79c61))
+* **api:** OpenAPI spec update via Stainless API ([#58](https://github.com/OneBusAway/python-sdk/issues/58)) ([29edb45](https://github.com/OneBusAway/python-sdk/commit/29edb45798ad111a1a4f6ce5bbbbadfe3e9099d8))
+* **client:** add `retry_count` to raw response class ([#51](https://github.com/OneBusAway/python-sdk/issues/51)) ([97156e5](https://github.com/OneBusAway/python-sdk/commit/97156e5dff5d743d04ecc0dbe73ec7c690dfb4fe))
+
+
+### Chores
+
+* **internal:** bump pyright ([#50](https://github.com/OneBusAway/python-sdk/issues/50)) ([6d1fdf7](https://github.com/OneBusAway/python-sdk/commit/6d1fdf78cf6d63079bf037b88ac0540e619f9ae7))
+* **internal:** bump ruff version ([#53](https://github.com/OneBusAway/python-sdk/issues/53)) ([c8cbc6a](https://github.com/OneBusAway/python-sdk/commit/c8cbc6a1e48e42b15e42ebf40cdfd2f8fc0bc7ab))
+* **internal:** remove deprecated ruff config ([#59](https://github.com/OneBusAway/python-sdk/issues/59)) ([a6413af](https://github.com/OneBusAway/python-sdk/commit/a6413af808c1ea04d05a46fa0a5d54ec888999bf))
+* **internal:** test updates ([#52](https://github.com/OneBusAway/python-sdk/issues/52)) ([f3b7cb0](https://github.com/OneBusAway/python-sdk/commit/f3b7cb00c4302b0ac1b8497835f2db0d3f9e7949))
+* **internal:** update pydantic compat helper function ([#54](https://github.com/OneBusAway/python-sdk/issues/54)) ([1f501f0](https://github.com/OneBusAway/python-sdk/commit/1f501f0592c92e86c4c027f652a49ff11a068715))
+
 ## 0.1.0-alpha.11 (2024-08-01)
 
 Full Changelog: [v0.1.0-alpha.10...v0.1.0-alpha.11](https://github.com/OneBusAway/python-sdk/compare/v0.1.0-alpha.10...v0.1.0-alpha.11)
