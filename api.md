@@ -244,3 +244,9 @@ from onebusaway.types import TripForVehicleRetrieveResponse
 Methods:
 
 - <code title="get /api/where/trip-for-vehicle/{vehicleID}.json">client.trip_for_vehicle.<a href="./src/onebusaway/resources/trip_for_vehicle.py">retrieve</a>(vehicle_id, \*\*<a href="src/onebusaway/types/trip_for_vehicle_retrieve_params.py">params</a>) -> <a href="./src/onebusaway/types/trip_for_vehicle_retrieve_response.py">TripForVehicleRetrieveResponse</a></code>
+
+# ReportProblemWithStop
+
+Methods:
+
+- <code title="get /api/where/report-problem-with-stop/{stopID}.json">client.report_problem_with_stop.<a href="./src/onebusaway/resources/report_problem_with_stop.py">retrieve</a>(stop_id, \*\*<a href="src/onebusaway/types/report_problem_with_stop_retrieve_params.py">params</a>) -> <a href="./src/onebusaway/types/shared/response_wrapper.py">ResponseWrapper</a></code>
