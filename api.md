@@ -250,3 +250,27 @@ Methods:
 Methods:
 
 - <code title="get /api/where/report-problem-with-stop/{stopID}.json">client.report_problem_with_stop.<a href="./src/onebusaway/resources/report_problem_with_stop.py">retrieve</a>(stop_id, \*\*<a href="src/onebusaway/types/report_problem_with_stop_retrieve_params.py">params</a>) -> <a href="./src/onebusaway/types/shared/response_wrapper.py">ResponseWrapper</a></code>
+
+# SearchForStop
+
+Types:
+
+```python
+from onebusaway.types import SearchForStopRetrieveResponse
+```
+
+Methods:
+
+- <code title="get /api/where/search/stop.json">client.search_for_stop.<a href="./src/onebusaway/resources/search_for_stop.py">retrieve</a>(\*\*<a href="src/onebusaway/types/search_for_stop_retrieve_params.py">params</a>) -> <a href="./src/onebusaway/types/search_for_stop_retrieve_response.py">SearchForStopRetrieveResponse</a></code>
+
+# SearchForRoute
+
+Types:
+
+```python
+from onebusaway.types import SearchForRouteRetrieveResponse
+```
+
+Methods:
+
+- <code title="get /api/where/search/route.json">client.search_for_route.<a href="./src/onebusaway/resources/search_for_route.py">retrieve</a>(\*\*<a href="src/onebusaway/types/search_for_route_retrieve_params.py">params</a>) -> <a href="./src/onebusaway/types/search_for_route_retrieve_response.py">SearchForRouteRetrieveResponse</a></code>

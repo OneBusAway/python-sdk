@@ -56,6 +56,14 @@ from .trip_details import (
     TripDetailsResourceWithStreamingResponse,
     AsyncTripDetailsResourceWithStreamingResponse,
 )
+from .search_for_stop import (
+    SearchForStopResource,
+    AsyncSearchForStopResource,
+    SearchForStopResourceWithRawResponse,
+    AsyncSearchForStopResourceWithRawResponse,
+    SearchForStopResourceWithStreamingResponse,
+    AsyncSearchForStopResourceWithStreamingResponse,
+)
 from .stops_for_route import (
     StopsForRouteResource,
     AsyncStopsForRouteResource,
@@ -63,6 +71,14 @@ from .stops_for_route import (
     AsyncStopsForRouteResourceWithRawResponse,
     StopsForRouteResourceWithStreamingResponse,
     AsyncStopsForRouteResourceWithStreamingResponse,
+)
+from .search_for_route import (
+    SearchForRouteResource,
+    AsyncSearchForRouteResource,
+    SearchForRouteResourceWithRawResponse,
+    AsyncSearchForRouteResourceWithRawResponse,
+    SearchForRouteResourceWithStreamingResponse,
+    AsyncSearchForRouteResourceWithStreamingResponse,
 )
 from .trip_for_vehicle import (
     TripForVehicleResource,
@@ -296,4 +312,16 @@ __all__ = [
     "AsyncReportProblemWithStopResourceWithRawResponse",
     "ReportProblemWithStopResourceWithStreamingResponse",
     "AsyncReportProblemWithStopResourceWithStreamingResponse",
+    "SearchForStopResource",
+    "AsyncSearchForStopResource",
+    "SearchForStopResourceWithRawResponse",
+    "AsyncSearchForStopResourceWithRawResponse",
+    "SearchForStopResourceWithStreamingResponse",
+    "AsyncSearchForStopResourceWithStreamingResponse",
+    "SearchForRouteResource",
+    "AsyncSearchForRouteResource",
+    "SearchForRouteResourceWithRawResponse",
+    "AsyncSearchForRouteResourceWithRawResponse",
+    "SearchForRouteResourceWithStreamingResponse",
+    "AsyncSearchForRouteResourceWithStreamingResponse",
 ]
