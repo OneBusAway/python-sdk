@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.13 (2024-08-08)
+
+Full Changelog: [v0.1.0-alpha.12...v0.1.0-alpha.13](https://github.com/OneBusAway/python-sdk/compare/v0.1.0-alpha.12...v0.1.0-alpha.13)
+
+### Chores
+
+* **internal:** version bump ([#61](https://github.com/OneBusAway/python-sdk/issues/61)) ([5d7fe06](https://github.com/OneBusAway/python-sdk/commit/5d7fe060b6158f719e388feba0bc9f7dcb0fe288))
+
 ## 0.1.0-alpha.12 (2024-08-08)
 
 Full Changelog: [v0.1.0-alpha.11...v0.1.0-alpha.12](https://github.com/OneBusAway/python-sdk/compare/v0.1.0-alpha.11...v0.1.0-alpha.12)
