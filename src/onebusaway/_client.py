@@ -66,6 +66,7 @@ class OnebusawaySDK(SyncAPIClient):
     trips_for_location: resources.TripsForLocationResource
     trip_details: resources.TripDetailsResource
     trip_for_vehicle: resources.TripForVehicleResource
+    report_problem_with_stop: resources.ReportProblemWithStopResource
     with_raw_response: OnebusawaySDKWithRawResponse
     with_streaming_response: OnebusawaySDKWithStreamedResponse
 
@@ -143,6 +144,7 @@ class OnebusawaySDK(SyncAPIClient):
         self.trips_for_location = resources.TripsForLocationResource(self)
         self.trip_details = resources.TripDetailsResource(self)
         self.trip_for_vehicle = resources.TripForVehicleResource(self)
+        self.report_problem_with_stop = resources.ReportProblemWithStopResource(self)
         self.with_raw_response = OnebusawaySDKWithRawResponse(self)
         self.with_streaming_response = OnebusawaySDKWithStreamedResponse(self)
 
@@ -280,6 +282,7 @@ class AsyncOnebusawaySDK(AsyncAPIClient):
     trips_for_location: resources.AsyncTripsForLocationResource
     trip_details: resources.AsyncTripDetailsResource
     trip_for_vehicle: resources.AsyncTripForVehicleResource
+    report_problem_with_stop: resources.AsyncReportProblemWithStopResource
     with_raw_response: AsyncOnebusawaySDKWithRawResponse
     with_streaming_response: AsyncOnebusawaySDKWithStreamedResponse
 
@@ -357,6 +360,7 @@ class AsyncOnebusawaySDK(AsyncAPIClient):
         self.trips_for_location = resources.AsyncTripsForLocationResource(self)
         self.trip_details = resources.AsyncTripDetailsResource(self)
         self.trip_for_vehicle = resources.AsyncTripForVehicleResource(self)
+        self.report_problem_with_stop = resources.AsyncReportProblemWithStopResource(self)
         self.with_raw_response = AsyncOnebusawaySDKWithRawResponse(self)
         self.with_streaming_response = AsyncOnebusawaySDKWithStreamedResponse(self)
 
@@ -497,6 +501,9 @@ class OnebusawaySDKWithRawResponse:
         self.trips_for_location = resources.TripsForLocationResourceWithRawResponse(client.trips_for_location)
         self.trip_details = resources.TripDetailsResourceWithRawResponse(client.trip_details)
         self.trip_for_vehicle = resources.TripForVehicleResourceWithRawResponse(client.trip_for_vehicle)
+        self.report_problem_with_stop = resources.ReportProblemWithStopResourceWithRawResponse(
+            client.report_problem_with_stop
+        )
 
 
 class AsyncOnebusawaySDKWithRawResponse:
@@ -525,6 +532,9 @@ class AsyncOnebusawaySDKWithRawResponse:
         self.trips_for_location = resources.AsyncTripsForLocationResourceWithRawResponse(client.trips_for_location)
         self.trip_details = resources.AsyncTripDetailsResourceWithRawResponse(client.trip_details)
         self.trip_for_vehicle = resources.AsyncTripForVehicleResourceWithRawResponse(client.trip_for_vehicle)
+        self.report_problem_with_stop = resources.AsyncReportProblemWithStopResourceWithRawResponse(
+            client.report_problem_with_stop
+        )
 
 
 class OnebusawaySDKWithStreamedResponse:
@@ -555,6 +565,9 @@ class OnebusawaySDKWithStreamedResponse:
         self.trips_for_location = resources.TripsForLocationResourceWithStreamingResponse(client.trips_for_location)
         self.trip_details = resources.TripDetailsResourceWithStreamingResponse(client.trip_details)
         self.trip_for_vehicle = resources.TripForVehicleResourceWithStreamingResponse(client.trip_for_vehicle)
+        self.report_problem_with_stop = resources.ReportProblemWithStopResourceWithStreamingResponse(
+            client.report_problem_with_stop
+        )
 
 
 class AsyncOnebusawaySDKWithStreamedResponse:
@@ -597,6 +610,9 @@ class AsyncOnebusawaySDKWithStreamedResponse:
         )
         self.trip_details = resources.AsyncTripDetailsResourceWithStreamingResponse(client.trip_details)
         self.trip_for_vehicle = resources.AsyncTripForVehicleResourceWithStreamingResponse(client.trip_for_vehicle)
+        self.report_problem_with_stop = resources.AsyncReportProblemWithStopResourceWithStreamingResponse(
+            client.report_problem_with_stop
+        )
 
 
 Client = OnebusawaySDK

@@ -43,3 +43,6 @@ from .arrival_and_departure_retrieve_response import (
 from .agencies_with_coverage_retrieve_response import (
     AgenciesWithCoverageRetrieveResponse as AgenciesWithCoverageRetrieveResponse,
 )
+from .report_problem_with_stop_retrieve_params import (
+    ReportProblemWithStopRetrieveParams as ReportProblemWithStopRetrieveParams,
+)
