@@ -72,6 +72,14 @@ from .trip_for_vehicle import (
     TripForVehicleResourceWithStreamingResponse,
     AsyncTripForVehicleResourceWithStreamingResponse,
 )
+from .routes_for_agency import (
+    RoutesForAgencyResource,
+    AsyncRoutesForAgencyResource,
+    RoutesForAgencyResourceWithRawResponse,
+    AsyncRoutesForAgencyResourceWithRawResponse,
+    RoutesForAgencyResourceWithStreamingResponse,
+    AsyncRoutesForAgencyResourceWithStreamingResponse,
+)
 from .schedule_for_stop import (
     ScheduleForStopResource,
     AsyncScheduleForStopResource,
@@ -79,6 +87,14 @@ from .schedule_for_stop import (
     AsyncScheduleForStopResourceWithRawResponse,
     ScheduleForStopResourceWithStreamingResponse,
     AsyncScheduleForStopResourceWithStreamingResponse,
+)
+from .schedule_for_route import (
+    ScheduleForRouteResource,
+    AsyncScheduleForRouteResource,
+    ScheduleForRouteResourceWithRawResponse,
+    AsyncScheduleForRouteResourceWithRawResponse,
+    ScheduleForRouteResourceWithStreamingResponse,
+    AsyncScheduleForRouteResourceWithStreamingResponse,
 )
 from .stops_for_location import (
     StopsForLocationResource,
@@ -96,6 +112,14 @@ from .trips_for_location import (
     TripsForLocationResourceWithStreamingResponse,
     AsyncTripsForLocationResourceWithStreamingResponse,
 )
+from .routes_for_location import (
+    RoutesForLocationResource,
+    AsyncRoutesForLocationResource,
+    RoutesForLocationResourceWithRawResponse,
+    AsyncRoutesForLocationResourceWithRawResponse,
+    RoutesForLocationResourceWithStreamingResponse,
+    AsyncRoutesForLocationResourceWithStreamingResponse,
+)
 from .stop_ids_for_agency import (
     StopIDsForAgencyResource,
     AsyncStopIDsForAgencyResource,
@@ -111,6 +135,14 @@ from .vehicles_for_agency import (
     AsyncVehiclesForAgencyResourceWithRawResponse,
     VehiclesForAgencyResourceWithStreamingResponse,
     AsyncVehiclesForAgencyResourceWithStreamingResponse,
+)
+from .route_ids_for_agency import (
+    RouteIDsForAgencyResource,
+    AsyncRouteIDsForAgencyResource,
+    RouteIDsForAgencyResourceWithRawResponse,
+    AsyncRouteIDsForAgencyResourceWithRawResponse,
+    RouteIDsForAgencyResourceWithStreamingResponse,
+    AsyncRouteIDsForAgencyResourceWithStreamingResponse,
 )
 from .arrival_and_departure import (
     ArrivalAndDepartureResource,
@@ -196,6 +228,30 @@ __all__ = [
     "AsyncRouteResourceWithRawResponse",
     "RouteResourceWithStreamingResponse",
     "AsyncRouteResourceWithStreamingResponse",
+    "RouteIDsForAgencyResource",
+    "AsyncRouteIDsForAgencyResource",
+    "RouteIDsForAgencyResourceWithRawResponse",
+    "AsyncRouteIDsForAgencyResourceWithRawResponse",
+    "RouteIDsForAgencyResourceWithStreamingResponse",
+    "AsyncRouteIDsForAgencyResourceWithStreamingResponse",
+    "RoutesForLocationResource",
+    "AsyncRoutesForLocationResource",
+    "RoutesForLocationResourceWithRawResponse",
+    "AsyncRoutesForLocationResourceWithRawResponse",
+    "RoutesForLocationResourceWithStreamingResponse",
+    "AsyncRoutesForLocationResourceWithStreamingResponse",
+    "RoutesForAgencyResource",
+    "AsyncRoutesForAgencyResource",
+    "RoutesForAgencyResourceWithRawResponse",
+    "AsyncRoutesForAgencyResourceWithRawResponse",
+    "RoutesForAgencyResourceWithStreamingResponse",
+    "AsyncRoutesForAgencyResourceWithStreamingResponse",
+    "ScheduleForRouteResource",
+    "AsyncScheduleForRouteResource",
+    "ScheduleForRouteResourceWithRawResponse",
+    "AsyncScheduleForRouteResourceWithRawResponse",
+    "ScheduleForRouteResourceWithStreamingResponse",
+    "AsyncScheduleForRouteResourceWithStreamingResponse",
     "ArrivalAndDepartureResource",
     "AsyncArrivalAndDepartureResource",
     "ArrivalAndDepartureResourceWithRawResponse",

@@ -136,6 +136,54 @@ Methods:
 
 - <code title="get /api/where/route/{routeID}.json">client.route.<a href="./src/onebusaway/resources/route.py">retrieve</a>(route_id) -> <a href="./src/onebusaway/types/route_retrieve_response.py">RouteRetrieveResponse</a></code>
 
+# RouteIDsForAgency
+
+Types:
+
+```python
+from onebusaway.types import RouteIDsForAgencyListResponse
+```
+
+Methods:
+
+- <code title="get /api/where/route-ids-for-agency/{agencyID}.json">client.route_ids_for_agency.<a href="./src/onebusaway/resources/route_ids_for_agency.py">list</a>(agency_id) -> <a href="./src/onebusaway/types/route_ids_for_agency_list_response.py">RouteIDsForAgencyListResponse</a></code>
+
+# RoutesForLocation
+
+Types:
+
+```python
+from onebusaway.types import RoutesForLocationRetrieveResponse
+```
+
+Methods:
+
+- <code title="get /api/where/routes-for-location.json">client.routes_for_location.<a href="./src/onebusaway/resources/routes_for_location.py">retrieve</a>(\*\*<a href="src/onebusaway/types/routes_for_location_retrieve_params.py">params</a>) -> <a href="./src/onebusaway/types/routes_for_location_retrieve_response.py">RoutesForLocationRetrieveResponse</a></code>
+
+# RoutesForAgency
+
+Types:
+
+```python
+from onebusaway.types import RoutesForAgencyListResponse
+```
+
+Methods:
+
+- <code title="get /api/where/routes-for-agency/{agencyID}.json">client.routes_for_agency.<a href="./src/onebusaway/resources/routes_for_agency.py">list</a>(agency_id) -> <a href="./src/onebusaway/types/routes_for_agency_list_response.py">RoutesForAgencyListResponse</a></code>
+
+# ScheduleForRoute
+
+Types:
+
+```python
+from onebusaway.types import ScheduleForRouteRetrieveResponse
+```
+
+Methods:
+
+- <code title="get /api/where/schedule-for-route/{routeID}.json">client.schedule_for_route.<a href="./src/onebusaway/resources/schedule_for_route.py">retrieve</a>(route_id, \*\*<a href="src/onebusaway/types/schedule_for_route_retrieve_params.py">params</a>) -> <a href="./src/onebusaway/types/schedule_for_route_retrieve_response.py">ScheduleForRouteRetrieveResponse</a></code>
+
 # ArrivalAndDeparture
 
 Types:
