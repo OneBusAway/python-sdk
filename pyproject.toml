@@ -1,6 +1,6 @@
 [project]
 name = "onebusaway"
-version = "0.1.0-alpha.15"
+version = "0.1.0-alpha.16"
 description = "The official Python library for the onebusaway-sdk API"
 dynamic = ["readme"]
 license = "Apache-2.0"
@@ -76,9 +76,12 @@ format = { chain = [
 "lint" = { chain = [
   "check:ruff",
   "typecheck",
+  "check:importable",
 ]}
 "check:ruff" = "ruff check ."
 "fix:ruff" = "ruff check --fix ."
+
+"check:importable" = "python -c 'import onebusaway'"
 
 typecheck = { chain = [
   "typecheck:pyright",

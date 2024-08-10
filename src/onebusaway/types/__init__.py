@@ -50,3 +50,6 @@ from .agencies_with_coverage_retrieve_response import (
 from .report_problem_with_stop_retrieve_params import (
     ReportProblemWithStopRetrieveParams as ReportProblemWithStopRetrieveParams,
 )
+from .report_problem_with_trip_retrieve_params import (
+    ReportProblemWithTripRetrieveParams as ReportProblemWithTripRetrieveParams,
+)

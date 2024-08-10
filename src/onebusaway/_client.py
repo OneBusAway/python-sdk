@@ -67,6 +67,7 @@ class OnebusawaySDK(SyncAPIClient):
     trip_details: resources.TripDetailsResource
     trip_for_vehicle: resources.TripForVehicleResource
     report_problem_with_stop: resources.ReportProblemWithStopResource
+    report_problem_with_trip: resources.ReportProblemWithTripResource
     search_for_stop: resources.SearchForStopResource
     search_for_route: resources.SearchForRouteResource
     with_raw_response: OnebusawaySDKWithRawResponse
@@ -147,6 +148,7 @@ class OnebusawaySDK(SyncAPIClient):
         self.trip_details = resources.TripDetailsResource(self)
         self.trip_for_vehicle = resources.TripForVehicleResource(self)
         self.report_problem_with_stop = resources.ReportProblemWithStopResource(self)
+        self.report_problem_with_trip = resources.ReportProblemWithTripResource(self)
         self.search_for_stop = resources.SearchForStopResource(self)
         self.search_for_route = resources.SearchForRouteResource(self)
         self.with_raw_response = OnebusawaySDKWithRawResponse(self)
@@ -287,6 +289,7 @@ class AsyncOnebusawaySDK(AsyncAPIClient):
     trip_details: resources.AsyncTripDetailsResource
     trip_for_vehicle: resources.AsyncTripForVehicleResource
     report_problem_with_stop: resources.AsyncReportProblemWithStopResource
+    report_problem_with_trip: resources.AsyncReportProblemWithTripResource
     search_for_stop: resources.AsyncSearchForStopResource
     search_for_route: resources.AsyncSearchForRouteResource
     with_raw_response: AsyncOnebusawaySDKWithRawResponse
@@ -367,6 +370,7 @@ class AsyncOnebusawaySDK(AsyncAPIClient):
         self.trip_details = resources.AsyncTripDetailsResource(self)
         self.trip_for_vehicle = resources.AsyncTripForVehicleResource(self)
         self.report_problem_with_stop = resources.AsyncReportProblemWithStopResource(self)
+        self.report_problem_with_trip = resources.AsyncReportProblemWithTripResource(self)
         self.search_for_stop = resources.AsyncSearchForStopResource(self)
         self.search_for_route = resources.AsyncSearchForRouteResource(self)
         self.with_raw_response = AsyncOnebusawaySDKWithRawResponse(self)
@@ -512,6 +516,9 @@ class OnebusawaySDKWithRawResponse:
         self.report_problem_with_stop = resources.ReportProblemWithStopResourceWithRawResponse(
             client.report_problem_with_stop
         )
+        self.report_problem_with_trip = resources.ReportProblemWithTripResourceWithRawResponse(
+            client.report_problem_with_trip
+        )
         self.search_for_stop = resources.SearchForStopResourceWithRawResponse(client.search_for_stop)
         self.search_for_route = resources.SearchForRouteResourceWithRawResponse(client.search_for_route)
 
@@ -544,6 +551,9 @@ class AsyncOnebusawaySDKWithRawResponse:
         self.trip_for_vehicle = resources.AsyncTripForVehicleResourceWithRawResponse(client.trip_for_vehicle)
         self.report_problem_with_stop = resources.AsyncReportProblemWithStopResourceWithRawResponse(
             client.report_problem_with_stop
+        )
+        self.report_problem_with_trip = resources.AsyncReportProblemWithTripResourceWithRawResponse(
+            client.report_problem_with_trip
         )
         self.search_for_stop = resources.AsyncSearchForStopResourceWithRawResponse(client.search_for_stop)
         self.search_for_route = resources.AsyncSearchForRouteResourceWithRawResponse(client.search_for_route)
@@ -579,6 +589,9 @@ class OnebusawaySDKWithStreamedResponse:
         self.trip_for_vehicle = resources.TripForVehicleResourceWithStreamingResponse(client.trip_for_vehicle)
         self.report_problem_with_stop = resources.ReportProblemWithStopResourceWithStreamingResponse(
             client.report_problem_with_stop
+        )
+        self.report_problem_with_trip = resources.ReportProblemWithTripResourceWithStreamingResponse(
+            client.report_problem_with_trip
         )
         self.search_for_stop = resources.SearchForStopResourceWithStreamingResponse(client.search_for_stop)
         self.search_for_route = resources.SearchForRouteResourceWithStreamingResponse(client.search_for_route)
@@ -626,6 +639,9 @@ class AsyncOnebusawaySDKWithStreamedResponse:
         self.trip_for_vehicle = resources.AsyncTripForVehicleResourceWithStreamingResponse(client.trip_for_vehicle)
         self.report_problem_with_stop = resources.AsyncReportProblemWithStopResourceWithStreamingResponse(
             client.report_problem_with_stop
+        )
+        self.report_problem_with_trip = resources.AsyncReportProblemWithTripResourceWithStreamingResponse(
+            client.report_problem_with_trip
         )
         self.search_for_stop = resources.AsyncSearchForStopResourceWithStreamingResponse(client.search_for_stop)
         self.search_for_route = resources.AsyncSearchForRouteResourceWithStreamingResponse(client.search_for_route)

@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.1.0-alpha.16 (2024-08-10)
+
+Full Changelog: [v0.1.0-alpha.15...v0.1.0-alpha.16](https://github.com/OneBusAway/python-sdk/compare/v0.1.0-alpha.15...v0.1.0-alpha.16)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#71](https://github.com/OneBusAway/python-sdk/issues/71)) ([876b77c](https://github.com/OneBusAway/python-sdk/commit/876b77c3addf2460c3116738f7b4bc784f67350d))
+* **api:** OpenAPI spec update via Stainless API ([#75](https://github.com/OneBusAway/python-sdk/issues/75)) ([6af5d8a](https://github.com/OneBusAway/python-sdk/commit/6af5d8a93d7f516c9bb7a20e20d063944d0435e9))
+
+
+### Chores
+
+* **ci:** bump prism mock server version ([#73](https://github.com/OneBusAway/python-sdk/issues/73)) ([e303bb6](https://github.com/OneBusAway/python-sdk/commit/e303bb64a39d45801d72141e13e00bac40771f71))
+* **internal:** ensure package is importable in lint cmd ([#74](https://github.com/OneBusAway/python-sdk/issues/74)) ([b4db5b9](https://github.com/OneBusAway/python-sdk/commit/b4db5b955b4880c1eea3bba00749bb9f4a78416b))
+
 ## 0.1.0-alpha.15 (2024-08-08)
 
 Full Changelog: [v0.1.0-alpha.14...v0.1.0-alpha.15](https://github.com/OneBusAway/python-sdk/compare/v0.1.0-alpha.14...v0.1.0-alpha.15)
