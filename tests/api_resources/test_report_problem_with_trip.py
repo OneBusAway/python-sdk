@@ -30,14 +30,14 @@ class TestReportProblemWithTrip:
             trip_id="tripID",
             code="vehicle_never_came",
             service_date=0,
-            stop_id="stopId",
+            stop_id="stopID",
             user_comment="userComment",
             user_lat=0,
             user_location_accuracy=0,
             user_lon=0,
             user_on_vehicle=True,
             user_vehicle_number="userVehicleNumber",
-            vehicle_id="vehicleId",
+            vehicle_id="vehicleID",
         )
         assert_matches_type(ResponseWrapper, report_problem_with_trip, path=["response"])
 
@@ -89,14 +89,14 @@ class TestAsyncReportProblemWithTrip:
             trip_id="tripID",
             code="vehicle_never_came",
             service_date=0,
-            stop_id="stopId",
+            stop_id="stopID",
             user_comment="userComment",
             user_lat=0,
             user_location_accuracy=0,
             user_lon=0,
             user_on_vehicle=True,
             user_vehicle_number="userVehicleNumber",
-            vehicle_id="vehicleId",
+            vehicle_id="vehicleID",
         )
         assert_matches_type(ResponseWrapper, report_problem_with_trip, path=["response"])
 
