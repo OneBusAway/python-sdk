@@ -23,7 +23,7 @@ class ReportProblemWithTripRetrieveParams(TypedDict, total=False):
     service_date: Annotated[int, PropertyInfo(alias="serviceDate")]
     """The service date of the trip"""
 
-    stop_id: Annotated[str, PropertyInfo(alias="stopId")]
+    stop_id: Annotated[str, PropertyInfo(alias="stopID")]
     """A stop ID indicating where the user is experiencing the problem"""
 
     user_comment: Annotated[str, PropertyInfo(alias="userComment")]
@@ -44,5 +44,5 @@ class ReportProblemWithTripRetrieveParams(TypedDict, total=False):
     user_vehicle_number: Annotated[str, PropertyInfo(alias="userVehicleNumber")]
     """The vehicle number, as reported by the user"""
 
-    vehicle_id: Annotated[str, PropertyInfo(alias="vehicleId")]
+    vehicle_id: Annotated[str, PropertyInfo(alias="vehicleID")]
     """The vehicle actively serving the trip"""
