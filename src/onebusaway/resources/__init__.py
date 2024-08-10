@@ -184,6 +184,14 @@ from .report_problem_with_stop import (
     ReportProblemWithStopResourceWithStreamingResponse,
     AsyncReportProblemWithStopResourceWithStreamingResponse,
 )
+from .report_problem_with_trip import (
+    ReportProblemWithTripResource,
+    AsyncReportProblemWithTripResource,
+    ReportProblemWithTripResourceWithRawResponse,
+    AsyncReportProblemWithTripResourceWithRawResponse,
+    ReportProblemWithTripResourceWithStreamingResponse,
+    AsyncReportProblemWithTripResourceWithStreamingResponse,
+)
 
 __all__ = [
     "AgenciesWithCoverageResource",
@@ -312,6 +320,12 @@ __all__ = [
     "AsyncReportProblemWithStopResourceWithRawResponse",
     "ReportProblemWithStopResourceWithStreamingResponse",
     "AsyncReportProblemWithStopResourceWithStreamingResponse",
+    "ReportProblemWithTripResource",
+    "AsyncReportProblemWithTripResource",
+    "ReportProblemWithTripResourceWithRawResponse",
+    "AsyncReportProblemWithTripResourceWithRawResponse",
+    "ReportProblemWithTripResourceWithStreamingResponse",
+    "AsyncReportProblemWithTripResourceWithStreamingResponse",
     "SearchForStopResource",
     "AsyncSearchForStopResource",
     "SearchForStopResourceWithRawResponse",
