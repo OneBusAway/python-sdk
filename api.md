@@ -280,3 +280,27 @@ from onebusaway.types import SearchForRouteRetrieveResponse
 Methods:
 
 - <code title="get /api/where/search/route.json">client.search_for_route.<a href="./src/onebusaway/resources/search_for_route.py">retrieve</a>(\*\*<a href="src/onebusaway/types/search_for_route_retrieve_params.py">params</a>) -> <a href="./src/onebusaway/types/search_for_route_retrieve_response.py">SearchForRouteRetrieveResponse</a></code>
+
+# Block
+
+Types:
+
+```python
+from onebusaway.types import BlockRetrieveResponse
+```
+
+Methods:
+
+- <code title="get /api/where/block/{blockID}.json">client.block.<a href="./src/onebusaway/resources/block.py">retrieve</a>(block_id) -> <a href="./src/onebusaway/types/block_retrieve_response.py">BlockRetrieveResponse</a></code>
+
+# Shape
+
+Types:
+
+```python
+from onebusaway.types import ShapeRetrieveResponse
+```
+
+Methods:
+
+- <code title="get /api/where/shape/{shapeID}.json">client.shape.<a href="./src/onebusaway/resources/shape.py">retrieve</a>(shape_id) -> <a href="./src/onebusaway/types/shape_retrieve_response.py">ShapeRetrieveResponse</a></code>

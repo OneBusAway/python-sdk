@@ -16,6 +16,14 @@ from .trip import (
     TripResourceWithStreamingResponse,
     AsyncTripResourceWithStreamingResponse,
 )
+from .block import (
+    BlockResource,
+    AsyncBlockResource,
+    BlockResourceWithRawResponse,
+    AsyncBlockResourceWithRawResponse,
+    BlockResourceWithStreamingResponse,
+    AsyncBlockResourceWithStreamingResponse,
+)
 from .route import (
     RouteResource,
     AsyncRouteResource,
@@ -23,6 +31,14 @@ from .route import (
     AsyncRouteResourceWithRawResponse,
     RouteResourceWithStreamingResponse,
     AsyncRouteResourceWithStreamingResponse,
+)
+from .shape import (
+    ShapeResource,
+    AsyncShapeResource,
+    ShapeResourceWithRawResponse,
+    AsyncShapeResourceWithRawResponse,
+    ShapeResourceWithStreamingResponse,
+    AsyncShapeResourceWithStreamingResponse,
 )
 from .agency import (
     AgencyResource,
@@ -338,4 +354,16 @@ __all__ = [
     "AsyncSearchForRouteResourceWithRawResponse",
     "SearchForRouteResourceWithStreamingResponse",
     "AsyncSearchForRouteResourceWithStreamingResponse",
+    "BlockResource",
+    "AsyncBlockResource",
+    "BlockResourceWithRawResponse",
+    "AsyncBlockResourceWithRawResponse",
+    "BlockResourceWithStreamingResponse",
+    "AsyncBlockResourceWithStreamingResponse",
+    "ShapeResource",
+    "AsyncShapeResource",
+    "ShapeResourceWithRawResponse",
+    "AsyncShapeResourceWithRawResponse",
+    "ShapeResourceWithStreamingResponse",
+    "AsyncShapeResourceWithStreamingResponse",
 ]

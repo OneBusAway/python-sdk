@@ -70,6 +70,8 @@ class OnebusawaySDK(SyncAPIClient):
     report_problem_with_trip: resources.ReportProblemWithTripResource
     search_for_stop: resources.SearchForStopResource
     search_for_route: resources.SearchForRouteResource
+    block: resources.BlockResource
+    shape: resources.ShapeResource
     with_raw_response: OnebusawaySDKWithRawResponse
     with_streaming_response: OnebusawaySDKWithStreamedResponse
 
@@ -151,6 +153,8 @@ class OnebusawaySDK(SyncAPIClient):
         self.report_problem_with_trip = resources.ReportProblemWithTripResource(self)
         self.search_for_stop = resources.SearchForStopResource(self)
         self.search_for_route = resources.SearchForRouteResource(self)
+        self.block = resources.BlockResource(self)
+        self.shape = resources.ShapeResource(self)
         self.with_raw_response = OnebusawaySDKWithRawResponse(self)
         self.with_streaming_response = OnebusawaySDKWithStreamedResponse(self)
 
@@ -292,6 +296,8 @@ class AsyncOnebusawaySDK(AsyncAPIClient):
     report_problem_with_trip: resources.AsyncReportProblemWithTripResource
     search_for_stop: resources.AsyncSearchForStopResource
     search_for_route: resources.AsyncSearchForRouteResource
+    block: resources.AsyncBlockResource
+    shape: resources.AsyncShapeResource
     with_raw_response: AsyncOnebusawaySDKWithRawResponse
     with_streaming_response: AsyncOnebusawaySDKWithStreamedResponse
 
@@ -373,6 +379,8 @@ class AsyncOnebusawaySDK(AsyncAPIClient):
         self.report_problem_with_trip = resources.AsyncReportProblemWithTripResource(self)
         self.search_for_stop = resources.AsyncSearchForStopResource(self)
         self.search_for_route = resources.AsyncSearchForRouteResource(self)
+        self.block = resources.AsyncBlockResource(self)
+        self.shape = resources.AsyncShapeResource(self)
         self.with_raw_response = AsyncOnebusawaySDKWithRawResponse(self)
         self.with_streaming_response = AsyncOnebusawaySDKWithStreamedResponse(self)
 
@@ -521,6 +529,8 @@ class OnebusawaySDKWithRawResponse:
         )
         self.search_for_stop = resources.SearchForStopResourceWithRawResponse(client.search_for_stop)
         self.search_for_route = resources.SearchForRouteResourceWithRawResponse(client.search_for_route)
+        self.block = resources.BlockResourceWithRawResponse(client.block)
+        self.shape = resources.ShapeResourceWithRawResponse(client.shape)
 
 
 class AsyncOnebusawaySDKWithRawResponse:
@@ -557,6 +567,8 @@ class AsyncOnebusawaySDKWithRawResponse:
         )
         self.search_for_stop = resources.AsyncSearchForStopResourceWithRawResponse(client.search_for_stop)
         self.search_for_route = resources.AsyncSearchForRouteResourceWithRawResponse(client.search_for_route)
+        self.block = resources.AsyncBlockResourceWithRawResponse(client.block)
+        self.shape = resources.AsyncShapeResourceWithRawResponse(client.shape)
 
 
 class OnebusawaySDKWithStreamedResponse:
@@ -595,6 +607,8 @@ class OnebusawaySDKWithStreamedResponse:
         )
         self.search_for_stop = resources.SearchForStopResourceWithStreamingResponse(client.search_for_stop)
         self.search_for_route = resources.SearchForRouteResourceWithStreamingResponse(client.search_for_route)
+        self.block = resources.BlockResourceWithStreamingResponse(client.block)
+        self.shape = resources.ShapeResourceWithStreamingResponse(client.shape)
 
 
 class AsyncOnebusawaySDKWithStreamedResponse:
@@ -645,6 +659,8 @@ class AsyncOnebusawaySDKWithStreamedResponse:
         )
         self.search_for_stop = resources.AsyncSearchForStopResourceWithStreamingResponse(client.search_for_stop)
         self.search_for_route = resources.AsyncSearchForRouteResourceWithStreamingResponse(client.search_for_route)
+        self.block = resources.AsyncBlockResourceWithStreamingResponse(client.block)
+        self.shape = resources.AsyncShapeResourceWithStreamingResponse(client.shape)
 
 
 Client = OnebusawaySDK
