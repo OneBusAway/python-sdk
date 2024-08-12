@@ -292,3 +292,15 @@ from onebusaway.types import BlockRetrieveResponse
 Methods:
 
 - <code title="get /api/where/block/{blockID}.json">client.block.<a href="./src/onebusaway/resources/block.py">retrieve</a>(block_id) -> <a href="./src/onebusaway/types/block_retrieve_response.py">BlockRetrieveResponse</a></code>
+
+# Shape
+
+Types:
+
+```python
+from onebusaway.types import ShapeRetrieveResponse
+```
+
+Methods:
+
+- <code title="get /api/where/shape/{shapeID}.json">client.shape.<a href="./src/onebusaway/resources/shape.py">retrieve</a>(shape_id) -> <a href="./src/onebusaway/types/shape_retrieve_response.py">ShapeRetrieveResponse</a></code>
