@@ -32,6 +32,14 @@ from .route import (
     RouteResourceWithStreamingResponse,
     AsyncRouteResourceWithStreamingResponse,
 )
+from .shape import (
+    ShapeResource,
+    AsyncShapeResource,
+    ShapeResourceWithRawResponse,
+    AsyncShapeResourceWithRawResponse,
+    ShapeResourceWithStreamingResponse,
+    AsyncShapeResourceWithStreamingResponse,
+)
 from .agency import (
     AgencyResource,
     AsyncAgencyResource,
@@ -352,4 +360,10 @@ __all__ = [
     "AsyncBlockResourceWithRawResponse",
     "BlockResourceWithStreamingResponse",
     "AsyncBlockResourceWithStreamingResponse",
+    "ShapeResource",
+    "AsyncShapeResource",
+    "ShapeResourceWithRawResponse",
+    "AsyncShapeResourceWithRawResponse",
+    "ShapeResourceWithStreamingResponse",
+    "AsyncShapeResourceWithStreamingResponse",
 ]
