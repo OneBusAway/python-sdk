@@ -16,6 +16,14 @@ from .trip import (
     TripResourceWithStreamingResponse,
     AsyncTripResourceWithStreamingResponse,
 )
+from .block import (
+    BlockResource,
+    AsyncBlockResource,
+    BlockResourceWithRawResponse,
+    AsyncBlockResourceWithRawResponse,
+    BlockResourceWithStreamingResponse,
+    AsyncBlockResourceWithStreamingResponse,
+)
 from .route import (
     RouteResource,
     AsyncRouteResource,
@@ -338,4 +346,10 @@ __all__ = [
     "AsyncSearchForRouteResourceWithRawResponse",
     "SearchForRouteResourceWithStreamingResponse",
     "AsyncSearchForRouteResourceWithStreamingResponse",
+    "BlockResource",
+    "AsyncBlockResource",
+    "BlockResourceWithRawResponse",
+    "AsyncBlockResourceWithRawResponse",
+    "BlockResourceWithStreamingResponse",
+    "AsyncBlockResourceWithStreamingResponse",
 ]
