@@ -192,6 +192,14 @@ from .arrival_and_departure import (
     ArrivalAndDepartureResourceWithStreamingResponse,
     AsyncArrivalAndDepartureResourceWithStreamingResponse,
 )
+from .agencies_with_coverage import (
+    AgenciesWithCoverageResource,
+    AsyncAgenciesWithCoverageResource,
+    AgenciesWithCoverageResourceWithRawResponse,
+    AsyncAgenciesWithCoverageResourceWithRawResponse,
+    AgenciesWithCoverageResourceWithStreamingResponse,
+    AsyncAgenciesWithCoverageResourceWithStreamingResponse,
+)
 from .report_problem_with_stop import (
     ReportProblemWithStopResource,
     AsyncReportProblemWithStopResource,
@@ -210,6 +218,12 @@ from .report_problem_with_trip import (
 )
 
 __all__ = [
+    "AgenciesWithCoverageResource",
+    "AsyncAgenciesWithCoverageResource",
+    "AgenciesWithCoverageResourceWithRawResponse",
+    "AsyncAgenciesWithCoverageResourceWithRawResponse",
+    "AgenciesWithCoverageResourceWithStreamingResponse",
+    "AsyncAgenciesWithCoverageResourceWithStreamingResponse",
     "AgencyResource",
     "AsyncAgencyResource",
     "AgencyResourceWithRawResponse",
