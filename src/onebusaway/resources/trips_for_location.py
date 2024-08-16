@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import httpx
 
-from ..types import trips_for_location_retrieve_params
+from ..types import trips_for_location_list_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import (
     maybe_transform,
@@ -19,7 +19,7 @@ from .._response import (
     async_to_streamed_response_wrapper,
 )
 from .._base_client import make_request_options
-from ..types.trips_for_location_retrieve_response import TripsForLocationRetrieveResponse
+from ..types.trips_for_location_list_response import TripsForLocationListResponse
 
 __all__ = ["TripsForLocationResource", "AsyncTripsForLocationResource"]
 
@@ -33,7 +33,7 @@ class TripsForLocationResource(SyncAPIResource):
     def with_streaming_response(self) -> TripsForLocationResourceWithStreamingResponse:
         return TripsForLocationResourceWithStreamingResponse(self)
 
-    def retrieve(
+    def list(
         self,
         *,
         lat: float,
@@ -49,7 +49,7 @@ class TripsForLocationResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> TripsForLocationRetrieveResponse:
+    ) -> TripsForLocationListResponse:
         """
         Retrieve trips for a given location
 
@@ -95,10 +95,10 @@ class TripsForLocationResource(SyncAPIResource):
                         "include_trip": include_trip,
                         "time": time,
                     },
-                    trips_for_location_retrieve_params.TripsForLocationRetrieveParams,
+                    trips_for_location_list_params.TripsForLocationListParams,
                 ),
             ),
-            cast_to=TripsForLocationRetrieveResponse,
+            cast_to=TripsForLocationListResponse,
         )
 
 
@@ -111,7 +111,7 @@ class AsyncTripsForLocationResource(AsyncAPIResource):
     def with_streaming_response(self) -> AsyncTripsForLocationResourceWithStreamingResponse:
         return AsyncTripsForLocationResourceWithStreamingResponse(self)
 
-    async def retrieve(
+    async def list(
         self,
         *,
         lat: float,
@@ -127,7 +127,7 @@ class AsyncTripsForLocationResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> TripsForLocationRetrieveResponse:
+    ) -> TripsForLocationListResponse:
         """
         Retrieve trips for a given location
 
@@ -173,10 +173,10 @@ class AsyncTripsForLocationResource(AsyncAPIResource):
                         "include_trip": include_trip,
                         "time": time,
                     },
-                    trips_for_location_retrieve_params.TripsForLocationRetrieveParams,
+                    trips_for_location_list_params.TripsForLocationListParams,
                 ),
             ),
-            cast_to=TripsForLocationRetrieveResponse,
+            cast_to=TripsForLocationListResponse,
         )
 
 
@@ -184,8 +184,8 @@ class TripsForLocationResourceWithRawResponse:
     def __init__(self, trips_for_location: TripsForLocationResource) -> None:
         self._trips_for_location = trips_for_location
 
-        self.retrieve = to_raw_response_wrapper(
-            trips_for_location.retrieve,
+        self.list = to_raw_response_wrapper(
+            trips_for_location.list,
         )
 
 
@@ -193,8 +193,8 @@ class AsyncTripsForLocationResourceWithRawResponse:
     def __init__(self, trips_for_location: AsyncTripsForLocationResource) -> None:
         self._trips_for_location = trips_for_location
 
-        self.retrieve = async_to_raw_response_wrapper(
-            trips_for_location.retrieve,
+        self.list = async_to_raw_response_wrapper(
+            trips_for_location.list,
         )
 
 
@@ -202,8 +202,8 @@ class TripsForLocationResourceWithStreamingResponse:
     def __init__(self, trips_for_location: TripsForLocationResource) -> None:
         self._trips_for_location = trips_for_location
 
-        self.retrieve = to_streamed_response_wrapper(
-            trips_for_location.retrieve,
+        self.list = to_streamed_response_wrapper(
+            trips_for_location.list,
         )
 
 
@@ -211,6 +211,6 @@ class AsyncTripsForLocationResourceWithStreamingResponse:
     def __init__(self, trips_for_location: AsyncTripsForLocationResource) -> None:
         self._trips_for_location = trips_for_location
 
-        self.retrieve = async_to_streamed_response_wrapper(
-            trips_for_location.retrieve,
+        self.list = async_to_streamed_response_wrapper(
+            trips_for_location.list,
         )

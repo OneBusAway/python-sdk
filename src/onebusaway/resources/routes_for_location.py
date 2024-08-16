@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import httpx
 
-from ..types import routes_for_location_retrieve_params
+from ..types import routes_for_location_list_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import (
     maybe_transform,
@@ -19,7 +19,7 @@ from .._response import (
     async_to_streamed_response_wrapper,
 )
 from .._base_client import make_request_options
-from ..types.routes_for_location_retrieve_response import RoutesForLocationRetrieveResponse
+from ..types.routes_for_location_list_response import RoutesForLocationListResponse
 
 __all__ = ["RoutesForLocationResource", "AsyncRoutesForLocationResource"]
 
@@ -33,7 +33,7 @@ class RoutesForLocationResource(SyncAPIResource):
     def with_streaming_response(self) -> RoutesForLocationResourceWithStreamingResponse:
         return RoutesForLocationResourceWithStreamingResponse(self)
 
-    def retrieve(
+    def list(
         self,
         *,
         lat: float,
@@ -48,7 +48,7 @@ class RoutesForLocationResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> RoutesForLocationRetrieveResponse:
+    ) -> RoutesForLocationListResponse:
         """
         routes-for-location
 
@@ -77,10 +77,10 @@ class RoutesForLocationResource(SyncAPIResource):
                         "query": query,
                         "radius": radius,
                     },
-                    routes_for_location_retrieve_params.RoutesForLocationRetrieveParams,
+                    routes_for_location_list_params.RoutesForLocationListParams,
                 ),
             ),
-            cast_to=RoutesForLocationRetrieveResponse,
+            cast_to=RoutesForLocationListResponse,
         )
 
 
@@ -93,7 +93,7 @@ class AsyncRoutesForLocationResource(AsyncAPIResource):
     def with_streaming_response(self) -> AsyncRoutesForLocationResourceWithStreamingResponse:
         return AsyncRoutesForLocationResourceWithStreamingResponse(self)
 
-    async def retrieve(
+    async def list(
         self,
         *,
         lat: float,
@@ -108,7 +108,7 @@ class AsyncRoutesForLocationResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> RoutesForLocationRetrieveResponse:
+    ) -> RoutesForLocationListResponse:
         """
         routes-for-location
 
@@ -137,10 +137,10 @@ class AsyncRoutesForLocationResource(AsyncAPIResource):
                         "query": query,
                         "radius": radius,
                     },
-                    routes_for_location_retrieve_params.RoutesForLocationRetrieveParams,
+                    routes_for_location_list_params.RoutesForLocationListParams,
                 ),
             ),
-            cast_to=RoutesForLocationRetrieveResponse,
+            cast_to=RoutesForLocationListResponse,
         )
 
 
@@ -148,8 +148,8 @@ class RoutesForLocationResourceWithRawResponse:
     def __init__(self, routes_for_location: RoutesForLocationResource) -> None:
         self._routes_for_location = routes_for_location
 
-        self.retrieve = to_raw_response_wrapper(
-            routes_for_location.retrieve,
+        self.list = to_raw_response_wrapper(
+            routes_for_location.list,
         )
 
 
@@ -157,8 +157,8 @@ class AsyncRoutesForLocationResourceWithRawResponse:
     def __init__(self, routes_for_location: AsyncRoutesForLocationResource) -> None:
         self._routes_for_location = routes_for_location
 
-        self.retrieve = async_to_raw_response_wrapper(
-            routes_for_location.retrieve,
+        self.list = async_to_raw_response_wrapper(
+            routes_for_location.list,
         )
 
 
@@ -166,8 +166,8 @@ class RoutesForLocationResourceWithStreamingResponse:
     def __init__(self, routes_for_location: RoutesForLocationResource) -> None:
         self._routes_for_location = routes_for_location
 
-        self.retrieve = to_streamed_response_wrapper(
-            routes_for_location.retrieve,
+        self.list = to_streamed_response_wrapper(
+            routes_for_location.list,
         )
 
 
@@ -175,6 +175,6 @@ class AsyncRoutesForLocationResourceWithStreamingResponse:
     def __init__(self, routes_for_location: AsyncRoutesForLocationResource) -> None:
         self._routes_for_location = routes_for_location
 
-        self.retrieve = async_to_streamed_response_wrapper(
-            routes_for_location.retrieve,
+        self.list = async_to_streamed_response_wrapper(
+            routes_for_location.list,
         )
