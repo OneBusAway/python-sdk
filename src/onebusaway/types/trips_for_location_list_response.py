@@ -177,12 +177,12 @@ class TripsForLocationListResponseDataList(BaseModel):
 
 
 class TripsForLocationListResponseData(BaseModel):
+    limit_exceeded: bool = FieldInfo(alias="limitExceeded")
+    """Indicates if the limit of trips has been exceeded"""
+
     list: List[TripsForLocationListResponseDataList]
 
     references: References
-
-    limit_exceeded: Optional[bool] = FieldInfo(alias="limitExceeded", default=None)
-    """Indicates if the limit of trips has been exceeded"""
 
     out_of_range: Optional[bool] = FieldInfo(alias="outOfRange", default=None)
     """Indicates if the search location is out of range"""
