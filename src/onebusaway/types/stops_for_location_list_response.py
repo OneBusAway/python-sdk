@@ -8,14 +8,10 @@ from .._models import BaseModel
 from .shared.references import References
 from .shared.response_wrapper import ResponseWrapper
 
-__all__ = [
-    "StopsForLocationRetrieveResponse",
-    "StopsForLocationRetrieveResponseData",
-    "StopsForLocationRetrieveResponseDataList",
-]
+__all__ = ["StopsForLocationListResponse", "StopsForLocationListResponseData", "StopsForLocationListResponseDataList"]
 
 
-class StopsForLocationRetrieveResponseDataList(BaseModel):
+class StopsForLocationListResponseDataList(BaseModel):
     id: str
 
     lat: float
@@ -39,13 +35,13 @@ class StopsForLocationRetrieveResponseDataList(BaseModel):
     wheelchair_boarding: Optional[str] = FieldInfo(alias="wheelchairBoarding", default=None)
 
 
-class StopsForLocationRetrieveResponseData(BaseModel):
+class StopsForLocationListResponseData(BaseModel):
     limit_exceeded: bool = FieldInfo(alias="limitExceeded")
 
-    list: List[StopsForLocationRetrieveResponseDataList]
+    list: List[StopsForLocationListResponseDataList]
 
     references: References
 
 
-class StopsForLocationRetrieveResponse(ResponseWrapper):
-    data: StopsForLocationRetrieveResponseData
+class StopsForLocationListResponse(ResponseWrapper):
+    data: StopsForLocationListResponseData

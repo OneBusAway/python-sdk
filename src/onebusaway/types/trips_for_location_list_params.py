@@ -6,10 +6,10 @@ from typing_extensions import Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
 
-__all__ = ["TripsForLocationRetrieveParams"]
+__all__ = ["TripsForLocationListParams"]
 
 
-class TripsForLocationRetrieveParams(TypedDict, total=False):
+class TripsForLocationListParams(TypedDict, total=False):
     lat: Required[float]
     """The latitude coordinate of the search center"""
 

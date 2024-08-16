@@ -9,18 +9,18 @@ from .shared.references import References
 from .shared.response_wrapper import ResponseWrapper
 
 __all__ = [
-    "TripsForLocationRetrieveResponse",
-    "TripsForLocationRetrieveResponseData",
-    "TripsForLocationRetrieveResponseDataList",
-    "TripsForLocationRetrieveResponseDataListSchedule",
-    "TripsForLocationRetrieveResponseDataListScheduleStopTime",
-    "TripsForLocationRetrieveResponseDataListStatus",
-    "TripsForLocationRetrieveResponseDataListStatusLastKnownLocation",
-    "TripsForLocationRetrieveResponseDataListStatusPosition",
+    "TripsForLocationListResponse",
+    "TripsForLocationListResponseData",
+    "TripsForLocationListResponseDataList",
+    "TripsForLocationListResponseDataListSchedule",
+    "TripsForLocationListResponseDataListScheduleStopTime",
+    "TripsForLocationListResponseDataListStatus",
+    "TripsForLocationListResponseDataListStatusLastKnownLocation",
+    "TripsForLocationListResponseDataListStatusPosition",
 ]
 
 
-class TripsForLocationRetrieveResponseDataListScheduleStopTime(BaseModel):
+class TripsForLocationListResponseDataListScheduleStopTime(BaseModel):
     arrival_time: Optional[int] = FieldInfo(alias="arrivalTime", default=None)
 
     departure_time: Optional[int] = FieldInfo(alias="departureTime", default=None)
@@ -34,19 +34,19 @@ class TripsForLocationRetrieveResponseDataListScheduleStopTime(BaseModel):
     stop_id: Optional[str] = FieldInfo(alias="stopId", default=None)
 
 
-class TripsForLocationRetrieveResponseDataListSchedule(BaseModel):
+class TripsForLocationListResponseDataListSchedule(BaseModel):
     next_trip_id: str = FieldInfo(alias="nextTripId")
 
     previous_trip_id: str = FieldInfo(alias="previousTripId")
 
-    stop_times: List[TripsForLocationRetrieveResponseDataListScheduleStopTime] = FieldInfo(alias="stopTimes")
+    stop_times: List[TripsForLocationListResponseDataListScheduleStopTime] = FieldInfo(alias="stopTimes")
 
     time_zone: str = FieldInfo(alias="timeZone")
 
     frequency: Optional[str] = None
 
 
-class TripsForLocationRetrieveResponseDataListStatusLastKnownLocation(BaseModel):
+class TripsForLocationListResponseDataListStatusLastKnownLocation(BaseModel):
     lat: Optional[float] = None
     """Latitude of the last known location of the transit vehicle."""
 
@@ -54,7 +54,7 @@ class TripsForLocationRetrieveResponseDataListStatusLastKnownLocation(BaseModel)
     """Longitude of the last known location of the transit vehicle."""
 
 
-class TripsForLocationRetrieveResponseDataListStatusPosition(BaseModel):
+class TripsForLocationListResponseDataListStatusPosition(BaseModel):
     lat: Optional[float] = None
     """Latitude of the current position of the transit vehicle."""
 
@@ -62,7 +62,7 @@ class TripsForLocationRetrieveResponseDataListStatusPosition(BaseModel):
     """Longitude of the current position of the transit vehicle."""
 
 
-class TripsForLocationRetrieveResponseDataListStatus(BaseModel):
+class TripsForLocationListResponseDataListStatus(BaseModel):
     active_trip_id: str = FieldInfo(alias="activeTripId")
     """Trip ID of the trip the vehicle is actively serving."""
 
@@ -126,7 +126,7 @@ class TripsForLocationRetrieveResponseDataListStatus(BaseModel):
     frequency: Optional[str] = None
     """Information about frequency-based scheduling, if applicable to the trip."""
 
-    last_known_location: Optional[TripsForLocationRetrieveResponseDataListStatusLastKnownLocation] = FieldInfo(
+    last_known_location: Optional[TripsForLocationListResponseDataListStatusLastKnownLocation] = FieldInfo(
         alias="lastKnownLocation", default=None
     )
     """Last known location of the transit vehicle."""
@@ -146,7 +146,7 @@ class TripsForLocationRetrieveResponseDataListStatus(BaseModel):
     orientation: Optional[float] = None
     """Orientation of the transit vehicle, represented as an angle in degrees."""
 
-    position: Optional[TripsForLocationRetrieveResponseDataListStatusPosition] = None
+    position: Optional[TripsForLocationListResponseDataListStatusPosition] = None
     """Current position of the transit vehicle."""
 
     scheduled_distance_along_trip: Optional[float] = FieldInfo(alias="scheduledDistanceAlongTrip", default=None)
@@ -162,10 +162,10 @@ class TripsForLocationRetrieveResponseDataListStatus(BaseModel):
     """ID of the transit vehicle currently serving the trip."""
 
 
-class TripsForLocationRetrieveResponseDataList(BaseModel):
-    schedule: TripsForLocationRetrieveResponseDataListSchedule
+class TripsForLocationListResponseDataList(BaseModel):
+    schedule: TripsForLocationListResponseDataListSchedule
 
-    status: TripsForLocationRetrieveResponseDataListStatus
+    status: TripsForLocationListResponseDataListStatus
 
     trip_id: str = FieldInfo(alias="tripId")
 
@@ -176,8 +176,8 @@ class TripsForLocationRetrieveResponseDataList(BaseModel):
     situation_ids: Optional[List[str]] = FieldInfo(alias="situationIds", default=None)
 
 
-class TripsForLocationRetrieveResponseData(BaseModel):
-    list: List[TripsForLocationRetrieveResponseDataList]
+class TripsForLocationListResponseData(BaseModel):
+    list: List[TripsForLocationListResponseDataList]
 
     references: References
 
@@ -188,5 +188,5 @@ class TripsForLocationRetrieveResponseData(BaseModel):
     """Indicates if the search location is out of range"""
 
 
-class TripsForLocationRetrieveResponse(ResponseWrapper):
-    data: TripsForLocationRetrieveResponseData
+class TripsForLocationListResponse(ResponseWrapper):
+    data: TripsForLocationListResponseData
