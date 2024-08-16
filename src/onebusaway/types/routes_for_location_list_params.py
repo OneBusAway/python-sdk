@@ -6,10 +6,10 @@ from typing_extensions import Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
 
-__all__ = ["RoutesForLocationRetrieveParams"]
+__all__ = ["RoutesForLocationListParams"]
 
 
-class RoutesForLocationRetrieveParams(TypedDict, total=False):
+class RoutesForLocationListParams(TypedDict, total=False):
     lat: Required[float]
 
     lon: Required[float]

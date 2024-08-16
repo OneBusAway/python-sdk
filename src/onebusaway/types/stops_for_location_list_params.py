@@ -4,10 +4,10 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-__all__ = ["StopsForLocationRetrieveParams"]
+__all__ = ["StopsForLocationListParams"]
 
 
-class StopsForLocationRetrieveParams(TypedDict, total=False):
+class StopsForLocationListParams(TypedDict, total=False):
     lat: float
 
     lon: float
