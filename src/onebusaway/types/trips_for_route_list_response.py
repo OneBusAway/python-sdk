@@ -9,23 +9,46 @@ from .shared.references import References
 from .shared.response_wrapper import ResponseWrapper
 
 __all__ = [
-    "VehiclesForAgencyListResponse",
-    "VehiclesForAgencyListResponseData",
-    "VehiclesForAgencyListResponseDataList",
-    "VehiclesForAgencyListResponseDataListLocation",
-    "VehiclesForAgencyListResponseDataListTripStatus",
-    "VehiclesForAgencyListResponseDataListTripStatusLastKnownLocation",
-    "VehiclesForAgencyListResponseDataListTripStatusPosition",
+    "TripsForRouteListResponse",
+    "TripsForRouteListResponseData",
+    "TripsForRouteListResponseDataList",
+    "TripsForRouteListResponseDataListSchedule",
+    "TripsForRouteListResponseDataListScheduleStopTime",
+    "TripsForRouteListResponseDataListStatus",
+    "TripsForRouteListResponseDataListStatusLastKnownLocation",
+    "TripsForRouteListResponseDataListStatusPosition",
 ]
 
 
-class VehiclesForAgencyListResponseDataListLocation(BaseModel):
-    lat: Optional[float] = None
+class TripsForRouteListResponseDataListScheduleStopTime(BaseModel):
+    arrival_time: Optional[int] = FieldInfo(alias="arrivalTime", default=None)
 
-    lon: Optional[float] = None
+    departure_time: Optional[int] = FieldInfo(alias="departureTime", default=None)
+
+    distance_along_trip: Optional[float] = FieldInfo(alias="distanceAlongTrip", default=None)
+
+    historical_occupancy: Optional[str] = FieldInfo(alias="historicalOccupancy", default=None)
+
+    stop_headsign: Optional[str] = FieldInfo(alias="stopHeadsign", default=None)
+
+    stop_id: Optional[str] = FieldInfo(alias="stopId", default=None)
 
 
-class VehiclesForAgencyListResponseDataListTripStatusLastKnownLocation(BaseModel):
+class TripsForRouteListResponseDataListSchedule(BaseModel):
+    frequency: Optional[str] = None
+
+    next_trip_id: Optional[str] = FieldInfo(alias="nextTripId", default=None)
+
+    previous_trip_id: Optional[str] = FieldInfo(alias="previousTripId", default=None)
+
+    stop_times: Optional[List[TripsForRouteListResponseDataListScheduleStopTime]] = FieldInfo(
+        alias="stopTimes", default=None
+    )
+
+    time_zone: Optional[str] = FieldInfo(alias="timeZone", default=None)
+
+
+class TripsForRouteListResponseDataListStatusLastKnownLocation(BaseModel):
     lat: Optional[float] = None
     """Latitude of the last known location of the transit vehicle."""
 
@@ -33,7 +56,7 @@ class VehiclesForAgencyListResponseDataListTripStatusLastKnownLocation(BaseModel
     """Longitude of the last known location of the transit vehicle."""
 
 
-class VehiclesForAgencyListResponseDataListTripStatusPosition(BaseModel):
+class TripsForRouteListResponseDataListStatusPosition(BaseModel):
     lat: Optional[float] = None
     """Latitude of the current position of the transit vehicle."""
 
@@ -41,7 +64,7 @@ class VehiclesForAgencyListResponseDataListTripStatusPosition(BaseModel):
     """Longitude of the current position of the transit vehicle."""
 
 
-class VehiclesForAgencyListResponseDataListTripStatus(BaseModel):
+class TripsForRouteListResponseDataListStatus(BaseModel):
     active_trip_id: str = FieldInfo(alias="activeTripId")
     """Trip ID of the trip the vehicle is actively serving."""
 
@@ -105,7 +128,7 @@ class VehiclesForAgencyListResponseDataListTripStatus(BaseModel):
     frequency: Optional[str] = None
     """Information about frequency-based scheduling, if applicable to the trip."""
 
-    last_known_location: Optional[VehiclesForAgencyListResponseDataListTripStatusLastKnownLocation] = FieldInfo(
+    last_known_location: Optional[TripsForRouteListResponseDataListStatusLastKnownLocation] = FieldInfo(
         alias="lastKnownLocation", default=None
     )
     """Last known location of the transit vehicle."""
@@ -125,7 +148,7 @@ class VehiclesForAgencyListResponseDataListTripStatus(BaseModel):
     orientation: Optional[float] = None
     """Orientation of the transit vehicle, represented as an angle in degrees."""
 
-    position: Optional[VehiclesForAgencyListResponseDataListTripStatusPosition] = None
+    position: Optional[TripsForRouteListResponseDataListStatusPosition] = None
     """Current position of the transit vehicle."""
 
     scheduled_distance_along_trip: Optional[float] = FieldInfo(alias="scheduledDistanceAlongTrip", default=None)
@@ -141,37 +164,27 @@ class VehiclesForAgencyListResponseDataListTripStatus(BaseModel):
     """ID of the transit vehicle currently serving the trip."""
 
 
-class VehiclesForAgencyListResponseDataList(BaseModel):
-    last_location_update_time: int = FieldInfo(alias="lastLocationUpdateTime")
+class TripsForRouteListResponseDataList(BaseModel):
+    frequency: Optional[str] = None
 
-    last_update_time: int = FieldInfo(alias="lastUpdateTime")
+    schedule: Optional[TripsForRouteListResponseDataListSchedule] = None
 
-    location: VehiclesForAgencyListResponseDataListLocation
+    service_date: Optional[int] = FieldInfo(alias="serviceDate", default=None)
 
-    trip_id: str = FieldInfo(alias="tripId")
+    situation_ids: Optional[List[str]] = FieldInfo(alias="situationIds", default=None)
 
-    trip_status: VehiclesForAgencyListResponseDataListTripStatus = FieldInfo(alias="tripStatus")
+    status: Optional[TripsForRouteListResponseDataListStatus] = None
 
-    vehicle_id: str = FieldInfo(alias="vehicleId")
-
-    occupancy_capacity: Optional[int] = FieldInfo(alias="occupancyCapacity", default=None)
-
-    occupancy_count: Optional[int] = FieldInfo(alias="occupancyCount", default=None)
-
-    occupancy_status: Optional[str] = FieldInfo(alias="occupancyStatus", default=None)
-
-    phase: Optional[str] = None
-
-    status: Optional[str] = None
+    trip_id: Optional[str] = FieldInfo(alias="tripId", default=None)
 
 
-class VehiclesForAgencyListResponseData(BaseModel):
+class TripsForRouteListResponseData(BaseModel):
     limit_exceeded: bool = FieldInfo(alias="limitExceeded")
 
-    list: List[VehiclesForAgencyListResponseDataList]
+    list: List[TripsForRouteListResponseDataList]
 
     references: References
 
 
-class VehiclesForAgencyListResponse(ResponseWrapper):
-    data: VehiclesForAgencyListResponseData
+class TripsForRouteListResponse(ResponseWrapper):
+    data: TripsForRouteListResponseData
