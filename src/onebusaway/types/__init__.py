@@ -12,8 +12,10 @@ from .agency_retrieve_response import AgencyRetrieveResponse as AgencyRetrieveRe
 from .config_retrieve_response import ConfigRetrieveResponse as ConfigRetrieveResponse
 from .stops_for_route_list_params import StopsForRouteListParams as StopsForRouteListParams
 from .trip_detail_retrieve_params import TripDetailRetrieveParams as TripDetailRetrieveParams
+from .trips_for_route_list_params import TripsForRouteListParams as TripsForRouteListParams
 from .stops_for_route_list_response import StopsForRouteListResponse as StopsForRouteListResponse
 from .trip_detail_retrieve_response import TripDetailRetrieveResponse as TripDetailRetrieveResponse
+from .trips_for_route_list_response import TripsForRouteListResponse as TripsForRouteListResponse
 from .current_time_retrieve_response import CurrentTimeRetrieveResponse as CurrentTimeRetrieveResponse
 from .routes_for_agency_list_response import RoutesForAgencyListResponse as RoutesForAgencyListResponse
 from .search_for_stop_retrieve_params import SearchForStopRetrieveParams as SearchForStopRetrieveParams
@@ -45,9 +47,6 @@ from .routes_for_location_retrieve_response import (
 )
 from .arrival_and_departure_retrieve_response import (
     ArrivalAndDepartureRetrieveResponse as ArrivalAndDepartureRetrieveResponse,
-)
-from .agencies_with_coverage_retrieve_response import (
-    AgenciesWithCoverageRetrieveResponse as AgenciesWithCoverageRetrieveResponse,
 )
 from .report_problem_with_stop_retrieve_params import (
     ReportProblemWithStopRetrieveParams as ReportProblemWithStopRetrieveParams,

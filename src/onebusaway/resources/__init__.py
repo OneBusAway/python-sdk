@@ -88,6 +88,14 @@ from .stops_for_route import (
     StopsForRouteResourceWithStreamingResponse,
     AsyncStopsForRouteResourceWithStreamingResponse,
 )
+from .trips_for_route import (
+    TripsForRouteResource,
+    AsyncTripsForRouteResource,
+    TripsForRouteResourceWithRawResponse,
+    AsyncTripsForRouteResourceWithRawResponse,
+    TripsForRouteResourceWithStreamingResponse,
+    AsyncTripsForRouteResourceWithStreamingResponse,
+)
 from .search_for_route import (
     SearchForRouteResource,
     AsyncSearchForRouteResource,
@@ -184,14 +192,6 @@ from .arrival_and_departure import (
     ArrivalAndDepartureResourceWithStreamingResponse,
     AsyncArrivalAndDepartureResourceWithStreamingResponse,
 )
-from .agencies_with_coverage import (
-    AgenciesWithCoverageResource,
-    AsyncAgenciesWithCoverageResource,
-    AgenciesWithCoverageResourceWithRawResponse,
-    AsyncAgenciesWithCoverageResourceWithRawResponse,
-    AgenciesWithCoverageResourceWithStreamingResponse,
-    AsyncAgenciesWithCoverageResourceWithStreamingResponse,
-)
 from .report_problem_with_stop import (
     ReportProblemWithStopResource,
     AsyncReportProblemWithStopResource,
@@ -210,12 +210,6 @@ from .report_problem_with_trip import (
 )
 
 __all__ = [
-    "AgenciesWithCoverageResource",
-    "AsyncAgenciesWithCoverageResource",
-    "AgenciesWithCoverageResourceWithRawResponse",
-    "AsyncAgenciesWithCoverageResourceWithRawResponse",
-    "AgenciesWithCoverageResourceWithStreamingResponse",
-    "AsyncAgenciesWithCoverageResourceWithStreamingResponse",
     "AgencyResource",
     "AsyncAgencyResource",
     "AgencyResourceWithRawResponse",
@@ -330,6 +324,12 @@ __all__ = [
     "AsyncTripForVehicleResourceWithRawResponse",
     "TripForVehicleResourceWithStreamingResponse",
     "AsyncTripForVehicleResourceWithStreamingResponse",
+    "TripsForRouteResource",
+    "AsyncTripsForRouteResource",
+    "TripsForRouteResourceWithRawResponse",
+    "AsyncTripsForRouteResourceWithRawResponse",
+    "TripsForRouteResourceWithStreamingResponse",
+    "AsyncTripsForRouteResourceWithStreamingResponse",
     "ReportProblemWithStopResource",
     "AsyncReportProblemWithStopResource",
     "ReportProblemWithStopResourceWithRawResponse",
