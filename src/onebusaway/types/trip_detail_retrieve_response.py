@@ -35,17 +35,15 @@ class TripDetailRetrieveResponseDataEntryScheduleStopTime(BaseModel):
 
 
 class TripDetailRetrieveResponseDataEntrySchedule(BaseModel):
+    next_trip_id: str = FieldInfo(alias="nextTripId")
+
+    previous_trip_id: str = FieldInfo(alias="previousTripId")
+
+    stop_times: List[TripDetailRetrieveResponseDataEntryScheduleStopTime] = FieldInfo(alias="stopTimes")
+
+    time_zone: str = FieldInfo(alias="timeZone")
+
     frequency: Optional[str] = None
-
-    next_trip_id: Optional[str] = FieldInfo(alias="nextTripId", default=None)
-
-    previous_trip_id: Optional[str] = FieldInfo(alias="previousTripId", default=None)
-
-    stop_times: Optional[List[TripDetailRetrieveResponseDataEntryScheduleStopTime]] = FieldInfo(
-        alias="stopTimes", default=None
-    )
-
-    time_zone: Optional[str] = FieldInfo(alias="timeZone", default=None)
 
 
 class TripDetailRetrieveResponseDataEntryStatusLastKnownLocation(BaseModel):

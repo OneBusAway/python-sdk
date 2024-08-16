@@ -35,17 +35,15 @@ class TripsForRouteListResponseDataListScheduleStopTime(BaseModel):
 
 
 class TripsForRouteListResponseDataListSchedule(BaseModel):
+    next_trip_id: str = FieldInfo(alias="nextTripId")
+
+    previous_trip_id: str = FieldInfo(alias="previousTripId")
+
+    stop_times: List[TripsForRouteListResponseDataListScheduleStopTime] = FieldInfo(alias="stopTimes")
+
+    time_zone: str = FieldInfo(alias="timeZone")
+
     frequency: Optional[str] = None
-
-    next_trip_id: Optional[str] = FieldInfo(alias="nextTripId", default=None)
-
-    previous_trip_id: Optional[str] = FieldInfo(alias="previousTripId", default=None)
-
-    stop_times: Optional[List[TripsForRouteListResponseDataListScheduleStopTime]] = FieldInfo(
-        alias="stopTimes", default=None
-    )
-
-    time_zone: Optional[str] = FieldInfo(alias="timeZone", default=None)
 
 
 class TripsForRouteListResponseDataListStatusLastKnownLocation(BaseModel):
@@ -165,17 +163,17 @@ class TripsForRouteListResponseDataListStatus(BaseModel):
 
 
 class TripsForRouteListResponseDataList(BaseModel):
-    frequency: Optional[str] = None
+    schedule: TripsForRouteListResponseDataListSchedule
 
-    schedule: Optional[TripsForRouteListResponseDataListSchedule] = None
+    status: TripsForRouteListResponseDataListStatus
+
+    trip_id: str = FieldInfo(alias="tripId")
+
+    frequency: Optional[str] = None
 
     service_date: Optional[int] = FieldInfo(alias="serviceDate", default=None)
 
     situation_ids: Optional[List[str]] = FieldInfo(alias="situationIds", default=None)
-
-    status: Optional[TripsForRouteListResponseDataListStatus] = None
-
-    trip_id: Optional[str] = FieldInfo(alias="tripId", default=None)
 
 
 class TripsForRouteListResponseData(BaseModel):
