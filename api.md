@@ -4,6 +4,18 @@
 from onebusaway.types import References, ResponseWrapper
 ```
 
+# AgenciesWithCoverage
+
+Types:
+
+```python
+from onebusaway.types import AgenciesWithCoverageListResponse
+```
+
+Methods:
+
+- <code title="get /api/where/agencies-with-coverage.json">client.agencies_with_coverage.<a href="./src/onebusaway/resources/agencies_with_coverage.py">list</a>() -> <a href="./src/onebusaway/types/agencies_with_coverage_list_response.py">AgenciesWithCoverageListResponse</a></code>
+
 # Agency
 
 Types:

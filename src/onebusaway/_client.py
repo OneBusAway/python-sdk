@@ -46,6 +46,7 @@ __all__ = [
 
 
 class OnebusawaySDK(SyncAPIClient):
+    agencies_with_coverage: resources.AgenciesWithCoverageResource
     agency: resources.AgencyResource
     vehicles_for_agency: resources.VehiclesForAgencyResource
     config: resources.ConfigResource
@@ -129,6 +130,7 @@ class OnebusawaySDK(SyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
+        self.agencies_with_coverage = resources.AgenciesWithCoverageResource(self)
         self.agency = resources.AgencyResource(self)
         self.vehicles_for_agency = resources.VehiclesForAgencyResource(self)
         self.config = resources.ConfigResource(self)
@@ -272,6 +274,7 @@ class OnebusawaySDK(SyncAPIClient):
 
 
 class AsyncOnebusawaySDK(AsyncAPIClient):
+    agencies_with_coverage: resources.AsyncAgenciesWithCoverageResource
     agency: resources.AsyncAgencyResource
     vehicles_for_agency: resources.AsyncVehiclesForAgencyResource
     config: resources.AsyncConfigResource
@@ -355,6 +358,7 @@ class AsyncOnebusawaySDK(AsyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
+        self.agencies_with_coverage = resources.AsyncAgenciesWithCoverageResource(self)
         self.agency = resources.AsyncAgencyResource(self)
         self.vehicles_for_agency = resources.AsyncVehiclesForAgencyResource(self)
         self.config = resources.AsyncConfigResource(self)
@@ -499,6 +503,9 @@ class AsyncOnebusawaySDK(AsyncAPIClient):
 
 class OnebusawaySDKWithRawResponse:
     def __init__(self, client: OnebusawaySDK) -> None:
+        self.agencies_with_coverage = resources.AgenciesWithCoverageResourceWithRawResponse(
+            client.agencies_with_coverage
+        )
         self.agency = resources.AgencyResourceWithRawResponse(client.agency)
         self.vehicles_for_agency = resources.VehiclesForAgencyResourceWithRawResponse(client.vehicles_for_agency)
         self.config = resources.ConfigResourceWithRawResponse(client.config)
@@ -533,6 +540,9 @@ class OnebusawaySDKWithRawResponse:
 
 class AsyncOnebusawaySDKWithRawResponse:
     def __init__(self, client: AsyncOnebusawaySDK) -> None:
+        self.agencies_with_coverage = resources.AsyncAgenciesWithCoverageResourceWithRawResponse(
+            client.agencies_with_coverage
+        )
         self.agency = resources.AsyncAgencyResourceWithRawResponse(client.agency)
         self.vehicles_for_agency = resources.AsyncVehiclesForAgencyResourceWithRawResponse(client.vehicles_for_agency)
         self.config = resources.AsyncConfigResourceWithRawResponse(client.config)
@@ -569,6 +579,9 @@ class AsyncOnebusawaySDKWithRawResponse:
 
 class OnebusawaySDKWithStreamedResponse:
     def __init__(self, client: OnebusawaySDK) -> None:
+        self.agencies_with_coverage = resources.AgenciesWithCoverageResourceWithStreamingResponse(
+            client.agencies_with_coverage
+        )
         self.agency = resources.AgencyResourceWithStreamingResponse(client.agency)
         self.vehicles_for_agency = resources.VehiclesForAgencyResourceWithStreamingResponse(client.vehicles_for_agency)
         self.config = resources.ConfigResourceWithStreamingResponse(client.config)
@@ -607,6 +620,9 @@ class OnebusawaySDKWithStreamedResponse:
 
 class AsyncOnebusawaySDKWithStreamedResponse:
     def __init__(self, client: AsyncOnebusawaySDK) -> None:
+        self.agencies_with_coverage = resources.AsyncAgenciesWithCoverageResourceWithStreamingResponse(
+            client.agencies_with_coverage
+        )
         self.agency = resources.AsyncAgencyResourceWithStreamingResponse(client.agency)
         self.vehicles_for_agency = resources.AsyncVehiclesForAgencyResourceWithStreamingResponse(
             client.vehicles_for_agency
