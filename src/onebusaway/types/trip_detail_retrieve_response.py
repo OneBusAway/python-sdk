@@ -163,6 +163,8 @@ class TripDetailRetrieveResponseDataEntryStatus(BaseModel):
 
 
 class TripDetailRetrieveResponseDataEntry(BaseModel):
+    trip_id: str = FieldInfo(alias="tripId")
+
     frequency: Optional[str] = None
 
     schedule: Optional[TripDetailRetrieveResponseDataEntrySchedule] = None
@@ -172,8 +174,6 @@ class TripDetailRetrieveResponseDataEntry(BaseModel):
     situation_ids: Optional[List[str]] = FieldInfo(alias="situationIds", default=None)
 
     status: Optional[TripDetailRetrieveResponseDataEntryStatus] = None
-
-    trip_id: Optional[str] = FieldInfo(alias="tripId", default=None)
 
 
 class TripDetailRetrieveResponseData(BaseModel):
