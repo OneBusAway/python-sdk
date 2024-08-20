@@ -17,5 +17,5 @@ settings = load_settings(
 # Create a new instance of the OneBusAway SDK with the settings we loaded.
 oba = OnebusawaySDK(**settings)
 
-response = oba.agencies_with_coverage.retrieve()
+response = oba.agencies_with_coverage.list()
 pprint(response.data)
