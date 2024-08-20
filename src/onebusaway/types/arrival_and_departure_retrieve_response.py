@@ -135,17 +135,74 @@ class ArrivalAndDepartureRetrieveResponseDataEntryTripStatus(BaseModel):
 
 
 class ArrivalAndDepartureRetrieveResponseDataEntry(BaseModel):
-    actual_track: Optional[str] = FieldInfo(alias="actualTrack", default=None)
-    """The actual track information of the arriving transit vehicle."""
-
-    arrival_enabled: Optional[bool] = FieldInfo(alias="arrivalEnabled", default=None)
+    arrival_enabled: bool = FieldInfo(alias="arrivalEnabled")
     """Indicates if riders can arrive on this transit vehicle."""
 
-    block_trip_sequence: Optional[int] = FieldInfo(alias="blockTripSequence", default=None)
+    block_trip_sequence: int = FieldInfo(alias="blockTripSequence")
     """Index of this arrival’s trip into the sequence of trips for the active block."""
 
-    departure_enabled: Optional[bool] = FieldInfo(alias="departureEnabled", default=None)
+    departure_enabled: bool = FieldInfo(alias="departureEnabled")
     """Indicates if riders can depart from this transit vehicle."""
+
+    number_of_stops_away: int = FieldInfo(alias="numberOfStopsAway")
+    """
+    Number of stops between the arriving transit vehicle and the current stop
+    (excluding the current stop).
+    """
+
+    predicted_arrival_time: int = FieldInfo(alias="predictedArrivalTime")
+    """
+    Predicted arrival time, in milliseconds since Unix epoch (zero if no real-time
+    available).
+    """
+
+    predicted_departure_time: int = FieldInfo(alias="predictedDepartureTime")
+    """
+    Predicted departure time, in milliseconds since Unix epoch (zero if no real-time
+    available).
+    """
+
+    route_id: str = FieldInfo(alias="routeId")
+    """The ID of the route for the arriving vehicle."""
+
+    scheduled_arrival_time: int = FieldInfo(alias="scheduledArrivalTime")
+    """Scheduled arrival time, in milliseconds since Unix epoch."""
+
+    scheduled_departure_time: int = FieldInfo(alias="scheduledDepartureTime")
+    """Scheduled departure time, in milliseconds since Unix epoch."""
+
+    service_date: int = FieldInfo(alias="serviceDate")
+    """
+    Time, in milliseconds since the Unix epoch, of midnight for the start of the
+    service date for the trip.
+    """
+
+    stop_id: str = FieldInfo(alias="stopId")
+    """The ID of the stop the vehicle is arriving at."""
+
+    stop_sequence: int = FieldInfo(alias="stopSequence")
+    """
+    Index of the stop into the sequence of stops that make up the trip for this
+    arrival.
+    """
+
+    total_stops_in_trip: int = FieldInfo(alias="totalStopsInTrip")
+    """Total number of stops visited on the trip for this arrival."""
+
+    trip_headsign: str = FieldInfo(alias="tripHeadsign")
+    """
+    Optional trip headsign that potentially overrides the trip headsign in the
+    referenced trip element.
+    """
+
+    trip_id: str = FieldInfo(alias="tripId")
+    """The ID of the trip for the arriving vehicle."""
+
+    vehicle_id: str = FieldInfo(alias="vehicleId")
+    """ID of the transit vehicle serving this trip."""
+
+    actual_track: Optional[str] = FieldInfo(alias="actualTrack", default=None)
+    """The actual track information of the arriving transit vehicle."""
 
     distance_from_stop: Optional[float] = FieldInfo(alias="distanceFromStop", default=None)
     """Distance of the arriving transit vehicle from the stop, in meters."""
@@ -159,12 +216,6 @@ class ArrivalAndDepartureRetrieveResponseDataEntry(BaseModel):
     last_update_time: Optional[int] = FieldInfo(alias="lastUpdateTime", default=None)
     """Timestamp of the last update time for this arrival."""
 
-    number_of_stops_away: Optional[int] = FieldInfo(alias="numberOfStopsAway", default=None)
-    """
-    Number of stops between the arriving transit vehicle and the current stop
-    (excluding the current stop).
-    """
-
     occupancy_status: Optional[str] = FieldInfo(alias="occupancyStatus", default=None)
     """Current occupancy status of the transit vehicle."""
 
@@ -174,26 +225,11 @@ class ArrivalAndDepartureRetrieveResponseDataEntry(BaseModel):
     predicted_arrival_interval: Optional[str] = FieldInfo(alias="predictedArrivalInterval", default=None)
     """Interval for predicted arrival time, if available."""
 
-    predicted_arrival_time: Optional[int] = FieldInfo(alias="predictedArrivalTime", default=None)
-    """
-    Predicted arrival time, in milliseconds since Unix epoch (zero if no real-time
-    available).
-    """
-
     predicted_departure_interval: Optional[str] = FieldInfo(alias="predictedDepartureInterval", default=None)
     """Interval for predicted departure time, if available."""
 
-    predicted_departure_time: Optional[int] = FieldInfo(alias="predictedDepartureTime", default=None)
-    """
-    Predicted departure time, in milliseconds since Unix epoch (zero if no real-time
-    available).
-    """
-
     predicted_occupancy: Optional[str] = FieldInfo(alias="predictedOccupancy", default=None)
     """Predicted occupancy status of the transit vehicle."""
-
-    route_id: Optional[str] = FieldInfo(alias="routeId", default=None)
-    """The ID of the route for the arriving vehicle."""
 
     route_long_name: Optional[str] = FieldInfo(alias="routeLongName", default=None)
     """
@@ -210,23 +246,11 @@ class ArrivalAndDepartureRetrieveResponseDataEntry(BaseModel):
     scheduled_arrival_interval: Optional[str] = FieldInfo(alias="scheduledArrivalInterval", default=None)
     """Interval for scheduled arrival time."""
 
-    scheduled_arrival_time: Optional[int] = FieldInfo(alias="scheduledArrivalTime", default=None)
-    """Scheduled arrival time, in milliseconds since Unix epoch."""
-
     scheduled_departure_interval: Optional[str] = FieldInfo(alias="scheduledDepartureInterval", default=None)
     """Interval for scheduled departure time."""
 
-    scheduled_departure_time: Optional[int] = FieldInfo(alias="scheduledDepartureTime", default=None)
-    """Scheduled departure time, in milliseconds since Unix epoch."""
-
     scheduled_track: Optional[str] = FieldInfo(alias="scheduledTrack", default=None)
     """Scheduled track information of the arriving transit vehicle."""
-
-    service_date: Optional[int] = FieldInfo(alias="serviceDate", default=None)
-    """
-    Time, in milliseconds since the Unix epoch, of midnight for the start of the
-    service date for the trip.
-    """
 
     situation_ids: Optional[List[str]] = FieldInfo(alias="situationIds", default=None)
     """References to situation elements (if any) applicable to this arrival."""
@@ -234,34 +258,10 @@ class ArrivalAndDepartureRetrieveResponseDataEntry(BaseModel):
     status: Optional[str] = None
     """Current status of the arrival."""
 
-    stop_id: Optional[str] = FieldInfo(alias="stopId", default=None)
-    """The ID of the stop the vehicle is arriving at."""
-
-    stop_sequence: Optional[int] = FieldInfo(alias="stopSequence", default=None)
-    """
-    Index of the stop into the sequence of stops that make up the trip for this
-    arrival.
-    """
-
-    total_stops_in_trip: Optional[int] = FieldInfo(alias="totalStopsInTrip", default=None)
-    """Total number of stops visited on the trip for this arrival."""
-
-    trip_headsign: Optional[str] = FieldInfo(alias="tripHeadsign", default=None)
-    """
-    Optional trip headsign that potentially overrides the trip headsign in the
-    referenced trip element.
-    """
-
-    trip_id: Optional[str] = FieldInfo(alias="tripId", default=None)
-    """The ID of the trip for the arriving vehicle."""
-
     trip_status: Optional[ArrivalAndDepartureRetrieveResponseDataEntryTripStatus] = FieldInfo(
         alias="tripStatus", default=None
     )
     """Trip-specific status for the arriving transit vehicle."""
-
-    vehicle_id: Optional[str] = FieldInfo(alias="vehicleId", default=None)
-    """ID of the transit vehicle serving this trip."""
 
 
 class ArrivalAndDepartureRetrieveResponseData(BaseModel):

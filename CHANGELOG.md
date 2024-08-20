@@ -6,22 +6,24 @@ Full Changelog: [v0.1.0-alpha.17...v0.1.0-alpha.18](https://github.com/OneBusAwa
 
 ### Features
 
-* **api:** OpenAPI spec update via Stainless API ([#81](https://github.com/OneBusAway/python-sdk/issues/81)) ([71f8ac8](https://github.com/OneBusAway/python-sdk/commit/71f8ac8808bc984dc772435e3dd25fb851a27156))
-* **api:** OpenAPI spec update via Stainless API ([#85](https://github.com/OneBusAway/python-sdk/issues/85)) ([87a9f3f](https://github.com/OneBusAway/python-sdk/commit/87a9f3fe8cecfc7c527ab99cd98fcd93d5a62084))
-* **api:** OpenAPI spec update via Stainless API ([#86](https://github.com/OneBusAway/python-sdk/issues/86)) ([d63524a](https://github.com/OneBusAway/python-sdk/commit/d63524a8e1e7a3ab863e964f2f81069fdd4e5761))
-* **api:** OpenAPI spec update via Stainless API ([#87](https://github.com/OneBusAway/python-sdk/issues/87)) ([d4f2ca0](https://github.com/OneBusAway/python-sdk/commit/d4f2ca03ce7778c127e70a6f7db86e0fb667e157))
-* **api:** OpenAPI spec update via Stainless API ([#88](https://github.com/OneBusAway/python-sdk/issues/88)) ([3543b38](https://github.com/OneBusAway/python-sdk/commit/3543b38cf9e4b8a4762c41f494c8f54a6451d091))
-* **api:** OpenAPI spec update via Stainless API ([#89](https://github.com/OneBusAway/python-sdk/issues/89)) ([b56865a](https://github.com/OneBusAway/python-sdk/commit/b56865a9f16ef4117ac278dec6174a3507b4b1dc))
-* **api:** OpenAPI spec update via Stainless API ([#93](https://github.com/OneBusAway/python-sdk/issues/93)) ([be44ac5](https://github.com/OneBusAway/python-sdk/commit/be44ac517f04b963fc27b68d07f94b7da9fb7380))
-* **api:** OpenAPI spec update via Stainless API ([#94](https://github.com/OneBusAway/python-sdk/issues/94)) ([2ebd77c](https://github.com/OneBusAway/python-sdk/commit/2ebd77c7d359fd48b7ed8104223db7abc0157de1))
-
+-   **api:** OpenAPI spec update via Stainless API ([#81](https://github.com/OneBusAway/python-sdk/issues/81)) ([71f8ac8](https://github.com/OneBusAway/python-sdk/commit/71f8ac8808bc984dc772435e3dd25fb851a27156))
+-   **api:** OpenAPI spec update via Stainless API ([#85](https://github.com/OneBusAway/python-sdk/issues/85)) ([87a9f3f](https://github.com/OneBusAway/python-sdk/commit/87a9f3fe8cecfc7c527ab99cd98fcd93d5a62084))
+-   **api:** OpenAPI spec update via Stainless API ([#86](https://github.com/OneBusAway/python-sdk/issues/86)) ([d63524a](https://github.com/OneBusAway/python-sdk/commit/d63524a8e1e7a3ab863e964f2f81069fdd4e5761))
+-   **api:** OpenAPI spec update via Stainless API ([#87](https://github.com/OneBusAway/python-sdk/issues/87)) ([d4f2ca0](https://github.com/OneBusAway/python-sdk/commit/d4f2ca03ce7778c127e70a6f7db86e0fb667e157))
+-   **api:** OpenAPI spec update via Stainless API ([#88](https://github.com/OneBusAway/python-sdk/issues/88)) ([3543b38](https://github.com/OneBusAway/python-sdk/commit/3543b38cf9e4b8a4762c41f494c8f54a6451d091))
+-   **api:** OpenAPI spec update via Stainless API ([#89](https://github.com/OneBusAway/python-sdk/issues/89)) ([b56865a](https://github.com/OneBusAway/python-sdk/commit/b56865a9f16ef4117ac278dec6174a3507b4b1dc))
+-   **api:** OpenAPI spec update via Stainless API ([#93](https://github.com/OneBusAway/python-sdk/issues/93)) ([be44ac5](https://github.com/OneBusAway/python-sdk/commit/be44ac517f04b963fc27b68d07f94b7da9fb7380))
+-   **api:** OpenAPI spec update via Stainless API ([#94](https://github.com/OneBusAway/python-sdk/issues/94)) ([2ebd77c](https://github.com/OneBusAway/python-sdk/commit/2ebd77c7d359fd48b7ed8104223db7abc0157de1))
+-   **api:** OpenAPI spec update via Stainless API ([#95](https://github.com/OneBusAway/python-sdk/issues/95)) ([54d58cf](https://github.com/OneBusAway/python-sdk/commit/54d58cf81718aee18e852dda9ad260dfa9392404))
+-   **api:** OpenAPI spec update via Stainless API ([#96](https://github.com/OneBusAway/python-sdk/issues/96)) ([7cc92e8](https://github.com/OneBusAway/python-sdk/commit/7cc92e8d051f011599844cd9d3851521a94cc49b))
+-   **api:** OpenAPI spec update via Stainless API ([#97](https://github.com/OneBusAway/python-sdk/issues/97)) ([c3ca610](https://github.com/OneBusAway/python-sdk/commit/c3ca610df71affbe1381fcfa5a85f22614098beb))
 
 ### Chores
 
-* **ci:** also run pydantic v1 tests ([#92](https://github.com/OneBusAway/python-sdk/issues/92)) ([19a0334](https://github.com/OneBusAway/python-sdk/commit/19a03345944154c4db06c96304e2e9b5bb2cbc57))
-* **client:** fix parsing union responses when non-json is returned ([#91](https://github.com/OneBusAway/python-sdk/issues/91)) ([38860c1](https://github.com/OneBusAway/python-sdk/commit/38860c19de2e79ab7ca5054c2ec9357a1fd3690b))
-* **internal:** codegen related update ([#83](https://github.com/OneBusAway/python-sdk/issues/83)) ([bb39847](https://github.com/OneBusAway/python-sdk/commit/bb398472831ec5623b587568acfd99ecd44be886))
-* **internal:** use different 32bit detection method ([#84](https://github.com/OneBusAway/python-sdk/issues/84)) ([8dbeb49](https://github.com/OneBusAway/python-sdk/commit/8dbeb49a6f799aaef5214d77cfa46ae0d45fd635))
+-   **ci:** also run pydantic v1 tests ([#92](https://github.com/OneBusAway/python-sdk/issues/92)) ([19a0334](https://github.com/OneBusAway/python-sdk/commit/19a03345944154c4db06c96304e2e9b5bb2cbc57))
+-   **client:** fix parsing union responses when non-json is returned ([#91](https://github.com/OneBusAway/python-sdk/issues/91)) ([38860c1](https://github.com/OneBusAway/python-sdk/commit/38860c19de2e79ab7ca5054c2ec9357a1fd3690b))
+-   **internal:** codegen related update ([#83](https://github.com/OneBusAway/python-sdk/issues/83)) ([bb39847](https://github.com/OneBusAway/python-sdk/commit/bb398472831ec5623b587568acfd99ecd44be886))
+-   **internal:** use different 32bit detection method ([#84](https://github.com/OneBusAway/python-sdk/issues/84)) ([8dbeb49](https://github.com/OneBusAway/python-sdk/commit/8dbeb49a6f799aaef5214d77cfa46ae0d45fd635))
 
 ## 0.1.0-alpha.17 (2024-08-12)
 
@@ -29,8 +31,8 @@ Full Changelog: [v0.1.0-alpha.16...v0.1.0-alpha.17](https://github.com/OneBusAwa
 
 ### Features
 
-* **api:** OpenAPI spec update via Stainless API ([#77](https://github.com/OneBusAway/python-sdk/issues/77)) ([70ce97c](https://github.com/OneBusAway/python-sdk/commit/70ce97c2c90dcfa6635fd36f83a7fb71a321ca69))
-* **api:** update via SDK Studio ([#79](https://github.com/OneBusAway/python-sdk/issues/79)) ([b31341a](https://github.com/OneBusAway/python-sdk/commit/b31341a157b8b9aa554ad161afcbc581a041c3fb))
+-   **api:** OpenAPI spec update via Stainless API ([#77](https://github.com/OneBusAway/python-sdk/issues/77)) ([70ce97c](https://github.com/OneBusAway/python-sdk/commit/70ce97c2c90dcfa6635fd36f83a7fb71a321ca69))
+-   **api:** update via SDK Studio ([#79](https://github.com/OneBusAway/python-sdk/issues/79)) ([b31341a](https://github.com/OneBusAway/python-sdk/commit/b31341a157b8b9aa554ad161afcbc581a041c3fb))
 
 ## 0.1.0-alpha.16 (2024-08-10)
 
@@ -38,14 +40,13 @@ Full Changelog: [v0.1.0-alpha.15...v0.1.0-alpha.16](https://github.com/OneBusAwa
 
 ### Features
 
-* **api:** OpenAPI spec update via Stainless API ([#71](https://github.com/OneBusAway/python-sdk/issues/71)) ([876b77c](https://github.com/OneBusAway/python-sdk/commit/876b77c3addf2460c3116738f7b4bc784f67350d))
-* **api:** OpenAPI spec update via Stainless API ([#75](https://github.com/OneBusAway/python-sdk/issues/75)) ([6af5d8a](https://github.com/OneBusAway/python-sdk/commit/6af5d8a93d7f516c9bb7a20e20d063944d0435e9))
-
+-   **api:** OpenAPI spec update via Stainless API ([#71](https://github.com/OneBusAway/python-sdk/issues/71)) ([876b77c](https://github.com/OneBusAway/python-sdk/commit/876b77c3addf2460c3116738f7b4bc784f67350d))
+-   **api:** OpenAPI spec update via Stainless API ([#75](https://github.com/OneBusAway/python-sdk/issues/75)) ([6af5d8a](https://github.com/OneBusAway/python-sdk/commit/6af5d8a93d7f516c9bb7a20e20d063944d0435e9))
 
 ### Chores
 
-* **ci:** bump prism mock server version ([#73](https://github.com/OneBusAway/python-sdk/issues/73)) ([e303bb6](https://github.com/OneBusAway/python-sdk/commit/e303bb64a39d45801d72141e13e00bac40771f71))
-* **internal:** ensure package is importable in lint cmd ([#74](https://github.com/OneBusAway/python-sdk/issues/74)) ([b4db5b9](https://github.com/OneBusAway/python-sdk/commit/b4db5b955b4880c1eea3bba00749bb9f4a78416b))
+-   **ci:** bump prism mock server version ([#73](https://github.com/OneBusAway/python-sdk/issues/73)) ([e303bb6](https://github.com/OneBusAway/python-sdk/commit/e303bb64a39d45801d72141e13e00bac40771f71))
+-   **internal:** ensure package is importable in lint cmd ([#74](https://github.com/OneBusAway/python-sdk/issues/74)) ([b4db5b9](https://github.com/OneBusAway/python-sdk/commit/b4db5b955b4880c1eea3bba00749bb9f4a78416b))
 
 ## 0.1.0-alpha.15 (2024-08-08)
 
@@ -53,7 +54,7 @@ Full Changelog: [v0.1.0-alpha.14...v0.1.0-alpha.15](https://github.com/OneBusAwa
 
 ### Features
 
-* **api:** OpenAPI spec update via Stainless API ([#68](https://github.com/OneBusAway/python-sdk/issues/68)) ([6367613](https://github.com/OneBusAway/python-sdk/commit/63676136b6d0b0f01738cfc778763b6a79775d09))
+-   **api:** OpenAPI spec update via Stainless API ([#68](https://github.com/OneBusAway/python-sdk/issues/68)) ([6367613](https://github.com/OneBusAway/python-sdk/commit/63676136b6d0b0f01738cfc778763b6a79775d09))
 
 ## 0.1.0-alpha.14 (2024-08-08)
 
@@ -61,7 +62,7 @@ Full Changelog: [v0.1.0-alpha.13...v0.1.0-alpha.14](https://github.com/OneBusAwa
 
 ### Features
 
-* **api:** OpenAPI spec update via Stainless API ([#65](https://github.com/OneBusAway/python-sdk/issues/65)) ([d93e82a](https://github.com/OneBusAway/python-sdk/commit/d93e82a4b6410768f1d5f9cd08ee83157eb405ce))
+-   **api:** OpenAPI spec update via Stainless API ([#65](https://github.com/OneBusAway/python-sdk/issues/65)) ([d93e82a](https://github.com/OneBusAway/python-sdk/commit/d93e82a4b6410768f1d5f9cd08ee83157eb405ce))
 
 ## 0.1.0-alpha.13 (2024-08-08)
 
@@ -69,7 +70,7 @@ Full Changelog: [v0.1.0-alpha.12...v0.1.0-alpha.13](https://github.com/OneBusAwa
 
 ### Chores
 
-* **internal:** version bump ([#61](https://github.com/OneBusAway/python-sdk/issues/61)) ([5d7fe06](https://github.com/OneBusAway/python-sdk/commit/5d7fe060b6158f719e388feba0bc9f7dcb0fe288))
+-   **internal:** version bump ([#61](https://github.com/OneBusAway/python-sdk/issues/61)) ([5d7fe06](https://github.com/OneBusAway/python-sdk/commit/5d7fe060b6158f719e388feba0bc9f7dcb0fe288))
 
 ## 0.1.0-alpha.12 (2024-08-08)
 
@@ -77,21 +78,20 @@ Full Changelog: [v0.1.0-alpha.11...v0.1.0-alpha.12](https://github.com/OneBusAwa
 
 ### Features
 
-* **api:** OpenAPI spec update via Stainless API ([#48](https://github.com/OneBusAway/python-sdk/issues/48)) ([a5c305c](https://github.com/OneBusAway/python-sdk/commit/a5c305c7a5614588dd3fb14607dd2489aab8b3c6))
-* **api:** OpenAPI spec update via Stainless API ([#55](https://github.com/OneBusAway/python-sdk/issues/55)) ([9adae4d](https://github.com/OneBusAway/python-sdk/commit/9adae4de96b8ea11ff8e2d7c251183580f86cf8a))
-* **api:** OpenAPI spec update via Stainless API ([#56](https://github.com/OneBusAway/python-sdk/issues/56)) ([1882cdc](https://github.com/OneBusAway/python-sdk/commit/1882cdc8a4da9705c853ed6f5d5e8d73a4b9276c))
-* **api:** OpenAPI spec update via Stainless API ([#57](https://github.com/OneBusAway/python-sdk/issues/57)) ([5c8a7ee](https://github.com/OneBusAway/python-sdk/commit/5c8a7ee00dcd4ab6a3a9b6800fe10f7447d79c61))
-* **api:** OpenAPI spec update via Stainless API ([#58](https://github.com/OneBusAway/python-sdk/issues/58)) ([29edb45](https://github.com/OneBusAway/python-sdk/commit/29edb45798ad111a1a4f6ce5bbbbadfe3e9099d8))
-* **client:** add `retry_count` to raw response class ([#51](https://github.com/OneBusAway/python-sdk/issues/51)) ([97156e5](https://github.com/OneBusAway/python-sdk/commit/97156e5dff5d743d04ecc0dbe73ec7c690dfb4fe))
-
+-   **api:** OpenAPI spec update via Stainless API ([#48](https://github.com/OneBusAway/python-sdk/issues/48)) ([a5c305c](https://github.com/OneBusAway/python-sdk/commit/a5c305c7a5614588dd3fb14607dd2489aab8b3c6))
+-   **api:** OpenAPI spec update via Stainless API ([#55](https://github.com/OneBusAway/python-sdk/issues/55)) ([9adae4d](https://github.com/OneBusAway/python-sdk/commit/9adae4de96b8ea11ff8e2d7c251183580f86cf8a))
+-   **api:** OpenAPI spec update via Stainless API ([#56](https://github.com/OneBusAway/python-sdk/issues/56)) ([1882cdc](https://github.com/OneBusAway/python-sdk/commit/1882cdc8a4da9705c853ed6f5d5e8d73a4b9276c))
+-   **api:** OpenAPI spec update via Stainless API ([#57](https://github.com/OneBusAway/python-sdk/issues/57)) ([5c8a7ee](https://github.com/OneBusAway/python-sdk/commit/5c8a7ee00dcd4ab6a3a9b6800fe10f7447d79c61))
+-   **api:** OpenAPI spec update via Stainless API ([#58](https://github.com/OneBusAway/python-sdk/issues/58)) ([29edb45](https://github.com/OneBusAway/python-sdk/commit/29edb45798ad111a1a4f6ce5bbbbadfe3e9099d8))
+-   **client:** add `retry_count` to raw response class ([#51](https://github.com/OneBusAway/python-sdk/issues/51)) ([97156e5](https://github.com/OneBusAway/python-sdk/commit/97156e5dff5d743d04ecc0dbe73ec7c690dfb4fe))
 
 ### Chores
 
-* **internal:** bump pyright ([#50](https://github.com/OneBusAway/python-sdk/issues/50)) ([6d1fdf7](https://github.com/OneBusAway/python-sdk/commit/6d1fdf78cf6d63079bf037b88ac0540e619f9ae7))
-* **internal:** bump ruff version ([#53](https://github.com/OneBusAway/python-sdk/issues/53)) ([c8cbc6a](https://github.com/OneBusAway/python-sdk/commit/c8cbc6a1e48e42b15e42ebf40cdfd2f8fc0bc7ab))
-* **internal:** remove deprecated ruff config ([#59](https://github.com/OneBusAway/python-sdk/issues/59)) ([a6413af](https://github.com/OneBusAway/python-sdk/commit/a6413af808c1ea04d05a46fa0a5d54ec888999bf))
-* **internal:** test updates ([#52](https://github.com/OneBusAway/python-sdk/issues/52)) ([f3b7cb0](https://github.com/OneBusAway/python-sdk/commit/f3b7cb00c4302b0ac1b8497835f2db0d3f9e7949))
-* **internal:** update pydantic compat helper function ([#54](https://github.com/OneBusAway/python-sdk/issues/54)) ([1f501f0](https://github.com/OneBusAway/python-sdk/commit/1f501f0592c92e86c4c027f652a49ff11a068715))
+-   **internal:** bump pyright ([#50](https://github.com/OneBusAway/python-sdk/issues/50)) ([6d1fdf7](https://github.com/OneBusAway/python-sdk/commit/6d1fdf78cf6d63079bf037b88ac0540e619f9ae7))
+-   **internal:** bump ruff version ([#53](https://github.com/OneBusAway/python-sdk/issues/53)) ([c8cbc6a](https://github.com/OneBusAway/python-sdk/commit/c8cbc6a1e48e42b15e42ebf40cdfd2f8fc0bc7ab))
+-   **internal:** remove deprecated ruff config ([#59](https://github.com/OneBusAway/python-sdk/issues/59)) ([a6413af](https://github.com/OneBusAway/python-sdk/commit/a6413af808c1ea04d05a46fa0a5d54ec888999bf))
+-   **internal:** test updates ([#52](https://github.com/OneBusAway/python-sdk/issues/52)) ([f3b7cb0](https://github.com/OneBusAway/python-sdk/commit/f3b7cb00c4302b0ac1b8497835f2db0d3f9e7949))
+-   **internal:** update pydantic compat helper function ([#54](https://github.com/OneBusAway/python-sdk/issues/54)) ([1f501f0](https://github.com/OneBusAway/python-sdk/commit/1f501f0592c92e86c4c027f652a49ff11a068715))
 
 ## 0.1.0-alpha.11 (2024-08-01)
 
