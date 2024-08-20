@@ -17,7 +17,7 @@ settings = load_settings(
 # Create a new instance of the OneBusAway SDK with the settings we loaded.
 oba = OnebusawaySDK(**settings)
 
-space_needle_stops = oba.stops_for_location.retrieve(
+space_needle_stops = oba.stops_for_location.list(
     lat=47.6205,
     lon=-122.3493,
 )
