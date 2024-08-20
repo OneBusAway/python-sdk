@@ -15,7 +15,7 @@ settings = load_settings(
 # Create a new instance of the OneBusAway SDK with the settings we loaded.
 oba = OnebusawaySDK(**settings)
 
-block_id = '1_7310845'
+block_id = "1_7310845"
 response = oba.block.retrieve(block_id)
 if response and response.data:
     print(response.data.entry)
