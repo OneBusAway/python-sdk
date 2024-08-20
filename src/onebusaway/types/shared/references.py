@@ -50,9 +50,11 @@ class Agency(BaseModel):
 
 
 class Route(BaseModel):
-    id: Optional[str] = None
+    id: str
 
-    agency_id: Optional[str] = FieldInfo(alias="agencyId", default=None)
+    agency_id: str = FieldInfo(alias="agencyId")
+
+    type: int
 
     color: Optional[str] = None
 
@@ -65,8 +67,6 @@ class Route(BaseModel):
     short_name: Optional[str] = FieldInfo(alias="shortName", default=None)
 
     text_color: Optional[str] = FieldInfo(alias="textColor", default=None)
-
-    type: Optional[int] = None
 
     url: Optional[str] = None
 
@@ -237,6 +237,8 @@ class Trip(BaseModel):
 
     route_id: str = FieldInfo(alias="routeId")
 
+    service_id: str = FieldInfo(alias="serviceId")
+
     block_id: Optional[str] = FieldInfo(alias="blockId", default=None)
 
     direction_id: Optional[str] = FieldInfo(alias="directionId", default=None)
@@ -244,8 +246,6 @@ class Trip(BaseModel):
     peak_offpeak: Optional[int] = FieldInfo(alias="peakOffpeak", default=None)
 
     route_short_name: Optional[str] = FieldInfo(alias="routeShortName", default=None)
-
-    service_id: Optional[str] = FieldInfo(alias="serviceId", default=None)
 
     shape_id: Optional[str] = FieldInfo(alias="shapeId", default=None)
 

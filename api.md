@@ -9,12 +9,12 @@ from onebusaway.types import References, ResponseWrapper
 Types:
 
 ```python
-from onebusaway.types import AgenciesWithCoverageRetrieveResponse
+from onebusaway.types import AgenciesWithCoverageListResponse
 ```
 
 Methods:
 
-- <code title="get /api/where/agencies-with-coverage.json">client.agencies_with_coverage.<a href="./src/onebusaway/resources/agencies_with_coverage.py">retrieve</a>() -> <a href="./src/onebusaway/types/agencies_with_coverage_retrieve_response.py">AgenciesWithCoverageRetrieveResponse</a></code>
+- <code title="get /api/where/agencies-with-coverage.json">client.agencies_with_coverage.<a href="./src/onebusaway/resources/agencies_with_coverage.py">list</a>() -> <a href="./src/onebusaway/types/agencies_with_coverage_list_response.py">AgenciesWithCoverageListResponse</a></code>
 
 # Agency
 
@@ -69,12 +69,12 @@ Methods:
 Types:
 
 ```python
-from onebusaway.types import StopsForLocationRetrieveResponse
+from onebusaway.types import StopsForLocationListResponse
 ```
 
 Methods:
 
-- <code title="get /api/where/stops-for-location.json">client.stops_for_location.<a href="./src/onebusaway/resources/stops_for_location.py">retrieve</a>(\*\*<a href="src/onebusaway/types/stops_for_location_retrieve_params.py">params</a>) -> <a href="./src/onebusaway/types/stops_for_location_retrieve_response.py">StopsForLocationRetrieveResponse</a></code>
+- <code title="get /api/where/stops-for-location.json">client.stops_for_location.<a href="./src/onebusaway/resources/stops_for_location.py">list</a>(\*\*<a href="src/onebusaway/types/stops_for_location_list_params.py">params</a>) -> <a href="./src/onebusaway/types/stops_for_location_list_response.py">StopsForLocationListResponse</a></code>
 
 # StopsForRoute
 
@@ -153,12 +153,12 @@ Methods:
 Types:
 
 ```python
-from onebusaway.types import RoutesForLocationRetrieveResponse
+from onebusaway.types import RoutesForLocationListResponse
 ```
 
 Methods:
 
-- <code title="get /api/where/routes-for-location.json">client.routes_for_location.<a href="./src/onebusaway/resources/routes_for_location.py">retrieve</a>(\*\*<a href="src/onebusaway/types/routes_for_location_retrieve_params.py">params</a>) -> <a href="./src/onebusaway/types/routes_for_location_retrieve_response.py">RoutesForLocationRetrieveResponse</a></code>
+- <code title="get /api/where/routes-for-location.json">client.routes_for_location.<a href="./src/onebusaway/resources/routes_for_location.py">list</a>(\*\*<a href="src/onebusaway/types/routes_for_location_list_params.py">params</a>) -> <a href="./src/onebusaway/types/routes_for_location_list_response.py">RoutesForLocationListResponse</a></code>
 
 # RoutesForAgency
 
@@ -214,12 +214,12 @@ Methods:
 Types:
 
 ```python
-from onebusaway.types import TripsForLocationRetrieveResponse
+from onebusaway.types import TripsForLocationListResponse
 ```
 
 Methods:
 
-- <code title="get /api/where/trips-for-location.json">client.trips_for_location.<a href="./src/onebusaway/resources/trips_for_location.py">retrieve</a>(\*\*<a href="src/onebusaway/types/trips_for_location_retrieve_params.py">params</a>) -> <a href="./src/onebusaway/types/trips_for_location_retrieve_response.py">TripsForLocationRetrieveResponse</a></code>
+- <code title="get /api/where/trips-for-location.json">client.trips_for_location.<a href="./src/onebusaway/resources/trips_for_location.py">list</a>(\*\*<a href="src/onebusaway/types/trips_for_location_list_params.py">params</a>) -> <a href="./src/onebusaway/types/trips_for_location_list_response.py">TripsForLocationListResponse</a></code>
 
 # TripDetails
 
@@ -244,6 +244,18 @@ from onebusaway.types import TripForVehicleRetrieveResponse
 Methods:
 
 - <code title="get /api/where/trip-for-vehicle/{vehicleID}.json">client.trip_for_vehicle.<a href="./src/onebusaway/resources/trip_for_vehicle.py">retrieve</a>(vehicle_id, \*\*<a href="src/onebusaway/types/trip_for_vehicle_retrieve_params.py">params</a>) -> <a href="./src/onebusaway/types/trip_for_vehicle_retrieve_response.py">TripForVehicleRetrieveResponse</a></code>
+
+# TripsForRoute
+
+Types:
+
+```python
+from onebusaway.types import TripsForRouteListResponse
+```
+
+Methods:
+
+- <code title="get /api/where/trips-for-route/{routeID}.json">client.trips_for_route.<a href="./src/onebusaway/resources/trips_for_route.py">list</a>(route_id, \*\*<a href="src/onebusaway/types/trips_for_route_list_params.py">params</a>) -> <a href="./src/onebusaway/types/trips_for_route_list_response.py">TripsForRouteListResponse</a></code>
 
 # ReportProblemWithStop
 

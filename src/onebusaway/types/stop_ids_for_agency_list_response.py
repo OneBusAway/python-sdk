@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Optional
+from typing import List
 
 from pydantic import Field as FieldInfo
 
@@ -12,11 +12,11 @@ __all__ = ["StopIDsForAgencyListResponse", "StopIDsForAgencyListResponseData"]
 
 
 class StopIDsForAgencyListResponseData(BaseModel):
+    limit_exceeded: bool = FieldInfo(alias="limitExceeded")
+
     list: List[str]
 
     references: References
-
-    limit_exceeded: Optional[bool] = FieldInfo(alias="limitExceeded", default=None)
 
 
 class StopIDsForAgencyListResponse(ResponseWrapper):

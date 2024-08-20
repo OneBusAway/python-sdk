@@ -14,7 +14,7 @@ from .._response import (
     async_to_streamed_response_wrapper,
 )
 from .._base_client import make_request_options
-from ..types.agencies_with_coverage_retrieve_response import AgenciesWithCoverageRetrieveResponse
+from ..types.agencies_with_coverage_list_response import AgenciesWithCoverageListResponse
 
 __all__ = ["AgenciesWithCoverageResource", "AsyncAgenciesWithCoverageResource"]
 
@@ -28,7 +28,7 @@ class AgenciesWithCoverageResource(SyncAPIResource):
     def with_streaming_response(self) -> AgenciesWithCoverageResourceWithStreamingResponse:
         return AgenciesWithCoverageResourceWithStreamingResponse(self)
 
-    def retrieve(
+    def list(
         self,
         *,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -37,14 +37,17 @@ class AgenciesWithCoverageResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AgenciesWithCoverageRetrieveResponse:
-        """Retrieve Agencies with Coverage"""
+    ) -> AgenciesWithCoverageListResponse:
+        """
+        Returns a list of all transit agencies currently supported by OneBusAway along
+        with the center of their coverage area.
+        """
         return self._get(
             "/api/where/agencies-with-coverage.json",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=AgenciesWithCoverageRetrieveResponse,
+            cast_to=AgenciesWithCoverageListResponse,
         )
 
 
@@ -57,7 +60,7 @@ class AsyncAgenciesWithCoverageResource(AsyncAPIResource):
     def with_streaming_response(self) -> AsyncAgenciesWithCoverageResourceWithStreamingResponse:
         return AsyncAgenciesWithCoverageResourceWithStreamingResponse(self)
 
-    async def retrieve(
+    async def list(
         self,
         *,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -66,14 +69,17 @@ class AsyncAgenciesWithCoverageResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AgenciesWithCoverageRetrieveResponse:
-        """Retrieve Agencies with Coverage"""
+    ) -> AgenciesWithCoverageListResponse:
+        """
+        Returns a list of all transit agencies currently supported by OneBusAway along
+        with the center of their coverage area.
+        """
         return await self._get(
             "/api/where/agencies-with-coverage.json",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=AgenciesWithCoverageRetrieveResponse,
+            cast_to=AgenciesWithCoverageListResponse,
         )
 
 
@@ -81,8 +87,8 @@ class AgenciesWithCoverageResourceWithRawResponse:
     def __init__(self, agencies_with_coverage: AgenciesWithCoverageResource) -> None:
         self._agencies_with_coverage = agencies_with_coverage
 
-        self.retrieve = to_raw_response_wrapper(
-            agencies_with_coverage.retrieve,
+        self.list = to_raw_response_wrapper(
+            agencies_with_coverage.list,
         )
 
 
@@ -90,8 +96,8 @@ class AsyncAgenciesWithCoverageResourceWithRawResponse:
     def __init__(self, agencies_with_coverage: AsyncAgenciesWithCoverageResource) -> None:
         self._agencies_with_coverage = agencies_with_coverage
 
-        self.retrieve = async_to_raw_response_wrapper(
-            agencies_with_coverage.retrieve,
+        self.list = async_to_raw_response_wrapper(
+            agencies_with_coverage.list,
         )
 
 
@@ -99,8 +105,8 @@ class AgenciesWithCoverageResourceWithStreamingResponse:
     def __init__(self, agencies_with_coverage: AgenciesWithCoverageResource) -> None:
         self._agencies_with_coverage = agencies_with_coverage
 
-        self.retrieve = to_streamed_response_wrapper(
-            agencies_with_coverage.retrieve,
+        self.list = to_streamed_response_wrapper(
+            agencies_with_coverage.list,
         )
 
 
@@ -108,6 +114,6 @@ class AsyncAgenciesWithCoverageResourceWithStreamingResponse:
     def __init__(self, agencies_with_coverage: AsyncAgenciesWithCoverageResource) -> None:
         self._agencies_with_coverage = agencies_with_coverage
 
-        self.retrieve = async_to_streamed_response_wrapper(
-            agencies_with_coverage.retrieve,
+        self.list = async_to_streamed_response_wrapper(
+            agencies_with_coverage.list,
         )

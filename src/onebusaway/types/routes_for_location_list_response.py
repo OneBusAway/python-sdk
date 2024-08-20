@@ -9,16 +9,18 @@ from .shared.references import References
 from .shared.response_wrapper import ResponseWrapper
 
 __all__ = [
-    "RoutesForLocationRetrieveResponse",
-    "RoutesForLocationRetrieveResponseData",
-    "RoutesForLocationRetrieveResponseDataList",
+    "RoutesForLocationListResponse",
+    "RoutesForLocationListResponseData",
+    "RoutesForLocationListResponseDataList",
 ]
 
 
-class RoutesForLocationRetrieveResponseDataList(BaseModel):
-    id: Optional[str] = None
+class RoutesForLocationListResponseDataList(BaseModel):
+    id: str
 
-    agency_id: Optional[str] = FieldInfo(alias="agencyId", default=None)
+    agency_id: str = FieldInfo(alias="agencyId")
+
+    type: int
 
     color: Optional[str] = None
 
@@ -32,20 +34,18 @@ class RoutesForLocationRetrieveResponseDataList(BaseModel):
 
     text_color: Optional[str] = FieldInfo(alias="textColor", default=None)
 
-    type: Optional[int] = None
-
     url: Optional[str] = None
 
 
-class RoutesForLocationRetrieveResponseData(BaseModel):
+class RoutesForLocationListResponseData(BaseModel):
     limit_exceeded: bool = FieldInfo(alias="limitExceeded")
 
-    list: List[RoutesForLocationRetrieveResponseDataList]
+    list: List[RoutesForLocationListResponseDataList]
 
     out_of_range: bool = FieldInfo(alias="outOfRange")
 
     references: References
 
 
-class RoutesForLocationRetrieveResponse(ResponseWrapper):
-    data: RoutesForLocationRetrieveResponseData
+class RoutesForLocationListResponse(ResponseWrapper):
+    data: RoutesForLocationListResponseData
