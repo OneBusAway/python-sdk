@@ -19,11 +19,6 @@ class TestStopsForLocation:
 
     @parametrize
     def test_method_list(self, client: OnebusawaySDK) -> None:
-        stops_for_location = client.stops_for_location.list()
-        assert_matches_type(StopsForLocationListResponse, stops_for_location, path=["response"])
-
-    @parametrize
-    def test_method_list_with_all_params(self, client: OnebusawaySDK) -> None:
         stops_for_location = client.stops_for_location.list(
             lat=0,
             lon=0,
@@ -31,8 +26,23 @@ class TestStopsForLocation:
         assert_matches_type(StopsForLocationListResponse, stops_for_location, path=["response"])
 
     @parametrize
+    def test_method_list_with_all_params(self, client: OnebusawaySDK) -> None:
+        stops_for_location = client.stops_for_location.list(
+            lat=0,
+            lon=0,
+            lat_span=0,
+            lon_span=0,
+            query="query",
+            radius=0,
+        )
+        assert_matches_type(StopsForLocationListResponse, stops_for_location, path=["response"])
+
+    @parametrize
     def test_raw_response_list(self, client: OnebusawaySDK) -> None:
-        response = client.stops_for_location.with_raw_response.list()
+        response = client.stops_for_location.with_raw_response.list(
+            lat=0,
+            lon=0,
+        )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -41,7 +51,10 @@ class TestStopsForLocation:
 
     @parametrize
     def test_streaming_response_list(self, client: OnebusawaySDK) -> None:
-        with client.stops_for_location.with_streaming_response.list() as response:
+        with client.stops_for_location.with_streaming_response.list(
+            lat=0,
+            lon=0,
+        ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -56,11 +69,6 @@ class TestAsyncStopsForLocation:
 
     @parametrize
     async def test_method_list(self, async_client: AsyncOnebusawaySDK) -> None:
-        stops_for_location = await async_client.stops_for_location.list()
-        assert_matches_type(StopsForLocationListResponse, stops_for_location, path=["response"])
-
-    @parametrize
-    async def test_method_list_with_all_params(self, async_client: AsyncOnebusawaySDK) -> None:
         stops_for_location = await async_client.stops_for_location.list(
             lat=0,
             lon=0,
@@ -68,8 +76,23 @@ class TestAsyncStopsForLocation:
         assert_matches_type(StopsForLocationListResponse, stops_for_location, path=["response"])
 
     @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncOnebusawaySDK) -> None:
+        stops_for_location = await async_client.stops_for_location.list(
+            lat=0,
+            lon=0,
+            lat_span=0,
+            lon_span=0,
+            query="query",
+            radius=0,
+        )
+        assert_matches_type(StopsForLocationListResponse, stops_for_location, path=["response"])
+
+    @parametrize
     async def test_raw_response_list(self, async_client: AsyncOnebusawaySDK) -> None:
-        response = await async_client.stops_for_location.with_raw_response.list()
+        response = await async_client.stops_for_location.with_raw_response.list(
+            lat=0,
+            lon=0,
+        )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -78,7 +101,10 @@ class TestAsyncStopsForLocation:
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncOnebusawaySDK) -> None:
-        async with async_client.stops_for_location.with_streaming_response.list() as response:
+        async with async_client.stops_for_location.with_streaming_response.list(
+            lat=0,
+            lon=0,
+        ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 

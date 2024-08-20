@@ -36,8 +36,12 @@ class StopsForLocationResource(SyncAPIResource):
     def list(
         self,
         *,
-        lat: float | NotGiven = NOT_GIVEN,
-        lon: float | NotGiven = NOT_GIVEN,
+        lat: float,
+        lon: float,
+        lat_span: float | NotGiven = NOT_GIVEN,
+        lon_span: float | NotGiven = NOT_GIVEN,
+        query: str | NotGiven = NOT_GIVEN,
+        radius: float | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -49,6 +53,14 @@ class StopsForLocationResource(SyncAPIResource):
         stops-for-location
 
         Args:
+          lat_span: An alternative to radius to set the search bounding box (optional)
+
+          lon_span: An alternative to radius to set the search bounding box (optional)
+
+          query: A search query string to filter the results
+
+          radius: The radius in meters to search within
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -68,6 +80,10 @@ class StopsForLocationResource(SyncAPIResource):
                     {
                         "lat": lat,
                         "lon": lon,
+                        "lat_span": lat_span,
+                        "lon_span": lon_span,
+                        "query": query,
+                        "radius": radius,
                     },
                     stops_for_location_list_params.StopsForLocationListParams,
                 ),
@@ -88,8 +104,12 @@ class AsyncStopsForLocationResource(AsyncAPIResource):
     async def list(
         self,
         *,
-        lat: float | NotGiven = NOT_GIVEN,
-        lon: float | NotGiven = NOT_GIVEN,
+        lat: float,
+        lon: float,
+        lat_span: float | NotGiven = NOT_GIVEN,
+        lon_span: float | NotGiven = NOT_GIVEN,
+        query: str | NotGiven = NOT_GIVEN,
+        radius: float | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -101,6 +121,14 @@ class AsyncStopsForLocationResource(AsyncAPIResource):
         stops-for-location
 
         Args:
+          lat_span: An alternative to radius to set the search bounding box (optional)
+
+          lon_span: An alternative to radius to set the search bounding box (optional)
+
+          query: A search query string to filter the results
+
+          radius: The radius in meters to search within
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -120,6 +148,10 @@ class AsyncStopsForLocationResource(AsyncAPIResource):
                     {
                         "lat": lat,
                         "lon": lon,
+                        "lat_span": lat_span,
+                        "lon_span": lon_span,
+                        "query": query,
+                        "radius": radius,
                     },
                     stops_for_location_list_params.StopsForLocationListParams,
                 ),
