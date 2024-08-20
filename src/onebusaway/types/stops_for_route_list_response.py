@@ -66,9 +66,9 @@ class StopsForRouteListResponseDataEntry(BaseModel):
 
 
 class StopsForRouteListResponseData(BaseModel):
-    entry: Optional[StopsForRouteListResponseDataEntry] = None
+    entry: StopsForRouteListResponseDataEntry
 
-    references: Optional[References] = None
+    references: References
 
 
 class StopsForRouteListResponse(ResponseWrapper):
