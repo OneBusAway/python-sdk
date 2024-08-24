@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import httpx
 
-from ..types import search_for_route_retrieve_params
+from ..types import search_for_route_list_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import (
     maybe_transform,
@@ -19,7 +19,7 @@ from .._response import (
     async_to_streamed_response_wrapper,
 )
 from .._base_client import make_request_options
-from ..types.search_for_route_retrieve_response import SearchForRouteRetrieveResponse
+from ..types.search_for_route_list_response import SearchForRouteListResponse
 
 __all__ = ["SearchForRouteResource", "AsyncSearchForRouteResource"]
 
@@ -33,7 +33,7 @@ class SearchForRouteResource(SyncAPIResource):
     def with_streaming_response(self) -> SearchForRouteResourceWithStreamingResponse:
         return SearchForRouteResourceWithStreamingResponse(self)
 
-    def retrieve(
+    def list(
         self,
         *,
         input: str,
@@ -44,7 +44,7 @@ class SearchForRouteResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SearchForRouteRetrieveResponse:
+    ) -> SearchForRouteListResponse:
         """
         Search for a route based on its name.
 
@@ -73,10 +73,10 @@ class SearchForRouteResource(SyncAPIResource):
                         "input": input,
                         "max_count": max_count,
                     },
-                    search_for_route_retrieve_params.SearchForRouteRetrieveParams,
+                    search_for_route_list_params.SearchForRouteListParams,
                 ),
             ),
-            cast_to=SearchForRouteRetrieveResponse,
+            cast_to=SearchForRouteListResponse,
         )
 
 
@@ -89,7 +89,7 @@ class AsyncSearchForRouteResource(AsyncAPIResource):
     def with_streaming_response(self) -> AsyncSearchForRouteResourceWithStreamingResponse:
         return AsyncSearchForRouteResourceWithStreamingResponse(self)
 
-    async def retrieve(
+    async def list(
         self,
         *,
         input: str,
@@ -100,7 +100,7 @@ class AsyncSearchForRouteResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SearchForRouteRetrieveResponse:
+    ) -> SearchForRouteListResponse:
         """
         Search for a route based on its name.
 
@@ -129,10 +129,10 @@ class AsyncSearchForRouteResource(AsyncAPIResource):
                         "input": input,
                         "max_count": max_count,
                     },
-                    search_for_route_retrieve_params.SearchForRouteRetrieveParams,
+                    search_for_route_list_params.SearchForRouteListParams,
                 ),
             ),
-            cast_to=SearchForRouteRetrieveResponse,
+            cast_to=SearchForRouteListResponse,
         )
 
 
@@ -140,8 +140,8 @@ class SearchForRouteResourceWithRawResponse:
     def __init__(self, search_for_route: SearchForRouteResource) -> None:
         self._search_for_route = search_for_route
 
-        self.retrieve = to_raw_response_wrapper(
-            search_for_route.retrieve,
+        self.list = to_raw_response_wrapper(
+            search_for_route.list,
         )
 
 
@@ -149,8 +149,8 @@ class AsyncSearchForRouteResourceWithRawResponse:
     def __init__(self, search_for_route: AsyncSearchForRouteResource) -> None:
         self._search_for_route = search_for_route
 
-        self.retrieve = async_to_raw_response_wrapper(
-            search_for_route.retrieve,
+        self.list = async_to_raw_response_wrapper(
+            search_for_route.list,
         )
 
 
@@ -158,8 +158,8 @@ class SearchForRouteResourceWithStreamingResponse:
     def __init__(self, search_for_route: SearchForRouteResource) -> None:
         self._search_for_route = search_for_route
 
-        self.retrieve = to_streamed_response_wrapper(
-            search_for_route.retrieve,
+        self.list = to_streamed_response_wrapper(
+            search_for_route.list,
         )
 
 
@@ -167,6 +167,6 @@ class AsyncSearchForRouteResourceWithStreamingResponse:
     def __init__(self, search_for_route: AsyncSearchForRouteResource) -> None:
         self._search_for_route = search_for_route
 
-        self.retrieve = async_to_streamed_response_wrapper(
-            search_for_route.retrieve,
+        self.list = async_to_streamed_response_wrapper(
+            search_for_route.list,
         )

@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import httpx
 
-from ..types import search_for_stop_retrieve_params
+from ..types import search_for_stop_list_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import (
     maybe_transform,
@@ -19,7 +19,7 @@ from .._response import (
     async_to_streamed_response_wrapper,
 )
 from .._base_client import make_request_options
-from ..types.search_for_stop_retrieve_response import SearchForStopRetrieveResponse
+from ..types.search_for_stop_list_response import SearchForStopListResponse
 
 __all__ = ["SearchForStopResource", "AsyncSearchForStopResource"]
 
@@ -33,7 +33,7 @@ class SearchForStopResource(SyncAPIResource):
     def with_streaming_response(self) -> SearchForStopResourceWithStreamingResponse:
         return SearchForStopResourceWithStreamingResponse(self)
 
-    def retrieve(
+    def list(
         self,
         *,
         input: str,
@@ -44,7 +44,7 @@ class SearchForStopResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SearchForStopRetrieveResponse:
+    ) -> SearchForStopListResponse:
         """
         Search for a stop based on its name.
 
@@ -73,10 +73,10 @@ class SearchForStopResource(SyncAPIResource):
                         "input": input,
                         "max_count": max_count,
                     },
-                    search_for_stop_retrieve_params.SearchForStopRetrieveParams,
+                    search_for_stop_list_params.SearchForStopListParams,
                 ),
             ),
-            cast_to=SearchForStopRetrieveResponse,
+            cast_to=SearchForStopListResponse,
         )
 
 
@@ -89,7 +89,7 @@ class AsyncSearchForStopResource(AsyncAPIResource):
     def with_streaming_response(self) -> AsyncSearchForStopResourceWithStreamingResponse:
         return AsyncSearchForStopResourceWithStreamingResponse(self)
 
-    async def retrieve(
+    async def list(
         self,
         *,
         input: str,
@@ -100,7 +100,7 @@ class AsyncSearchForStopResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SearchForStopRetrieveResponse:
+    ) -> SearchForStopListResponse:
         """
         Search for a stop based on its name.
 
@@ -129,10 +129,10 @@ class AsyncSearchForStopResource(AsyncAPIResource):
                         "input": input,
                         "max_count": max_count,
                     },
-                    search_for_stop_retrieve_params.SearchForStopRetrieveParams,
+                    search_for_stop_list_params.SearchForStopListParams,
                 ),
             ),
-            cast_to=SearchForStopRetrieveResponse,
+            cast_to=SearchForStopListResponse,
         )
 
 
@@ -140,8 +140,8 @@ class SearchForStopResourceWithRawResponse:
     def __init__(self, search_for_stop: SearchForStopResource) -> None:
         self._search_for_stop = search_for_stop
 
-        self.retrieve = to_raw_response_wrapper(
-            search_for_stop.retrieve,
+        self.list = to_raw_response_wrapper(
+            search_for_stop.list,
         )
 
 
@@ -149,8 +149,8 @@ class AsyncSearchForStopResourceWithRawResponse:
     def __init__(self, search_for_stop: AsyncSearchForStopResource) -> None:
         self._search_for_stop = search_for_stop
 
-        self.retrieve = async_to_raw_response_wrapper(
-            search_for_stop.retrieve,
+        self.list = async_to_raw_response_wrapper(
+            search_for_stop.list,
         )
 
 
@@ -158,8 +158,8 @@ class SearchForStopResourceWithStreamingResponse:
     def __init__(self, search_for_stop: SearchForStopResource) -> None:
         self._search_for_stop = search_for_stop
 
-        self.retrieve = to_streamed_response_wrapper(
-            search_for_stop.retrieve,
+        self.list = to_streamed_response_wrapper(
+            search_for_stop.list,
         )
 
 
@@ -167,6 +167,6 @@ class AsyncSearchForStopResourceWithStreamingResponse:
     def __init__(self, search_for_stop: AsyncSearchForStopResource) -> None:
         self._search_for_stop = search_for_stop
 
-        self.retrieve = async_to_streamed_response_wrapper(
-            search_for_stop.retrieve,
+        self.list = async_to_streamed_response_wrapper(
+            search_for_stop.list,
         )
