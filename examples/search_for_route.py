@@ -15,6 +15,6 @@ oba = OnebusawaySDK(**settings)
 search_input = "crystal"
 
 # Retrieve the search results.
-response = oba.search_for_route.retrieve(input=search_input)
+response = oba.search_for_route.list(input=search_input)
 
 print(response.data)
