@@ -15,6 +15,6 @@ oba = OnebusawaySDK(**settings)
 search_input = "crystal"
 
 # Retrieve the search results.
-response = oba.search_for_stop.retrieve(input=search_input, max_count=5)
+response = oba.search_for_stop.list(input=search_input, max_count=5)
 
 print(response.data)
