@@ -16,7 +16,7 @@ The REST API documentation can be found on [developer.onebusaway.org](https://de
 
 ```sh
 # install from PyPI
-pip install --pre onebusaway
+pip install onebusaway
 ```
 
 ## Usage

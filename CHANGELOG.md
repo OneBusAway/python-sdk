@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.0.0 (2024-08-28)
+
+Full Changelog: [v0.1.0-alpha.19...v1.0.0](https://github.com/OneBusAway/python-sdk/compare/v0.1.0-alpha.19...v1.0.0)
+
+### Chores
+
+* release: 1.0.0 ([709a130](https://github.com/OneBusAway/python-sdk/commit/709a1305f5dfd8aed9f95ee69ffd0f192c1b413e))
+
 ## 0.1.0-alpha.19 (2024-08-24)
 
 Full Changelog: [v0.1.0-alpha.18...v0.1.0-alpha.19](https://github.com/OneBusAway/python-sdk/compare/v0.1.0-alpha.18...v0.1.0-alpha.19)
