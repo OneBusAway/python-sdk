@@ -22,10 +22,21 @@ __all__ = ["RoutesForAgencyResource", "AsyncRoutesForAgencyResource"]
 class RoutesForAgencyResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> RoutesForAgencyResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/OneBusAway/python-sdk#accessing-raw-response-data-eg-headers
+        """
         return RoutesForAgencyResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> RoutesForAgencyResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/OneBusAway/python-sdk#with_streaming_response
+        """
         return RoutesForAgencyResourceWithStreamingResponse(self)
 
     def list(
@@ -65,10 +76,21 @@ class RoutesForAgencyResource(SyncAPIResource):
 class AsyncRoutesForAgencyResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncRoutesForAgencyResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/OneBusAway/python-sdk#accessing-raw-response-data-eg-headers
+        """
         return AsyncRoutesForAgencyResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncRoutesForAgencyResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/OneBusAway/python-sdk#with_streaming_response
+        """
         return AsyncRoutesForAgencyResourceWithStreamingResponse(self)
 
     async def list(
