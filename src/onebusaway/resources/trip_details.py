@@ -27,10 +27,21 @@ __all__ = ["TripDetailsResource", "AsyncTripDetailsResource"]
 class TripDetailsResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> TripDetailsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/OneBusAway/python-sdk#accessing-raw-response-data-eg-headers
+        """
         return TripDetailsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> TripDetailsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/OneBusAway/python-sdk#with_streaming_response
+        """
         return TripDetailsResourceWithStreamingResponse(self)
 
     def retrieve(
@@ -101,10 +112,21 @@ class TripDetailsResource(SyncAPIResource):
 class AsyncTripDetailsResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncTripDetailsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/OneBusAway/python-sdk#accessing-raw-response-data-eg-headers
+        """
         return AsyncTripDetailsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncTripDetailsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/OneBusAway/python-sdk#with_streaming_response
+        """
         return AsyncTripDetailsResourceWithStreamingResponse(self)
 
     async def retrieve(
