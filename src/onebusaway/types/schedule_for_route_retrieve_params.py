@@ -2,13 +2,17 @@
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime
+from typing import Union
+from typing_extensions import Annotated, TypedDict
+
+from .._utils import PropertyInfo
 
 __all__ = ["ScheduleForRouteRetrieveParams"]
 
 
 class ScheduleForRouteRetrieveParams(TypedDict, total=False):
-    date: str
+    date: Annotated[Union[str, datetime.date], PropertyInfo(format="iso8601")]
     """
     The date for which you want to request a schedule in the format YYYY-MM-DD
     (optional, defaults to current date)

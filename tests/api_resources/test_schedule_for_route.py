@@ -10,6 +10,7 @@ import pytest
 from onebusaway import OnebusawaySDK, AsyncOnebusawaySDK
 from tests.utils import assert_matches_type
 from onebusaway.types import ScheduleForRouteRetrieveResponse
+from onebusaway._utils import parse_date
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -28,7 +29,7 @@ class TestScheduleForRoute:
     def test_method_retrieve_with_all_params(self, client: OnebusawaySDK) -> None:
         schedule_for_route = client.schedule_for_route.retrieve(
             route_id="1_100223",
-            date="date",
+            date=parse_date("2019-12-27"),
         )
         assert_matches_type(ScheduleForRouteRetrieveResponse, schedule_for_route, path=["response"])
 
@@ -78,7 +79,7 @@ class TestAsyncScheduleForRoute:
     async def test_method_retrieve_with_all_params(self, async_client: AsyncOnebusawaySDK) -> None:
         schedule_for_route = await async_client.schedule_for_route.retrieve(
             route_id="1_100223",
-            date="date",
+            date=parse_date("2019-12-27"),
         )
         assert_matches_type(ScheduleForRouteRetrieveResponse, schedule_for_route, path=["response"])
 
