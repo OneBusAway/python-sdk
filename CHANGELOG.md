@@ -1,5 +1,25 @@
 # Changelog
 
+## 1.1.0 (2024-09-11)
+
+Full Changelog: [v1.0.0...v1.1.0](https://github.com/OneBusAway/python-sdk/compare/v1.0.0...v1.1.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#110](https://github.com/OneBusAway/python-sdk/issues/110)) ([6ae5ddf](https://github.com/OneBusAway/python-sdk/commit/6ae5ddf666032f4374abf719b02127326c8b344f))
+
+
+### Chores
+
+* add docstrings to raw response properties ([#107](https://github.com/OneBusAway/python-sdk/issues/107)) ([0fecff5](https://github.com/OneBusAway/python-sdk/commit/0fecff5be41b8bc6049a49ed56eb80399eccf775))
+* **internal:** codegen related update ([#105](https://github.com/OneBusAway/python-sdk/issues/105)) ([1c46884](https://github.com/OneBusAway/python-sdk/commit/1c46884dffc5766e2c0b03826b341e658ef4b58b))
+* **internal:** codegen related update ([#109](https://github.com/OneBusAway/python-sdk/issues/109)) ([89d809e](https://github.com/OneBusAway/python-sdk/commit/89d809e01baa6cd1b1b98c45e88853584f8ac8a3))
+
+
+### Documentation
+
+* **readme:** add section on determining installed version ([#108](https://github.com/OneBusAway/python-sdk/issues/108)) ([01b74e9](https://github.com/OneBusAway/python-sdk/commit/01b74e91f822fedd4407b5de3d2fca1d03aaecbb))
+
 ## 1.0.0 (2024-08-28)
 
 Full Changelog: [v0.1.0-alpha.19...v1.0.0](https://github.com/OneBusAway/python-sdk/compare/v0.1.0-alpha.19...v1.0.0)
