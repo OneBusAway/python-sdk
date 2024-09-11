@@ -32,7 +32,7 @@ client = OnebusawaySDK(
     api_key=os.environ.get("ONEBUSAWAY_API_KEY"),
 )
 
-current_time_retrieve_response = client.current_time.retrieve()
+current_time = client.current_time.retrieve()
 ```
 
 While you can provide an `api_key` keyword argument,
@@ -56,7 +56,7 @@ client = AsyncOnebusawaySDK(
 
 
 async def main() -> None:
-    current_time_retrieve_response = await client.current_time.retrieve()
+    current_time = await client.current_time.retrieve()
 
 
 asyncio.run(main())
