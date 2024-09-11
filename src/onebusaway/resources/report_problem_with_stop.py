@@ -29,10 +29,21 @@ __all__ = ["ReportProblemWithStopResource", "AsyncReportProblemWithStopResource"
 class ReportProblemWithStopResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> ReportProblemWithStopResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/OneBusAway/python-sdk#accessing-raw-response-data-eg-headers
+        """
         return ReportProblemWithStopResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> ReportProblemWithStopResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/OneBusAway/python-sdk#with_streaming_response
+        """
         return ReportProblemWithStopResourceWithStreamingResponse(self)
 
     def retrieve(
@@ -101,10 +112,21 @@ class ReportProblemWithStopResource(SyncAPIResource):
 class AsyncReportProblemWithStopResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncReportProblemWithStopResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/OneBusAway/python-sdk#accessing-raw-response-data-eg-headers
+        """
         return AsyncReportProblemWithStopResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncReportProblemWithStopResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/OneBusAway/python-sdk#with_streaming_response
+        """
         return AsyncReportProblemWithStopResourceWithStreamingResponse(self)
 
     async def retrieve(

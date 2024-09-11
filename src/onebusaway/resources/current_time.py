@@ -22,10 +22,21 @@ __all__ = ["CurrentTimeResource", "AsyncCurrentTimeResource"]
 class CurrentTimeResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> CurrentTimeResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/OneBusAway/python-sdk#accessing-raw-response-data-eg-headers
+        """
         return CurrentTimeResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> CurrentTimeResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/OneBusAway/python-sdk#with_streaming_response
+        """
         return CurrentTimeResourceWithStreamingResponse(self)
 
     def retrieve(
@@ -51,10 +62,21 @@ class CurrentTimeResource(SyncAPIResource):
 class AsyncCurrentTimeResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncCurrentTimeResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/OneBusAway/python-sdk#accessing-raw-response-data-eg-headers
+        """
         return AsyncCurrentTimeResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncCurrentTimeResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/OneBusAway/python-sdk#with_streaming_response
+        """
         return AsyncCurrentTimeResourceWithStreamingResponse(self)
 
     async def retrieve(

@@ -22,10 +22,21 @@ __all__ = ["RouteIDsForAgencyResource", "AsyncRouteIDsForAgencyResource"]
 class RouteIDsForAgencyResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> RouteIDsForAgencyResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/OneBusAway/python-sdk#accessing-raw-response-data-eg-headers
+        """
         return RouteIDsForAgencyResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> RouteIDsForAgencyResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/OneBusAway/python-sdk#with_streaming_response
+        """
         return RouteIDsForAgencyResourceWithStreamingResponse(self)
 
     def list(
@@ -65,10 +76,21 @@ class RouteIDsForAgencyResource(SyncAPIResource):
 class AsyncRouteIDsForAgencyResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncRouteIDsForAgencyResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/OneBusAway/python-sdk#accessing-raw-response-data-eg-headers
+        """
         return AsyncRouteIDsForAgencyResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncRouteIDsForAgencyResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/OneBusAway/python-sdk#with_streaming_response
+        """
         return AsyncRouteIDsForAgencyResourceWithStreamingResponse(self)
 
     async def list(
