@@ -313,3 +313,7 @@ print(onebusaway.__version__)
 ## Requirements
 
 Python 3.7 or higher.
+
+## Contributing
+
+See [the contributing documentation](./CONTRIBUTING.md).
