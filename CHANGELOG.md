@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.1.5 (2024-10-07)
+
+Full Changelog: [v1.1.4...v1.1.5](https://github.com/OneBusAway/python-sdk/compare/v1.1.4...v1.1.5)
+
+### Bug Fixes
+
+* **client:** avoid OverflowError with very large retry counts ([#124](https://github.com/OneBusAway/python-sdk/issues/124)) ([5f67626](https://github.com/OneBusAway/python-sdk/commit/5f6762604b6462d1fbac9b72adba324d2e4cc38d))
+
 ## 1.1.4 (2024-10-07)
 
 Full Changelog: [v1.1.3...v1.1.4](https://github.com/OneBusAway/python-sdk/compare/v1.1.3...v1.1.4)
