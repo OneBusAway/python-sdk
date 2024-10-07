@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.1.4 (2024-10-07)
+
+Full Changelog: [v1.1.3...v1.1.4](https://github.com/OneBusAway/python-sdk/compare/v1.1.3...v1.1.4)
+
+### Chores
+
+* **internal:** add support for parsing bool response content ([#121](https://github.com/OneBusAway/python-sdk/issues/121)) ([390f17a](https://github.com/OneBusAway/python-sdk/commit/390f17a0a9ca9da54dac53982bfd72fa851191ff))
+
 ## 1.1.3 (2024-10-02)
 
 Full Changelog: [v1.1.2...v1.1.3](https://github.com/OneBusAway/python-sdk/compare/v1.1.2...v1.1.3)
