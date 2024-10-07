@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.1.6 (2024-10-07)
+
+Full Changelog: [v1.1.5...v1.1.6](https://github.com/OneBusAway/python-sdk/compare/v1.1.5...v1.1.6)
+
+### Chores
+
+* add repr to PageInfo class ([#126](https://github.com/OneBusAway/python-sdk/issues/126)) ([4904f20](https://github.com/OneBusAway/python-sdk/commit/4904f2016d302d002f08455737f8a76c5784980e))
+
 ## 1.1.5 (2024-10-07)
 
 Full Changelog: [v1.1.4...v1.1.5](https://github.com/OneBusAway/python-sdk/compare/v1.1.4...v1.1.5)
