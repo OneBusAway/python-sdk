@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.2.2 (2024-11-01)
+
+Full Changelog: [v1.2.1...v1.2.2](https://github.com/OneBusAway/python-sdk/compare/v1.2.1...v1.2.2)
+
+### Chores
+
+* rebuild project due to codegen change ([#135](https://github.com/OneBusAway/python-sdk/issues/135)) ([34f0283](https://github.com/OneBusAway/python-sdk/commit/34f02834030b10d71061287edcdfe7104f5fccbd))
+
 ## 1.2.1 (2024-10-28)
 
 Full Changelog: [v1.2.0...v1.2.1](https://github.com/OneBusAway/python-sdk/compare/v1.2.0...v1.2.1)
