@@ -158,7 +158,7 @@ class TestOnebusawaySDK:
 
         # completely overrides already set values
         copied = client.copy(set_default_query={})
-        assert _get_params(copied) == {}
+        assert _get_params(copied) == {"key": api_key}
 
         copied = client.copy(set_default_query={"bar": "Robert"})
         assert _get_params(copied)["bar"] == "Robert"
@@ -168,7 +168,7 @@ class TestOnebusawaySDK:
             # TODO: update
             match="`default_query` and `set_default_query` arguments are mutually exclusive",
         ):
-            client.copy(set_default_query={}, default_query={"foo": "Bar"})
+            client.copy(set_default_query={}, default_query={"foo": "Bar", "key": api_key})
 
     def test_copy_signature(self) -> None:
         # ensure the same parameters that can be passed to the client are defined in the `.copy()` method
@@ -336,7 +336,7 @@ class TestOnebusawaySDK:
         )
         request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
         url = httpx.URL(request.url)
-        assert dict(url.params) == {"query_param": "bar"}
+        assert dict(url.params) == {"query_param": "bar", "key": api_key}
 
         request = client._build_request(
             FinalRequestOptions(
@@ -346,7 +346,7 @@ class TestOnebusawaySDK:
             )
         )
         url = httpx.URL(request.url)
-        assert dict(url.params) == {"foo": "baz", "query_param": "overriden"}
+        assert dict(url.params) == {"foo": "baz", "query_param": "overriden", "key": api_key}
 
     def test_request_extra_json(self) -> None:
         request = self.client._build_request(
@@ -415,7 +415,7 @@ class TestOnebusawaySDK:
             ),
         )
         params = dict(request.url.params)
-        assert params == {"my_query_param": "Foo"}
+        assert params == {"my_query_param": "Foo", "key": api_key}
 
         # if both `query` and `extra_query` are given, they are merged
         request = self.client._build_request(
@@ -429,7 +429,7 @@ class TestOnebusawaySDK:
             ),
         )
         params = dict(request.url.params)
-        assert params == {"bar": "1", "foo": "2"}
+        assert params == {"bar": "1", "foo": "2", "key": api_key}
 
         # `extra_query` takes priority over `query` when keys clash
         request = self.client._build_request(
@@ -443,7 +443,7 @@ class TestOnebusawaySDK:
             ),
         )
         params = dict(request.url.params)
-        assert params == {"foo": "2"}
+        assert params == {"foo": "2", "key": api_key}
 
     def test_multipart_repeating_array(self, client: OnebusawaySDK) -> None:
         request = client._build_request(
@@ -569,7 +569,8 @@ class TestOnebusawaySDK:
                 json_data={"foo": "bar"},
             ),
         )
-        assert request.url == "http://localhost:5000/custom/path/foo"
+        expected_url = f"http://localhost:5000/custom/path/foo?key={client.api_key}"
+        assert request.url == expected_url
 
     @pytest.mark.parametrize(
         "client",
@@ -594,7 +595,8 @@ class TestOnebusawaySDK:
                 json_data={"foo": "bar"},
             ),
         )
-        assert request.url == "http://localhost:5000/custom/path/foo"
+        expected_url = f"http://localhost:5000/custom/path/foo?key={client.api_key}"
+        assert request.url == expected_url
 
     @pytest.mark.parametrize(
         "client",
@@ -619,7 +621,8 @@ class TestOnebusawaySDK:
                 json_data={"foo": "bar"},
             ),
         )
-        assert request.url == "https://myapi.com/foo"
+        expected_url = f"https://myapi.com/foo?key={client.api_key}"
+        assert request.url == expected_url
 
     def test_copied_client_does_not_close_http(self) -> None:
         client = OnebusawaySDK(base_url=base_url, api_key=api_key, _strict_response_validation=True)
@@ -918,7 +921,7 @@ class TestAsyncOnebusawaySDK:
 
         # completely overrides already set values
         copied = client.copy(set_default_query={})
-        assert _get_params(copied) == {}
+        assert _get_params(copied) == {"key": api_key}
 
         copied = client.copy(set_default_query={"bar": "Robert"})
         assert _get_params(copied)["bar"] == "Robert"
@@ -984,7 +987,7 @@ class TestAsyncOnebusawaySDK:
                     frame.filename.endswith(fragment)
                     for fragment in [
                         # to_raw_response_wrapper leaks through the @functools.wraps() decorator.
-                        #
+
                         # removing the decorator fixes the leak for reasons we don't understand.
                         "onebusaway/_legacy_response.py",
                         "onebusaway/_response.py",
@@ -1096,17 +1099,18 @@ class TestAsyncOnebusawaySDK:
         )
         request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
         url = httpx.URL(request.url)
-        assert dict(url.params) == {"query_param": "bar"}
+        # Include the 'key' in the expected params
+        assert dict(url.params) == {"query_param": "bar", "key": api_key}
 
         request = client._build_request(
             FinalRequestOptions(
                 method="get",
                 url="/foo",
-                params={"foo": "baz", "query_param": "overriden"},
+                params={"foo": "baz", "query_param": "overriden", "key": api_key},
             )
         )
         url = httpx.URL(request.url)
-        assert dict(url.params) == {"foo": "baz", "query_param": "overriden"}
+        assert dict(url.params) == {"foo": "baz", "query_param": "overriden", "key": api_key}
 
     def test_request_extra_json(self) -> None:
         request = self.client._build_request(
@@ -1175,7 +1179,7 @@ class TestAsyncOnebusawaySDK:
             ),
         )
         params = dict(request.url.params)
-        assert params == {"my_query_param": "Foo"}
+        assert params == {"my_query_param": "Foo", "key": api_key}
 
         # if both `query` and `extra_query` are given, they are merged
         request = self.client._build_request(
@@ -1189,8 +1193,7 @@ class TestAsyncOnebusawaySDK:
             ),
         )
         params = dict(request.url.params)
-        assert params == {"bar": "1", "foo": "2"}
-
+        assert params == {"bar": "1", "foo": "2", "key": api_key}
         # `extra_query` takes priority over `query` when keys clash
         request = self.client._build_request(
             FinalRequestOptions(
@@ -1203,7 +1206,7 @@ class TestAsyncOnebusawaySDK:
             ),
         )
         params = dict(request.url.params)
-        assert params == {"foo": "2"}
+        assert params == {"foo": "2", "key": api_key}
 
     def test_multipart_repeating_array(self, async_client: AsyncOnebusawaySDK) -> None:
         request = async_client._build_request(
@@ -1329,7 +1332,8 @@ class TestAsyncOnebusawaySDK:
                 json_data={"foo": "bar"},
             ),
         )
-        assert request.url == "http://localhost:5000/custom/path/foo"
+        excepted_url = f"http://localhost:5000/custom/path/foo?key={client.api_key}"
+        assert request.url == excepted_url
 
     @pytest.mark.parametrize(
         "client",
@@ -1354,7 +1358,9 @@ class TestAsyncOnebusawaySDK:
                 json_data={"foo": "bar"},
             ),
         )
-        assert request.url == "http://localhost:5000/custom/path/foo"
+
+        expected_url = f"http://localhost:5000/custom/path/foo?key={client.api_key}"
+        assert request.url == expected_url
 
     @pytest.mark.parametrize(
         "client",
@@ -1379,7 +1385,8 @@ class TestAsyncOnebusawaySDK:
                 json_data={"foo": "bar"},
             ),
         )
-        assert request.url == "https://myapi.com/foo"
+        expected_url = f"https://myapi.com/foo?key={client.api_key}"
+        assert request.url == expected_url
 
     async def test_copied_client_does_not_close_http(self) -> None:
         client = AsyncOnebusawaySDK(base_url=base_url, api_key=api_key, _strict_response_validation=True)
