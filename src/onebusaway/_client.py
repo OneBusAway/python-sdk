@@ -166,8 +166,9 @@ class OnebusawaySDK(SyncAPIClient):
         return Querystring(array_format="repeat")
 
     @property
-    def auth_headers(self) -> httpx.Auth:
-        raise NotImplementedError("This auth method has not been implemented yet.")
+    @override
+    def auth_headers(self) -> dict[str, str]:
+        return {}
 
     @property
     @override
@@ -393,8 +394,9 @@ class AsyncOnebusawaySDK(AsyncAPIClient):
         return Querystring(array_format="repeat")
 
     @property
-    def auth_headers(self) -> httpx.Auth:
-        raise NotImplementedError("This auth method has not been implemented yet.")
+    @override
+    def auth_headers(self) -> dict[str, str]:
+        return {}
 
     @property
     @override
