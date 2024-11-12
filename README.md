@@ -30,8 +30,7 @@ import os
 from onebusaway import OnebusawaySDK
 
 client = OnebusawaySDK(
-    # This is the default and can be omitted
-    api_key=os.environ.get("ONEBUSAWAY_API_KEY"),
+    api_key=os.environ.get("ONEBUSAWAY_API_KEY"),  # This is the default and can be omitted
 )
 
 current_time = client.current_time.retrieve()
@@ -52,8 +51,7 @@ import asyncio
 from onebusaway import AsyncOnebusawaySDK
 
 client = AsyncOnebusawaySDK(
-    # This is the default and can be omitted
-    api_key=os.environ.get("ONEBUSAWAY_API_KEY"),
+    api_key=os.environ.get("ONEBUSAWAY_API_KEY"),  # This is the default and can be omitted
 )
 
 
