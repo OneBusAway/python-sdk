@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.2.10 (2024-11-22)
+
+Full Changelog: [v1.2.9...v1.2.10](https://github.com/OneBusAway/python-sdk/compare/v1.2.9...v1.2.10)
+
+### Documentation
+
+* add info log level to readme ([#161](https://github.com/OneBusAway/python-sdk/issues/161)) ([4b74a14](https://github.com/OneBusAway/python-sdk/commit/4b74a1477b8492d102775395bd688fb2cefd17fa))
+
 ## 1.2.9 (2024-11-22)
 
 Full Changelog: [v1.2.8...v1.2.9](https://github.com/OneBusAway/python-sdk/compare/v1.2.8...v1.2.9)
