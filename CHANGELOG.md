@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.2.9 (2024-11-22)
+
+Full Changelog: [v1.2.8...v1.2.9](https://github.com/OneBusAway/python-sdk/compare/v1.2.8...v1.2.9)
+
+### Chores
+
+* **internal:** fix compat model_dump method when warnings are passed ([#158](https://github.com/OneBusAway/python-sdk/issues/158)) ([699d488](https://github.com/OneBusAway/python-sdk/commit/699d4889cf96d12c9fc0c538e228daaab97084be))
+
 ## 1.2.8 (2024-11-18)
 
 Full Changelog: [v1.2.7...v1.2.8](https://github.com/OneBusAway/python-sdk/compare/v1.2.7...v1.2.8)
