@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.2.11 (2024-11-26)
+
+Full Changelog: [v1.2.10...v1.2.11](https://github.com/OneBusAway/python-sdk/compare/v1.2.10...v1.2.11)
+
+### Chores
+
+* remove now unused `cached-property` dep ([#164](https://github.com/OneBusAway/python-sdk/issues/164)) ([327cdeb](https://github.com/OneBusAway/python-sdk/commit/327cdeb051074bbdb55fe9848c714e46d4c0f22b))
+
 ## 1.2.10 (2024-11-22)
 
 Full Changelog: [v1.2.9...v1.2.10](https://github.com/OneBusAway/python-sdk/compare/v1.2.9...v1.2.10)
