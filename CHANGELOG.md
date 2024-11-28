@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.2.13 (2024-11-28)
+
+Full Changelog: [v1.2.12...v1.2.13](https://github.com/OneBusAway/python-sdk/compare/v1.2.12...v1.2.13)
+
+### Bug Fixes
+
+* **client:** compat with new httpx 0.28.0 release ([#170](https://github.com/OneBusAway/python-sdk/issues/170)) ([0409197](https://github.com/OneBusAway/python-sdk/commit/0409197d1a693e5882a4553bb5ce223c12d42966))
+
 ## 1.2.12 (2024-11-28)
 
 Full Changelog: [v1.2.11...v1.2.12](https://github.com/OneBusAway/python-sdk/compare/v1.2.11...v1.2.12)
