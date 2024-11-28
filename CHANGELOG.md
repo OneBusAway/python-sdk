@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.2.12 (2024-11-28)
+
+Full Changelog: [v1.2.11...v1.2.12](https://github.com/OneBusAway/python-sdk/compare/v1.2.11...v1.2.12)
+
+### Chores
+
+* **internal:** exclude mypy from running on tests ([#167](https://github.com/OneBusAway/python-sdk/issues/167)) ([e5a89a4](https://github.com/OneBusAway/python-sdk/commit/e5a89a4ded2e8cedee272429a77c6edd921bc55d))
+
 ## 1.2.11 (2024-11-26)
 
 Full Changelog: [v1.2.10...v1.2.11](https://github.com/OneBusAway/python-sdk/compare/v1.2.10...v1.2.11)
