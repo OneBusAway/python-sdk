@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.4.0 (2024-11-29)
+
+Full Changelog: [v1.3.0...v1.4.0](https://github.com/OneBusAway/python-sdk/compare/v1.3.0...v1.4.0)
+
+### Features
+
+* **api:** api update ([#176](https://github.com/OneBusAway/python-sdk/issues/176)) ([b66eab7](https://github.com/OneBusAway/python-sdk/commit/b66eab729a4ace0919b928169f793e5ffdb62a47))
+
 ## 1.3.0 (2024-11-29)
 
 Full Changelog: [v1.2.13...v1.3.0](https://github.com/OneBusAway/python-sdk/compare/v1.2.13...v1.3.0)
