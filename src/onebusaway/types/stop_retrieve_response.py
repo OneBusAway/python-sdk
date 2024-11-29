@@ -14,23 +14,23 @@ __all__ = ["StopRetrieveResponse", "StopRetrieveResponseData", "StopRetrieveResp
 class StopRetrieveResponseDataEntry(BaseModel):
     id: str
 
-    code: str
-
     lat: float
 
     lon: float
 
     name: str
 
+    parent: str
+
+    route_ids: List[str] = FieldInfo(alias="routeIds")
+
+    static_route_ids: List[str] = FieldInfo(alias="staticRouteIds")
+
+    code: Optional[str] = None
+
     direction: Optional[str] = None
 
     location_type: Optional[int] = FieldInfo(alias="locationType", default=None)
-
-    parent: Optional[str] = None
-
-    route_ids: Optional[List[str]] = FieldInfo(alias="routeIds", default=None)
-
-    static_route_ids: Optional[List[str]] = FieldInfo(alias="staticRouteIds", default=None)
 
     wheelchair_boarding: Optional[str] = FieldInfo(alias="wheelchairBoarding", default=None)
 
