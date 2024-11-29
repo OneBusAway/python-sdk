@@ -42,6 +42,8 @@ class StopsForLocationListResponseData(BaseModel):
 
     references: References
 
+    out_of_range: Optional[bool] = FieldInfo(alias="outOfRange", default=None)
+
 
 class StopsForLocationListResponse(ResponseWrapper):
     data: StopsForLocationListResponseData
