@@ -104,6 +104,14 @@ from .search_for_route import (
     SearchForRouteResourceWithStreamingResponse,
     AsyncSearchForRouteResourceWithStreamingResponse,
 )
+from .stops_for_agency import (
+    StopsForAgencyResource,
+    AsyncStopsForAgencyResource,
+    StopsForAgencyResourceWithRawResponse,
+    AsyncStopsForAgencyResourceWithRawResponse,
+    StopsForAgencyResourceWithStreamingResponse,
+    AsyncStopsForAgencyResourceWithStreamingResponse,
+)
 from .trip_for_vehicle import (
     TripForVehicleResource,
     AsyncTripForVehicleResource,
@@ -260,6 +268,12 @@ __all__ = [
     "AsyncStopsForRouteResourceWithRawResponse",
     "StopsForRouteResourceWithStreamingResponse",
     "AsyncStopsForRouteResourceWithStreamingResponse",
+    "StopsForAgencyResource",
+    "AsyncStopsForAgencyResource",
+    "StopsForAgencyResourceWithRawResponse",
+    "AsyncStopsForAgencyResourceWithRawResponse",
+    "StopsForAgencyResourceWithStreamingResponse",
+    "AsyncStopsForAgencyResourceWithStreamingResponse",
     "StopResource",
     "AsyncStopResource",
     "StopResourceWithRawResponse",
