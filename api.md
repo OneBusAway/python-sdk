@@ -88,6 +88,18 @@ Methods:
 
 - <code title="get /api/where/stops-for-route/{routeID}.json">client.stops_for_route.<a href="./src/onebusaway/resources/stops_for_route.py">list</a>(route_id, \*\*<a href="src/onebusaway/types/stops_for_route_list_params.py">params</a>) -> <a href="./src/onebusaway/types/stops_for_route_list_response.py">StopsForRouteListResponse</a></code>
 
+# StopsForAgency
+
+Types:
+
+```python
+from onebusaway.types import StopsForAgencyListResponse
+```
+
+Methods:
+
+- <code title="get /api/where/stops-for-agency/{agencyID}.json">client.stops_for_agency.<a href="./src/onebusaway/resources/stops_for_agency.py">list</a>(agency_id) -> <a href="./src/onebusaway/types/stops_for_agency_list_response.py">StopsForAgencyListResponse</a></code>
+
 # Stop
 
 Types:
