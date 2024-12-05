@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.4.2 (2024-12-04)
+
+Full Changelog: [v1.4.1...v1.4.2](https://github.com/OneBusAway/python-sdk/compare/v1.4.1...v1.4.2)
+
+### Chores
+
+* make the `Omit` type public ([#182](https://github.com/OneBusAway/python-sdk/issues/182)) ([cd0f27e](https://github.com/OneBusAway/python-sdk/commit/cd0f27e796d255cf20b23b6418c200faec5b35d0))
+
 ## 1.4.1 (2024-12-03)
 
 Full Changelog: [v1.4.0...v1.4.1](https://github.com/OneBusAway/python-sdk/compare/v1.4.0...v1.4.1)
