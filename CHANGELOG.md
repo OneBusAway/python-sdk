@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.4.3 (2024-12-10)
+
+Full Changelog: [v1.4.2...v1.4.3](https://github.com/OneBusAway/python-sdk/compare/v1.4.2...v1.4.3)
+
+### Chores
+
+* **internal:** bump pydantic dependency ([#185](https://github.com/OneBusAway/python-sdk/issues/185)) ([592e261](https://github.com/OneBusAway/python-sdk/commit/592e2619ae0d6b486c14c25812f7e0c5402fe068))
+
 ## 1.4.2 (2024-12-04)
 
 Full Changelog: [v1.4.1...v1.4.2](https://github.com/OneBusAway/python-sdk/compare/v1.4.1...v1.4.2)
