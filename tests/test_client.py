@@ -345,11 +345,11 @@ class TestOnebusawaySDK:
             FinalRequestOptions(
                 method="get",
                 url="/foo",
-                params={"foo": "baz", "query_param": "overriden"},
+                params={"foo": "baz", "query_param": "overridden"},
             )
         )
         url = httpx.URL(request.url)
-        assert dict(url.params) == {"foo": "baz", "query_param": "overriden", "key": api_key}
+        assert dict(url.params) == {"foo": "baz", "query_param": "overridden", "key": api_key}
 
     def test_request_extra_json(self) -> None:
         request = self.client._build_request(
@@ -1109,11 +1109,11 @@ class TestAsyncOnebusawaySDK:
             FinalRequestOptions(
                 method="get",
                 url="/foo",
-                params={"foo": "baz", "query_param": "overriden", "key": api_key},
+                params={"foo": "baz", "query_param": "overridden", "key": api_key},
             )
         )
         url = httpx.URL(request.url)
-        assert dict(url.params) == {"foo": "baz", "query_param": "overriden", "key": api_key}
+        assert dict(url.params) == {"foo": "baz", "query_param": "overridden", "key": api_key}
 
     def test_request_extra_json(self) -> None:
         request = self.client._build_request(
@@ -1601,7 +1601,7 @@ class TestAsyncOnebusawaySDK:
         import threading
 
         from onebusaway._utils import asyncify
-        from onebusaway._base_client import get_platform 
+        from onebusaway._base_client import get_platform
 
         async def test_main() -> None:
             result = await asyncify(get_platform)()
