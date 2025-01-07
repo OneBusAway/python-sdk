@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.4.12 (2025-01-07)
+
+Full Changelog: [v1.4.11...v1.4.12](https://github.com/OneBusAway/python-sdk/compare/v1.4.11...v1.4.12)
+
+### Chores
+
+* add missing isclass check ([#212](https://github.com/OneBusAway/python-sdk/issues/212)) ([989d621](https://github.com/OneBusAway/python-sdk/commit/989d6218de97f5515ec741b5cc424cb8d7901362))
+
 ## 1.4.11 (2025-01-02)
 
 Full Changelog: [v1.4.10...v1.4.11](https://github.com/OneBusAway/python-sdk/compare/v1.4.10...v1.4.11)
