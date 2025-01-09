@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.4.14 (2025-01-09)
+
+Full Changelog: [v1.4.13...v1.4.14](https://github.com/OneBusAway/python-sdk/compare/v1.4.13...v1.4.14)
+
+### Documentation
+
+* fix typos ([#218](https://github.com/OneBusAway/python-sdk/issues/218)) ([b66f7dd](https://github.com/OneBusAway/python-sdk/commit/b66f7dd5482920dfb986bd3e6c09c62b3fdfafb3))
+
 ## 1.4.13 (2025-01-08)
 
 Full Changelog: [v1.4.12...v1.4.13](https://github.com/OneBusAway/python-sdk/compare/v1.4.12...v1.4.13)
