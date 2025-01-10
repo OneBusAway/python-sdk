@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.4.16 (2025-01-10)
+
+Full Changelog: [v1.4.15...v1.4.16](https://github.com/OneBusAway/python-sdk/compare/v1.4.15...v1.4.16)
+
+### Bug Fixes
+
+* correctly handle deserialising `cls` fields ([#223](https://github.com/OneBusAway/python-sdk/issues/223)) ([33d5ab7](https://github.com/OneBusAway/python-sdk/commit/33d5ab7fc1366619e6db0a2ab30390ee3249bf52))
+
 ## 1.4.15 (2025-01-09)
 
 Full Changelog: [v1.4.14...v1.4.15](https://github.com/OneBusAway/python-sdk/compare/v1.4.14...v1.4.15)
