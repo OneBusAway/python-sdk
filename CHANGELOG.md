@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.4.17 (2025-01-17)
+
+Full Changelog: [v1.4.16...v1.4.17](https://github.com/OneBusAway/python-sdk/compare/v1.4.16...v1.4.17)
+
+### Chores
+
+* **internal:** codegen related update ([#226](https://github.com/OneBusAway/python-sdk/issues/226)) ([69f99d3](https://github.com/OneBusAway/python-sdk/commit/69f99d32d95b5256685d68874c73b2647cc8e900))
+
 ## 1.4.16 (2025-01-10)
 
 Full Changelog: [v1.4.15...v1.4.16](https://github.com/OneBusAway/python-sdk/compare/v1.4.15...v1.4.16)
