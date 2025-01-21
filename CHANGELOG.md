@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.4.18 (2025-01-21)
+
+Full Changelog: [v1.4.17...v1.4.18](https://github.com/OneBusAway/python-sdk/compare/v1.4.17...v1.4.18)
+
+### Documentation
+
+* **raw responses:** fix duplicate `the` ([#229](https://github.com/OneBusAway/python-sdk/issues/229)) ([3eb85fa](https://github.com/OneBusAway/python-sdk/commit/3eb85fa39efc772ba9175c5a281e19c2e22b62d4))
+
 ## 1.4.17 (2025-01-17)
 
 Full Changelog: [v1.4.16...v1.4.17](https://github.com/OneBusAway/python-sdk/compare/v1.4.16...v1.4.17)
