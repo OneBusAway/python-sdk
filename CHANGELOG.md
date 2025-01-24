@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.4.21 (2025-01-24)
+
+Full Changelog: [v1.4.20...v1.4.21](https://github.com/OneBusAway/python-sdk/compare/v1.4.20...v1.4.21)
+
+### Chores
+
+* **internal:** minor formatting changes ([#239](https://github.com/OneBusAway/python-sdk/issues/239)) ([c4753be](https://github.com/OneBusAway/python-sdk/commit/c4753be98ddcd9ef1821bf155715366a13de4542))
+
 ## 1.4.20 (2025-01-23)
 
 Full Changelog: [v1.4.19...v1.4.20](https://github.com/OneBusAway/python-sdk/compare/v1.4.19...v1.4.20)
