@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.4.23 (2025-02-04)
+
+Full Changelog: [v1.4.22...v1.4.23](https://github.com/OneBusAway/python-sdk/compare/v1.4.22...v1.4.23)
+
+### Chores
+
+* **internal:** bummp ruff dependency ([#245](https://github.com/OneBusAway/python-sdk/issues/245)) ([b8d6007](https://github.com/OneBusAway/python-sdk/commit/b8d6007b83f20484c4172901a262414247712972))
+
 ## 1.4.22 (2025-02-04)
 
 Full Changelog: [v1.4.21...v1.4.22](https://github.com/OneBusAway/python-sdk/compare/v1.4.21...v1.4.22)
