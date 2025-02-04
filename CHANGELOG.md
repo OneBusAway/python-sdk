@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.4.22 (2025-02-04)
+
+Full Changelog: [v1.4.21...v1.4.22](https://github.com/OneBusAway/python-sdk/compare/v1.4.21...v1.4.22)
+
+### Chores
+
+* **internal:** change default timeout to an int ([#242](https://github.com/OneBusAway/python-sdk/issues/242)) ([7a6abd4](https://github.com/OneBusAway/python-sdk/commit/7a6abd4930719c6451e3701f745f028999bf00b0))
+
 ## 1.4.21 (2025-01-24)
 
 Full Changelog: [v1.4.20...v1.4.21](https://github.com/OneBusAway/python-sdk/compare/v1.4.20...v1.4.21)
