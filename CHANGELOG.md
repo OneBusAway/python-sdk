@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.5.0 (2025-02-06)
+
+Full Changelog: [v1.4.23...v1.5.0](https://github.com/OneBusAway/python-sdk/compare/v1.4.23...v1.5.0)
+
+### Features
+
+* **client:** send `X-Stainless-Read-Timeout` header ([#248](https://github.com/OneBusAway/python-sdk/issues/248)) ([2bdb366](https://github.com/OneBusAway/python-sdk/commit/2bdb366dbde6c2c9ad5e5cd89cf07b24410ca472))
+
 ## 1.4.23 (2025-02-04)
 
 Full Changelog: [v1.4.22...v1.4.23](https://github.com/OneBusAway/python-sdk/compare/v1.4.22...v1.4.23)
