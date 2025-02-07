@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.5.2 (2025-02-07)
+
+Full Changelog: [v1.5.1...v1.5.2](https://github.com/OneBusAway/python-sdk/compare/v1.5.1...v1.5.2)
+
+### Chores
+
+* **internal:** minor type handling changes ([#254](https://github.com/OneBusAway/python-sdk/issues/254)) ([401146a](https://github.com/OneBusAway/python-sdk/commit/401146a94806dba8c0aa14252aadd09089c590b9))
+
 ## 1.5.1 (2025-02-07)
 
 Full Changelog: [v1.5.0...v1.5.1](https://github.com/OneBusAway/python-sdk/compare/v1.5.0...v1.5.1)
