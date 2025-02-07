@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.5.1 (2025-02-07)
+
+Full Changelog: [v1.5.0...v1.5.1](https://github.com/OneBusAway/python-sdk/compare/v1.5.0...v1.5.1)
+
+### Chores
+
+* **internal:** fix type traversing dictionary params ([#251](https://github.com/OneBusAway/python-sdk/issues/251)) ([6dc1d57](https://github.com/OneBusAway/python-sdk/commit/6dc1d570d4fa8f1391755af3431ae2cdda088d9e))
+
 ## 1.5.0 (2025-02-06)
 
 Full Changelog: [v1.4.23...v1.5.0](https://github.com/OneBusAway/python-sdk/compare/v1.4.23...v1.5.0)
