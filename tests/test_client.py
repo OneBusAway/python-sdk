@@ -11,6 +11,7 @@ import asyncio
 import inspect
 import subprocess
 import tracemalloc
+import urllib.parse
 from typing import Any, Union, cast
 from textwrap import dedent
 from unittest import mock
@@ -34,7 +35,6 @@ from onebusaway._base_client import (
 )
 
 from .utils import update_env
-import urllib.parse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 api_key = "My API Key"
@@ -992,7 +992,6 @@ class TestAsyncOnebusawaySDK:
                     frame.filename.endswith(fragment)
                     for fragment in [
                         # to_raw_response_wrapper leaks through the @functools.wraps() decorator.
-
                         # removing the decorator fixes the leak for reasons we don't understand.
                         "onebusaway/_legacy_response.py",
                         "onebusaway/_response.py",
