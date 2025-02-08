@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.6.0 (2025-02-08)
+
+Full Changelog: [v1.5.2...v1.6.0](https://github.com/OneBusAway/python-sdk/compare/v1.5.2...v1.6.0)
+
+### Features
+
+* fix(tests): use urllib.parse.quote_plus for API key encoding in expected URLs ([41dfd84](https://github.com/OneBusAway/python-sdk/commit/41dfd84d5c705825fa4b0dea4d52b964b08921d0))
+
 ## 1.5.2 (2025-02-07)
 
 Full Changelog: [v1.5.1...v1.5.2](https://github.com/OneBusAway/python-sdk/compare/v1.5.1...v1.5.2)
