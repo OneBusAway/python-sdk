@@ -34,6 +34,7 @@ from onebusaway._base_client import (
 )
 
 from .utils import update_env
+import urllib.parse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 api_key = "My API Key"
@@ -573,7 +574,7 @@ class TestOnebusawaySDK:
                 json_data={"foo": "bar"},
             ),
         )
-        expected_url = f"http://localhost:5000/custom/path/foo?key={client.api_key}"
+        expected_url = f"http://localhost:5000/custom/path/foo?key={urllib.parse.quote_plus(client.api_key)}"
         assert request.url == expected_url
 
     @pytest.mark.parametrize(
@@ -599,7 +600,7 @@ class TestOnebusawaySDK:
                 json_data={"foo": "bar"},
             ),
         )
-        expected_url = f"http://localhost:5000/custom/path/foo?key={client.api_key}"
+        expected_url = f"http://localhost:5000/custom/path/foo?key={urllib.parse.quote_plus(client.api_key)}"
         assert request.url == expected_url
 
     @pytest.mark.parametrize(
@@ -625,7 +626,7 @@ class TestOnebusawaySDK:
                 json_data={"foo": "bar"},
             ),
         )
-        expected_url = f"https://myapi.com/foo?key={client.api_key}"
+        expected_url = f"https://myapi.com/foo?key={urllib.parse.quote_plus(client.api_key)}"
         assert request.url == expected_url
 
     def test_copied_client_does_not_close_http(self) -> None:
@@ -1336,7 +1337,7 @@ class TestAsyncOnebusawaySDK:
                 json_data={"foo": "bar"},
             ),
         )
-        excepted_url = f"http://localhost:5000/custom/path/foo?key={client.api_key}"
+        excepted_url = f"http://localhost:5000/custom/path/foo?key={urllib.parse.quote_plus(client.api_key)}"
         assert request.url == excepted_url
 
     @pytest.mark.parametrize(
@@ -1363,7 +1364,7 @@ class TestAsyncOnebusawaySDK:
             ),
         )
 
-        expected_url = f"http://localhost:5000/custom/path/foo?key={client.api_key}"
+        expected_url = f"http://localhost:5000/custom/path/foo?key={urllib.parse.quote_plus(client.api_key)}"
         assert request.url == expected_url
 
     @pytest.mark.parametrize(
@@ -1389,7 +1390,7 @@ class TestAsyncOnebusawaySDK:
                 json_data={"foo": "bar"},
             ),
         )
-        expected_url = f"https://myapi.com/foo?key={client.api_key}"
+        expected_url = f"https://myapi.com/foo?key={urllib.parse.quote_plus(client.api_key)}"
         assert request.url == expected_url
 
     async def test_copied_client_does_not_close_http(self) -> None:
