@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.7.0 (2025-02-08)
+
+Full Changelog: [v1.6.0...v1.7.0](https://github.com/OneBusAway/python-sdk/compare/v1.6.0...v1.7.0)
+
+### Features
+
+* chore(tests): formatting ([dbb3cd7](https://github.com/OneBusAway/python-sdk/commit/dbb3cd78e5059a2e34efe2b323376abe7e544ac9))
+
 ## 1.6.0 (2025-02-08)
 
 Full Changelog: [v1.5.2...v1.6.0](https://github.com/OneBusAway/python-sdk/compare/v1.5.2...v1.6.0)
