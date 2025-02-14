@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.7.1 (2025-02-14)
+
+Full Changelog: [v1.7.0...v1.7.1](https://github.com/OneBusAway/python-sdk/compare/v1.7.0...v1.7.1)
+
+### Bug Fixes
+
+* asyncify on non-asyncio runtimes ([#261](https://github.com/OneBusAway/python-sdk/issues/261)) ([5d5e531](https://github.com/OneBusAway/python-sdk/commit/5d5e5310af6acf2accc87d2d3479bbaf4f90d6e0))
+
 ## 1.7.0 (2025-02-08)
 
 Full Changelog: [v1.6.0...v1.7.0](https://github.com/OneBusAway/python-sdk/compare/v1.6.0...v1.7.0)
