@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.8.0 (2025-02-21)
+
+Full Changelog: [v1.7.1...v1.8.0](https://github.com/OneBusAway/python-sdk/compare/v1.7.1...v1.8.0)
+
+### Features
+
+* **client:** allow passing `NotGiven` for body ([#264](https://github.com/OneBusAway/python-sdk/issues/264)) ([a4b3083](https://github.com/OneBusAway/python-sdk/commit/a4b3083b2276f1b14efc2c1dc8067218fade420e))
+
+
+### Bug Fixes
+
+* **client:** mark some request bodies as optional ([a4b3083](https://github.com/OneBusAway/python-sdk/commit/a4b3083b2276f1b14efc2c1dc8067218fade420e))
+
 ## 1.7.1 (2025-02-14)
 
 Full Changelog: [v1.7.0...v1.7.1](https://github.com/OneBusAway/python-sdk/compare/v1.7.0...v1.7.1)
