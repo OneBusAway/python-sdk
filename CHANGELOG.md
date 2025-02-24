@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.8.1 (2025-02-22)
+
+Full Changelog: [v1.8.0...v1.8.1](https://github.com/OneBusAway/python-sdk/compare/v1.8.0...v1.8.1)
+
+### Chores
+
+* **internal:** fix devcontainers setup ([#267](https://github.com/OneBusAway/python-sdk/issues/267)) ([aaa9050](https://github.com/OneBusAway/python-sdk/commit/aaa9050c599ae62cfa24ba579c5a6b864a7adb73))
+
 ## 1.8.0 (2025-02-21)
 
 Full Changelog: [v1.7.1...v1.8.0](https://github.com/OneBusAway/python-sdk/compare/v1.7.1...v1.8.0)
