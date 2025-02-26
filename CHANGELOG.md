@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.8.2 (2025-02-26)
+
+Full Changelog: [v1.8.1...v1.8.2](https://github.com/OneBusAway/python-sdk/compare/v1.8.1...v1.8.2)
+
+### Chores
+
+* **internal:** properly set __pydantic_private__ ([#270](https://github.com/OneBusAway/python-sdk/issues/270)) ([b14c2b5](https://github.com/OneBusAway/python-sdk/commit/b14c2b5b6f6bf376fcf0aeb6c3ae0536a222c131))
+
 ## 1.8.1 (2025-02-22)
 
 Full Changelog: [v1.8.0...v1.8.1](https://github.com/OneBusAway/python-sdk/compare/v1.8.0...v1.8.1)
