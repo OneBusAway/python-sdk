@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.8.3 (2025-02-28)
+
+Full Changelog: [v1.8.2...v1.8.3](https://github.com/OneBusAway/python-sdk/compare/v1.8.2...v1.8.3)
+
+### Documentation
+
+* update URLs from stainlessapi.com to stainless.com ([#273](https://github.com/OneBusAway/python-sdk/issues/273)) ([362a2f9](https://github.com/OneBusAway/python-sdk/commit/362a2f95e074ad28da196fc58a10df96ca7bc9e9))
+
 ## 1.8.2 (2025-02-26)
 
 Full Changelog: [v1.8.1...v1.8.2](https://github.com/OneBusAway/python-sdk/compare/v1.8.1...v1.8.2)
