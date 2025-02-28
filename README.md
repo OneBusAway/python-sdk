@@ -8,7 +8,7 @@ The Onebusaway SDK Python library provides convenient access to the Onebusaway S
 application. The library includes type definitions for all request params and response fields,
 and offers both synchronous and asynchronous clients powered by [httpx](https://github.com/encode/httpx).
 
-It is generated with [Stainless](https://www.stainlessapi.com/).
+It is generated with [Stainless](https://www.stainless.com/).
 
 ## Documentation
 
