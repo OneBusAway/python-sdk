@@ -132,7 +132,7 @@ class OnebusawaySDK(SyncAPIClient):
         # part of our public interface in the future.
         _strict_response_validation: bool = False,
     ) -> None:
-        """Construct a new synchronous onebusaway-sdk client instance.
+        """Construct a new synchronous OnebusawaySDK client instance.
 
         This automatically infers the `api_key` argument from the `ONEBUSAWAY_API_KEY` environment variable if it is not provided.
         """
@@ -362,7 +362,7 @@ class AsyncOnebusawaySDK(AsyncAPIClient):
         # part of our public interface in the future.
         _strict_response_validation: bool = False,
     ) -> None:
-        """Construct a new async onebusaway-sdk client instance.
+        """Construct a new async AsyncOnebusawaySDK client instance.
 
         This automatically infers the `api_key` argument from the `ONEBUSAWAY_API_KEY` environment variable if it is not provided.
         """
