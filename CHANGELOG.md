@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.8.3 (2025-03-04)
+
+Full Changelog: [v1.8.2...v1.8.3](https://github.com/OneBusAway/python-sdk/compare/v1.8.2...v1.8.3)
+
+### Chores
+
+* **docs:** update client docstring ([#274](https://github.com/OneBusAway/python-sdk/issues/274)) ([cd68881](https://github.com/OneBusAway/python-sdk/commit/cd68881b35a8a1d83ff1de64bca8e8dea8494ebd))
+* **internal:** remove unused http client options forwarding ([#276](https://github.com/OneBusAway/python-sdk/issues/276)) ([7b2e2e5](https://github.com/OneBusAway/python-sdk/commit/7b2e2e505c7d440daa02464839512ee309113b02))
+
+
+### Documentation
+
+* update URLs from stainlessapi.com to stainless.com ([#273](https://github.com/OneBusAway/python-sdk/issues/273)) ([362a2f9](https://github.com/OneBusAway/python-sdk/commit/362a2f95e074ad28da196fc58a10df96ca7bc9e9))
+
 ## 1.8.2 (2025-02-26)
 
 Full Changelog: [v1.8.1...v1.8.2](https://github.com/OneBusAway/python-sdk/compare/v1.8.1...v1.8.2)
