@@ -1,5 +1,22 @@
 # Changelog
 
+## 1.8.4 (2025-03-27)
+
+Full Changelog: [v1.8.3...v1.8.4](https://github.com/OneBusAway/python-sdk/compare/v1.8.3...v1.8.4)
+
+### Bug Fixes
+
+* **ci:** ensure pip is always available ([#284](https://github.com/OneBusAway/python-sdk/issues/284)) ([959d15e](https://github.com/OneBusAway/python-sdk/commit/959d15edcf912b2742e3598a35396041492ecbb7))
+* **ci:** remove publishing patch ([#285](https://github.com/OneBusAway/python-sdk/issues/285)) ([43691e0](https://github.com/OneBusAway/python-sdk/commit/43691e0b16c2c885b8e75d07e82f1ff26d961ac8))
+* **types:** handle more discriminated union shapes ([#283](https://github.com/OneBusAway/python-sdk/issues/283)) ([d55c08a](https://github.com/OneBusAway/python-sdk/commit/d55c08ad0ff636bf899c7a989185f30f431649bb))
+
+
+### Chores
+
+* fix typos ([#286](https://github.com/OneBusAway/python-sdk/issues/286)) ([e45e047](https://github.com/OneBusAway/python-sdk/commit/e45e04798e64b912d4ba598ebc3ef0cdaf031203))
+* **internal:** bump rye to 0.44.0 ([#282](https://github.com/OneBusAway/python-sdk/issues/282)) ([217ce3f](https://github.com/OneBusAway/python-sdk/commit/217ce3f97be80d4861ffc277336ec196c6873788))
+* **internal:** remove extra empty newlines ([#280](https://github.com/OneBusAway/python-sdk/issues/280)) ([3ca5c73](https://github.com/OneBusAway/python-sdk/commit/3ca5c734669aad9252aca2761537f2cf6dc9cfab))
+
 ## 1.8.3 (2025-03-04)
 
 Full Changelog: [v1.8.2...v1.8.3](https://github.com/OneBusAway/python-sdk/compare/v1.8.2...v1.8.3)
