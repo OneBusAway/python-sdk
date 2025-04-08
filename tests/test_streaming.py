@@ -28,9 +28,7 @@ async def test_basic(sync: bool, client: OnebusawaySDK, async_client: AsyncOnebu
 
 @pytest.mark.asyncio
 @pytest.mark.parametrize("sync", [True, False], ids=["sync", "async"])
-async def test_data_missing_event(
-    sync: bool, client: OnebusawaySDK, async_client: AsyncOnebusawaySDK
-) -> None:
+async def test_data_missing_event(sync: bool, client: OnebusawaySDK, async_client: AsyncOnebusawaySDK) -> None:
     def body() -> Iterator[bytes]:
         yield b'data: {"foo":true}\n'
         yield b"\n"
@@ -46,9 +44,7 @@ async def test_data_missing_event(
 
 @pytest.mark.asyncio
 @pytest.mark.parametrize("sync", [True, False], ids=["sync", "async"])
-async def test_event_missing_data(
-    sync: bool, client: OnebusawaySDK, async_client: AsyncOnebusawaySDK
-) -> None:
+async def test_event_missing_data(sync: bool, client: OnebusawaySDK, async_client: AsyncOnebusawaySDK) -> None:
     def body() -> Iterator[bytes]:
         yield b"event: ping\n"
         yield b"\n"
@@ -64,9 +60,7 @@ async def test_event_missing_data(
 
 @pytest.mark.asyncio
 @pytest.mark.parametrize("sync", [True, False], ids=["sync", "async"])
-async def test_multiple_events(
-    sync: bool, client: OnebusawaySDK, async_client: AsyncOnebusawaySDK
-) -> None:
+async def test_multiple_events(sync: bool, client: OnebusawaySDK, async_client: AsyncOnebusawaySDK) -> None:
     def body() -> Iterator[bytes]:
         yield b"event: ping\n"
         yield b"\n"
@@ -88,9 +82,7 @@ async def test_multiple_events(
 
 @pytest.mark.asyncio
 @pytest.mark.parametrize("sync", [True, False], ids=["sync", "async"])
-async def test_multiple_events_with_data(
-    sync: bool, client: OnebusawaySDK, async_client: AsyncOnebusawaySDK
-) -> None:
+async def test_multiple_events_with_data(sync: bool, client: OnebusawaySDK, async_client: AsyncOnebusawaySDK) -> None:
     def body() -> Iterator[bytes]:
         yield b"event: ping\n"
         yield b'data: {"foo":true}\n'
@@ -157,9 +149,7 @@ async def test_data_json_escaped_double_new_line(
 
 @pytest.mark.asyncio
 @pytest.mark.parametrize("sync", [True, False], ids=["sync", "async"])
-async def test_multiple_data_lines(
-    sync: bool, client: OnebusawaySDK, async_client: AsyncOnebusawaySDK
-) -> None:
+async def test_multiple_data_lines(sync: bool, client: OnebusawaySDK, async_client: AsyncOnebusawaySDK) -> None:
     def body() -> Iterator[bytes]:
         yield b"event: ping\n"
         yield b"data: {\n"

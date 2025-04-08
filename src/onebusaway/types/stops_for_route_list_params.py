@@ -2,15 +2,12 @@
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict, Annotated
+from typing_extensions import Annotated, TypedDict
 
-from .._utils import PropertyInfo
-
-from typing_extensions import Literal, TypedDict, Required, Annotated
-from .._types import FileTypes
 from .._utils import PropertyInfo
 
 __all__ = ["StopsForRouteListParams"]
+
 
 class StopsForRouteListParams(TypedDict, total=False):
     include_polylines: Annotated[bool, PropertyInfo(alias="includePolylines")]

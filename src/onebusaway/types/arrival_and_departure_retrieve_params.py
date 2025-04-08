@@ -2,15 +2,12 @@
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict, Annotated, Required
+from typing_extensions import Required, Annotated, TypedDict
 
-from .._utils import PropertyInfo
-
-from typing_extensions import Literal, TypedDict, Required, Annotated
-from .._types import FileTypes
 from .._utils import PropertyInfo
 
 __all__ = ["ArrivalAndDepartureRetrieveParams"]
+
 
 class ArrivalAndDepartureRetrieveParams(TypedDict, total=False):
     service_date: Required[Annotated[int, PropertyInfo(alias="serviceDate")]]

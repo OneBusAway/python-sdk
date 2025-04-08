@@ -4,25 +4,25 @@ from __future__ import annotations
 
 import httpx
 
+from ..types import search_for_stop_list_params
+from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._utils import (
+    maybe_transform,
+    async_maybe_transform,
+)
 from .._compat import cached_property
-
+from .._resource import SyncAPIResource, AsyncAPIResource
+from .._response import (
+    to_raw_response_wrapper,
+    to_streamed_response_wrapper,
+    async_to_raw_response_wrapper,
+    async_to_streamed_response_wrapper,
+)
+from .._base_client import make_request_options
 from ..types.search_for_stop_list_response import SearchForStopListResponse
 
-from .._base_client import make_request_options
-
-from .._utils import maybe_transform, async_maybe_transform
-
-from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper, to_streamed_response_wrapper, async_to_streamed_response_wrapper
-
-import warnings
-from typing_extensions import Literal, overload
-from .._utils import extract_files, maybe_transform, required_args, deepcopy_minimal, strip_not_given
-from .._types import NotGiven, Timeout, Headers, NoneType, Query, Body, NOT_GIVEN, FileTypes, BinaryResponseContent
-from .._resource import SyncAPIResource, AsyncAPIResource
-from ..types import shared_params
-from ..types import search_for_stop_list_params
-
 __all__ = ["SearchForStopResource", "AsyncSearchForStopResource"]
+
 
 class SearchForStopResource(SyncAPIResource):
     @cached_property
@@ -44,16 +44,18 @@ class SearchForStopResource(SyncAPIResource):
         """
         return SearchForStopResourceWithStreamingResponse(self)
 
-    def list(self,
-    *,
-    input: str,
-    max_count: int | NotGiven = NOT_GIVEN,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> SearchForStopListResponse:
+    def list(
+        self,
+        *,
+        input: str,
+        max_count: int | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> SearchForStopListResponse:
         """
         Search for a stop based on its name.
 
@@ -72,12 +74,22 @@ class SearchForStopResource(SyncAPIResource):
         """
         return self._get(
             "/api/where/search/stop.json",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout, query=maybe_transform({
-                "input": input,
-                "max_count": max_count,
-            }, search_for_stop_list_params.SearchForStopListParams)),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "input": input,
+                        "max_count": max_count,
+                    },
+                    search_for_stop_list_params.SearchForStopListParams,
+                ),
+            ),
             cast_to=SearchForStopListResponse,
         )
+
 
 class AsyncSearchForStopResource(AsyncAPIResource):
     @cached_property
@@ -99,16 +111,18 @@ class AsyncSearchForStopResource(AsyncAPIResource):
         """
         return AsyncSearchForStopResourceWithStreamingResponse(self)
 
-    async def list(self,
-    *,
-    input: str,
-    max_count: int | NotGiven = NOT_GIVEN,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> SearchForStopListResponse:
+    async def list(
+        self,
+        *,
+        input: str,
+        max_count: int | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> SearchForStopListResponse:
         """
         Search for a stop based on its name.
 
@@ -127,12 +141,22 @@ class AsyncSearchForStopResource(AsyncAPIResource):
         """
         return await self._get(
             "/api/where/search/stop.json",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout, query=await async_maybe_transform({
-                "input": input,
-                "max_count": max_count,
-            }, search_for_stop_list_params.SearchForStopListParams)),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "input": input,
+                        "max_count": max_count,
+                    },
+                    search_for_stop_list_params.SearchForStopListParams,
+                ),
+            ),
             cast_to=SearchForStopListResponse,
         )
+
 
 class SearchForStopResourceWithRawResponse:
     def __init__(self, search_for_stop: SearchForStopResource) -> None:
@@ -142,6 +166,7 @@ class SearchForStopResourceWithRawResponse:
             search_for_stop.list,
         )
 
+
 class AsyncSearchForStopResourceWithRawResponse:
     def __init__(self, search_for_stop: AsyncSearchForStopResource) -> None:
         self._search_for_stop = search_for_stop
@@ -150,6 +175,7 @@ class AsyncSearchForStopResourceWithRawResponse:
             search_for_stop.list,
         )
 
+
 class SearchForStopResourceWithStreamingResponse:
     def __init__(self, search_for_stop: SearchForStopResource) -> None:
         self._search_for_stop = search_for_stop
@@ -157,6 +183,7 @@ class SearchForStopResourceWithStreamingResponse:
         self.list = to_streamed_response_wrapper(
             search_for_stop.list,
         )
+
 
 class AsyncSearchForStopResourceWithStreamingResponse:
     def __init__(self, search_for_stop: AsyncSearchForStopResource) -> None:
