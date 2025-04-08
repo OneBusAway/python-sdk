@@ -52,10 +52,8 @@ client = AsyncOnebusawaySDK(
     api_key=os.environ.get("ONEBUSAWAY_API_KEY"),  # This is the default and can be omitted
 )
 
-
 async def main() -> None:
-    current_time = await client.current_time.retrieve()
-
+  current_time = await client.current_time.retrieve()
 
 asyncio.run(main())
 ```
@@ -90,7 +88,7 @@ try:
     client.current_time.retrieve()
 except onebusaway.APIConnectionError as e:
     print("The server could not be reached")
-    print(e.__cause__)  # an underlying Exception, likely raised within httpx.
+    print(e.__cause__) # an underlying Exception, likely raised within httpx.
 except onebusaway.RateLimitError as e:
     print("A 429 status code was received; we should back off a bit.")
 except onebusaway.APIStatusError as e:
@@ -130,7 +128,7 @@ client = OnebusawaySDK(
 )
 
 # Or, configure per-request:
-client.with_options(max_retries=5).current_time.retrieve()
+client.with_options(max_retries = 5).current_time.retrieve()
 ```
 
 ### Timeouts
@@ -153,7 +151,7 @@ client = OnebusawaySDK(
 )
 
 # Override per-request:
-client.with_options(timeout=5.0).current_time.retrieve()
+client.with_options(timeout = 5.0).current_time.retrieve()
 ```
 
 On timeout, an `APITimeoutError` is thrown.
@@ -212,11 +210,11 @@ The above interface eagerly reads the full response body when you make the reque
 To stream the response body, use `.with_streaming_response` instead, which requires a context manager and only reads the response body once you call `.read()`, `.text()`, `.json()`, `.iter_bytes()`, `.iter_text()`, `.iter_lines()` or `.parse()`. In the async client, these are async methods.
 
 ```python
-with client.current_time.with_streaming_response.retrieve() as response:
-    print(response.headers.get("X-My-Header"))
+with client.current_time.with_streaming_response.retrieve() as response :
+    print(response.headers.get('X-My-Header'))
 
     for line in response.iter_lines():
-        print(line)
+      print(line)
 ```
 
 The context manager is required so that the response will reliably be closed.
@@ -270,10 +268,7 @@ from onebusaway import OnebusawaySDK, DefaultHttpxClient
 client = OnebusawaySDK(
     # Or use the `ONEBUSAWAY_SDK_BASE_URL` env var
     base_url="http://my.test.server.example.com:8083",
-    http_client=DefaultHttpxClient(
-        proxy="http://my.test.proxy.example.com",
-        transport=httpx.HTTPTransport(local_address="0.0.0.0"),
-    ),
+    http_client=DefaultHttpxClient(proxy="http://my.test.proxy.example.com", transport=httpx.HTTPTransport(local_address="0.0.0.0")),
 )
 ```
 

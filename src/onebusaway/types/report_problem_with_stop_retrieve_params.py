@@ -2,12 +2,15 @@
 
 from __future__ import annotations
 
-from typing_extensions import Literal, Annotated, TypedDict
+from typing_extensions import TypedDict, Literal, Annotated
 
 from .._utils import PropertyInfo
 
-__all__ = ["ReportProblemWithStopRetrieveParams"]
+from typing_extensions import Literal, TypedDict, Required, Annotated
+from .._types import FileTypes
+from .._utils import PropertyInfo
 
+__all__ = ["ReportProblemWithStopRetrieveParams"]
 
 class ReportProblemWithStopRetrieveParams(TypedDict, total=False):
     code: Literal["stop_name_wrong", "stop_number_wrong", "stop_location_wrong", "route_or_trip_missing", "other"]

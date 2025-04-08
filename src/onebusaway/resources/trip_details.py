@@ -4,25 +4,25 @@ from __future__ import annotations
 
 import httpx
 
-from ..types import trip_detail_retrieve_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from .._utils import (
-    maybe_transform,
-    async_maybe_transform,
-)
 from .._compat import cached_property
-from .._resource import SyncAPIResource, AsyncAPIResource
-from .._response import (
-    to_raw_response_wrapper,
-    to_streamed_response_wrapper,
-    async_to_raw_response_wrapper,
-    async_to_streamed_response_wrapper,
-)
-from .._base_client import make_request_options
+
 from ..types.trip_detail_retrieve_response import TripDetailRetrieveResponse
 
-__all__ = ["TripDetailsResource", "AsyncTripDetailsResource"]
+from .._base_client import make_request_options
 
+from .._utils import maybe_transform, async_maybe_transform
+
+from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper, to_streamed_response_wrapper, async_to_streamed_response_wrapper
+
+import warnings
+from typing_extensions import Literal, overload
+from .._utils import extract_files, maybe_transform, required_args, deepcopy_minimal, strip_not_given
+from .._types import NotGiven, Timeout, Headers, NoneType, Query, Body, NOT_GIVEN, FileTypes, BinaryResponseContent
+from .._resource import SyncAPIResource, AsyncAPIResource
+from ..types import shared_params
+from ..types import trip_detail_retrieve_params
+
+__all__ = ["TripDetailsResource", "AsyncTripDetailsResource"]
 
 class TripDetailsResource(SyncAPIResource):
     @cached_property
@@ -44,22 +44,20 @@ class TripDetailsResource(SyncAPIResource):
         """
         return TripDetailsResourceWithStreamingResponse(self)
 
-    def retrieve(
-        self,
-        trip_id: str,
-        *,
-        include_schedule: bool | NotGiven = NOT_GIVEN,
-        include_status: bool | NotGiven = NOT_GIVEN,
-        include_trip: bool | NotGiven = NOT_GIVEN,
-        service_date: int | NotGiven = NOT_GIVEN,
-        time: int | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> TripDetailRetrieveResponse:
+    def retrieve(self,
+    trip_id: str,
+    *,
+    include_schedule: bool | NotGiven = NOT_GIVEN,
+    include_status: bool | NotGiven = NOT_GIVEN,
+    include_trip: bool | NotGiven = NOT_GIVEN,
+    service_date: int | NotGiven = NOT_GIVEN,
+    time: int | NotGiven = NOT_GIVEN,
+    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+    # The extra values given here take precedence over values defined on the client or passed to this method.
+    extra_headers: Headers | None = None,
+    extra_query: Query | None = None,
+    extra_body: Body | None = None,
+    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> TripDetailRetrieveResponse:
         """
         Retrieve Trip Details
 
@@ -86,28 +84,20 @@ class TripDetailsResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not trip_id:
-            raise ValueError(f"Expected a non-empty value for `trip_id` but received {trip_id!r}")
+          raise ValueError(
+            f'Expected a non-empty value for `trip_id` but received {trip_id!r}'
+          )
         return self._get(
             f"/api/where/trip-details/{trip_id}.json",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "include_schedule": include_schedule,
-                        "include_status": include_status,
-                        "include_trip": include_trip,
-                        "service_date": service_date,
-                        "time": time,
-                    },
-                    trip_detail_retrieve_params.TripDetailRetrieveParams,
-                ),
-            ),
+            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout, query=maybe_transform({
+                "include_schedule": include_schedule,
+                "include_status": include_status,
+                "include_trip": include_trip,
+                "service_date": service_date,
+                "time": time,
+            }, trip_detail_retrieve_params.TripDetailRetrieveParams)),
             cast_to=TripDetailRetrieveResponse,
         )
-
 
 class AsyncTripDetailsResource(AsyncAPIResource):
     @cached_property
@@ -129,22 +119,20 @@ class AsyncTripDetailsResource(AsyncAPIResource):
         """
         return AsyncTripDetailsResourceWithStreamingResponse(self)
 
-    async def retrieve(
-        self,
-        trip_id: str,
-        *,
-        include_schedule: bool | NotGiven = NOT_GIVEN,
-        include_status: bool | NotGiven = NOT_GIVEN,
-        include_trip: bool | NotGiven = NOT_GIVEN,
-        service_date: int | NotGiven = NOT_GIVEN,
-        time: int | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> TripDetailRetrieveResponse:
+    async def retrieve(self,
+    trip_id: str,
+    *,
+    include_schedule: bool | NotGiven = NOT_GIVEN,
+    include_status: bool | NotGiven = NOT_GIVEN,
+    include_trip: bool | NotGiven = NOT_GIVEN,
+    service_date: int | NotGiven = NOT_GIVEN,
+    time: int | NotGiven = NOT_GIVEN,
+    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+    # The extra values given here take precedence over values defined on the client or passed to this method.
+    extra_headers: Headers | None = None,
+    extra_query: Query | None = None,
+    extra_body: Body | None = None,
+    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> TripDetailRetrieveResponse:
         """
         Retrieve Trip Details
 
@@ -171,28 +159,20 @@ class AsyncTripDetailsResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not trip_id:
-            raise ValueError(f"Expected a non-empty value for `trip_id` but received {trip_id!r}")
+          raise ValueError(
+            f'Expected a non-empty value for `trip_id` but received {trip_id!r}'
+          )
         return await self._get(
             f"/api/where/trip-details/{trip_id}.json",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {
-                        "include_schedule": include_schedule,
-                        "include_status": include_status,
-                        "include_trip": include_trip,
-                        "service_date": service_date,
-                        "time": time,
-                    },
-                    trip_detail_retrieve_params.TripDetailRetrieveParams,
-                ),
-            ),
+            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout, query=await async_maybe_transform({
+                "include_schedule": include_schedule,
+                "include_status": include_status,
+                "include_trip": include_trip,
+                "service_date": service_date,
+                "time": time,
+            }, trip_detail_retrieve_params.TripDetailRetrieveParams)),
             cast_to=TripDetailRetrieveResponse,
         )
-
 
 class TripDetailsResourceWithRawResponse:
     def __init__(self, trip_details: TripDetailsResource) -> None:
@@ -202,7 +182,6 @@ class TripDetailsResourceWithRawResponse:
             trip_details.retrieve,
         )
 
-
 class AsyncTripDetailsResourceWithRawResponse:
     def __init__(self, trip_details: AsyncTripDetailsResource) -> None:
         self._trip_details = trip_details
@@ -211,7 +190,6 @@ class AsyncTripDetailsResourceWithRawResponse:
             trip_details.retrieve,
         )
 
-
 class TripDetailsResourceWithStreamingResponse:
     def __init__(self, trip_details: TripDetailsResource) -> None:
         self._trip_details = trip_details
@@ -219,7 +197,6 @@ class TripDetailsResourceWithStreamingResponse:
         self.retrieve = to_streamed_response_wrapper(
             trip_details.retrieve,
         )
-
 
 class AsyncTripDetailsResourceWithStreamingResponse:
     def __init__(self, trip_details: AsyncTripDetailsResource) -> None:

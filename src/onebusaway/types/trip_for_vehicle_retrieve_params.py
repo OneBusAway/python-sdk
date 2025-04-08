@@ -2,12 +2,15 @@
 
 from __future__ import annotations
 
-from typing_extensions import Annotated, TypedDict
+from typing_extensions import TypedDict, Annotated
 
 from .._utils import PropertyInfo
 
-__all__ = ["TripForVehicleRetrieveParams"]
+from typing_extensions import Literal, TypedDict, Required, Annotated
+from .._types import FileTypes
+from .._utils import PropertyInfo
 
+__all__ = ["TripForVehicleRetrieveParams"]
 
 class TripForVehicleRetrieveParams(TypedDict, total=False):
     include_schedule: Annotated[bool, PropertyInfo(alias="includeSchedule")]
