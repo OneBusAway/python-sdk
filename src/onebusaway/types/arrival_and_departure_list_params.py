@@ -2,14 +2,19 @@
 
 from __future__ import annotations
 
-from typing import Union
-from datetime import datetime
-from typing_extensions import Annotated, TypedDict
+from typing_extensions import TypedDict, Annotated
 
 from .._utils import PropertyInfo
 
-__all__ = ["ArrivalAndDepartureListParams"]
+from typing import Union
 
+from datetime import datetime
+
+from typing_extensions import Literal, TypedDict, Required, Annotated
+from .._types import FileTypes
+from .._utils import PropertyInfo
+
+__all__ = ["ArrivalAndDepartureListParams"]
 
 class ArrivalAndDepartureListParams(TypedDict, total=False):
     minutes_after: Annotated[int, PropertyInfo(alias="minutesAfter")]
@@ -18,5 +23,5 @@ class ArrivalAndDepartureListParams(TypedDict, total=False):
     minutes_before: Annotated[int, PropertyInfo(alias="minutesBefore")]
     """Include vehicles having arrived or departed in the previous n minutes."""
 
-    time: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
+    time: Annotated[Union[str, datetime], PropertyInfo(format = "iso8601")]
     """The specific time for querying the system status."""

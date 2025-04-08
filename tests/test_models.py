@@ -520,6 +520,7 @@ def test_to_dict() -> None:
     assert m3.to_dict(exclude_none=True) == {}
     assert m3.to_dict(exclude_defaults=True) == {}
 
+
     class Model2(BaseModel):
         created_at: datetime
 
@@ -830,20 +831,20 @@ def test_discriminated_unions_invalid_data_uses_cache() -> None:
     assert UnionType.__discriminator__ is discriminator
 
 
-@pytest.mark.skipif(not PYDANTIC_V2, reason="TypeAliasType is not supported in Pydantic v1")
+@pytest.mark.skipif(not PYDANTIC_V2, reason='TypeAliasType is not supported in Pydantic v1')
 def test_type_alias_type() -> None:
     Alias = TypeAliasType("Alias", str)
 
     class Model(BaseModel):
         alias: Alias
         union: Union[int, Alias]
-
-    m = construct_type(value={"alias": "foo", "union": "bar"}, type_=Model)
+    
+    m = construct_type(value={'alias': 'foo', 'union': 'bar'}, type_=Model)
     assert isinstance(m, Model)
     assert isinstance(m.alias, str)
-    assert m.alias == "foo"
+    assert m.alias == 'foo'
     assert isinstance(m.union, str)
-    assert m.union == "bar"
+    assert m.union == 'bar'
 
 
 @pytest.mark.skipif(not PYDANTIC_V2, reason="TypeAliasType is not supported in Pydantic v1")
