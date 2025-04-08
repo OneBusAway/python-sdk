@@ -8,6 +8,7 @@ from .._utils import PropertyInfo
 
 __all__ = ["ReportProblemWithStopRetrieveParams"]
 
+
 class ReportProblemWithStopRetrieveParams(TypedDict, total=False):
     code: Literal["stop_name_wrong", "stop_number_wrong", "stop_location_wrong", "route_or_trip_missing", "other"]
     """A string code identifying the nature of the problem"""

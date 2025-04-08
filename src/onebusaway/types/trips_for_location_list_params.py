@@ -8,6 +8,7 @@ from .._utils import PropertyInfo
 
 __all__ = ["TripsForLocationListParams"]
 
+
 class TripsForLocationListParams(TypedDict, total=False):
     lat: Required[float]
     """The latitude coordinate of the search center"""

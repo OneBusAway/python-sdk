@@ -10,6 +10,7 @@ from .shared.response_wrapper import ResponseWrapper
 
 __all__ = ["StopRetrieveResponse", "StopRetrieveResponseData", "StopRetrieveResponseDataEntry"]
 
+
 class StopRetrieveResponseDataEntry(BaseModel):
     id: str
 
@@ -21,22 +22,24 @@ class StopRetrieveResponseDataEntry(BaseModel):
 
     parent: str
 
-    route_ids: List[str] = FieldInfo(alias = "routeIds")
+    route_ids: List[str] = FieldInfo(alias="routeIds")
 
-    static_route_ids: List[str] = FieldInfo(alias = "staticRouteIds")
+    static_route_ids: List[str] = FieldInfo(alias="staticRouteIds")
 
     code: Optional[str] = None
 
     direction: Optional[str] = None
 
-    location_type: Optional[int] = FieldInfo(alias = "locationType", default = None)
+    location_type: Optional[int] = FieldInfo(alias="locationType", default=None)
 
-    wheelchair_boarding: Optional[str] = FieldInfo(alias = "wheelchairBoarding", default = None)
+    wheelchair_boarding: Optional[str] = FieldInfo(alias="wheelchairBoarding", default=None)
+
 
 class StopRetrieveResponseData(BaseModel):
     entry: StopRetrieveResponseDataEntry
 
     references: References
+
 
 class StopRetrieveResponse(ResponseWrapper):
     data: StopRetrieveResponseData

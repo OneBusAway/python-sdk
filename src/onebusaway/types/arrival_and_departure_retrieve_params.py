@@ -8,6 +8,7 @@ from .._utils import PropertyInfo
 
 __all__ = ["ArrivalAndDepartureRetrieveParams"]
 
+
 class ArrivalAndDepartureRetrieveParams(TypedDict, total=False):
     service_date: Required[Annotated[int, PropertyInfo(alias="serviceDate")]]
 

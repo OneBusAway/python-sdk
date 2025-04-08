@@ -10,12 +10,14 @@ from .shared.response_wrapper import ResponseWrapper
 
 __all__ = ["RouteIDsForAgencyListResponse", "RouteIDsForAgencyListResponseData"]
 
+
 class RouteIDsForAgencyListResponseData(BaseModel):
-    limit_exceeded: bool = FieldInfo(alias = "limitExceeded")
+    limit_exceeded: bool = FieldInfo(alias="limitExceeded")
 
     list: List[str]
 
     references: References
+
 
 class RouteIDsForAgencyListResponse(ResponseWrapper):
     data: RouteIDsForAgencyListResponseData

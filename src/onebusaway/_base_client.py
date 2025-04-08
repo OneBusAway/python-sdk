@@ -203,7 +203,7 @@ class BaseSyncPage(BasePage[_T], Generic[_T]):
         model: Type[_T],
         options: FinalRequestOptions,
     ) -> None:
-        if PYDANTIC_V2 and getattr(self, '__pydantic_private__', None) is None:
+        if PYDANTIC_V2 and getattr(self, "__pydantic_private__", None) is None:
             self.__pydantic_private__ = {}
 
         self._model = model
@@ -291,7 +291,7 @@ class BaseAsyncPage(BasePage[_T], Generic[_T]):
         client: AsyncAPIClient,
         options: FinalRequestOptions,
     ) -> None:
-        if PYDANTIC_V2 and getattr(self, '__pydantic_private__', None) is None:
+        if PYDANTIC_V2 and getattr(self, "__pydantic_private__", None) is None:
             self.__pydantic_private__ = {}
 
         self._model = model
@@ -608,7 +608,7 @@ class BaseClient(Generic[_HttpxClientT, _DefaultStreamT]):
             "Accept": "application/json",
             "Content-Type": "application/json",
             "User-Agent": self.user_agent,
-**self.platform_headers(),
+            **self.platform_headers(),
             **self.auth_headers,
             **self._custom_headers,
         }
@@ -994,7 +994,6 @@ class SyncAPIClient(BaseClient[httpx.Client, Stream[Any]]):
             response.reason_phrase,
             response.headers,
         )
-        
 
         try:
             response.raise_for_status()
@@ -1070,8 +1069,6 @@ class SyncAPIClient(BaseClient[httpx.Client, Stream[Any]]):
         stream_cls: type[Stream[Any]] | type[AsyncStream[Any]] | None,
         retries_taken: int = 0,
     ) -> ResponseT:
-        
-
         origin = get_origin(cast_to) or cast_to
 
         if inspect.isclass(origin) and issubclass(origin, BaseAPIResponse):
@@ -1595,8 +1592,6 @@ class AsyncAPIClient(BaseClient[httpx.AsyncClient, AsyncStream[Any]]):
         stream_cls: type[Stream[Any]] | type[AsyncStream[Any]] | None,
         retries_taken: int = 0,
     ) -> ResponseT:
-        
-
         origin = get_origin(cast_to) or cast_to
 
         if inspect.isclass(origin) and issubclass(origin, BaseAPIResponse):

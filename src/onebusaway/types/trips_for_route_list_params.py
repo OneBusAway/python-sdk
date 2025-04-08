@@ -8,6 +8,7 @@ from .._utils import PropertyInfo
 
 __all__ = ["TripsForRouteListParams"]
 
+
 class TripsForRouteListParams(TypedDict, total=False):
     include_schedule: Annotated[bool, PropertyInfo(alias="includeSchedule")]
     """Determine whether full schedule elements are included. Defaults to false."""

@@ -8,6 +8,7 @@ from .._utils import PropertyInfo
 
 __all__ = ["StopsForRouteListParams"]
 
+
 class StopsForRouteListParams(TypedDict, total=False):
     include_polylines: Annotated[bool, PropertyInfo(alias="includePolylines")]
     """Include polyline elements in the response (default true)"""
