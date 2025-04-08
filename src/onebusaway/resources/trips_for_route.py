@@ -4,25 +4,25 @@ from __future__ import annotations
 
 import httpx
 
+from ..types import trips_for_route_list_params
+from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._utils import (
+    maybe_transform,
+    async_maybe_transform,
+)
 from .._compat import cached_property
-
+from .._resource import SyncAPIResource, AsyncAPIResource
+from .._response import (
+    to_raw_response_wrapper,
+    to_streamed_response_wrapper,
+    async_to_raw_response_wrapper,
+    async_to_streamed_response_wrapper,
+)
+from .._base_client import make_request_options
 from ..types.trips_for_route_list_response import TripsForRouteListResponse
 
-from .._base_client import make_request_options
-
-from .._utils import maybe_transform, async_maybe_transform
-
-from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper, to_streamed_response_wrapper, async_to_streamed_response_wrapper
-
-import warnings
-from typing_extensions import Literal, overload
-from .._utils import extract_files, maybe_transform, required_args, deepcopy_minimal, strip_not_given
-from .._types import NotGiven, Timeout, Headers, NoneType, Query, Body, NOT_GIVEN, FileTypes, BinaryResponseContent
-from .._resource import SyncAPIResource, AsyncAPIResource
-from ..types import shared_params
-from ..types import trips_for_route_list_params
-
 __all__ = ["TripsForRouteResource", "AsyncTripsForRouteResource"]
+
 
 class TripsForRouteResource(SyncAPIResource):
     @cached_property
@@ -44,18 +44,20 @@ class TripsForRouteResource(SyncAPIResource):
         """
         return TripsForRouteResourceWithStreamingResponse(self)
 
-    def list(self,
-    route_id: str,
-    *,
-    include_schedule: bool | NotGiven = NOT_GIVEN,
-    include_status: bool | NotGiven = NOT_GIVEN,
-    time: int | NotGiven = NOT_GIVEN,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> TripsForRouteListResponse:
+    def list(
+        self,
+        route_id: str,
+        *,
+        include_schedule: bool | NotGiven = NOT_GIVEN,
+        include_status: bool | NotGiven = NOT_GIVEN,
+        time: int | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> TripsForRouteListResponse:
         """
         Search for active trips for a specific route.
 
@@ -76,18 +78,26 @@ class TripsForRouteResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not route_id:
-          raise ValueError(
-            f'Expected a non-empty value for `route_id` but received {route_id!r}'
-          )
+            raise ValueError(f"Expected a non-empty value for `route_id` but received {route_id!r}")
         return self._get(
             f"/api/where/trips-for-route/{route_id}.json",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout, query=maybe_transform({
-                "include_schedule": include_schedule,
-                "include_status": include_status,
-                "time": time,
-            }, trips_for_route_list_params.TripsForRouteListParams)),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "include_schedule": include_schedule,
+                        "include_status": include_status,
+                        "time": time,
+                    },
+                    trips_for_route_list_params.TripsForRouteListParams,
+                ),
+            ),
             cast_to=TripsForRouteListResponse,
         )
+
 
 class AsyncTripsForRouteResource(AsyncAPIResource):
     @cached_property
@@ -109,18 +119,20 @@ class AsyncTripsForRouteResource(AsyncAPIResource):
         """
         return AsyncTripsForRouteResourceWithStreamingResponse(self)
 
-    async def list(self,
-    route_id: str,
-    *,
-    include_schedule: bool | NotGiven = NOT_GIVEN,
-    include_status: bool | NotGiven = NOT_GIVEN,
-    time: int | NotGiven = NOT_GIVEN,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> TripsForRouteListResponse:
+    async def list(
+        self,
+        route_id: str,
+        *,
+        include_schedule: bool | NotGiven = NOT_GIVEN,
+        include_status: bool | NotGiven = NOT_GIVEN,
+        time: int | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> TripsForRouteListResponse:
         """
         Search for active trips for a specific route.
 
@@ -141,18 +153,26 @@ class AsyncTripsForRouteResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not route_id:
-          raise ValueError(
-            f'Expected a non-empty value for `route_id` but received {route_id!r}'
-          )
+            raise ValueError(f"Expected a non-empty value for `route_id` but received {route_id!r}")
         return await self._get(
             f"/api/where/trips-for-route/{route_id}.json",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout, query=await async_maybe_transform({
-                "include_schedule": include_schedule,
-                "include_status": include_status,
-                "time": time,
-            }, trips_for_route_list_params.TripsForRouteListParams)),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "include_schedule": include_schedule,
+                        "include_status": include_status,
+                        "time": time,
+                    },
+                    trips_for_route_list_params.TripsForRouteListParams,
+                ),
+            ),
             cast_to=TripsForRouteListResponse,
         )
+
 
 class TripsForRouteResourceWithRawResponse:
     def __init__(self, trips_for_route: TripsForRouteResource) -> None:
@@ -162,6 +182,7 @@ class TripsForRouteResourceWithRawResponse:
             trips_for_route.list,
         )
 
+
 class AsyncTripsForRouteResourceWithRawResponse:
     def __init__(self, trips_for_route: AsyncTripsForRouteResource) -> None:
         self._trips_for_route = trips_for_route
@@ -170,6 +191,7 @@ class AsyncTripsForRouteResourceWithRawResponse:
             trips_for_route.list,
         )
 
+
 class TripsForRouteResourceWithStreamingResponse:
     def __init__(self, trips_for_route: TripsForRouteResource) -> None:
         self._trips_for_route = trips_for_route
@@ -177,6 +199,7 @@ class TripsForRouteResourceWithStreamingResponse:
         self.list = to_streamed_response_wrapper(
             trips_for_route.list,
         )
+
 
 class AsyncTripsForRouteResourceWithStreamingResponse:
     def __init__(self, trips_for_route: AsyncTripsForRouteResource) -> None:

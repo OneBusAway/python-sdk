@@ -4,25 +4,25 @@ from __future__ import annotations
 
 import httpx
 
+from ..types import stops_for_location_list_params
+from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._utils import (
+    maybe_transform,
+    async_maybe_transform,
+)
 from .._compat import cached_property
-
+from .._resource import SyncAPIResource, AsyncAPIResource
+from .._response import (
+    to_raw_response_wrapper,
+    to_streamed_response_wrapper,
+    async_to_raw_response_wrapper,
+    async_to_streamed_response_wrapper,
+)
+from .._base_client import make_request_options
 from ..types.stops_for_location_list_response import StopsForLocationListResponse
 
-from .._base_client import make_request_options
-
-from .._utils import maybe_transform, async_maybe_transform
-
-from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper, to_streamed_response_wrapper, async_to_streamed_response_wrapper
-
-import warnings
-from typing_extensions import Literal, overload
-from .._utils import extract_files, maybe_transform, required_args, deepcopy_minimal, strip_not_given
-from .._types import NotGiven, Timeout, Headers, NoneType, Query, Body, NOT_GIVEN, FileTypes, BinaryResponseContent
-from .._resource import SyncAPIResource, AsyncAPIResource
-from ..types import shared_params
-from ..types import stops_for_location_list_params
-
 __all__ = ["StopsForLocationResource", "AsyncStopsForLocationResource"]
+
 
 class StopsForLocationResource(SyncAPIResource):
     @cached_property
@@ -44,20 +44,22 @@ class StopsForLocationResource(SyncAPIResource):
         """
         return StopsForLocationResourceWithStreamingResponse(self)
 
-    def list(self,
-    *,
-    lat: float,
-    lon: float,
-    lat_span: float | NotGiven = NOT_GIVEN,
-    lon_span: float | NotGiven = NOT_GIVEN,
-    query: str | NotGiven = NOT_GIVEN,
-    radius: float | NotGiven = NOT_GIVEN,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> StopsForLocationListResponse:
+    def list(
+        self,
+        *,
+        lat: float,
+        lon: float,
+        lat_span: float | NotGiven = NOT_GIVEN,
+        lon_span: float | NotGiven = NOT_GIVEN,
+        query: str | NotGiven = NOT_GIVEN,
+        radius: float | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> StopsForLocationListResponse:
         """
         stops-for-location
 
@@ -80,16 +82,26 @@ class StopsForLocationResource(SyncAPIResource):
         """
         return self._get(
             "/api/where/stops-for-location.json",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout, query=maybe_transform({
-                "lat": lat,
-                "lon": lon,
-                "lat_span": lat_span,
-                "lon_span": lon_span,
-                "query": query,
-                "radius": radius,
-            }, stops_for_location_list_params.StopsForLocationListParams)),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "lat": lat,
+                        "lon": lon,
+                        "lat_span": lat_span,
+                        "lon_span": lon_span,
+                        "query": query,
+                        "radius": radius,
+                    },
+                    stops_for_location_list_params.StopsForLocationListParams,
+                ),
+            ),
             cast_to=StopsForLocationListResponse,
         )
+
 
 class AsyncStopsForLocationResource(AsyncAPIResource):
     @cached_property
@@ -111,20 +123,22 @@ class AsyncStopsForLocationResource(AsyncAPIResource):
         """
         return AsyncStopsForLocationResourceWithStreamingResponse(self)
 
-    async def list(self,
-    *,
-    lat: float,
-    lon: float,
-    lat_span: float | NotGiven = NOT_GIVEN,
-    lon_span: float | NotGiven = NOT_GIVEN,
-    query: str | NotGiven = NOT_GIVEN,
-    radius: float | NotGiven = NOT_GIVEN,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> StopsForLocationListResponse:
+    async def list(
+        self,
+        *,
+        lat: float,
+        lon: float,
+        lat_span: float | NotGiven = NOT_GIVEN,
+        lon_span: float | NotGiven = NOT_GIVEN,
+        query: str | NotGiven = NOT_GIVEN,
+        radius: float | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> StopsForLocationListResponse:
         """
         stops-for-location
 
@@ -147,16 +161,26 @@ class AsyncStopsForLocationResource(AsyncAPIResource):
         """
         return await self._get(
             "/api/where/stops-for-location.json",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout, query=await async_maybe_transform({
-                "lat": lat,
-                "lon": lon,
-                "lat_span": lat_span,
-                "lon_span": lon_span,
-                "query": query,
-                "radius": radius,
-            }, stops_for_location_list_params.StopsForLocationListParams)),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "lat": lat,
+                        "lon": lon,
+                        "lat_span": lat_span,
+                        "lon_span": lon_span,
+                        "query": query,
+                        "radius": radius,
+                    },
+                    stops_for_location_list_params.StopsForLocationListParams,
+                ),
+            ),
             cast_to=StopsForLocationListResponse,
         )
+
 
 class StopsForLocationResourceWithRawResponse:
     def __init__(self, stops_for_location: StopsForLocationResource) -> None:
@@ -166,6 +190,7 @@ class StopsForLocationResourceWithRawResponse:
             stops_for_location.list,
         )
 
+
 class AsyncStopsForLocationResourceWithRawResponse:
     def __init__(self, stops_for_location: AsyncStopsForLocationResource) -> None:
         self._stops_for_location = stops_for_location
@@ -174,6 +199,7 @@ class AsyncStopsForLocationResourceWithRawResponse:
             stops_for_location.list,
         )
 
+
 class StopsForLocationResourceWithStreamingResponse:
     def __init__(self, stops_for_location: StopsForLocationResource) -> None:
         self._stops_for_location = stops_for_location
@@ -181,6 +207,7 @@ class StopsForLocationResourceWithStreamingResponse:
         self.list = to_streamed_response_wrapper(
             stops_for_location.list,
         )
+
 
 class AsyncStopsForLocationResourceWithStreamingResponse:
     def __init__(self, stops_for_location: AsyncStopsForLocationResource) -> None:
