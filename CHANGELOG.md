@@ -1,5 +1,40 @@
 # Changelog
 
+## 1.9.0 (2025-05-15)
+
+Full Changelog: [v1.8.6...v1.9.0](https://github.com/OneBusAway/python-sdk/compare/v1.8.6...v1.9.0)
+
+### Features
+
+* **client:** support digest authentication ([7968d8e](https://github.com/OneBusAway/python-sdk/commit/7968d8ec213da1e0f7c6006a262f4490d33dc189))
+* **client:** support digest authentication ([645fab1](https://github.com/OneBusAway/python-sdk/commit/645fab1f917aa2911f8a202962c14497703a6e4a))
+* **client:** support digest authentication ([442412c](https://github.com/OneBusAway/python-sdk/commit/442412cf7414b96fcc111b099b0899be6dda2c62))
+* **client:** support digest authentication ([78752fb](https://github.com/OneBusAway/python-sdk/commit/78752fb2e2757500df6fbe2243f8c958d21d45b1))
+
+
+### Bug Fixes
+
+* **pydantic v1:** more robust ModelField.annotation check ([0bf5ca2](https://github.com/OneBusAway/python-sdk/commit/0bf5ca29079b4844d824aeffa45701d453aee07f))
+* suppress type checking warnings in stops_for_location.py ([6f86de6](https://github.com/OneBusAway/python-sdk/commit/6f86de60f85548d408891725075ac596b6a756f5))
+
+
+### Chores
+
+* broadly detect json family of content-type headers ([4ac9df4](https://github.com/OneBusAway/python-sdk/commit/4ac9df4564811ba3a7874ed2fccdcedf0ee9f926))
+* **ci:** add timeout thresholds for CI jobs ([4f9bf3f](https://github.com/OneBusAway/python-sdk/commit/4f9bf3f56e7a4121c02d0b42940758c5ee8d15a9))
+* **ci:** only use depot for staging repos ([b943cd6](https://github.com/OneBusAway/python-sdk/commit/b943cd6d8a741d5b0eb46f0e3f071c05243d7a96))
+* **client:** minor internal fixes ([46ef2ca](https://github.com/OneBusAway/python-sdk/commit/46ef2ca789d1cda13173d4cb9eb13cd45926436d))
+* formatting ([3a1f625](https://github.com/OneBusAway/python-sdk/commit/3a1f6255316b831eec27a42deecfd7a51d55bb24))
+* **internal:** base client updates ([5dcff0e](https://github.com/OneBusAway/python-sdk/commit/5dcff0e41a90577caf12e799b9388e88661afdaf))
+* **internal:** bump pyright version ([372d33b](https://github.com/OneBusAway/python-sdk/commit/372d33b378a44bc1f7a37282c7c5a6617978b105))
+* **internal:** codegen related update ([f2c26ec](https://github.com/OneBusAway/python-sdk/commit/f2c26ec71b462bee6c57253056c2e35ac26bea59))
+* **internal:** fix list file params ([2401f32](https://github.com/OneBusAway/python-sdk/commit/2401f32e86b394778db413a97be0ece06ea34346))
+* **internal:** import reformatting ([55369d4](https://github.com/OneBusAway/python-sdk/commit/55369d4913d0db14d4f8a5f0b177513e29c49246))
+* **internal:** minor formatting changes ([769fecb](https://github.com/OneBusAway/python-sdk/commit/769fecb626b4d8c82b26d156a5583c635c8471f9))
+* **internal:** refactor retries to not use recursion ([f034ad2](https://github.com/OneBusAway/python-sdk/commit/f034ad2291495dc12c523e297f7871cf4bdccc42))
+* **internal:** update models test ([6d50ec1](https://github.com/OneBusAway/python-sdk/commit/6d50ec101d12998985b8b3559a2ae06d9f9f8f91))
+* **internal:** update pyright settings ([2583fea](https://github.com/OneBusAway/python-sdk/commit/2583feac4ae8ea9a480be9694dd1bbfbf36c8e24))
+
 ## 1.8.6 (2025-05-15)
 
 Full Changelog: [v1.8.5...v1.8.6](https://github.com/OneBusAway/python-sdk/compare/v1.8.5...v1.8.6)
