@@ -36,10 +36,10 @@ for stop in stops:
 
     for route_id in stop.route_ids:
         # TODO: add type to route
-        route: Any = reference_map[route_id]
+        route: Any = reference_map[route_id] # type: ignore
 
         # Get a string that looks like "D Line - Blue Ridge/Crown Hill - Ballard - Downtown Seattle"
-        description_list = [route.null_safe_short_name, route.description]
-        description_list = [e for e in description_list if e]
-        description_str = " - ".join(description_list)
+        description_list = [route.null_safe_short_name, route.description] # type: ignore
+        description_list = [e for e in description_list if e] # type: ignore
+        description_str = " - ".join(description_list) # type: ignore
         print(f"    {description_str}")
