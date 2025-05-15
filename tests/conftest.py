@@ -1,13 +1,11 @@
 from __future__ import annotations
 
+import os
 import logging
-from typing import Iterator
+from typing import TYPE_CHECKING, Iterator, AsyncIterator
 
 import pytest
 from pytest_asyncio import is_async_test
-
-import os
-from typing import TYPE_CHECKING, AsyncIterator
 
 from onebusaway import OnebusawaySDK, AsyncOnebusawaySDK
 

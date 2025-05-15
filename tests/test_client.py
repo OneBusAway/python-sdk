@@ -2,47 +2,38 @@
 
 from __future__ import annotations
 
-import httpx
-
-import subprocess
-
-import sys
-
-import time
-
-from onebusaway import OnebusawaySDK, AsyncOnebusawaySDK
-
-from onebusaway._exceptions import APITimeoutError, APIStatusError, APIResponseValidationError
-
-from typing import cast, Any, Union
-
-from pydantic import ValidationError
-
-from typing_extensions import Literal
-
-from textwrap import dedent
-
-import asyncio
 import gc
-import inspect
-import json
 import os
+import sys
+import json
+import time
+import asyncio
+import inspect
+import subprocess
 import tracemalloc
 import urllib.parse
+from typing import Any, Union, cast
+from textwrap import dedent
 from unittest import mock
+from typing_extensions import Literal
 
 import httpx
 import pytest
 from respx import MockRouter
+from pydantic import ValidationError
 
 from onebusaway import OnebusawaySDK, AsyncOnebusawaySDK, APIResponseValidationError
-from onebusaway._models import FinalRequestOptions, BaseModel
-from onebusaway._types import NOT_GIVEN, Headers, NotGiven, Query, Body, Timeout, Omit
-from onebusaway._base_client import DEFAULT_TIMEOUT, HTTPX_DEFAULT_TIMEOUT, BaseClient, RequestOptions, make_request_options
-from onebusaway._streaming import Stream, AsyncStream
-from onebusaway._constants import RAW_RESPONSE_HEADER
-from onebusaway._response import APIResponse, AsyncAPIResponse
 from onebusaway._types import Omit
+from onebusaway._models import BaseModel, FinalRequestOptions
+from onebusaway._constants import RAW_RESPONSE_HEADER
+from onebusaway._exceptions import APIStatusError, APITimeoutError, APIResponseValidationError
+from onebusaway._base_client import (
+  DEFAULT_TIMEOUT,
+  HTTPX_DEFAULT_TIMEOUT,
+  BaseClient,
+  make_request_options,
+)
+
 from .utils import update_env
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")

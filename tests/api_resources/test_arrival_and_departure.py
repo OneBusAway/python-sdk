@@ -2,22 +2,17 @@
 
 from __future__ import annotations
 
-from onebusaway import OnebusawaySDK, AsyncOnebusawaySDK
-
-from onebusaway.types import ArrivalAndDepartureRetrieveResponse, ArrivalAndDepartureListResponse
-
-from typing import cast, Any
-
 import os
+from typing import Any, cast
+
 import pytest
-import httpx
-from typing_extensions import get_args
-from respx import MockRouter
+
 from onebusaway import OnebusawaySDK, AsyncOnebusawaySDK
 from tests.utils import assert_matches_type
-from onebusaway.types import arrival_and_departure_retrieve_params
-from onebusaway.types import arrival_and_departure_list_params
-from onebusaway._utils import parse_datetime
+from onebusaway.types import (
+    ArrivalAndDepartureListResponse,
+    ArrivalAndDepartureRetrieveResponse,
+)
 from onebusaway._utils import parse_datetime
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")

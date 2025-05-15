@@ -4,20 +4,17 @@ from __future__ import annotations
 
 import httpx
 
+from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._compat import cached_property
-
-from ..types.stop_ids_for_agency_list_response import StopIDsForAgencyListResponse
-
-from .._base_client import make_request_options
-
-from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper, to_streamed_response_wrapper, async_to_streamed_response_wrapper
-
-import warnings
-from typing_extensions import Literal, overload
-from .._utils import extract_files, maybe_transform, required_args, deepcopy_minimal, strip_not_given
-from .._types import NotGiven, Timeout, Headers, NoneType, Query, Body, NOT_GIVEN, FileTypes, BinaryResponseContent
 from .._resource import SyncAPIResource, AsyncAPIResource
-from ..types import shared_params
+from .._response import (
+    to_raw_response_wrapper,
+    to_streamed_response_wrapper,
+    async_to_raw_response_wrapper,
+    async_to_streamed_response_wrapper,
+)
+from .._base_client import make_request_options
+from ..types.stop_ids_for_agency_list_response import StopIDsForAgencyListResponse
 
 __all__ = ["StopIDsForAgencyResource", "AsyncStopIDsForAgencyResource"]
 

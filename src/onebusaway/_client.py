@@ -2,45 +2,64 @@
 
 from __future__ import annotations
 
-import httpx
-
 import os
+from typing import Any, Union, Mapping
+from typing_extensions import Self, override
 
-from ._streaming import AsyncStream as AsyncStream, Stream as Stream
-
-from typing import Union, Mapping, Any
-
-from ._exceptions import OnebusawaySDKError, APIStatusError
-
-from typing_extensions import override, Self
-
-from ._utils import get_async_library
-
-from .resources import agencies_with_coverage, agency, vehicles_for_agency, config, current_time, stops_for_location, stops_for_route, stops_for_agency, stop, stop_ids_for_agency, schedule_for_stop, route, route_ids_for_agency, routes_for_location, routes_for_agency, schedule_for_route, arrival_and_departure, trip, trips_for_location, trip_details, trip_for_vehicle, trips_for_route, report_problem_with_stop, report_problem_with_trip, search_for_stop, search_for_route, block, shape
+import httpx
 
 from . import _exceptions
-
-import os
-import asyncio
-import warnings
-from typing_extensions import Literal
-
-import httpx
-
-from ._version import __version__
 from ._qs import Querystring
-from ._utils import extract_files, maybe_transform, required_args, deepcopy_minimal, maybe_coerce_integer, maybe_coerce_float, maybe_coerce_boolean, is_given
-from ._types import Omit, NotGiven, Timeout, Transport, ProxiesTypes, RequestOptions, Headers, NoneType, Query, Body, NOT_GIVEN
+from ._types import (
+    NOT_GIVEN,
+    Omit,
+    Timeout,
+    NotGiven,
+    Transport,
+    ProxiesTypes,
+    RequestOptions,
+)
+from ._utils import (
+    is_given,
+    get_async_library,
+)
+from ._version import __version__
+from .resources import (
+    stop,
+    trip,
+    block,
+    route,
+    shape,
+    agency,
+    config,
+    current_time,
+    trip_details,
+    search_for_stop,
+    stops_for_route,
+    trips_for_route,
+    search_for_route,
+    stops_for_agency,
+    trip_for_vehicle,
+    routes_for_agency,
+    schedule_for_stop,
+    schedule_for_route,
+    stops_for_location,
+    trips_for_location,
+    routes_for_location,
+    stop_ids_for_agency,
+    vehicles_for_agency,
+    route_ids_for_agency,
+    arrival_and_departure,
+    agencies_with_coverage,
+    report_problem_with_stop,
+    report_problem_with_trip,
+)
+from ._streaming import Stream as Stream, AsyncStream as AsyncStream
+from ._exceptions import APIStatusError, OnebusawaySDKError
 from ._base_client import (
-    DEFAULT_CONNECTION_LIMITS,
-    DEFAULT_TIMEOUT,
     DEFAULT_MAX_RETRIES,
-    ResponseT,
-    SyncHttpxClientWrapper,
-    AsyncHttpxClientWrapper,
     SyncAPIClient,
     AsyncAPIClient,
-    make_request_options,
 )
 
 __all__ = ["Timeout", "Transport", "ProxiesTypes", "RequestOptions", "OnebusawaySDK", "AsyncOnebusawaySDK", "Client", "AsyncClient"]

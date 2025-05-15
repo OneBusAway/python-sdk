@@ -3,9 +3,9 @@
 from __future__ import annotations
 
 import time
-import anyio
-
 from typing import TYPE_CHECKING
+
+import anyio
 
 if TYPE_CHECKING:
   from ._client import OnebusawaySDK, AsyncOnebusawaySDK

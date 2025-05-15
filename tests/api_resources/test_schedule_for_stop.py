@@ -2,21 +2,14 @@
 
 from __future__ import annotations
 
-from onebusaway import OnebusawaySDK, AsyncOnebusawaySDK
-
-from onebusaway.types import ScheduleForStopRetrieveResponse
-
-from typing import cast, Any
-
 import os
+from typing import Any, cast
+
 import pytest
-import httpx
-from typing_extensions import get_args
-from respx import MockRouter
+
 from onebusaway import OnebusawaySDK, AsyncOnebusawaySDK
 from tests.utils import assert_matches_type
-from onebusaway.types import schedule_for_stop_retrieve_params
-from onebusaway._utils import parse_date
+from onebusaway.types import ScheduleForStopRetrieveResponse
 from onebusaway._utils import parse_date
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
