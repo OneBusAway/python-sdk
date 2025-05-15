@@ -28,10 +28,10 @@ from onebusaway._models import BaseModel, FinalRequestOptions
 from onebusaway._constants import RAW_RESPONSE_HEADER
 from onebusaway._exceptions import APIStatusError, APITimeoutError, APIResponseValidationError
 from onebusaway._base_client import (
-  DEFAULT_TIMEOUT,
-  HTTPX_DEFAULT_TIMEOUT,
-  BaseClient,
-  make_request_options,
+    DEFAULT_TIMEOUT,
+    HTTPX_DEFAULT_TIMEOUT,
+    BaseClient,
+    make_request_options,
 )
 
 from .utils import update_env

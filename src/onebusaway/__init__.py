@@ -88,7 +88,7 @@ __locals = locals()
 for __name in __all__:
     if not __name.startswith("__"):
         try:
-           __locals[__name].__module__ = "onebusaway"
+            __locals[__name].__module__ = "onebusaway"
         except (TypeError, AttributeError):
             # Some of our exported symbols are builtins which we can't set attributes for.
             pass
