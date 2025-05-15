@@ -8,8 +8,16 @@ from .._utils import PropertyInfo
 
 __all__ = ["ReportProblemWithTripRetrieveParams"]
 
+
 class ReportProblemWithTripRetrieveParams(TypedDict, total=False):
-    code: Literal["vehicle_never_came", "vehicle_came_early", "vehicle_came_late", "wrong_headsign", "vehicle_does_not_stop_here", "other"]
+    code: Literal[
+        "vehicle_never_came",
+        "vehicle_came_early",
+        "vehicle_came_late",
+        "wrong_headsign",
+        "vehicle_does_not_stop_here",
+        "other",
+    ]
     """A string code identifying the nature of the problem"""
 
     service_date: Annotated[int, PropertyInfo(alias="serviceDate")]

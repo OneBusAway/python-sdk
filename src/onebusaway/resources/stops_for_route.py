@@ -23,6 +23,7 @@ from ..types.stops_for_route_list_response import StopsForRouteListResponse
 
 __all__ = ["StopsForRouteResource", "AsyncStopsForRouteResource"]
 
+
 class StopsForRouteResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> StopsForRouteResourceWithRawResponse:
@@ -43,17 +44,19 @@ class StopsForRouteResource(SyncAPIResource):
         """
         return StopsForRouteResourceWithStreamingResponse(self)
 
-    def list(self,
-    route_id: str,
-    *,
-    include_polylines: bool | NotGiven = NOT_GIVEN,
-    time: str | NotGiven = NOT_GIVEN,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> StopsForRouteListResponse:
+    def list(
+        self,
+        route_id: str,
+        *,
+        include_polylines: bool | NotGiven = NOT_GIVEN,
+        time: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> StopsForRouteListResponse:
         """
         Get stops for a specific route
 
@@ -71,17 +74,25 @@ class StopsForRouteResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not route_id:
-          raise ValueError(
-            f'Expected a non-empty value for `route_id` but received {route_id!r}'
-          )
+            raise ValueError(f"Expected a non-empty value for `route_id` but received {route_id!r}")
         return self._get(
             f"/api/where/stops-for-route/{route_id}.json",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout, query=maybe_transform({
-                "include_polylines": include_polylines,
-                "time": time,
-            }, stops_for_route_list_params.StopsForRouteListParams)),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "include_polylines": include_polylines,
+                        "time": time,
+                    },
+                    stops_for_route_list_params.StopsForRouteListParams,
+                ),
+            ),
             cast_to=StopsForRouteListResponse,
         )
+
 
 class AsyncStopsForRouteResource(AsyncAPIResource):
     @cached_property
@@ -103,17 +114,19 @@ class AsyncStopsForRouteResource(AsyncAPIResource):
         """
         return AsyncStopsForRouteResourceWithStreamingResponse(self)
 
-    async def list(self,
-    route_id: str,
-    *,
-    include_polylines: bool | NotGiven = NOT_GIVEN,
-    time: str | NotGiven = NOT_GIVEN,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> StopsForRouteListResponse:
+    async def list(
+        self,
+        route_id: str,
+        *,
+        include_polylines: bool | NotGiven = NOT_GIVEN,
+        time: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> StopsForRouteListResponse:
         """
         Get stops for a specific route
 
@@ -131,17 +144,25 @@ class AsyncStopsForRouteResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not route_id:
-          raise ValueError(
-            f'Expected a non-empty value for `route_id` but received {route_id!r}'
-          )
+            raise ValueError(f"Expected a non-empty value for `route_id` but received {route_id!r}")
         return await self._get(
             f"/api/where/stops-for-route/{route_id}.json",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout, query=await async_maybe_transform({
-                "include_polylines": include_polylines,
-                "time": time,
-            }, stops_for_route_list_params.StopsForRouteListParams)),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "include_polylines": include_polylines,
+                        "time": time,
+                    },
+                    stops_for_route_list_params.StopsForRouteListParams,
+                ),
+            ),
             cast_to=StopsForRouteListResponse,
         )
+
 
 class StopsForRouteResourceWithRawResponse:
     def __init__(self, stops_for_route: StopsForRouteResource) -> None:
@@ -151,6 +172,7 @@ class StopsForRouteResourceWithRawResponse:
             stops_for_route.list,
         )
 
+
 class AsyncStopsForRouteResourceWithRawResponse:
     def __init__(self, stops_for_route: AsyncStopsForRouteResource) -> None:
         self._stops_for_route = stops_for_route
@@ -159,6 +181,7 @@ class AsyncStopsForRouteResourceWithRawResponse:
             stops_for_route.list,
         )
 
+
 class StopsForRouteResourceWithStreamingResponse:
     def __init__(self, stops_for_route: StopsForRouteResource) -> None:
         self._stops_for_route = stops_for_route
@@ -166,6 +189,7 @@ class StopsForRouteResourceWithStreamingResponse:
         self.list = to_streamed_response_wrapper(
             stops_for_route.list,
         )
+
 
 class AsyncStopsForRouteResourceWithStreamingResponse:
     def __init__(self, stops_for_route: AsyncStopsForRouteResource) -> None:

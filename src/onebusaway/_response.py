@@ -138,8 +138,6 @@ class BaseAPIResponse(Generic[R]):
 
         origin = get_origin(cast_to) or cast_to
 
-        
-
         if self._is_sse_stream:
             if to:
                 if not is_stream_class_type(to):
@@ -199,7 +197,6 @@ class BaseAPIResponse(Generic[R]):
         if cast_to == bool:
             return cast(R, response.text.lower() == "true")
 
-        
         if origin == APIResponse:
             raise RuntimeError("Unexpected state - cast_to is `APIResponse`")
 
@@ -273,8 +270,6 @@ class BaseAPIResponse(Generic[R]):
 
 
 class APIResponse(BaseAPIResponse[R]):
-    
-
     @overload
     def parse(self, *, to: type[_T]) -> _T: ...
 
@@ -377,8 +372,6 @@ class APIResponse(BaseAPIResponse[R]):
 
 
 class AsyncAPIResponse(BaseAPIResponse[R]):
-    
-
     @overload
     async def parse(self, *, to: type[_T]) -> _T: ...
 

@@ -18,6 +18,7 @@ from ..types.config_retrieve_response import ConfigRetrieveResponse
 
 __all__ = ["ConfigResource", "AsyncConfigResource"]
 
+
 class ConfigResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> ConfigResourceWithRawResponse:
@@ -38,20 +39,25 @@ class ConfigResource(SyncAPIResource):
         """
         return ConfigResourceWithStreamingResponse(self)
 
-    def retrieve(self,
-    *,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> ConfigRetrieveResponse:
+    def retrieve(
+        self,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> ConfigRetrieveResponse:
         """config"""
         return self._get(
             "/api/where/config.json",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
             cast_to=ConfigRetrieveResponse,
         )
+
 
 class AsyncConfigResource(AsyncAPIResource):
     @cached_property
@@ -73,20 +79,25 @@ class AsyncConfigResource(AsyncAPIResource):
         """
         return AsyncConfigResourceWithStreamingResponse(self)
 
-    async def retrieve(self,
-    *,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> ConfigRetrieveResponse:
+    async def retrieve(
+        self,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> ConfigRetrieveResponse:
         """config"""
         return await self._get(
             "/api/where/config.json",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
             cast_to=ConfigRetrieveResponse,
         )
+
 
 class ConfigResourceWithRawResponse:
     def __init__(self, config: ConfigResource) -> None:
@@ -96,6 +107,7 @@ class ConfigResourceWithRawResponse:
             config.retrieve,
         )
 
+
 class AsyncConfigResourceWithRawResponse:
     def __init__(self, config: AsyncConfigResource) -> None:
         self._config = config
@@ -104,6 +116,7 @@ class AsyncConfigResourceWithRawResponse:
             config.retrieve,
         )
 
+
 class ConfigResourceWithStreamingResponse:
     def __init__(self, config: ConfigResource) -> None:
         self._config = config
@@ -111,6 +124,7 @@ class ConfigResourceWithStreamingResponse:
         self.retrieve = to_streamed_response_wrapper(
             config.retrieve,
         )
+
 
 class AsyncConfigResourceWithStreamingResponse:
     def __init__(self, config: AsyncConfigResource) -> None:

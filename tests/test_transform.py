@@ -8,7 +8,7 @@ from typing_extensions import Required, Annotated, TypedDict
 
 import pytest
 
-from onebusaway._types import Base64FileInput
+from onebusaway._types import NOT_GIVEN, Base64FileInput
 from onebusaway._utils import (
     PropertyInfo,
     transform as _transform,
@@ -191,16 +191,18 @@ async def test_iso8601_format(use_async: bool) -> None:
     dt = datetime.fromisoformat("2023-02-23T14:16:36.337692+00:00")
     tz = "Z" if PYDANTIC_V2 else "+00:00"
     assert await transform({"foo": dt}, DatetimeDict, use_async) == {"foo": "2023-02-23T14:16:36.337692+00:00"}  # type: ignore[comparison-overlap]
-    assert await transform(DatetimeModel(foo=dt), Any, use_async) == {"foo": "2023-02-23T14:16:36.337692" + tz} # type: ignore[comparison-overlap]
+    assert await transform(DatetimeModel(foo=dt), Any, use_async) == {"foo": "2023-02-23T14:16:36.337692" + tz}  # type: ignore[comparison-overlap]
 
     dt = dt.replace(tzinfo=None)
     assert await transform({"foo": dt}, DatetimeDict, use_async) == {"foo": "2023-02-23T14:16:36.337692"}  # type: ignore[comparison-overlap]
-    assert await transform(DatetimeModel(foo=dt), Any, use_async) == {"foo": "2023-02-23T14:16:36.337692"} # type: ignore[comparison-overlap]
+    assert await transform(DatetimeModel(foo=dt), Any, use_async) == {"foo": "2023-02-23T14:16:36.337692"}  # type: ignore[comparison-overlap]
 
     assert await transform({"foo": None}, DateDict, use_async) == {"foo": None}  # type: ignore[comparison-overlap]
-    assert await transform(DateModel(foo=None), Any, use_async) == {"foo": None} # type: ignore
+    assert await transform(DateModel(foo=None), Any, use_async) == {"foo": None}  # type: ignore
     assert await transform({"foo": date.fromisoformat("2023-02-23")}, DateDict, use_async) == {"foo": "2023-02-23"}  # type: ignore[comparison-overlap]
-    assert await transform(DateModel(foo=date.fromisoformat("2023-02-23")), DateDict, use_async) == {"foo": "2023-02-23"} # type: ignore[comparison-overlap]
+    assert await transform(DateModel(foo=date.fromisoformat("2023-02-23")), DateDict, use_async) == {
+        "foo": "2023-02-23"
+    }  # type: ignore[comparison-overlap]
 
 
 @parametrize
@@ -390,11 +392,9 @@ async def test_iterable_of_dictionaries(use_async: bool) -> None:
 @pytest.mark.asyncio
 async def test_dictionary_items(use_async: bool) -> None:
     class DictItems(TypedDict):
-        foo_baz: Annotated[str, PropertyInfo(alias='fooBaz')]
+        foo_baz: Annotated[str, PropertyInfo(alias="fooBaz")]
 
-    assert await transform({"foo": {"foo_baz": "bar"}}, Dict[str, DictItems], use_async) == {
-        "foo": {"fooBaz": "bar"}
-    }
+    assert await transform({"foo": {"foo_baz": "bar"}}, Dict[str, DictItems], use_async) == {"foo": {"fooBaz": "bar"}}
 
 
 class TypedDictIterableUnionStr(TypedDict):
@@ -432,3 +432,22 @@ async def test_base64_file_input(use_async: bool) -> None:
     assert await transform({"foo": io.BytesIO(b"Hello, world!")}, TypedDictBase64Input, use_async) == {
         "foo": "SGVsbG8sIHdvcmxkIQ=="
     }  # type: ignore[comparison-overlap]
+
+
+@parametrize
+@pytest.mark.asyncio
+async def test_transform_skipping(use_async: bool) -> None:
+    # lists of ints are left as-is
+    data = [1, 2, 3]
+    assert await transform(data, List[int], use_async) is data
+
+    # iterables of ints are converted to a list
+    data = iter([1, 2, 3])
+    assert await transform(data, Iterable[int], use_async) == [1, 2, 3]
+
+
+@parametrize
+@pytest.mark.asyncio
+async def test_strips_notgiven(use_async: bool) -> None:
+    assert await transform({"foo_bar": "bar"}, Foo1, use_async) == {"fooBar": "bar"}
+    assert await transform({"foo_bar": NOT_GIVEN}, Foo1, use_async) == {}

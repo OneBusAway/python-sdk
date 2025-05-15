@@ -8,6 +8,7 @@ from .shared.response_wrapper import ResponseWrapper
 
 __all__ = ["ShapeRetrieveResponse", "ShapeRetrieveResponseData", "ShapeRetrieveResponseDataEntry"]
 
+
 class ShapeRetrieveResponseDataEntry(BaseModel):
     length: int
 
@@ -16,10 +17,12 @@ class ShapeRetrieveResponseDataEntry(BaseModel):
 
     levels: Optional[str] = None
 
+
 class ShapeRetrieveResponseData(BaseModel):
     entry: ShapeRetrieveResponseDataEntry
 
     references: References
+
 
 class ShapeRetrieveResponse(ResponseWrapper):
     data: ShapeRetrieveResponseData

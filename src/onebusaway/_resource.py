@@ -8,7 +8,8 @@ from typing import TYPE_CHECKING
 import anyio
 
 if TYPE_CHECKING:
-  from ._client import OnebusawaySDK, AsyncOnebusawaySDK
+    from ._client import OnebusawaySDK, AsyncOnebusawaySDK
+
 
 class SyncAPIResource:
     _client: OnebusawaySDK
@@ -23,7 +24,8 @@ class SyncAPIResource:
         self._get_api_list = client.get_api_list
 
     def _sleep(self, seconds: float) -> None:
-      time.sleep(seconds)
+        time.sleep(seconds)
+
 
 class AsyncAPIResource:
     _client: AsyncOnebusawaySDK
@@ -38,4 +40,4 @@ class AsyncAPIResource:
         self._get_api_list = client.get_api_list
 
     async def _sleep(self, seconds: float) -> None:
-      await anyio.sleep(seconds)
+        await anyio.sleep(seconds)

@@ -8,6 +8,7 @@ from .._utils import PropertyInfo
 
 __all__ = ["TripForVehicleRetrieveParams"]
 
+
 class TripForVehicleRetrieveParams(TypedDict, total=False):
     include_schedule: Annotated[bool, PropertyInfo(alias="includeSchedule")]
     """

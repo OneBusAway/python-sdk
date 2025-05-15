@@ -10,12 +10,14 @@ from .shared.response_wrapper import ResponseWrapper
 
 __all__ = ["StopIDsForAgencyListResponse", "StopIDsForAgencyListResponseData"]
 
+
 class StopIDsForAgencyListResponseData(BaseModel):
-    limit_exceeded: bool = FieldInfo(alias = "limitExceeded")
+    limit_exceeded: bool = FieldInfo(alias="limitExceeded")
 
     list: List[str]
 
     references: References
+
 
 class StopIDsForAgencyListResponse(ResponseWrapper):
     data: StopIDsForAgencyListResponseData

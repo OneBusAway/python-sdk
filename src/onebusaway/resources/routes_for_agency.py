@@ -18,6 +18,7 @@ from ..types.routes_for_agency_list_response import RoutesForAgencyListResponse
 
 __all__ = ["RoutesForAgencyResource", "AsyncRoutesForAgencyResource"]
 
+
 class RoutesForAgencyResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> RoutesForAgencyResourceWithRawResponse:
@@ -38,15 +39,17 @@ class RoutesForAgencyResource(SyncAPIResource):
         """
         return RoutesForAgencyResourceWithStreamingResponse(self)
 
-    def list(self,
-    agency_id: str,
-    *,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> RoutesForAgencyListResponse:
+    def list(
+        self,
+        agency_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> RoutesForAgencyListResponse:
         """
         Retrieve the list of all routes for a particular agency by id
 
@@ -60,14 +63,15 @@ class RoutesForAgencyResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not agency_id:
-          raise ValueError(
-            f'Expected a non-empty value for `agency_id` but received {agency_id!r}'
-          )
+            raise ValueError(f"Expected a non-empty value for `agency_id` but received {agency_id!r}")
         return self._get(
             f"/api/where/routes-for-agency/{agency_id}.json",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
             cast_to=RoutesForAgencyListResponse,
         )
+
 
 class AsyncRoutesForAgencyResource(AsyncAPIResource):
     @cached_property
@@ -89,15 +93,17 @@ class AsyncRoutesForAgencyResource(AsyncAPIResource):
         """
         return AsyncRoutesForAgencyResourceWithStreamingResponse(self)
 
-    async def list(self,
-    agency_id: str,
-    *,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> RoutesForAgencyListResponse:
+    async def list(
+        self,
+        agency_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> RoutesForAgencyListResponse:
         """
         Retrieve the list of all routes for a particular agency by id
 
@@ -111,14 +117,15 @@ class AsyncRoutesForAgencyResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not agency_id:
-          raise ValueError(
-            f'Expected a non-empty value for `agency_id` but received {agency_id!r}'
-          )
+            raise ValueError(f"Expected a non-empty value for `agency_id` but received {agency_id!r}")
         return await self._get(
             f"/api/where/routes-for-agency/{agency_id}.json",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
             cast_to=RoutesForAgencyListResponse,
         )
+
 
 class RoutesForAgencyResourceWithRawResponse:
     def __init__(self, routes_for_agency: RoutesForAgencyResource) -> None:
@@ -128,6 +135,7 @@ class RoutesForAgencyResourceWithRawResponse:
             routes_for_agency.list,
         )
 
+
 class AsyncRoutesForAgencyResourceWithRawResponse:
     def __init__(self, routes_for_agency: AsyncRoutesForAgencyResource) -> None:
         self._routes_for_agency = routes_for_agency
@@ -136,6 +144,7 @@ class AsyncRoutesForAgencyResourceWithRawResponse:
             routes_for_agency.list,
         )
 
+
 class RoutesForAgencyResourceWithStreamingResponse:
     def __init__(self, routes_for_agency: RoutesForAgencyResource) -> None:
         self._routes_for_agency = routes_for_agency
@@ -143,6 +152,7 @@ class RoutesForAgencyResourceWithStreamingResponse:
         self.list = to_streamed_response_wrapper(
             routes_for_agency.list,
         )
+
 
 class AsyncRoutesForAgencyResourceWithStreamingResponse:
     def __init__(self, routes_for_agency: AsyncRoutesForAgencyResource) -> None:

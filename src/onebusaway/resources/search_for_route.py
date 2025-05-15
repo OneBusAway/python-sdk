@@ -23,6 +23,7 @@ from ..types.search_for_route_list_response import SearchForRouteListResponse
 
 __all__ = ["SearchForRouteResource", "AsyncSearchForRouteResource"]
 
+
 class SearchForRouteResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> SearchForRouteResourceWithRawResponse:
@@ -43,16 +44,18 @@ class SearchForRouteResource(SyncAPIResource):
         """
         return SearchForRouteResourceWithStreamingResponse(self)
 
-    def list(self,
-    *,
-    input: str,
-    max_count: int | NotGiven = NOT_GIVEN,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> SearchForRouteListResponse:
+    def list(
+        self,
+        *,
+        input: str,
+        max_count: int | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> SearchForRouteListResponse:
         """
         Search for a route based on its name.
 
@@ -71,12 +74,22 @@ class SearchForRouteResource(SyncAPIResource):
         """
         return self._get(
             "/api/where/search/route.json",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout, query=maybe_transform({
-                "input": input,
-                "max_count": max_count,
-            }, search_for_route_list_params.SearchForRouteListParams)),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "input": input,
+                        "max_count": max_count,
+                    },
+                    search_for_route_list_params.SearchForRouteListParams,
+                ),
+            ),
             cast_to=SearchForRouteListResponse,
         )
+
 
 class AsyncSearchForRouteResource(AsyncAPIResource):
     @cached_property
@@ -98,16 +111,18 @@ class AsyncSearchForRouteResource(AsyncAPIResource):
         """
         return AsyncSearchForRouteResourceWithStreamingResponse(self)
 
-    async def list(self,
-    *,
-    input: str,
-    max_count: int | NotGiven = NOT_GIVEN,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> SearchForRouteListResponse:
+    async def list(
+        self,
+        *,
+        input: str,
+        max_count: int | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> SearchForRouteListResponse:
         """
         Search for a route based on its name.
 
@@ -126,12 +141,22 @@ class AsyncSearchForRouteResource(AsyncAPIResource):
         """
         return await self._get(
             "/api/where/search/route.json",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout, query=await async_maybe_transform({
-                "input": input,
-                "max_count": max_count,
-            }, search_for_route_list_params.SearchForRouteListParams)),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "input": input,
+                        "max_count": max_count,
+                    },
+                    search_for_route_list_params.SearchForRouteListParams,
+                ),
+            ),
             cast_to=SearchForRouteListResponse,
         )
+
 
 class SearchForRouteResourceWithRawResponse:
     def __init__(self, search_for_route: SearchForRouteResource) -> None:
@@ -141,6 +166,7 @@ class SearchForRouteResourceWithRawResponse:
             search_for_route.list,
         )
 
+
 class AsyncSearchForRouteResourceWithRawResponse:
     def __init__(self, search_for_route: AsyncSearchForRouteResource) -> None:
         self._search_for_route = search_for_route
@@ -149,6 +175,7 @@ class AsyncSearchForRouteResourceWithRawResponse:
             search_for_route.list,
         )
 
+
 class SearchForRouteResourceWithStreamingResponse:
     def __init__(self, search_for_route: SearchForRouteResource) -> None:
         self._search_for_route = search_for_route
@@ -156,6 +183,7 @@ class SearchForRouteResourceWithStreamingResponse:
         self.list = to_streamed_response_wrapper(
             search_for_route.list,
         )
+
 
 class AsyncSearchForRouteResourceWithStreamingResponse:
     def __init__(self, search_for_route: AsyncSearchForRouteResource) -> None:

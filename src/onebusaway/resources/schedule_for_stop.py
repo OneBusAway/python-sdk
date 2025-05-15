@@ -26,6 +26,7 @@ from ..types.schedule_for_stop_retrieve_response import ScheduleForStopRetrieveR
 
 __all__ = ["ScheduleForStopResource", "AsyncScheduleForStopResource"]
 
+
 class ScheduleForStopResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> ScheduleForStopResourceWithRawResponse:
@@ -46,16 +47,18 @@ class ScheduleForStopResource(SyncAPIResource):
         """
         return ScheduleForStopResourceWithStreamingResponse(self)
 
-    def retrieve(self,
-    stop_id: str,
-    *,
-    date: Union[str, date] | NotGiven = NOT_GIVEN,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> ScheduleForStopRetrieveResponse:
+    def retrieve(
+        self,
+        stop_id: str,
+        *,
+        date: Union[str, date] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> ScheduleForStopRetrieveResponse:
         """
         Get schedule for a specific stop
 
@@ -72,16 +75,19 @@ class ScheduleForStopResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not stop_id:
-          raise ValueError(
-            f'Expected a non-empty value for `stop_id` but received {stop_id!r}'
-          )
+            raise ValueError(f"Expected a non-empty value for `stop_id` but received {stop_id!r}")
         return self._get(
             f"/api/where/schedule-for-stop/{stop_id}.json",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout, query=maybe_transform({
-                "date": date
-            }, schedule_for_stop_retrieve_params.ScheduleForStopRetrieveParams)),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"date": date}, schedule_for_stop_retrieve_params.ScheduleForStopRetrieveParams),
+            ),
             cast_to=ScheduleForStopRetrieveResponse,
         )
+
 
 class AsyncScheduleForStopResource(AsyncAPIResource):
     @cached_property
@@ -103,16 +109,18 @@ class AsyncScheduleForStopResource(AsyncAPIResource):
         """
         return AsyncScheduleForStopResourceWithStreamingResponse(self)
 
-    async def retrieve(self,
-    stop_id: str,
-    *,
-    date: Union[str, date] | NotGiven = NOT_GIVEN,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> ScheduleForStopRetrieveResponse:
+    async def retrieve(
+        self,
+        stop_id: str,
+        *,
+        date: Union[str, date] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> ScheduleForStopRetrieveResponse:
         """
         Get schedule for a specific stop
 
@@ -129,16 +137,21 @@ class AsyncScheduleForStopResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not stop_id:
-          raise ValueError(
-            f'Expected a non-empty value for `stop_id` but received {stop_id!r}'
-          )
+            raise ValueError(f"Expected a non-empty value for `stop_id` but received {stop_id!r}")
         return await self._get(
             f"/api/where/schedule-for-stop/{stop_id}.json",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout, query=await async_maybe_transform({
-                "date": date
-            }, schedule_for_stop_retrieve_params.ScheduleForStopRetrieveParams)),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {"date": date}, schedule_for_stop_retrieve_params.ScheduleForStopRetrieveParams
+                ),
+            ),
             cast_to=ScheduleForStopRetrieveResponse,
         )
+
 
 class ScheduleForStopResourceWithRawResponse:
     def __init__(self, schedule_for_stop: ScheduleForStopResource) -> None:
@@ -148,6 +161,7 @@ class ScheduleForStopResourceWithRawResponse:
             schedule_for_stop.retrieve,
         )
 
+
 class AsyncScheduleForStopResourceWithRawResponse:
     def __init__(self, schedule_for_stop: AsyncScheduleForStopResource) -> None:
         self._schedule_for_stop = schedule_for_stop
@@ -156,6 +170,7 @@ class AsyncScheduleForStopResourceWithRawResponse:
             schedule_for_stop.retrieve,
         )
 
+
 class ScheduleForStopResourceWithStreamingResponse:
     def __init__(self, schedule_for_stop: ScheduleForStopResource) -> None:
         self._schedule_for_stop = schedule_for_stop
@@ -163,6 +178,7 @@ class ScheduleForStopResourceWithStreamingResponse:
         self.retrieve = to_streamed_response_wrapper(
             schedule_for_stop.retrieve,
         )
+
 
 class AsyncScheduleForStopResourceWithStreamingResponse:
     def __init__(self, schedule_for_stop: AsyncScheduleForStopResource) -> None:

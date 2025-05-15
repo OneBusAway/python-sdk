@@ -23,6 +23,7 @@ from ..types.trip_for_vehicle_retrieve_response import TripForVehicleRetrieveRes
 
 __all__ = ["TripForVehicleResource", "AsyncTripForVehicleResource"]
 
+
 class TripForVehicleResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> TripForVehicleResourceWithRawResponse:
@@ -43,19 +44,21 @@ class TripForVehicleResource(SyncAPIResource):
         """
         return TripForVehicleResourceWithStreamingResponse(self)
 
-    def retrieve(self,
-    vehicle_id: str,
-    *,
-    include_schedule: bool | NotGiven = NOT_GIVEN,
-    include_status: bool | NotGiven = NOT_GIVEN,
-    include_trip: bool | NotGiven = NOT_GIVEN,
-    time: int | NotGiven = NOT_GIVEN,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> TripForVehicleRetrieveResponse:
+    def retrieve(
+        self,
+        vehicle_id: str,
+        *,
+        include_schedule: bool | NotGiven = NOT_GIVEN,
+        include_status: bool | NotGiven = NOT_GIVEN,
+        include_trip: bool | NotGiven = NOT_GIVEN,
+        time: int | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> TripForVehicleRetrieveResponse:
         """
         Retrieve trip for a specific vehicle
 
@@ -80,19 +83,27 @@ class TripForVehicleResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not vehicle_id:
-          raise ValueError(
-            f'Expected a non-empty value for `vehicle_id` but received {vehicle_id!r}'
-          )
+            raise ValueError(f"Expected a non-empty value for `vehicle_id` but received {vehicle_id!r}")
         return self._get(
             f"/api/where/trip-for-vehicle/{vehicle_id}.json",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout, query=maybe_transform({
-                "include_schedule": include_schedule,
-                "include_status": include_status,
-                "include_trip": include_trip,
-                "time": time,
-            }, trip_for_vehicle_retrieve_params.TripForVehicleRetrieveParams)),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "include_schedule": include_schedule,
+                        "include_status": include_status,
+                        "include_trip": include_trip,
+                        "time": time,
+                    },
+                    trip_for_vehicle_retrieve_params.TripForVehicleRetrieveParams,
+                ),
+            ),
             cast_to=TripForVehicleRetrieveResponse,
         )
+
 
 class AsyncTripForVehicleResource(AsyncAPIResource):
     @cached_property
@@ -114,19 +125,21 @@ class AsyncTripForVehicleResource(AsyncAPIResource):
         """
         return AsyncTripForVehicleResourceWithStreamingResponse(self)
 
-    async def retrieve(self,
-    vehicle_id: str,
-    *,
-    include_schedule: bool | NotGiven = NOT_GIVEN,
-    include_status: bool | NotGiven = NOT_GIVEN,
-    include_trip: bool | NotGiven = NOT_GIVEN,
-    time: int | NotGiven = NOT_GIVEN,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> TripForVehicleRetrieveResponse:
+    async def retrieve(
+        self,
+        vehicle_id: str,
+        *,
+        include_schedule: bool | NotGiven = NOT_GIVEN,
+        include_status: bool | NotGiven = NOT_GIVEN,
+        include_trip: bool | NotGiven = NOT_GIVEN,
+        time: int | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> TripForVehicleRetrieveResponse:
         """
         Retrieve trip for a specific vehicle
 
@@ -151,19 +164,27 @@ class AsyncTripForVehicleResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not vehicle_id:
-          raise ValueError(
-            f'Expected a non-empty value for `vehicle_id` but received {vehicle_id!r}'
-          )
+            raise ValueError(f"Expected a non-empty value for `vehicle_id` but received {vehicle_id!r}")
         return await self._get(
             f"/api/where/trip-for-vehicle/{vehicle_id}.json",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout, query=await async_maybe_transform({
-                "include_schedule": include_schedule,
-                "include_status": include_status,
-                "include_trip": include_trip,
-                "time": time,
-            }, trip_for_vehicle_retrieve_params.TripForVehicleRetrieveParams)),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "include_schedule": include_schedule,
+                        "include_status": include_status,
+                        "include_trip": include_trip,
+                        "time": time,
+                    },
+                    trip_for_vehicle_retrieve_params.TripForVehicleRetrieveParams,
+                ),
+            ),
             cast_to=TripForVehicleRetrieveResponse,
         )
+
 
 class TripForVehicleResourceWithRawResponse:
     def __init__(self, trip_for_vehicle: TripForVehicleResource) -> None:
@@ -173,6 +194,7 @@ class TripForVehicleResourceWithRawResponse:
             trip_for_vehicle.retrieve,
         )
 
+
 class AsyncTripForVehicleResourceWithRawResponse:
     def __init__(self, trip_for_vehicle: AsyncTripForVehicleResource) -> None:
         self._trip_for_vehicle = trip_for_vehicle
@@ -181,6 +203,7 @@ class AsyncTripForVehicleResourceWithRawResponse:
             trip_for_vehicle.retrieve,
         )
 
+
 class TripForVehicleResourceWithStreamingResponse:
     def __init__(self, trip_for_vehicle: TripForVehicleResource) -> None:
         self._trip_for_vehicle = trip_for_vehicle
@@ -188,6 +211,7 @@ class TripForVehicleResourceWithStreamingResponse:
         self.retrieve = to_streamed_response_wrapper(
             trip_for_vehicle.retrieve,
         )
+
 
 class AsyncTripForVehicleResourceWithStreamingResponse:
     def __init__(self, trip_for_vehicle: AsyncTripForVehicleResource) -> None:

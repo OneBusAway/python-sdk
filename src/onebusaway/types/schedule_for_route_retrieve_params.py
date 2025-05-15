@@ -10,8 +10,9 @@ from .._utils import PropertyInfo
 
 __all__ = ["ScheduleForRouteRetrieveParams"]
 
+
 class ScheduleForRouteRetrieveParams(TypedDict, total=False):
-    date: Annotated[Union[str, datetime.date], PropertyInfo(format = "iso8601")]
+    date: Annotated[Union[str, datetime.date], PropertyInfo(format="iso8601")]
     """
     The date for which you want to request a schedule in the format YYYY-MM-DD
     (optional, defaults to current date)

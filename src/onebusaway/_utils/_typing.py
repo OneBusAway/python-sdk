@@ -13,6 +13,7 @@ from typing_extensions import (
     get_origin,
 )
 
+from ._utils import lru_cache
 from .._types import InheritsGeneric
 from .._compat import is_union as _is_union
 
@@ -49,22 +50,24 @@ _TYPE_ALIAS_TYPES: tuple[type[typing_extensions.TypeAliasType], ...] = (typing_e
 if sys.version_info >= (3, 12):
     _TYPE_ALIAS_TYPES = (*_TYPE_ALIAS_TYPES, typing.TypeAliasType)
 
+
 def is_type_alias_type(tp: Any, /) -> TypeIs[typing_extensions.TypeAliasType]:
     """Return whether the provided argument is an instance of `TypeAliasType`.
 
     ```python
     type Int = int
     is_type_alias_type(Int)
-    #> True
-    Str = TypeAliasType('Str', str)
+    # > True
+    Str = TypeAliasType("Str", str)
     is_type_alias_type(Str)
-    #> True
+    # > True
     ```
     """
     return isinstance(tp, _TYPE_ALIAS_TYPES)
 
 
 # Extracts T from Annotated[T, ...] or from Required[Annotated[T, ...]]
+@lru_cache(maxsize=8096)
 def strip_annotated_type(typ: type) -> type:
     if is_required_type(typ) or is_annotated_type(typ):
         return strip_annotated_type(cast(type, get_args(typ)[0]))

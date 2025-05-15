@@ -1,5 +1,22 @@
 # Changelog
 
+## 1.8.6 (2025-05-15)
+
+Full Changelog: [v1.8.5...v1.8.6](https://github.com/OneBusAway/python-sdk/compare/v1.8.5...v1.8.6)
+
+### Bug Fixes
+
+* **perf:** optimize some hot paths ([ddf06ce](https://github.com/OneBusAway/python-sdk/commit/ddf06ce0964f841e82a46417d233bc309740e169))
+* **perf:** skip traversing types for NotGiven values ([3ef7f7b](https://github.com/OneBusAway/python-sdk/commit/3ef7f7b6a016058d1d68e912d12e81e4c7b8f10f))
+
+
+### Chores
+
+* **internal:** codegen related update ([#290](https://github.com/OneBusAway/python-sdk/issues/290)) ([ae2f18c](https://github.com/OneBusAway/python-sdk/commit/ae2f18c4204970d2f5021b0060c6be7c562dfb54))
+* **internal:** expand CI branch coverage ([3ba0a52](https://github.com/OneBusAway/python-sdk/commit/3ba0a52f74ffdc7b0cabdf2dfdd44537c132dc06))
+* **internal:** reduce CI branch coverage ([c2e056e](https://github.com/OneBusAway/python-sdk/commit/c2e056e95068b3ffb80279d69b5a7603ffbc256c))
+* **internal:** slight transform perf improvement ([#291](https://github.com/OneBusAway/python-sdk/issues/291)) ([f74def5](https://github.com/OneBusAway/python-sdk/commit/f74def5e32618dc6ff2fb364cad51c01940af849))
+
 ## 1.8.5 (2025-05-15)
 
 Full Changelog: [v1.8.4...v1.8.5](https://github.com/OneBusAway/python-sdk/compare/v1.8.4...v1.8.5)

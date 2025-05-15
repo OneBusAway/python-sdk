@@ -18,6 +18,7 @@ from ..types.current_time_retrieve_response import CurrentTimeRetrieveResponse
 
 __all__ = ["CurrentTimeResource", "AsyncCurrentTimeResource"]
 
+
 class CurrentTimeResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> CurrentTimeResourceWithRawResponse:
@@ -38,20 +39,25 @@ class CurrentTimeResource(SyncAPIResource):
         """
         return CurrentTimeResourceWithStreamingResponse(self)
 
-    def retrieve(self,
-    *,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> CurrentTimeRetrieveResponse:
+    def retrieve(
+        self,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> CurrentTimeRetrieveResponse:
         """current-time"""
         return self._get(
             "/api/where/current-time.json",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
             cast_to=CurrentTimeRetrieveResponse,
         )
+
 
 class AsyncCurrentTimeResource(AsyncAPIResource):
     @cached_property
@@ -73,20 +79,25 @@ class AsyncCurrentTimeResource(AsyncAPIResource):
         """
         return AsyncCurrentTimeResourceWithStreamingResponse(self)
 
-    async def retrieve(self,
-    *,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> CurrentTimeRetrieveResponse:
+    async def retrieve(
+        self,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> CurrentTimeRetrieveResponse:
         """current-time"""
         return await self._get(
             "/api/where/current-time.json",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
             cast_to=CurrentTimeRetrieveResponse,
         )
+
 
 class CurrentTimeResourceWithRawResponse:
     def __init__(self, current_time: CurrentTimeResource) -> None:
@@ -96,6 +107,7 @@ class CurrentTimeResourceWithRawResponse:
             current_time.retrieve,
         )
 
+
 class AsyncCurrentTimeResourceWithRawResponse:
     def __init__(self, current_time: AsyncCurrentTimeResource) -> None:
         self._current_time = current_time
@@ -104,6 +116,7 @@ class AsyncCurrentTimeResourceWithRawResponse:
             current_time.retrieve,
         )
 
+
 class CurrentTimeResourceWithStreamingResponse:
     def __init__(self, current_time: CurrentTimeResource) -> None:
         self._current_time = current_time
@@ -111,6 +124,7 @@ class CurrentTimeResourceWithStreamingResponse:
         self.retrieve = to_streamed_response_wrapper(
             current_time.retrieve,
         )
+
 
 class AsyncCurrentTimeResourceWithStreamingResponse:
     def __init__(self, current_time: AsyncCurrentTimeResource) -> None:

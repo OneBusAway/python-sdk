@@ -26,6 +26,7 @@ from ..types.schedule_for_route_retrieve_response import ScheduleForRouteRetriev
 
 __all__ = ["ScheduleForRouteResource", "AsyncScheduleForRouteResource"]
 
+
 class ScheduleForRouteResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> ScheduleForRouteResourceWithRawResponse:
@@ -46,16 +47,18 @@ class ScheduleForRouteResource(SyncAPIResource):
         """
         return ScheduleForRouteResourceWithStreamingResponse(self)
 
-    def retrieve(self,
-    route_id: str,
-    *,
-    date: Union[str, date] | NotGiven = NOT_GIVEN,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> ScheduleForRouteRetrieveResponse:
+    def retrieve(
+        self,
+        route_id: str,
+        *,
+        date: Union[str, date] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> ScheduleForRouteRetrieveResponse:
         """
         Retrieve the full schedule for a route on a particular day
 
@@ -72,16 +75,21 @@ class ScheduleForRouteResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not route_id:
-          raise ValueError(
-            f'Expected a non-empty value for `route_id` but received {route_id!r}'
-          )
+            raise ValueError(f"Expected a non-empty value for `route_id` but received {route_id!r}")
         return self._get(
             f"/api/where/schedule-for-route/{route_id}.json",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout, query=maybe_transform({
-                "date": date
-            }, schedule_for_route_retrieve_params.ScheduleForRouteRetrieveParams)),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {"date": date}, schedule_for_route_retrieve_params.ScheduleForRouteRetrieveParams
+                ),
+            ),
             cast_to=ScheduleForRouteRetrieveResponse,
         )
+
 
 class AsyncScheduleForRouteResource(AsyncAPIResource):
     @cached_property
@@ -103,16 +111,18 @@ class AsyncScheduleForRouteResource(AsyncAPIResource):
         """
         return AsyncScheduleForRouteResourceWithStreamingResponse(self)
 
-    async def retrieve(self,
-    route_id: str,
-    *,
-    date: Union[str, date] | NotGiven = NOT_GIVEN,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> ScheduleForRouteRetrieveResponse:
+    async def retrieve(
+        self,
+        route_id: str,
+        *,
+        date: Union[str, date] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> ScheduleForRouteRetrieveResponse:
         """
         Retrieve the full schedule for a route on a particular day
 
@@ -129,16 +139,21 @@ class AsyncScheduleForRouteResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not route_id:
-          raise ValueError(
-            f'Expected a non-empty value for `route_id` but received {route_id!r}'
-          )
+            raise ValueError(f"Expected a non-empty value for `route_id` but received {route_id!r}")
         return await self._get(
             f"/api/where/schedule-for-route/{route_id}.json",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout, query=await async_maybe_transform({
-                "date": date
-            }, schedule_for_route_retrieve_params.ScheduleForRouteRetrieveParams)),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {"date": date}, schedule_for_route_retrieve_params.ScheduleForRouteRetrieveParams
+                ),
+            ),
             cast_to=ScheduleForRouteRetrieveResponse,
         )
+
 
 class ScheduleForRouteResourceWithRawResponse:
     def __init__(self, schedule_for_route: ScheduleForRouteResource) -> None:
@@ -148,6 +163,7 @@ class ScheduleForRouteResourceWithRawResponse:
             schedule_for_route.retrieve,
         )
 
+
 class AsyncScheduleForRouteResourceWithRawResponse:
     def __init__(self, schedule_for_route: AsyncScheduleForRouteResource) -> None:
         self._schedule_for_route = schedule_for_route
@@ -156,6 +172,7 @@ class AsyncScheduleForRouteResourceWithRawResponse:
             schedule_for_route.retrieve,
         )
 
+
 class ScheduleForRouteResourceWithStreamingResponse:
     def __init__(self, schedule_for_route: ScheduleForRouteResource) -> None:
         self._schedule_for_route = schedule_for_route
@@ -163,6 +180,7 @@ class ScheduleForRouteResourceWithStreamingResponse:
         self.retrieve = to_streamed_response_wrapper(
             schedule_for_route.retrieve,
         )
+
 
 class AsyncScheduleForRouteResourceWithStreamingResponse:
     def __init__(self, schedule_for_route: AsyncScheduleForRouteResource) -> None:

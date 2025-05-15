@@ -18,6 +18,7 @@ from ..types.block_retrieve_response import BlockRetrieveResponse
 
 __all__ = ["BlockResource", "AsyncBlockResource"]
 
+
 class BlockResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> BlockResourceWithRawResponse:
@@ -38,15 +39,17 @@ class BlockResource(SyncAPIResource):
         """
         return BlockResourceWithStreamingResponse(self)
 
-    def retrieve(self,
-    block_id: str,
-    *,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> BlockRetrieveResponse:
+    def retrieve(
+        self,
+        block_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> BlockRetrieveResponse:
         """
         Get details of a specific block by ID
 
@@ -60,14 +63,15 @@ class BlockResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not block_id:
-          raise ValueError(
-            f'Expected a non-empty value for `block_id` but received {block_id!r}'
-          )
+            raise ValueError(f"Expected a non-empty value for `block_id` but received {block_id!r}")
         return self._get(
             f"/api/where/block/{block_id}.json",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
             cast_to=BlockRetrieveResponse,
         )
+
 
 class AsyncBlockResource(AsyncAPIResource):
     @cached_property
@@ -89,15 +93,17 @@ class AsyncBlockResource(AsyncAPIResource):
         """
         return AsyncBlockResourceWithStreamingResponse(self)
 
-    async def retrieve(self,
-    block_id: str,
-    *,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> BlockRetrieveResponse:
+    async def retrieve(
+        self,
+        block_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> BlockRetrieveResponse:
         """
         Get details of a specific block by ID
 
@@ -111,14 +117,15 @@ class AsyncBlockResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not block_id:
-          raise ValueError(
-            f'Expected a non-empty value for `block_id` but received {block_id!r}'
-          )
+            raise ValueError(f"Expected a non-empty value for `block_id` but received {block_id!r}")
         return await self._get(
             f"/api/where/block/{block_id}.json",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
             cast_to=BlockRetrieveResponse,
         )
+
 
 class BlockResourceWithRawResponse:
     def __init__(self, block: BlockResource) -> None:
@@ -128,6 +135,7 @@ class BlockResourceWithRawResponse:
             block.retrieve,
         )
 
+
 class AsyncBlockResourceWithRawResponse:
     def __init__(self, block: AsyncBlockResource) -> None:
         self._block = block
@@ -136,6 +144,7 @@ class AsyncBlockResourceWithRawResponse:
             block.retrieve,
         )
 
+
 class BlockResourceWithStreamingResponse:
     def __init__(self, block: BlockResource) -> None:
         self._block = block
@@ -143,6 +152,7 @@ class BlockResourceWithStreamingResponse:
         self.retrieve = to_streamed_response_wrapper(
             block.retrieve,
         )
+
 
 class AsyncBlockResourceWithStreamingResponse:
     def __init__(self, block: AsyncBlockResource) -> None:
