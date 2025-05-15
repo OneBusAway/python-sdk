@@ -4,20 +4,22 @@ from __future__ import annotations
 
 import httpx
 
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._compat import cached_property
-from .._resource import SyncAPIResource, AsyncAPIResource
-from .._response import (
-    to_raw_response_wrapper,
-    to_streamed_response_wrapper,
-    async_to_raw_response_wrapper,
-    async_to_streamed_response_wrapper,
-)
-from .._base_client import make_request_options
+
 from ..types.route_retrieve_response import RouteRetrieveResponse
 
-__all__ = ["RouteResource", "AsyncRouteResource"]
+from .._base_client import make_request_options
 
+from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper, to_streamed_response_wrapper, async_to_streamed_response_wrapper
+
+import warnings
+from typing_extensions import Literal, overload
+from .._utils import extract_files, maybe_transform, required_args, deepcopy_minimal, strip_not_given
+from .._types import NotGiven, Timeout, Headers, NoneType, Query, Body, NOT_GIVEN, FileTypes, BinaryResponseContent
+from .._resource import SyncAPIResource, AsyncAPIResource
+from ..types import shared_params
+
+__all__ = ["RouteResource", "AsyncRouteResource"]
 
 class RouteResource(SyncAPIResource):
     @cached_property
@@ -39,17 +41,15 @@ class RouteResource(SyncAPIResource):
         """
         return RouteResourceWithStreamingResponse(self)
 
-    def retrieve(
-        self,
-        route_id: str,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> RouteRetrieveResponse:
+    def retrieve(self,
+    route_id: str,
+    *,
+    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+    # The extra values given here take precedence over values defined on the client or passed to this method.
+    extra_headers: Headers | None = None,
+    extra_query: Query | None = None,
+    extra_body: Body | None = None,
+    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> RouteRetrieveResponse:
         """
         Retrieve information for a specific route identified by its unique ID.
 
@@ -63,15 +63,14 @@ class RouteResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not route_id:
-            raise ValueError(f"Expected a non-empty value for `route_id` but received {route_id!r}")
+          raise ValueError(
+            f'Expected a non-empty value for `route_id` but received {route_id!r}'
+          )
         return self._get(
             f"/api/where/route/{route_id}.json",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
+            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout),
             cast_to=RouteRetrieveResponse,
         )
-
 
 class AsyncRouteResource(AsyncAPIResource):
     @cached_property
@@ -93,17 +92,15 @@ class AsyncRouteResource(AsyncAPIResource):
         """
         return AsyncRouteResourceWithStreamingResponse(self)
 
-    async def retrieve(
-        self,
-        route_id: str,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> RouteRetrieveResponse:
+    async def retrieve(self,
+    route_id: str,
+    *,
+    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+    # The extra values given here take precedence over values defined on the client or passed to this method.
+    extra_headers: Headers | None = None,
+    extra_query: Query | None = None,
+    extra_body: Body | None = None,
+    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> RouteRetrieveResponse:
         """
         Retrieve information for a specific route identified by its unique ID.
 
@@ -117,15 +114,14 @@ class AsyncRouteResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not route_id:
-            raise ValueError(f"Expected a non-empty value for `route_id` but received {route_id!r}")
+          raise ValueError(
+            f'Expected a non-empty value for `route_id` but received {route_id!r}'
+          )
         return await self._get(
             f"/api/where/route/{route_id}.json",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
+            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout),
             cast_to=RouteRetrieveResponse,
         )
-
 
 class RouteResourceWithRawResponse:
     def __init__(self, route: RouteResource) -> None:
@@ -135,7 +131,6 @@ class RouteResourceWithRawResponse:
             route.retrieve,
         )
 
-
 class AsyncRouteResourceWithRawResponse:
     def __init__(self, route: AsyncRouteResource) -> None:
         self._route = route
@@ -144,7 +139,6 @@ class AsyncRouteResourceWithRawResponse:
             route.retrieve,
         )
 
-
 class RouteResourceWithStreamingResponse:
     def __init__(self, route: RouteResource) -> None:
         self._route = route
@@ -152,7 +146,6 @@ class RouteResourceWithStreamingResponse:
         self.retrieve = to_streamed_response_wrapper(
             route.retrieve,
         )
-
 
 class AsyncRouteResourceWithStreamingResponse:
     def __init__(self, route: AsyncRouteResource) -> None:

@@ -2,77 +2,48 @@
 
 from __future__ import annotations
 
+import httpx
+
 import os
-from typing import Any, Union, Mapping
-from typing_extensions import Self, override
+
+from ._streaming import AsyncStream as AsyncStream, Stream as Stream
+
+from typing import Union, Mapping, Any
+
+from ._exceptions import OnebusawaySDKError, APIStatusError
+
+from typing_extensions import override, Self
+
+from ._utils import get_async_library
+
+from .resources import agencies_with_coverage, agency, vehicles_for_agency, config, current_time, stops_for_location, stops_for_route, stops_for_agency, stop, stop_ids_for_agency, schedule_for_stop, route, route_ids_for_agency, routes_for_location, routes_for_agency, schedule_for_route, arrival_and_departure, trip, trips_for_location, trip_details, trip_for_vehicle, trips_for_route, report_problem_with_stop, report_problem_with_trip, search_for_stop, search_for_route, block, shape
+
+from . import _exceptions
+
+import os
+import asyncio
+import warnings
+from typing_extensions import Literal
 
 import httpx
 
-from . import _exceptions
-from ._qs import Querystring
-from ._types import (
-    NOT_GIVEN,
-    Omit,
-    Timeout,
-    NotGiven,
-    Transport,
-    ProxiesTypes,
-    RequestOptions,
-)
-from ._utils import (
-    is_given,
-    get_async_library,
-)
 from ._version import __version__
-from .resources import (
-    stop,
-    trip,
-    block,
-    route,
-    shape,
-    agency,
-    config,
-    current_time,
-    trip_details,
-    search_for_stop,
-    stops_for_route,
-    trips_for_route,
-    search_for_route,
-    stops_for_agency,
-    trip_for_vehicle,
-    routes_for_agency,
-    schedule_for_stop,
-    schedule_for_route,
-    stops_for_location,
-    trips_for_location,
-    routes_for_location,
-    stop_ids_for_agency,
-    vehicles_for_agency,
-    route_ids_for_agency,
-    arrival_and_departure,
-    agencies_with_coverage,
-    report_problem_with_stop,
-    report_problem_with_trip,
-)
-from ._streaming import Stream as Stream, AsyncStream as AsyncStream
-from ._exceptions import APIStatusError, OnebusawaySDKError
+from ._qs import Querystring
+from ._utils import extract_files, maybe_transform, required_args, deepcopy_minimal, maybe_coerce_integer, maybe_coerce_float, maybe_coerce_boolean, is_given
+from ._types import Omit, NotGiven, Timeout, Transport, ProxiesTypes, RequestOptions, Headers, NoneType, Query, Body, NOT_GIVEN
 from ._base_client import (
+    DEFAULT_CONNECTION_LIMITS,
+    DEFAULT_TIMEOUT,
     DEFAULT_MAX_RETRIES,
+    ResponseT,
+    SyncHttpxClientWrapper,
+    AsyncHttpxClientWrapper,
     SyncAPIClient,
     AsyncAPIClient,
+    make_request_options,
 )
 
-__all__ = [
-    "Timeout",
-    "Transport",
-    "ProxiesTypes",
-    "RequestOptions",
-    "OnebusawaySDK",
-    "AsyncOnebusawaySDK",
-    "Client",
-    "AsyncClient",
-]
-
+__all__ = ["Timeout", "Transport", "ProxiesTypes", "RequestOptions", "OnebusawaySDK", "AsyncOnebusawaySDK", "Client", "AsyncClient"]
 
 class OnebusawaySDK(SyncAPIClient):
     agencies_with_coverage: agencies_with_coverage.AgenciesWithCoverageResource
@@ -109,56 +80,38 @@ class OnebusawaySDK(SyncAPIClient):
     # client options
     api_key: str
 
-    def __init__(
-        self,
-        *,
-        api_key: str | None = None,
-        base_url: str | httpx.URL | None = None,
-        timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
-        max_retries: int = DEFAULT_MAX_RETRIES,
-        default_headers: Mapping[str, str] | None = None,
-        default_query: Mapping[str, object] | None = None,
-        # Configure a custom httpx client.
-        # We provide a `DefaultHttpxClient` class that you can pass to retain the default values we use for `limits`, `timeout` & `follow_redirects`.
-        # See the [httpx documentation](https://www.python-httpx.org/api/#client) for more details.
-        http_client: httpx.Client | None = None,
-        # Enable or disable schema validation for data returned by the API.
-        # When enabled an error APIResponseValidationError is raised
-        # if the API responds with invalid data for the expected schema.
-        #
-        # This parameter may be removed or changed in the future.
-        # If you rely on this feature, please open a GitHub issue
-        # outlining your use-case to help us decide if it should be
-        # part of our public interface in the future.
-        _strict_response_validation: bool = False,
-    ) -> None:
+    def __init__(self, *, api_key: str | None = None, base_url: str | httpx.URL | None = None, timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN, max_retries: int = DEFAULT_MAX_RETRIES, default_headers: Mapping[str, str] | None = None, default_query: Mapping[str, object] | None = None, 
+    # Configure a custom httpx client.
+    # We provide a `DefaultHttpxClient` class that you can pass to retain the default values we use for `limits`, `timeout` & `follow_redirects`.
+    # See the [httpx documentation](https://www.python-httpx.org/api/#client) for more details.
+    http_client: httpx.Client | None = None, 
+    # Enable or disable schema validation for data returned by the API.
+    # When enabled an error APIResponseValidationError is raised
+    # if the API responds with invalid data for the expected schema.
+    # 
+    # This parameter may be removed or changed in the future.
+    # If you rely on this feature, please open a GitHub issue
+    # outlining your use-case to help us decide if it should be
+    # part of our public interface in the future.
+    _strict_response_validation: bool = False) -> None:
         """Construct a new synchronous OnebusawaySDK client instance.
 
         This automatically infers the `api_key` argument from the `ONEBUSAWAY_API_KEY` environment variable if it is not provided.
         """
         if api_key is None:
-            api_key = os.environ.get("ONEBUSAWAY_API_KEY")
+          api_key = os.environ.get("ONEBUSAWAY_API_KEY")
         if api_key is None:
-            raise OnebusawaySDKError(
-                "The api_key client option must be set either by passing api_key to the client or by setting the ONEBUSAWAY_API_KEY environment variable"
-            )
+          raise OnebusawaySDKError(
+            "The api_key client option must be set either by passing api_key to the client or by setting the ONEBUSAWAY_API_KEY environment variable"
+          )
         self.api_key = api_key
 
         if base_url is None:
-            base_url = os.environ.get("ONEBUSAWAY_SDK_BASE_URL")
+          base_url = os.environ.get("ONEBUSAWAY_SDK_BASE_URL")
         if base_url is None:
-            base_url = f"https://api.pugetsound.onebusaway.org"
+          base_url = f"https://api.pugetsound.onebusaway.org"
 
-        super().__init__(
-            version=__version__,
-            base_url=base_url,
-            max_retries=max_retries,
-            timeout=timeout,
-            http_client=http_client,
-            custom_headers=default_headers,
-            custom_query=default_query,
-            _strict_response_validation=_strict_response_validation,
-        )
+        super().__init__(version=__version__, base_url=base_url, max_retries=max_retries, timeout=timeout, http_client=http_client, custom_headers=default_headers, custom_query=default_query, _strict_response_validation=_strict_response_validation)
 
         self.agencies_with_coverage = agencies_with_coverage.AgenciesWithCoverageResource(self)
         self.agency = agency.AgencyResource(self)
@@ -205,42 +158,33 @@ class OnebusawaySDK(SyncAPIClient):
     @override
     def default_headers(self) -> dict[str, str | Omit]:
         return {
-            **super().default_headers,
-            "X-Stainless-Async": "false",
-            **self._custom_headers,
+          **super().default_headers,
+          "X-Stainless-Async": "false",
+          **self._custom_headers,
         }
 
     @property
     @override
     def default_query(self) -> dict[str, object]:
         return {
-            **super().default_query,
-            "key": self.api_key,
-            **self._custom_query,
+          **super().default_query,
+          "key": self.api_key,
+          **self._custom_query,
         }
 
-    def copy(
-        self,
-        *,
-        api_key: str | None = None,
-        base_url: str | httpx.URL | None = None,
-        timeout: float | Timeout | None | NotGiven = NOT_GIVEN,
-        http_client: httpx.Client | None = None,
-        max_retries: int | NotGiven = NOT_GIVEN,
-        default_headers: Mapping[str, str] | None = None,
-        set_default_headers: Mapping[str, str] | None = None,
-        default_query: Mapping[str, object] | None = None,
-        set_default_query: Mapping[str, object] | None = None,
-        _extra_kwargs: Mapping[str, Any] = {},
-    ) -> Self:
+    def copy(self, *, api_key: str | None = None, base_url: str | httpx.URL | None = None, timeout: float | Timeout | None | NotGiven = NOT_GIVEN, http_client: httpx.Client | None = None, max_retries: int | NotGiven = NOT_GIVEN, default_headers: Mapping[str, str] | None = None, set_default_headers: Mapping[str, str] | None = None, default_query: Mapping[str, object] | None = None, set_default_query: Mapping[str, object] | None = None, _extra_kwargs: Mapping[str, Any] = {}) -> Self:
         """
         Create a new client instance re-using the same options given to the current client with optional overriding.
         """
         if default_headers is not None and set_default_headers is not None:
-            raise ValueError("The `default_headers` and `set_default_headers` arguments are mutually exclusive")
+          raise ValueError(
+            'The `default_headers` and `set_default_headers` arguments are mutually exclusive'
+          )
 
         if default_query is not None and set_default_query is not None:
-            raise ValueError("The `default_query` and `set_default_query` arguments are mutually exclusive")
+          raise ValueError(
+            'The `default_query` and `set_default_query` arguments are mutually exclusive'
+          )
 
         headers = self._custom_headers
         if default_headers is not None:
@@ -255,29 +199,14 @@ class OnebusawaySDK(SyncAPIClient):
             params = set_default_query
 
         http_client = http_client or self._client
-        return self.__class__(
-            api_key=api_key or self.api_key,
-            base_url=base_url or self.base_url,
-            timeout=self.timeout if isinstance(timeout, NotGiven) else timeout,
-            http_client=http_client,
-            max_retries=max_retries if is_given(max_retries) else self.max_retries,
-            default_headers=headers,
-            default_query=params,
-            **_extra_kwargs,
-        )
+        return self.__class__(api_key = api_key or self.api_key, base_url=base_url or self.base_url, timeout=self.timeout if isinstance(timeout, NotGiven) else timeout, http_client=http_client, max_retries=max_retries if is_given(max_retries) else self.max_retries, default_headers=headers, default_query=params, **_extra_kwargs)
 
     # Alias for `copy` for nicer inline usage, e.g.
     # client.with_options(timeout=10).foo.create(...)
     with_options = copy
 
     @override
-    def _make_status_error(
-        self,
-        err_msg: str,
-        *,
-        body: object,
-        response: httpx.Response,
-    ) -> APIStatusError:
+    def _make_status_error(self, err_msg: str, *, body: object, response: httpx.Response,) -> APIStatusError:
         if response.status_code == 400:
             return _exceptions.BadRequestError(err_msg, response=response, body=body)
 
@@ -302,7 +231,6 @@ class OnebusawaySDK(SyncAPIClient):
         if response.status_code >= 500:
             return _exceptions.InternalServerError(err_msg, response=response, body=body)
         return APIStatusError(err_msg, response=response, body=body)
-
 
 class AsyncOnebusawaySDK(AsyncAPIClient):
     agencies_with_coverage: agencies_with_coverage.AsyncAgenciesWithCoverageResource
@@ -339,56 +267,38 @@ class AsyncOnebusawaySDK(AsyncAPIClient):
     # client options
     api_key: str
 
-    def __init__(
-        self,
-        *,
-        api_key: str | None = None,
-        base_url: str | httpx.URL | None = None,
-        timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
-        max_retries: int = DEFAULT_MAX_RETRIES,
-        default_headers: Mapping[str, str] | None = None,
-        default_query: Mapping[str, object] | None = None,
-        # Configure a custom httpx client.
-        # We provide a `DefaultAsyncHttpxClient` class that you can pass to retain the default values we use for `limits`, `timeout` & `follow_redirects`.
-        # See the [httpx documentation](https://www.python-httpx.org/api/#asyncclient) for more details.
-        http_client: httpx.AsyncClient | None = None,
-        # Enable or disable schema validation for data returned by the API.
-        # When enabled an error APIResponseValidationError is raised
-        # if the API responds with invalid data for the expected schema.
-        #
-        # This parameter may be removed or changed in the future.
-        # If you rely on this feature, please open a GitHub issue
-        # outlining your use-case to help us decide if it should be
-        # part of our public interface in the future.
-        _strict_response_validation: bool = False,
-    ) -> None:
+    def __init__(self, *, api_key: str | None = None, base_url: str | httpx.URL | None = None, timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN, max_retries: int = DEFAULT_MAX_RETRIES, default_headers: Mapping[str, str] | None = None, default_query: Mapping[str, object] | None = None, 
+    # Configure a custom httpx client.
+    # We provide a `DefaultAsyncHttpxClient` class that you can pass to retain the default values we use for `limits`, `timeout` & `follow_redirects`.
+    # See the [httpx documentation](https://www.python-httpx.org/api/#asyncclient) for more details.
+    http_client: httpx.AsyncClient | None = None, 
+    # Enable or disable schema validation for data returned by the API.
+    # When enabled an error APIResponseValidationError is raised
+    # if the API responds with invalid data for the expected schema.
+    # 
+    # This parameter may be removed or changed in the future.
+    # If you rely on this feature, please open a GitHub issue
+    # outlining your use-case to help us decide if it should be
+    # part of our public interface in the future.
+    _strict_response_validation: bool = False) -> None:
         """Construct a new async AsyncOnebusawaySDK client instance.
 
         This automatically infers the `api_key` argument from the `ONEBUSAWAY_API_KEY` environment variable if it is not provided.
         """
         if api_key is None:
-            api_key = os.environ.get("ONEBUSAWAY_API_KEY")
+          api_key = os.environ.get("ONEBUSAWAY_API_KEY")
         if api_key is None:
-            raise OnebusawaySDKError(
-                "The api_key client option must be set either by passing api_key to the client or by setting the ONEBUSAWAY_API_KEY environment variable"
-            )
+          raise OnebusawaySDKError(
+            "The api_key client option must be set either by passing api_key to the client or by setting the ONEBUSAWAY_API_KEY environment variable"
+          )
         self.api_key = api_key
 
         if base_url is None:
-            base_url = os.environ.get("ONEBUSAWAY_SDK_BASE_URL")
+          base_url = os.environ.get("ONEBUSAWAY_SDK_BASE_URL")
         if base_url is None:
-            base_url = f"https://api.pugetsound.onebusaway.org"
+          base_url = f"https://api.pugetsound.onebusaway.org"
 
-        super().__init__(
-            version=__version__,
-            base_url=base_url,
-            max_retries=max_retries,
-            timeout=timeout,
-            http_client=http_client,
-            custom_headers=default_headers,
-            custom_query=default_query,
-            _strict_response_validation=_strict_response_validation,
-        )
+        super().__init__(version=__version__, base_url=base_url, max_retries=max_retries, timeout=timeout, http_client=http_client, custom_headers=default_headers, custom_query=default_query, _strict_response_validation=_strict_response_validation)
 
         self.agencies_with_coverage = agencies_with_coverage.AsyncAgenciesWithCoverageResource(self)
         self.agency = agency.AsyncAgencyResource(self)
@@ -435,42 +345,33 @@ class AsyncOnebusawaySDK(AsyncAPIClient):
     @override
     def default_headers(self) -> dict[str, str | Omit]:
         return {
-            **super().default_headers,
-            "X-Stainless-Async": f"async:{get_async_library()}",
-            **self._custom_headers,
+          **super().default_headers,
+          "X-Stainless-Async": f'async:{get_async_library()}',
+          **self._custom_headers,
         }
 
     @property
     @override
     def default_query(self) -> dict[str, object]:
         return {
-            **super().default_query,
-            "key": self.api_key,
-            **self._custom_query,
+          **super().default_query,
+          "key": self.api_key,
+          **self._custom_query,
         }
 
-    def copy(
-        self,
-        *,
-        api_key: str | None = None,
-        base_url: str | httpx.URL | None = None,
-        timeout: float | Timeout | None | NotGiven = NOT_GIVEN,
-        http_client: httpx.AsyncClient | None = None,
-        max_retries: int | NotGiven = NOT_GIVEN,
-        default_headers: Mapping[str, str] | None = None,
-        set_default_headers: Mapping[str, str] | None = None,
-        default_query: Mapping[str, object] | None = None,
-        set_default_query: Mapping[str, object] | None = None,
-        _extra_kwargs: Mapping[str, Any] = {},
-    ) -> Self:
+    def copy(self, *, api_key: str | None = None, base_url: str | httpx.URL | None = None, timeout: float | Timeout | None | NotGiven = NOT_GIVEN, http_client: httpx.AsyncClient | None = None, max_retries: int | NotGiven = NOT_GIVEN, default_headers: Mapping[str, str] | None = None, set_default_headers: Mapping[str, str] | None = None, default_query: Mapping[str, object] | None = None, set_default_query: Mapping[str, object] | None = None, _extra_kwargs: Mapping[str, Any] = {}) -> Self:
         """
         Create a new client instance re-using the same options given to the current client with optional overriding.
         """
         if default_headers is not None and set_default_headers is not None:
-            raise ValueError("The `default_headers` and `set_default_headers` arguments are mutually exclusive")
+          raise ValueError(
+            'The `default_headers` and `set_default_headers` arguments are mutually exclusive'
+          )
 
         if default_query is not None and set_default_query is not None:
-            raise ValueError("The `default_query` and `set_default_query` arguments are mutually exclusive")
+          raise ValueError(
+            'The `default_query` and `set_default_query` arguments are mutually exclusive'
+          )
 
         headers = self._custom_headers
         if default_headers is not None:
@@ -485,29 +386,14 @@ class AsyncOnebusawaySDK(AsyncAPIClient):
             params = set_default_query
 
         http_client = http_client or self._client
-        return self.__class__(
-            api_key=api_key or self.api_key,
-            base_url=base_url or self.base_url,
-            timeout=self.timeout if isinstance(timeout, NotGiven) else timeout,
-            http_client=http_client,
-            max_retries=max_retries if is_given(max_retries) else self.max_retries,
-            default_headers=headers,
-            default_query=params,
-            **_extra_kwargs,
-        )
+        return self.__class__(api_key = api_key or self.api_key, base_url=base_url or self.base_url, timeout=self.timeout if isinstance(timeout, NotGiven) else timeout, http_client=http_client, max_retries=max_retries if is_given(max_retries) else self.max_retries, default_headers=headers, default_query=params, **_extra_kwargs)
 
     # Alias for `copy` for nicer inline usage, e.g.
     # client.with_options(timeout=10).foo.create(...)
     with_options = copy
 
     @override
-    def _make_status_error(
-        self,
-        err_msg: str,
-        *,
-        body: object,
-        response: httpx.Response,
-    ) -> APIStatusError:
+    def _make_status_error(self, err_msg: str, *, body: object, response: httpx.Response,) -> APIStatusError:
         if response.status_code == 400:
             return _exceptions.BadRequestError(err_msg, response=response, body=body)
 
@@ -533,234 +419,129 @@ class AsyncOnebusawaySDK(AsyncAPIClient):
             return _exceptions.InternalServerError(err_msg, response=response, body=body)
         return APIStatusError(err_msg, response=response, body=body)
 
-
 class OnebusawaySDKWithRawResponse:
     def __init__(self, client: OnebusawaySDK) -> None:
-        self.agencies_with_coverage = agencies_with_coverage.AgenciesWithCoverageResourceWithRawResponse(
-            client.agencies_with_coverage
-        )
+        self.agencies_with_coverage = agencies_with_coverage.AgenciesWithCoverageResourceWithRawResponse(client.agencies_with_coverage)
         self.agency = agency.AgencyResourceWithRawResponse(client.agency)
-        self.vehicles_for_agency = vehicles_for_agency.VehiclesForAgencyResourceWithRawResponse(
-            client.vehicles_for_agency
-        )
+        self.vehicles_for_agency = vehicles_for_agency.VehiclesForAgencyResourceWithRawResponse(client.vehicles_for_agency)
         self.config = config.ConfigResourceWithRawResponse(client.config)
         self.current_time = current_time.CurrentTimeResourceWithRawResponse(client.current_time)
         self.stops_for_location = stops_for_location.StopsForLocationResourceWithRawResponse(client.stops_for_location)
         self.stops_for_route = stops_for_route.StopsForRouteResourceWithRawResponse(client.stops_for_route)
         self.stops_for_agency = stops_for_agency.StopsForAgencyResourceWithRawResponse(client.stops_for_agency)
         self.stop = stop.StopResourceWithRawResponse(client.stop)
-        self.stop_ids_for_agency = stop_ids_for_agency.StopIDsForAgencyResourceWithRawResponse(
-            client.stop_ids_for_agency
-        )
+        self.stop_ids_for_agency = stop_ids_for_agency.StopIDsForAgencyResourceWithRawResponse(client.stop_ids_for_agency)
         self.schedule_for_stop = schedule_for_stop.ScheduleForStopResourceWithRawResponse(client.schedule_for_stop)
         self.route = route.RouteResourceWithRawResponse(client.route)
-        self.route_ids_for_agency = route_ids_for_agency.RouteIDsForAgencyResourceWithRawResponse(
-            client.route_ids_for_agency
-        )
-        self.routes_for_location = routes_for_location.RoutesForLocationResourceWithRawResponse(
-            client.routes_for_location
-        )
+        self.route_ids_for_agency = route_ids_for_agency.RouteIDsForAgencyResourceWithRawResponse(client.route_ids_for_agency)
+        self.routes_for_location = routes_for_location.RoutesForLocationResourceWithRawResponse(client.routes_for_location)
         self.routes_for_agency = routes_for_agency.RoutesForAgencyResourceWithRawResponse(client.routes_for_agency)
         self.schedule_for_route = schedule_for_route.ScheduleForRouteResourceWithRawResponse(client.schedule_for_route)
-        self.arrival_and_departure = arrival_and_departure.ArrivalAndDepartureResourceWithRawResponse(
-            client.arrival_and_departure
-        )
+        self.arrival_and_departure = arrival_and_departure.ArrivalAndDepartureResourceWithRawResponse(client.arrival_and_departure)
         self.trip = trip.TripResourceWithRawResponse(client.trip)
         self.trips_for_location = trips_for_location.TripsForLocationResourceWithRawResponse(client.trips_for_location)
         self.trip_details = trip_details.TripDetailsResourceWithRawResponse(client.trip_details)
         self.trip_for_vehicle = trip_for_vehicle.TripForVehicleResourceWithRawResponse(client.trip_for_vehicle)
         self.trips_for_route = trips_for_route.TripsForRouteResourceWithRawResponse(client.trips_for_route)
-        self.report_problem_with_stop = report_problem_with_stop.ReportProblemWithStopResourceWithRawResponse(
-            client.report_problem_with_stop
-        )
-        self.report_problem_with_trip = report_problem_with_trip.ReportProblemWithTripResourceWithRawResponse(
-            client.report_problem_with_trip
-        )
+        self.report_problem_with_stop = report_problem_with_stop.ReportProblemWithStopResourceWithRawResponse(client.report_problem_with_stop)
+        self.report_problem_with_trip = report_problem_with_trip.ReportProblemWithTripResourceWithRawResponse(client.report_problem_with_trip)
         self.search_for_stop = search_for_stop.SearchForStopResourceWithRawResponse(client.search_for_stop)
         self.search_for_route = search_for_route.SearchForRouteResourceWithRawResponse(client.search_for_route)
         self.block = block.BlockResourceWithRawResponse(client.block)
         self.shape = shape.ShapeResourceWithRawResponse(client.shape)
 
-
 class AsyncOnebusawaySDKWithRawResponse:
     def __init__(self, client: AsyncOnebusawaySDK) -> None:
-        self.agencies_with_coverage = agencies_with_coverage.AsyncAgenciesWithCoverageResourceWithRawResponse(
-            client.agencies_with_coverage
-        )
+        self.agencies_with_coverage = agencies_with_coverage.AsyncAgenciesWithCoverageResourceWithRawResponse(client.agencies_with_coverage)
         self.agency = agency.AsyncAgencyResourceWithRawResponse(client.agency)
-        self.vehicles_for_agency = vehicles_for_agency.AsyncVehiclesForAgencyResourceWithRawResponse(
-            client.vehicles_for_agency
-        )
+        self.vehicles_for_agency = vehicles_for_agency.AsyncVehiclesForAgencyResourceWithRawResponse(client.vehicles_for_agency)
         self.config = config.AsyncConfigResourceWithRawResponse(client.config)
         self.current_time = current_time.AsyncCurrentTimeResourceWithRawResponse(client.current_time)
-        self.stops_for_location = stops_for_location.AsyncStopsForLocationResourceWithRawResponse(
-            client.stops_for_location
-        )
+        self.stops_for_location = stops_for_location.AsyncStopsForLocationResourceWithRawResponse(client.stops_for_location)
         self.stops_for_route = stops_for_route.AsyncStopsForRouteResourceWithRawResponse(client.stops_for_route)
         self.stops_for_agency = stops_for_agency.AsyncStopsForAgencyResourceWithRawResponse(client.stops_for_agency)
         self.stop = stop.AsyncStopResourceWithRawResponse(client.stop)
-        self.stop_ids_for_agency = stop_ids_for_agency.AsyncStopIDsForAgencyResourceWithRawResponse(
-            client.stop_ids_for_agency
-        )
+        self.stop_ids_for_agency = stop_ids_for_agency.AsyncStopIDsForAgencyResourceWithRawResponse(client.stop_ids_for_agency)
         self.schedule_for_stop = schedule_for_stop.AsyncScheduleForStopResourceWithRawResponse(client.schedule_for_stop)
         self.route = route.AsyncRouteResourceWithRawResponse(client.route)
-        self.route_ids_for_agency = route_ids_for_agency.AsyncRouteIDsForAgencyResourceWithRawResponse(
-            client.route_ids_for_agency
-        )
-        self.routes_for_location = routes_for_location.AsyncRoutesForLocationResourceWithRawResponse(
-            client.routes_for_location
-        )
+        self.route_ids_for_agency = route_ids_for_agency.AsyncRouteIDsForAgencyResourceWithRawResponse(client.route_ids_for_agency)
+        self.routes_for_location = routes_for_location.AsyncRoutesForLocationResourceWithRawResponse(client.routes_for_location)
         self.routes_for_agency = routes_for_agency.AsyncRoutesForAgencyResourceWithRawResponse(client.routes_for_agency)
-        self.schedule_for_route = schedule_for_route.AsyncScheduleForRouteResourceWithRawResponse(
-            client.schedule_for_route
-        )
-        self.arrival_and_departure = arrival_and_departure.AsyncArrivalAndDepartureResourceWithRawResponse(
-            client.arrival_and_departure
-        )
+        self.schedule_for_route = schedule_for_route.AsyncScheduleForRouteResourceWithRawResponse(client.schedule_for_route)
+        self.arrival_and_departure = arrival_and_departure.AsyncArrivalAndDepartureResourceWithRawResponse(client.arrival_and_departure)
         self.trip = trip.AsyncTripResourceWithRawResponse(client.trip)
-        self.trips_for_location = trips_for_location.AsyncTripsForLocationResourceWithRawResponse(
-            client.trips_for_location
-        )
+        self.trips_for_location = trips_for_location.AsyncTripsForLocationResourceWithRawResponse(client.trips_for_location)
         self.trip_details = trip_details.AsyncTripDetailsResourceWithRawResponse(client.trip_details)
         self.trip_for_vehicle = trip_for_vehicle.AsyncTripForVehicleResourceWithRawResponse(client.trip_for_vehicle)
         self.trips_for_route = trips_for_route.AsyncTripsForRouteResourceWithRawResponse(client.trips_for_route)
-        self.report_problem_with_stop = report_problem_with_stop.AsyncReportProblemWithStopResourceWithRawResponse(
-            client.report_problem_with_stop
-        )
-        self.report_problem_with_trip = report_problem_with_trip.AsyncReportProblemWithTripResourceWithRawResponse(
-            client.report_problem_with_trip
-        )
+        self.report_problem_with_stop = report_problem_with_stop.AsyncReportProblemWithStopResourceWithRawResponse(client.report_problem_with_stop)
+        self.report_problem_with_trip = report_problem_with_trip.AsyncReportProblemWithTripResourceWithRawResponse(client.report_problem_with_trip)
         self.search_for_stop = search_for_stop.AsyncSearchForStopResourceWithRawResponse(client.search_for_stop)
         self.search_for_route = search_for_route.AsyncSearchForRouteResourceWithRawResponse(client.search_for_route)
         self.block = block.AsyncBlockResourceWithRawResponse(client.block)
         self.shape = shape.AsyncShapeResourceWithRawResponse(client.shape)
 
-
 class OnebusawaySDKWithStreamedResponse:
     def __init__(self, client: OnebusawaySDK) -> None:
-        self.agencies_with_coverage = agencies_with_coverage.AgenciesWithCoverageResourceWithStreamingResponse(
-            client.agencies_with_coverage
-        )
+        self.agencies_with_coverage = agencies_with_coverage.AgenciesWithCoverageResourceWithStreamingResponse(client.agencies_with_coverage)
         self.agency = agency.AgencyResourceWithStreamingResponse(client.agency)
-        self.vehicles_for_agency = vehicles_for_agency.VehiclesForAgencyResourceWithStreamingResponse(
-            client.vehicles_for_agency
-        )
+        self.vehicles_for_agency = vehicles_for_agency.VehiclesForAgencyResourceWithStreamingResponse(client.vehicles_for_agency)
         self.config = config.ConfigResourceWithStreamingResponse(client.config)
         self.current_time = current_time.CurrentTimeResourceWithStreamingResponse(client.current_time)
-        self.stops_for_location = stops_for_location.StopsForLocationResourceWithStreamingResponse(
-            client.stops_for_location
-        )
+        self.stops_for_location = stops_for_location.StopsForLocationResourceWithStreamingResponse(client.stops_for_location)
         self.stops_for_route = stops_for_route.StopsForRouteResourceWithStreamingResponse(client.stops_for_route)
         self.stops_for_agency = stops_for_agency.StopsForAgencyResourceWithStreamingResponse(client.stops_for_agency)
         self.stop = stop.StopResourceWithStreamingResponse(client.stop)
-        self.stop_ids_for_agency = stop_ids_for_agency.StopIDsForAgencyResourceWithStreamingResponse(
-            client.stop_ids_for_agency
-        )
-        self.schedule_for_stop = schedule_for_stop.ScheduleForStopResourceWithStreamingResponse(
-            client.schedule_for_stop
-        )
+        self.stop_ids_for_agency = stop_ids_for_agency.StopIDsForAgencyResourceWithStreamingResponse(client.stop_ids_for_agency)
+        self.schedule_for_stop = schedule_for_stop.ScheduleForStopResourceWithStreamingResponse(client.schedule_for_stop)
         self.route = route.RouteResourceWithStreamingResponse(client.route)
-        self.route_ids_for_agency = route_ids_for_agency.RouteIDsForAgencyResourceWithStreamingResponse(
-            client.route_ids_for_agency
-        )
-        self.routes_for_location = routes_for_location.RoutesForLocationResourceWithStreamingResponse(
-            client.routes_for_location
-        )
-        self.routes_for_agency = routes_for_agency.RoutesForAgencyResourceWithStreamingResponse(
-            client.routes_for_agency
-        )
-        self.schedule_for_route = schedule_for_route.ScheduleForRouteResourceWithStreamingResponse(
-            client.schedule_for_route
-        )
-        self.arrival_and_departure = arrival_and_departure.ArrivalAndDepartureResourceWithStreamingResponse(
-            client.arrival_and_departure
-        )
+        self.route_ids_for_agency = route_ids_for_agency.RouteIDsForAgencyResourceWithStreamingResponse(client.route_ids_for_agency)
+        self.routes_for_location = routes_for_location.RoutesForLocationResourceWithStreamingResponse(client.routes_for_location)
+        self.routes_for_agency = routes_for_agency.RoutesForAgencyResourceWithStreamingResponse(client.routes_for_agency)
+        self.schedule_for_route = schedule_for_route.ScheduleForRouteResourceWithStreamingResponse(client.schedule_for_route)
+        self.arrival_and_departure = arrival_and_departure.ArrivalAndDepartureResourceWithStreamingResponse(client.arrival_and_departure)
         self.trip = trip.TripResourceWithStreamingResponse(client.trip)
-        self.trips_for_location = trips_for_location.TripsForLocationResourceWithStreamingResponse(
-            client.trips_for_location
-        )
+        self.trips_for_location = trips_for_location.TripsForLocationResourceWithStreamingResponse(client.trips_for_location)
         self.trip_details = trip_details.TripDetailsResourceWithStreamingResponse(client.trip_details)
         self.trip_for_vehicle = trip_for_vehicle.TripForVehicleResourceWithStreamingResponse(client.trip_for_vehicle)
         self.trips_for_route = trips_for_route.TripsForRouteResourceWithStreamingResponse(client.trips_for_route)
-        self.report_problem_with_stop = report_problem_with_stop.ReportProblemWithStopResourceWithStreamingResponse(
-            client.report_problem_with_stop
-        )
-        self.report_problem_with_trip = report_problem_with_trip.ReportProblemWithTripResourceWithStreamingResponse(
-            client.report_problem_with_trip
-        )
+        self.report_problem_with_stop = report_problem_with_stop.ReportProblemWithStopResourceWithStreamingResponse(client.report_problem_with_stop)
+        self.report_problem_with_trip = report_problem_with_trip.ReportProblemWithTripResourceWithStreamingResponse(client.report_problem_with_trip)
         self.search_for_stop = search_for_stop.SearchForStopResourceWithStreamingResponse(client.search_for_stop)
         self.search_for_route = search_for_route.SearchForRouteResourceWithStreamingResponse(client.search_for_route)
         self.block = block.BlockResourceWithStreamingResponse(client.block)
         self.shape = shape.ShapeResourceWithStreamingResponse(client.shape)
 
-
 class AsyncOnebusawaySDKWithStreamedResponse:
     def __init__(self, client: AsyncOnebusawaySDK) -> None:
-        self.agencies_with_coverage = agencies_with_coverage.AsyncAgenciesWithCoverageResourceWithStreamingResponse(
-            client.agencies_with_coverage
-        )
+        self.agencies_with_coverage = agencies_with_coverage.AsyncAgenciesWithCoverageResourceWithStreamingResponse(client.agencies_with_coverage)
         self.agency = agency.AsyncAgencyResourceWithStreamingResponse(client.agency)
-        self.vehicles_for_agency = vehicles_for_agency.AsyncVehiclesForAgencyResourceWithStreamingResponse(
-            client.vehicles_for_agency
-        )
+        self.vehicles_for_agency = vehicles_for_agency.AsyncVehiclesForAgencyResourceWithStreamingResponse(client.vehicles_for_agency)
         self.config = config.AsyncConfigResourceWithStreamingResponse(client.config)
         self.current_time = current_time.AsyncCurrentTimeResourceWithStreamingResponse(client.current_time)
-        self.stops_for_location = stops_for_location.AsyncStopsForLocationResourceWithStreamingResponse(
-            client.stops_for_location
-        )
+        self.stops_for_location = stops_for_location.AsyncStopsForLocationResourceWithStreamingResponse(client.stops_for_location)
         self.stops_for_route = stops_for_route.AsyncStopsForRouteResourceWithStreamingResponse(client.stops_for_route)
-        self.stops_for_agency = stops_for_agency.AsyncStopsForAgencyResourceWithStreamingResponse(
-            client.stops_for_agency
-        )
+        self.stops_for_agency = stops_for_agency.AsyncStopsForAgencyResourceWithStreamingResponse(client.stops_for_agency)
         self.stop = stop.AsyncStopResourceWithStreamingResponse(client.stop)
-        self.stop_ids_for_agency = stop_ids_for_agency.AsyncStopIDsForAgencyResourceWithStreamingResponse(
-            client.stop_ids_for_agency
-        )
-        self.schedule_for_stop = schedule_for_stop.AsyncScheduleForStopResourceWithStreamingResponse(
-            client.schedule_for_stop
-        )
+        self.stop_ids_for_agency = stop_ids_for_agency.AsyncStopIDsForAgencyResourceWithStreamingResponse(client.stop_ids_for_agency)
+        self.schedule_for_stop = schedule_for_stop.AsyncScheduleForStopResourceWithStreamingResponse(client.schedule_for_stop)
         self.route = route.AsyncRouteResourceWithStreamingResponse(client.route)
-        self.route_ids_for_agency = route_ids_for_agency.AsyncRouteIDsForAgencyResourceWithStreamingResponse(
-            client.route_ids_for_agency
-        )
-        self.routes_for_location = routes_for_location.AsyncRoutesForLocationResourceWithStreamingResponse(
-            client.routes_for_location
-        )
-        self.routes_for_agency = routes_for_agency.AsyncRoutesForAgencyResourceWithStreamingResponse(
-            client.routes_for_agency
-        )
-        self.schedule_for_route = schedule_for_route.AsyncScheduleForRouteResourceWithStreamingResponse(
-            client.schedule_for_route
-        )
-        self.arrival_and_departure = arrival_and_departure.AsyncArrivalAndDepartureResourceWithStreamingResponse(
-            client.arrival_and_departure
-        )
+        self.route_ids_for_agency = route_ids_for_agency.AsyncRouteIDsForAgencyResourceWithStreamingResponse(client.route_ids_for_agency)
+        self.routes_for_location = routes_for_location.AsyncRoutesForLocationResourceWithStreamingResponse(client.routes_for_location)
+        self.routes_for_agency = routes_for_agency.AsyncRoutesForAgencyResourceWithStreamingResponse(client.routes_for_agency)
+        self.schedule_for_route = schedule_for_route.AsyncScheduleForRouteResourceWithStreamingResponse(client.schedule_for_route)
+        self.arrival_and_departure = arrival_and_departure.AsyncArrivalAndDepartureResourceWithStreamingResponse(client.arrival_and_departure)
         self.trip = trip.AsyncTripResourceWithStreamingResponse(client.trip)
-        self.trips_for_location = trips_for_location.AsyncTripsForLocationResourceWithStreamingResponse(
-            client.trips_for_location
-        )
+        self.trips_for_location = trips_for_location.AsyncTripsForLocationResourceWithStreamingResponse(client.trips_for_location)
         self.trip_details = trip_details.AsyncTripDetailsResourceWithStreamingResponse(client.trip_details)
-        self.trip_for_vehicle = trip_for_vehicle.AsyncTripForVehicleResourceWithStreamingResponse(
-            client.trip_for_vehicle
-        )
+        self.trip_for_vehicle = trip_for_vehicle.AsyncTripForVehicleResourceWithStreamingResponse(client.trip_for_vehicle)
         self.trips_for_route = trips_for_route.AsyncTripsForRouteResourceWithStreamingResponse(client.trips_for_route)
-        self.report_problem_with_stop = (
-            report_problem_with_stop.AsyncReportProblemWithStopResourceWithStreamingResponse(
-                client.report_problem_with_stop
-            )
-        )
-        self.report_problem_with_trip = (
-            report_problem_with_trip.AsyncReportProblemWithTripResourceWithStreamingResponse(
-                client.report_problem_with_trip
-            )
-        )
+        self.report_problem_with_stop = report_problem_with_stop.AsyncReportProblemWithStopResourceWithStreamingResponse(client.report_problem_with_stop)
+        self.report_problem_with_trip = report_problem_with_trip.AsyncReportProblemWithTripResourceWithStreamingResponse(client.report_problem_with_trip)
         self.search_for_stop = search_for_stop.AsyncSearchForStopResourceWithStreamingResponse(client.search_for_stop)
-        self.search_for_route = search_for_route.AsyncSearchForRouteResourceWithStreamingResponse(
-            client.search_for_route
-        )
+        self.search_for_route = search_for_route.AsyncSearchForRouteResourceWithStreamingResponse(client.search_for_route)
         self.block = block.AsyncBlockResourceWithStreamingResponse(client.block)
         self.shape = shape.AsyncShapeResourceWithStreamingResponse(client.shape)
-
 
 Client = OnebusawaySDK
 

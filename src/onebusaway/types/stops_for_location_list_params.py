@@ -2,12 +2,15 @@
 
 from __future__ import annotations
 
-from typing_extensions import Required, Annotated, TypedDict
+from typing_extensions import TypedDict, Required, Annotated
 
 from .._utils import PropertyInfo
 
-__all__ = ["StopsForLocationListParams"]
+from typing_extensions import Literal, TypedDict, Required, Annotated
+from .._types import FileTypes
+from .._utils import PropertyInfo
 
+__all__ = ["StopsForLocationListParams"]
 
 class StopsForLocationListParams(TypedDict, total=False):
     lat: Required[float]
