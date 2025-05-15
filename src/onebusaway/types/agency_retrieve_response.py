@@ -10,7 +10,6 @@ from .shared.response_wrapper import ResponseWrapper
 
 __all__ = ["AgencyRetrieveResponse", "AgencyRetrieveResponseData", "AgencyRetrieveResponseDataEntry"]
 
-
 class AgencyRetrieveResponseDataEntry(BaseModel):
     id: str
 
@@ -24,22 +23,20 @@ class AgencyRetrieveResponseDataEntry(BaseModel):
 
     email: Optional[str] = None
 
-    fare_url: Optional[str] = FieldInfo(alias="fareUrl", default=None)
+    fare_url: Optional[str] = FieldInfo(alias = "fareUrl", default = None)
 
     lang: Optional[str] = None
 
     phone: Optional[str] = None
 
-    private_service: Optional[bool] = FieldInfo(alias="privateService", default=None)
-
+    private_service: Optional[bool] = FieldInfo(alias = "privateService", default = None)
 
 class AgencyRetrieveResponseData(BaseModel):
     entry: AgencyRetrieveResponseDataEntry
 
-    limit_exceeded: bool = FieldInfo(alias="limitExceeded")
+    limit_exceeded: bool = FieldInfo(alias = "limitExceeded")
 
     references: References
-
 
 class AgencyRetrieveResponse(ResponseWrapper):
     data: AgencyRetrieveResponseData

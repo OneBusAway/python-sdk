@@ -10,7 +10,6 @@ from .shared.response_wrapper import ResponseWrapper
 
 __all__ = ["StopsForAgencyListResponse", "StopsForAgencyListResponseList"]
 
-
 class StopsForAgencyListResponseList(BaseModel):
     id: str
 
@@ -22,24 +21,23 @@ class StopsForAgencyListResponseList(BaseModel):
 
     parent: str
 
-    route_ids: List[str] = FieldInfo(alias="routeIds")
+    route_ids: List[str] = FieldInfo(alias = "routeIds")
 
-    static_route_ids: List[str] = FieldInfo(alias="staticRouteIds")
+    static_route_ids: List[str] = FieldInfo(alias = "staticRouteIds")
 
     code: Optional[str] = None
 
     direction: Optional[str] = None
 
-    location_type: Optional[int] = FieldInfo(alias="locationType", default=None)
+    location_type: Optional[int] = FieldInfo(alias = "locationType", default = None)
 
-    wheelchair_boarding: Optional[str] = FieldInfo(alias="wheelchairBoarding", default=None)
-
+    wheelchair_boarding: Optional[str] = FieldInfo(alias = "wheelchairBoarding", default = None)
 
 class StopsForAgencyListResponse(ResponseWrapper):
-    limit_exceeded: bool = FieldInfo(alias="limitExceeded")
+    limit_exceeded: bool = FieldInfo(alias = "limitExceeded")
 
     list: List[StopsForAgencyListResponseList]
 
     references: References
 
-    out_of_range: Optional[bool] = FieldInfo(alias="outOfRange", default=None)
+    out_of_range: Optional[bool] = FieldInfo(alias = "outOfRange", default = None)

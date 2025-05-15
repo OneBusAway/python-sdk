@@ -10,7 +10,6 @@ from .._utils import PropertyInfo
 
 __all__ = ["ArrivalAndDepartureListParams"]
 
-
 class ArrivalAndDepartureListParams(TypedDict, total=False):
     minutes_after: Annotated[int, PropertyInfo(alias="minutesAfter")]
     """Include vehicles arriving or departing in the next n minutes."""
@@ -18,5 +17,5 @@ class ArrivalAndDepartureListParams(TypedDict, total=False):
     minutes_before: Annotated[int, PropertyInfo(alias="minutesBefore")]
     """Include vehicles having arrived or departed in the previous n minutes."""
 
-    time: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
+    time: Annotated[Union[str, datetime], PropertyInfo(format = "iso8601")]
     """The specific time for querying the system status."""

@@ -7,25 +7,7 @@ from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
 
-__all__ = [
-    "References",
-    "Agency",
-    "Route",
-    "Situation",
-    "SituationActiveWindow",
-    "SituationAllAffect",
-    "SituationConsequence",
-    "SituationConsequenceConditionDetails",
-    "SituationConsequenceConditionDetailsDiversionPath",
-    "SituationDescription",
-    "SituationPublicationWindow",
-    "SituationSummary",
-    "SituationURL",
-    "Stop",
-    "StopTime",
-    "Trip",
-]
-
+__all__ = ["References", "Agency", "Route", "Situation", "SituationActiveWindow", "SituationAllAffect", "SituationConsequence", "SituationConsequenceConditionDetails", "SituationConsequenceConditionDetailsDiversionPath", "SituationDescription", "SituationPublicationWindow", "SituationSummary", "SituationURL", "Stop", "StopTime", "Trip"]
 
 class Agency(BaseModel):
     id: str
@@ -40,19 +22,18 @@ class Agency(BaseModel):
 
     email: Optional[str] = None
 
-    fare_url: Optional[str] = FieldInfo(alias="fareUrl", default=None)
+    fare_url: Optional[str] = FieldInfo(alias = "fareUrl", default = None)
 
     lang: Optional[str] = None
 
     phone: Optional[str] = None
 
-    private_service: Optional[bool] = FieldInfo(alias="privateService", default=None)
-
+    private_service: Optional[bool] = FieldInfo(alias = "privateService", default = None)
 
 class Route(BaseModel):
     id: str
 
-    agency_id: str = FieldInfo(alias="agencyId")
+    agency_id: str = FieldInfo(alias = "agencyId")
 
     type: int
 
@@ -60,44 +41,41 @@ class Route(BaseModel):
 
     description: Optional[str] = None
 
-    long_name: Optional[str] = FieldInfo(alias="longName", default=None)
+    long_name: Optional[str] = FieldInfo(alias = "longName", default = None)
 
-    null_safe_short_name: Optional[str] = FieldInfo(alias="nullSafeShortName", default=None)
+    null_safe_short_name: Optional[str] = FieldInfo(alias = "nullSafeShortName", default = None)
 
-    short_name: Optional[str] = FieldInfo(alias="shortName", default=None)
+    short_name: Optional[str] = FieldInfo(alias = "shortName", default = None)
 
-    text_color: Optional[str] = FieldInfo(alias="textColor", default=None)
+    text_color: Optional[str] = FieldInfo(alias = "textColor", default = None)
 
     url: Optional[str] = None
 
-
 class SituationActiveWindow(BaseModel):
-    from_: Optional[int] = FieldInfo(alias="from", default=None)
+    from_: Optional[int] = FieldInfo(alias = "from", default = None)
     """Start time of the active window as a Unix timestamp."""
 
     to: Optional[int] = None
     """End time of the active window as a Unix timestamp."""
 
-
 class SituationAllAffect(BaseModel):
-    agency_id: Optional[str] = FieldInfo(alias="agencyId", default=None)
+    agency_id: Optional[str] = FieldInfo(alias = "agencyId", default = None)
     """Identifier for the agency."""
 
-    application_id: Optional[str] = FieldInfo(alias="applicationId", default=None)
+    application_id: Optional[str] = FieldInfo(alias = "applicationId", default = None)
     """Identifier for the application."""
 
-    direction_id: Optional[str] = FieldInfo(alias="directionId", default=None)
+    direction_id: Optional[str] = FieldInfo(alias = "directionId", default = None)
     """Identifier for the direction."""
 
-    route_id: Optional[str] = FieldInfo(alias="routeId", default=None)
+    route_id: Optional[str] = FieldInfo(alias = "routeId", default = None)
     """Identifier for the route."""
 
-    stop_id: Optional[str] = FieldInfo(alias="stopId", default=None)
+    stop_id: Optional[str] = FieldInfo(alias = "stopId", default = None)
     """Identifier for the stop."""
 
-    trip_id: Optional[str] = FieldInfo(alias="tripId", default=None)
+    trip_id: Optional[str] = FieldInfo(alias = "tripId", default = None)
     """Identifier for the trip."""
-
 
 class SituationConsequenceConditionDetailsDiversionPath(BaseModel):
     length: Optional[int] = None
@@ -109,23 +87,16 @@ class SituationConsequenceConditionDetailsDiversionPath(BaseModel):
     points: Optional[str] = None
     """Points of the diversion path."""
 
-
 class SituationConsequenceConditionDetails(BaseModel):
-    diversion_path: Optional[SituationConsequenceConditionDetailsDiversionPath] = FieldInfo(
-        alias="diversionPath", default=None
-    )
+    diversion_path: Optional[SituationConsequenceConditionDetailsDiversionPath] = FieldInfo(alias = "diversionPath", default = None)
 
-    diversion_stop_ids: Optional[List[str]] = FieldInfo(alias="diversionStopIds", default=None)
-
+    diversion_stop_ids: Optional[List[str]] = FieldInfo(alias = "diversionStopIds", default = None)
 
 class SituationConsequence(BaseModel):
     condition: Optional[str] = None
     """Condition of the consequence."""
 
-    condition_details: Optional[SituationConsequenceConditionDetails] = FieldInfo(
-        alias="conditionDetails", default=None
-    )
-
+    condition_details: Optional[SituationConsequenceConditionDetails] = FieldInfo(alias = "conditionDetails", default = None)
 
 class SituationDescription(BaseModel):
     lang: Optional[str] = None
@@ -134,14 +105,12 @@ class SituationDescription(BaseModel):
     value: Optional[str] = None
     """Longer description of the situation."""
 
-
 class SituationPublicationWindow(BaseModel):
-    from_: int = FieldInfo(alias="from")
+    from_: int = FieldInfo(alias = "from")
     """Start time of the time window as a Unix timestamp."""
 
     to: int
     """End time of the time window as a Unix timestamp."""
-
 
 class SituationSummary(BaseModel):
     lang: Optional[str] = None
@@ -150,7 +119,6 @@ class SituationSummary(BaseModel):
     value: Optional[str] = None
     """Short summary of the situation."""
 
-
 class SituationURL(BaseModel):
     lang: Optional[str] = None
     """Language of the URL."""
@@ -158,32 +126,27 @@ class SituationURL(BaseModel):
     value: Optional[str] = None
     """URL for more information about the situation."""
 
-
 class Situation(BaseModel):
     id: str
     """Unique identifier for the situation."""
 
-    creation_time: int = FieldInfo(alias="creationTime")
+    creation_time: int = FieldInfo(alias = "creationTime")
     """Unix timestamp of when this situation was created."""
 
-    active_windows: Optional[List[SituationActiveWindow]] = FieldInfo(alias="activeWindows", default=None)
+    active_windows: Optional[List[SituationActiveWindow]] = FieldInfo(alias = "activeWindows", default = None)
 
-    all_affects: Optional[List[SituationAllAffect]] = FieldInfo(alias="allAffects", default=None)
+    all_affects: Optional[List[SituationAllAffect]] = FieldInfo(alias = "allAffects", default = None)
 
-    consequence_message: Optional[str] = FieldInfo(alias="consequenceMessage", default=None)
+    consequence_message: Optional[str] = FieldInfo(alias = "consequenceMessage", default = None)
     """Message regarding the consequence of the situation."""
 
     consequences: Optional[List[SituationConsequence]] = None
 
     description: Optional[SituationDescription] = None
 
-    publication_windows: Optional[List[SituationPublicationWindow]] = FieldInfo(
-        alias="publicationWindows", default=None
-    )
+    publication_windows: Optional[List[SituationPublicationWindow]] = FieldInfo(alias = "publicationWindows", default = None)
 
-    reason: Optional[
-        Literal["equipmentReason", "environmentReason", "personnelReason", "miscellaneousReason", "securityAlert"]
-    ] = None
+    reason: Optional[Literal["equipmentReason", "environmentReason", "personnelReason", "miscellaneousReason", "securityAlert"]] = None
     """Reason for the service alert, taken from TPEG codes."""
 
     severity: Optional[str] = None
@@ -192,7 +155,6 @@ class Situation(BaseModel):
     summary: Optional[SituationSummary] = None
 
     url: Optional[SituationURL] = None
-
 
 class Stop(BaseModel):
     id: str
@@ -205,56 +167,53 @@ class Stop(BaseModel):
 
     parent: str
 
-    route_ids: List[str] = FieldInfo(alias="routeIds")
+    route_ids: List[str] = FieldInfo(alias = "routeIds")
 
-    static_route_ids: List[str] = FieldInfo(alias="staticRouteIds")
+    static_route_ids: List[str] = FieldInfo(alias = "staticRouteIds")
 
     code: Optional[str] = None
 
     direction: Optional[str] = None
 
-    location_type: Optional[int] = FieldInfo(alias="locationType", default=None)
+    location_type: Optional[int] = FieldInfo(alias = "locationType", default = None)
 
-    wheelchair_boarding: Optional[str] = FieldInfo(alias="wheelchairBoarding", default=None)
-
+    wheelchair_boarding: Optional[str] = FieldInfo(alias = "wheelchairBoarding", default = None)
 
 class StopTime(BaseModel):
-    arrival_time: Optional[int] = FieldInfo(alias="arrivalTime", default=None)
+    arrival_time: Optional[int] = FieldInfo(alias = "arrivalTime", default = None)
 
-    departure_time: Optional[int] = FieldInfo(alias="departureTime", default=None)
+    departure_time: Optional[int] = FieldInfo(alias = "departureTime", default = None)
 
-    distance_along_trip: Optional[float] = FieldInfo(alias="distanceAlongTrip", default=None)
+    distance_along_trip: Optional[float] = FieldInfo(alias = "distanceAlongTrip", default = None)
 
-    historical_occupancy: Optional[str] = FieldInfo(alias="historicalOccupancy", default=None)
+    historical_occupancy: Optional[str] = FieldInfo(alias = "historicalOccupancy", default = None)
 
-    stop_headsign: Optional[str] = FieldInfo(alias="stopHeadsign", default=None)
+    stop_headsign: Optional[str] = FieldInfo(alias = "stopHeadsign", default = None)
 
-    stop_id: Optional[str] = FieldInfo(alias="stopId", default=None)
-
+    stop_id: Optional[str] = FieldInfo(alias = "stopId", default = None)
 
 class Trip(BaseModel):
     id: str
 
-    route_id: str = FieldInfo(alias="routeId")
+    route_id: str = FieldInfo(alias = "routeId")
 
-    service_id: str = FieldInfo(alias="serviceId")
+    service_id: str = FieldInfo(alias = "serviceId")
 
-    block_id: Optional[str] = FieldInfo(alias="blockId", default=None)
+    block_id: Optional[str] = FieldInfo(alias = "blockId", default = None)
 
-    direction_id: Optional[str] = FieldInfo(alias="directionId", default=None)
+    direction_id: Optional[str] = FieldInfo(alias = "directionId", default = None)
 
-    peak_offpeak: Optional[int] = FieldInfo(alias="peakOffpeak", default=None)
+    peak_offpeak: Optional[int] = FieldInfo(alias = "peakOffpeak", default = None)
 
-    route_short_name: Optional[str] = FieldInfo(alias="routeShortName", default=None)
+    route_short_name: Optional[str] = FieldInfo(alias = "routeShortName", default = None)
 
-    shape_id: Optional[str] = FieldInfo(alias="shapeId", default=None)
+    shape_id: Optional[str] = FieldInfo(alias = "shapeId", default = None)
 
-    time_zone: Optional[str] = FieldInfo(alias="timeZone", default=None)
+    time_zone: Optional[str] = FieldInfo(alias = "timeZone", default = None)
 
-    trip_headsign: Optional[str] = FieldInfo(alias="tripHeadsign", default=None)
+    trip_headsign: Optional[str] = FieldInfo(alias = "tripHeadsign", default = None)
 
-    trip_short_name: Optional[str] = FieldInfo(alias="tripShortName", default=None)
-
+    trip_short_name: Optional[str] = FieldInfo(alias = "tripShortName", default = None)
 
 class References(BaseModel):
     agencies: List[Agency]
@@ -265,6 +224,6 @@ class References(BaseModel):
 
     stops: List[Stop]
 
-    stop_times: List[StopTime] = FieldInfo(alias="stopTimes")
+    stop_times: List[StopTime] = FieldInfo(alias = "stopTimes")
 
     trips: List[Trip]

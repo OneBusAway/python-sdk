@@ -8,7 +8,6 @@ from .._utils import PropertyInfo
 
 __all__ = ["SearchForStopListParams"]
 
-
 class SearchForStopListParams(TypedDict, total=False):
     input: Required[str]
     """The string to search for."""

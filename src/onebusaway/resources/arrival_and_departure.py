@@ -27,7 +27,6 @@ from ..types.arrival_and_departure_retrieve_response import ArrivalAndDepartureR
 
 __all__ = ["ArrivalAndDepartureResource", "AsyncArrivalAndDepartureResource"]
 
-
 class ArrivalAndDepartureResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> ArrivalAndDepartureResourceWithRawResponse:
@@ -48,22 +47,20 @@ class ArrivalAndDepartureResource(SyncAPIResource):
         """
         return ArrivalAndDepartureResourceWithStreamingResponse(self)
 
-    def retrieve(
-        self,
-        stop_id: str,
-        *,
-        service_date: int,
-        trip_id: str,
-        stop_sequence: int | NotGiven = NOT_GIVEN,
-        time: int | NotGiven = NOT_GIVEN,
-        vehicle_id: str | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ArrivalAndDepartureRetrieveResponse:
+    def retrieve(self,
+    stop_id: str,
+    *,
+    service_date: int,
+    trip_id: str,
+    stop_sequence: int | NotGiven = NOT_GIVEN,
+    time: int | NotGiven = NOT_GIVEN,
+    vehicle_id: str | NotGiven = NOT_GIVEN,
+    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+    # The extra values given here take precedence over values defined on the client or passed to this method.
+    extra_headers: Headers | None = None,
+    extra_query: Query | None = None,
+    extra_body: Body | None = None,
+    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> ArrivalAndDepartureRetrieveResponse:
         """
         arrival-and-departure-for-stop
 
@@ -77,42 +74,33 @@ class ArrivalAndDepartureResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not stop_id:
-            raise ValueError(f"Expected a non-empty value for `stop_id` but received {stop_id!r}")
+          raise ValueError(
+            f'Expected a non-empty value for `stop_id` but received {stop_id!r}'
+          )
         return self._get(
             f"/api/where/arrival-and-departure-for-stop/{stop_id}.json",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "service_date": service_date,
-                        "trip_id": trip_id,
-                        "stop_sequence": stop_sequence,
-                        "time": time,
-                        "vehicle_id": vehicle_id,
-                    },
-                    arrival_and_departure_retrieve_params.ArrivalAndDepartureRetrieveParams,
-                ),
-            ),
+            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout, query=maybe_transform({
+                "service_date": service_date,
+                "trip_id": trip_id,
+                "stop_sequence": stop_sequence,
+                "time": time,
+                "vehicle_id": vehicle_id,
+            }, arrival_and_departure_retrieve_params.ArrivalAndDepartureRetrieveParams)),
             cast_to=ArrivalAndDepartureRetrieveResponse,
         )
 
-    def list(
-        self,
-        stop_id: str,
-        *,
-        minutes_after: int | NotGiven = NOT_GIVEN,
-        minutes_before: int | NotGiven = NOT_GIVEN,
-        time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ArrivalAndDepartureListResponse:
+    def list(self,
+    stop_id: str,
+    *,
+    minutes_after: int | NotGiven = NOT_GIVEN,
+    minutes_before: int | NotGiven = NOT_GIVEN,
+    time: Union[str, datetime] | NotGiven = NOT_GIVEN,
+    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+    # The extra values given here take precedence over values defined on the client or passed to this method.
+    extra_headers: Headers | None = None,
+    extra_query: Query | None = None,
+    extra_body: Body | None = None,
+    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> ArrivalAndDepartureListResponse:
         """
         arrivals-and-departures-for-stop
 
@@ -132,26 +120,18 @@ class ArrivalAndDepartureResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not stop_id:
-            raise ValueError(f"Expected a non-empty value for `stop_id` but received {stop_id!r}")
+          raise ValueError(
+            f'Expected a non-empty value for `stop_id` but received {stop_id!r}'
+          )
         return self._get(
             f"/api/where/arrivals-and-departures-for-stop/{stop_id}.json",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "minutes_after": minutes_after,
-                        "minutes_before": minutes_before,
-                        "time": time,
-                    },
-                    arrival_and_departure_list_params.ArrivalAndDepartureListParams,
-                ),
-            ),
+            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout, query=maybe_transform({
+                "minutes_after": minutes_after,
+                "minutes_before": minutes_before,
+                "time": time,
+            }, arrival_and_departure_list_params.ArrivalAndDepartureListParams)),
             cast_to=ArrivalAndDepartureListResponse,
         )
-
 
 class AsyncArrivalAndDepartureResource(AsyncAPIResource):
     @cached_property
@@ -173,22 +153,20 @@ class AsyncArrivalAndDepartureResource(AsyncAPIResource):
         """
         return AsyncArrivalAndDepartureResourceWithStreamingResponse(self)
 
-    async def retrieve(
-        self,
-        stop_id: str,
-        *,
-        service_date: int,
-        trip_id: str,
-        stop_sequence: int | NotGiven = NOT_GIVEN,
-        time: int | NotGiven = NOT_GIVEN,
-        vehicle_id: str | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ArrivalAndDepartureRetrieveResponse:
+    async def retrieve(self,
+    stop_id: str,
+    *,
+    service_date: int,
+    trip_id: str,
+    stop_sequence: int | NotGiven = NOT_GIVEN,
+    time: int | NotGiven = NOT_GIVEN,
+    vehicle_id: str | NotGiven = NOT_GIVEN,
+    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+    # The extra values given here take precedence over values defined on the client or passed to this method.
+    extra_headers: Headers | None = None,
+    extra_query: Query | None = None,
+    extra_body: Body | None = None,
+    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> ArrivalAndDepartureRetrieveResponse:
         """
         arrival-and-departure-for-stop
 
@@ -202,42 +180,33 @@ class AsyncArrivalAndDepartureResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not stop_id:
-            raise ValueError(f"Expected a non-empty value for `stop_id` but received {stop_id!r}")
+          raise ValueError(
+            f'Expected a non-empty value for `stop_id` but received {stop_id!r}'
+          )
         return await self._get(
             f"/api/where/arrival-and-departure-for-stop/{stop_id}.json",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {
-                        "service_date": service_date,
-                        "trip_id": trip_id,
-                        "stop_sequence": stop_sequence,
-                        "time": time,
-                        "vehicle_id": vehicle_id,
-                    },
-                    arrival_and_departure_retrieve_params.ArrivalAndDepartureRetrieveParams,
-                ),
-            ),
+            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout, query=await async_maybe_transform({
+                "service_date": service_date,
+                "trip_id": trip_id,
+                "stop_sequence": stop_sequence,
+                "time": time,
+                "vehicle_id": vehicle_id,
+            }, arrival_and_departure_retrieve_params.ArrivalAndDepartureRetrieveParams)),
             cast_to=ArrivalAndDepartureRetrieveResponse,
         )
 
-    async def list(
-        self,
-        stop_id: str,
-        *,
-        minutes_after: int | NotGiven = NOT_GIVEN,
-        minutes_before: int | NotGiven = NOT_GIVEN,
-        time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ArrivalAndDepartureListResponse:
+    async def list(self,
+    stop_id: str,
+    *,
+    minutes_after: int | NotGiven = NOT_GIVEN,
+    minutes_before: int | NotGiven = NOT_GIVEN,
+    time: Union[str, datetime] | NotGiven = NOT_GIVEN,
+    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+    # The extra values given here take precedence over values defined on the client or passed to this method.
+    extra_headers: Headers | None = None,
+    extra_query: Query | None = None,
+    extra_body: Body | None = None,
+    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> ArrivalAndDepartureListResponse:
         """
         arrivals-and-departures-for-stop
 
@@ -257,26 +226,18 @@ class AsyncArrivalAndDepartureResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not stop_id:
-            raise ValueError(f"Expected a non-empty value for `stop_id` but received {stop_id!r}")
+          raise ValueError(
+            f'Expected a non-empty value for `stop_id` but received {stop_id!r}'
+          )
         return await self._get(
             f"/api/where/arrivals-and-departures-for-stop/{stop_id}.json",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {
-                        "minutes_after": minutes_after,
-                        "minutes_before": minutes_before,
-                        "time": time,
-                    },
-                    arrival_and_departure_list_params.ArrivalAndDepartureListParams,
-                ),
-            ),
+            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout, query=await async_maybe_transform({
+                "minutes_after": minutes_after,
+                "minutes_before": minutes_before,
+                "time": time,
+            }, arrival_and_departure_list_params.ArrivalAndDepartureListParams)),
             cast_to=ArrivalAndDepartureListResponse,
         )
-
 
 class ArrivalAndDepartureResourceWithRawResponse:
     def __init__(self, arrival_and_departure: ArrivalAndDepartureResource) -> None:
@@ -289,7 +250,6 @@ class ArrivalAndDepartureResourceWithRawResponse:
             arrival_and_departure.list,
         )
 
-
 class AsyncArrivalAndDepartureResourceWithRawResponse:
     def __init__(self, arrival_and_departure: AsyncArrivalAndDepartureResource) -> None:
         self._arrival_and_departure = arrival_and_departure
@@ -301,7 +261,6 @@ class AsyncArrivalAndDepartureResourceWithRawResponse:
             arrival_and_departure.list,
         )
 
-
 class ArrivalAndDepartureResourceWithStreamingResponse:
     def __init__(self, arrival_and_departure: ArrivalAndDepartureResource) -> None:
         self._arrival_and_departure = arrival_and_departure
@@ -312,7 +271,6 @@ class ArrivalAndDepartureResourceWithStreamingResponse:
         self.list = to_streamed_response_wrapper(
             arrival_and_departure.list,
         )
-
 
 class AsyncArrivalAndDepartureResourceWithStreamingResponse:
     def __init__(self, arrival_and_departure: AsyncArrivalAndDepartureResource) -> None:

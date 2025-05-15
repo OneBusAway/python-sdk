@@ -23,7 +23,6 @@ from ..types.vehicles_for_agency_list_response import VehiclesForAgencyListRespo
 
 __all__ = ["VehiclesForAgencyResource", "AsyncVehiclesForAgencyResource"]
 
-
 class VehiclesForAgencyResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> VehiclesForAgencyResourceWithRawResponse:
@@ -44,18 +43,16 @@ class VehiclesForAgencyResource(SyncAPIResource):
         """
         return VehiclesForAgencyResourceWithStreamingResponse(self)
 
-    def list(
-        self,
-        agency_id: str,
-        *,
-        time: str | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> VehiclesForAgencyListResponse:
+    def list(self,
+    agency_id: str,
+    *,
+    time: str | NotGiven = NOT_GIVEN,
+    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+    # The extra values given here take precedence over values defined on the client or passed to this method.
+    extra_headers: Headers | None = None,
+    extra_query: Query | None = None,
+    extra_body: Body | None = None,
+    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> VehiclesForAgencyListResponse:
         """
         Get vehicles for a specific agency
 
@@ -71,19 +68,16 @@ class VehiclesForAgencyResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not agency_id:
-            raise ValueError(f"Expected a non-empty value for `agency_id` but received {agency_id!r}")
+          raise ValueError(
+            f'Expected a non-empty value for `agency_id` but received {agency_id!r}'
+          )
         return self._get(
             f"/api/where/vehicles-for-agency/{agency_id}.json",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform({"time": time}, vehicles_for_agency_list_params.VehiclesForAgencyListParams),
-            ),
+            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout, query=maybe_transform({
+                "time": time
+            }, vehicles_for_agency_list_params.VehiclesForAgencyListParams)),
             cast_to=VehiclesForAgencyListResponse,
         )
-
 
 class AsyncVehiclesForAgencyResource(AsyncAPIResource):
     @cached_property
@@ -105,18 +99,16 @@ class AsyncVehiclesForAgencyResource(AsyncAPIResource):
         """
         return AsyncVehiclesForAgencyResourceWithStreamingResponse(self)
 
-    async def list(
-        self,
-        agency_id: str,
-        *,
-        time: str | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> VehiclesForAgencyListResponse:
+    async def list(self,
+    agency_id: str,
+    *,
+    time: str | NotGiven = NOT_GIVEN,
+    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+    # The extra values given here take precedence over values defined on the client or passed to this method.
+    extra_headers: Headers | None = None,
+    extra_query: Query | None = None,
+    extra_body: Body | None = None,
+    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> VehiclesForAgencyListResponse:
         """
         Get vehicles for a specific agency
 
@@ -132,21 +124,16 @@ class AsyncVehiclesForAgencyResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not agency_id:
-            raise ValueError(f"Expected a non-empty value for `agency_id` but received {agency_id!r}")
+          raise ValueError(
+            f'Expected a non-empty value for `agency_id` but received {agency_id!r}'
+          )
         return await self._get(
             f"/api/where/vehicles-for-agency/{agency_id}.json",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {"time": time}, vehicles_for_agency_list_params.VehiclesForAgencyListParams
-                ),
-            ),
+            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout, query=await async_maybe_transform({
+                "time": time
+            }, vehicles_for_agency_list_params.VehiclesForAgencyListParams)),
             cast_to=VehiclesForAgencyListResponse,
         )
-
 
 class VehiclesForAgencyResourceWithRawResponse:
     def __init__(self, vehicles_for_agency: VehiclesForAgencyResource) -> None:
@@ -156,7 +143,6 @@ class VehiclesForAgencyResourceWithRawResponse:
             vehicles_for_agency.list,
         )
 
-
 class AsyncVehiclesForAgencyResourceWithRawResponse:
     def __init__(self, vehicles_for_agency: AsyncVehiclesForAgencyResource) -> None:
         self._vehicles_for_agency = vehicles_for_agency
@@ -165,7 +151,6 @@ class AsyncVehiclesForAgencyResourceWithRawResponse:
             vehicles_for_agency.list,
         )
 
-
 class VehiclesForAgencyResourceWithStreamingResponse:
     def __init__(self, vehicles_for_agency: VehiclesForAgencyResource) -> None:
         self._vehicles_for_agency = vehicles_for_agency
@@ -173,7 +158,6 @@ class VehiclesForAgencyResourceWithStreamingResponse:
         self.list = to_streamed_response_wrapper(
             vehicles_for_agency.list,
         )
-
 
 class AsyncVehiclesForAgencyResourceWithStreamingResponse:
     def __init__(self, vehicles_for_agency: AsyncVehiclesForAgencyResource) -> None:

@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.8.5 (2025-05-15)
+
+Full Changelog: [v1.8.4...v1.8.5](https://github.com/OneBusAway/python-sdk/compare/v1.8.4...v1.8.5)
+
+### Chores
+
+* **internal:** codegen related update ([#288](https://github.com/OneBusAway/python-sdk/issues/288)) ([d301a0c](https://github.com/OneBusAway/python-sdk/commit/d301a0cf24104ff0d791046c99093f3c47365bf3))
+
 ## 1.8.4 (2025-03-27)
 
 Full Changelog: [v1.8.3...v1.8.4](https://github.com/OneBusAway/python-sdk/compare/v1.8.3...v1.8.4)

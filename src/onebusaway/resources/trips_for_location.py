@@ -23,7 +23,6 @@ from ..types.trips_for_location_list_response import TripsForLocationListRespons
 
 __all__ = ["TripsForLocationResource", "AsyncTripsForLocationResource"]
 
-
 class TripsForLocationResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> TripsForLocationResourceWithRawResponse:
@@ -44,23 +43,21 @@ class TripsForLocationResource(SyncAPIResource):
         """
         return TripsForLocationResourceWithStreamingResponse(self)
 
-    def list(
-        self,
-        *,
-        lat: float,
-        lat_span: float,
-        lon: float,
-        lon_span: float,
-        include_schedule: bool | NotGiven = NOT_GIVEN,
-        include_trip: bool | NotGiven = NOT_GIVEN,
-        time: int | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> TripsForLocationListResponse:
+    def list(self,
+    *,
+    lat: float,
+    lat_span: float,
+    lon: float,
+    lon_span: float,
+    include_schedule: bool | NotGiven = NOT_GIVEN,
+    include_trip: bool | NotGiven = NOT_GIVEN,
+    time: int | NotGiven = NOT_GIVEN,
+    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+    # The extra values given here take precedence over values defined on the client or passed to this method.
+    extra_headers: Headers | None = None,
+    extra_query: Query | None = None,
+    extra_body: Body | None = None,
+    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> TripsForLocationListResponse:
         """
         Retrieve trips for a given location
 
@@ -91,27 +88,17 @@ class TripsForLocationResource(SyncAPIResource):
         """
         return self._get(
             "/api/where/trips-for-location.json",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "lat": lat,
-                        "lat_span": lat_span,
-                        "lon": lon,
-                        "lon_span": lon_span,
-                        "include_schedule": include_schedule,
-                        "include_trip": include_trip,
-                        "time": time,
-                    },
-                    trips_for_location_list_params.TripsForLocationListParams,
-                ),
-            ),
+            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout, query=maybe_transform({
+                "lat": lat,
+                "lat_span": lat_span,
+                "lon": lon,
+                "lon_span": lon_span,
+                "include_schedule": include_schedule,
+                "include_trip": include_trip,
+                "time": time,
+            }, trips_for_location_list_params.TripsForLocationListParams)),
             cast_to=TripsForLocationListResponse,
         )
-
 
 class AsyncTripsForLocationResource(AsyncAPIResource):
     @cached_property
@@ -133,23 +120,21 @@ class AsyncTripsForLocationResource(AsyncAPIResource):
         """
         return AsyncTripsForLocationResourceWithStreamingResponse(self)
 
-    async def list(
-        self,
-        *,
-        lat: float,
-        lat_span: float,
-        lon: float,
-        lon_span: float,
-        include_schedule: bool | NotGiven = NOT_GIVEN,
-        include_trip: bool | NotGiven = NOT_GIVEN,
-        time: int | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> TripsForLocationListResponse:
+    async def list(self,
+    *,
+    lat: float,
+    lat_span: float,
+    lon: float,
+    lon_span: float,
+    include_schedule: bool | NotGiven = NOT_GIVEN,
+    include_trip: bool | NotGiven = NOT_GIVEN,
+    time: int | NotGiven = NOT_GIVEN,
+    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+    # The extra values given here take precedence over values defined on the client or passed to this method.
+    extra_headers: Headers | None = None,
+    extra_query: Query | None = None,
+    extra_body: Body | None = None,
+    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> TripsForLocationListResponse:
         """
         Retrieve trips for a given location
 
@@ -180,27 +165,17 @@ class AsyncTripsForLocationResource(AsyncAPIResource):
         """
         return await self._get(
             "/api/where/trips-for-location.json",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {
-                        "lat": lat,
-                        "lat_span": lat_span,
-                        "lon": lon,
-                        "lon_span": lon_span,
-                        "include_schedule": include_schedule,
-                        "include_trip": include_trip,
-                        "time": time,
-                    },
-                    trips_for_location_list_params.TripsForLocationListParams,
-                ),
-            ),
+            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout, query=await async_maybe_transform({
+                "lat": lat,
+                "lat_span": lat_span,
+                "lon": lon,
+                "lon_span": lon_span,
+                "include_schedule": include_schedule,
+                "include_trip": include_trip,
+                "time": time,
+            }, trips_for_location_list_params.TripsForLocationListParams)),
             cast_to=TripsForLocationListResponse,
         )
-
 
 class TripsForLocationResourceWithRawResponse:
     def __init__(self, trips_for_location: TripsForLocationResource) -> None:
@@ -210,7 +185,6 @@ class TripsForLocationResourceWithRawResponse:
             trips_for_location.list,
         )
 
-
 class AsyncTripsForLocationResourceWithRawResponse:
     def __init__(self, trips_for_location: AsyncTripsForLocationResource) -> None:
         self._trips_for_location = trips_for_location
@@ -219,7 +193,6 @@ class AsyncTripsForLocationResourceWithRawResponse:
             trips_for_location.list,
         )
 
-
 class TripsForLocationResourceWithStreamingResponse:
     def __init__(self, trips_for_location: TripsForLocationResource) -> None:
         self._trips_for_location = trips_for_location
@@ -227,7 +200,6 @@ class TripsForLocationResourceWithStreamingResponse:
         self.list = to_streamed_response_wrapper(
             trips_for_location.list,
         )
-
 
 class AsyncTripsForLocationResourceWithStreamingResponse:
     def __init__(self, trips_for_location: AsyncTripsForLocationResource) -> None:

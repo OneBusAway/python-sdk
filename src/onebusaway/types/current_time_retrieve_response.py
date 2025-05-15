@@ -10,18 +10,15 @@ from .shared.response_wrapper import ResponseWrapper
 
 __all__ = ["CurrentTimeRetrieveResponse", "CurrentTimeRetrieveResponseData", "CurrentTimeRetrieveResponseDataEntry"]
 
-
 class CurrentTimeRetrieveResponseDataEntry(BaseModel):
-    readable_time: Optional[str] = FieldInfo(alias="readableTime", default=None)
+    readable_time: Optional[str] = FieldInfo(alias = "readableTime", default = None)
 
     time: Optional[int] = None
-
 
 class CurrentTimeRetrieveResponseData(BaseModel):
     entry: CurrentTimeRetrieveResponseDataEntry
 
     references: References
-
 
 class CurrentTimeRetrieveResponse(ResponseWrapper):
     data: CurrentTimeRetrieveResponseData

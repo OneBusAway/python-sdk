@@ -18,7 +18,6 @@ from ..types.stop_ids_for_agency_list_response import StopIDsForAgencyListRespon
 
 __all__ = ["StopIDsForAgencyResource", "AsyncStopIDsForAgencyResource"]
 
-
 class StopIDsForAgencyResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> StopIDsForAgencyResourceWithRawResponse:
@@ -39,17 +38,15 @@ class StopIDsForAgencyResource(SyncAPIResource):
         """
         return StopIDsForAgencyResourceWithStreamingResponse(self)
 
-    def list(
-        self,
-        agency_id: str,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> StopIDsForAgencyListResponse:
+    def list(self,
+    agency_id: str,
+    *,
+    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+    # The extra values given here take precedence over values defined on the client or passed to this method.
+    extra_headers: Headers | None = None,
+    extra_query: Query | None = None,
+    extra_body: Body | None = None,
+    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> StopIDsForAgencyListResponse:
         """
         Get stop IDs for a specific agency
 
@@ -63,15 +60,14 @@ class StopIDsForAgencyResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not agency_id:
-            raise ValueError(f"Expected a non-empty value for `agency_id` but received {agency_id!r}")
+          raise ValueError(
+            f'Expected a non-empty value for `agency_id` but received {agency_id!r}'
+          )
         return self._get(
             f"/api/where/stop-ids-for-agency/{agency_id}.json",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
+            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout),
             cast_to=StopIDsForAgencyListResponse,
         )
-
 
 class AsyncStopIDsForAgencyResource(AsyncAPIResource):
     @cached_property
@@ -93,17 +89,15 @@ class AsyncStopIDsForAgencyResource(AsyncAPIResource):
         """
         return AsyncStopIDsForAgencyResourceWithStreamingResponse(self)
 
-    async def list(
-        self,
-        agency_id: str,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> StopIDsForAgencyListResponse:
+    async def list(self,
+    agency_id: str,
+    *,
+    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+    # The extra values given here take precedence over values defined on the client or passed to this method.
+    extra_headers: Headers | None = None,
+    extra_query: Query | None = None,
+    extra_body: Body | None = None,
+    timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,) -> StopIDsForAgencyListResponse:
         """
         Get stop IDs for a specific agency
 
@@ -117,15 +111,14 @@ class AsyncStopIDsForAgencyResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         if not agency_id:
-            raise ValueError(f"Expected a non-empty value for `agency_id` but received {agency_id!r}")
+          raise ValueError(
+            f'Expected a non-empty value for `agency_id` but received {agency_id!r}'
+          )
         return await self._get(
             f"/api/where/stop-ids-for-agency/{agency_id}.json",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
+            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout),
             cast_to=StopIDsForAgencyListResponse,
         )
-
 
 class StopIDsForAgencyResourceWithRawResponse:
     def __init__(self, stop_ids_for_agency: StopIDsForAgencyResource) -> None:
@@ -135,7 +128,6 @@ class StopIDsForAgencyResourceWithRawResponse:
             stop_ids_for_agency.list,
         )
 
-
 class AsyncStopIDsForAgencyResourceWithRawResponse:
     def __init__(self, stop_ids_for_agency: AsyncStopIDsForAgencyResource) -> None:
         self._stop_ids_for_agency = stop_ids_for_agency
@@ -144,7 +136,6 @@ class AsyncStopIDsForAgencyResourceWithRawResponse:
             stop_ids_for_agency.list,
         )
 
-
 class StopIDsForAgencyResourceWithStreamingResponse:
     def __init__(self, stop_ids_for_agency: StopIDsForAgencyResource) -> None:
         self._stop_ids_for_agency = stop_ids_for_agency
@@ -152,7 +143,6 @@ class StopIDsForAgencyResourceWithStreamingResponse:
         self.list = to_streamed_response_wrapper(
             stop_ids_for_agency.list,
         )
-
 
 class AsyncStopIDsForAgencyResourceWithStreamingResponse:
     def __init__(self, stop_ids_for_agency: AsyncStopIDsForAgencyResource) -> None:

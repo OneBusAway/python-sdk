@@ -8,7 +8,6 @@ from .._utils import PropertyInfo
 
 __all__ = ["RoutesForLocationListParams"]
 
-
 class RoutesForLocationListParams(TypedDict, total=False):
     lat: Required[float]
 
