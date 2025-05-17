@@ -16,6 +16,8 @@ class StopRetrieveResponseDataEntry(BaseModel):
 
     lat: float
 
+    location_type: int = FieldInfo(alias="locationType")
+
     lon: float
 
     name: str
@@ -29,8 +31,6 @@ class StopRetrieveResponseDataEntry(BaseModel):
     code: Optional[str] = None
 
     direction: Optional[str] = None
-
-    location_type: Optional[int] = FieldInfo(alias="locationType", default=None)
 
     wheelchair_boarding: Optional[str] = FieldInfo(alias="wheelchairBoarding", default=None)
 
