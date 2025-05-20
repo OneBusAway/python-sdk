@@ -262,6 +262,9 @@ class OnebusawaySDK(SyncAPIClient):
     # client.with_options(timeout=10).foo.create(...)
     with_options = copy
 
+    def _get_api_key_query_param(self) -> str | None:
+        return self.api_key
+
     @override
     def _make_status_error(
         self,
@@ -486,6 +489,9 @@ class AsyncOnebusawaySDK(AsyncAPIClient):
     # Alias for `copy` for nicer inline usage, e.g.
     # client.with_options(timeout=10).foo.create(...)
     with_options = copy
+
+    def _get_api_key_query_param(self) -> str | None:
+        return self.api_key
 
     @override
     def _make_status_error(
