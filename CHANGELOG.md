@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.11.1 (2025-05-22)
+
+Full Changelog: [v1.11.0...v1.11.1](https://github.com/OneBusAway/python-sdk/compare/v1.11.0...v1.11.1)
+
+### Chores
+
+* **docs:** grammar improvements ([052af65](https://github.com/OneBusAway/python-sdk/commit/052af65693c380484e4e920b4a831c52b4345daa))
+
 ## 1.11.0 (2025-05-20)
 
 Full Changelog: [v1.10.0...v1.11.0](https://github.com/OneBusAway/python-sdk/compare/v1.10.0...v1.11.0)
