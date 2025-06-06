@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.12.0 (2025-06-03)
+
+Full Changelog: [v1.11.1...v1.12.0](https://github.com/OneBusAway/python-sdk/compare/v1.11.1...v1.12.0)
+
+### Features
+
+* **client:** add follow_redirects request option ([569c63a](https://github.com/OneBusAway/python-sdk/commit/569c63a79d7d69d4e7f54466860e462114385db9))
+
+
+### Chores
+
+* **docs:** remove reference to rye shell ([064f5b8](https://github.com/OneBusAway/python-sdk/commit/064f5b86a6b67b49431886f2892cdfb6cd221e8a))
+
 ## 1.11.1 (2025-05-22)
 
 Full Changelog: [v1.11.0...v1.11.1](https://github.com/OneBusAway/python-sdk/compare/v1.11.0...v1.11.1)
