@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.12.1 (2025-06-13)
+
+Full Changelog: [v1.12.0...v1.12.1](https://github.com/OneBusAway/python-sdk/compare/v1.12.0...v1.12.1)
+
+### Bug Fixes
+
+* **client:** correctly parse binary response | stream ([4bc049c](https://github.com/OneBusAway/python-sdk/commit/4bc049ce0a36680434f5570fd38f3ca673250bba))
+
+
+### Chores
+
+* **tests:** run tests in parallel ([1329bbe](https://github.com/OneBusAway/python-sdk/commit/1329bbe39e76943fe51efea63dc5ee7f85154135))
+
 ## 1.12.0 (2025-06-03)
 
 Full Changelog: [v1.11.1...v1.12.0](https://github.com/OneBusAway/python-sdk/compare/v1.11.1...v1.12.0)
