@@ -24,7 +24,6 @@ from pydantic import ValidationError
 from onebusaway import OnebusawaySDK, AsyncOnebusawaySDK, APIResponseValidationError
 from onebusaway._types import Omit
 from onebusaway._models import BaseModel, FinalRequestOptions
-from onebusaway._constants import RAW_RESPONSE_HEADER
 from onebusaway._exceptions import APIStatusError, APITimeoutError, APIResponseValidationError
 from onebusaway._base_client import (
     DEFAULT_TIMEOUT,
@@ -713,30 +712,21 @@ class TestOnebusawaySDK:
 
     @mock.patch("onebusaway._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
-    def test_retrying_timeout_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
+    def test_retrying_timeout_errors_doesnt_leak(self, respx_mock: MockRouter, client: OnebusawaySDK) -> None:
         respx_mock.get("/api/where/current-time.json").mock(side_effect=httpx.TimeoutException("Test timeout error"))
 
         with pytest.raises(APITimeoutError):
-            self.client.get(
-                "/api/where/current-time.json",
-                cast_to=httpx.Response,
-                options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
-            )
+            client.current_time.with_streaming_response.retrieve().__enter__()
 
         assert _get_open_connections(self.client) == 0
 
     @mock.patch("onebusaway._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
-    def test_retrying_status_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
+    def test_retrying_status_errors_doesnt_leak(self, respx_mock: MockRouter, client: OnebusawaySDK) -> None:
         respx_mock.get("/api/where/current-time.json").mock(return_value=httpx.Response(500))
 
         with pytest.raises(APIStatusError):
-            self.client.get(
-                "/api/where/current-time.json",
-                cast_to=httpx.Response,
-                options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
-            )
-
+            client.current_time.with_streaming_response.retrieve().__enter__()
         assert _get_open_connections(self.client) == 0
 
     @pytest.mark.parametrize("failures_before_success", [0, 2, 4])
@@ -1526,30 +1516,25 @@ class TestAsyncOnebusawaySDK:
 
     @mock.patch("onebusaway._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
-    async def test_retrying_timeout_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
+    async def test_retrying_timeout_errors_doesnt_leak(
+        self, respx_mock: MockRouter, async_client: AsyncOnebusawaySDK
+    ) -> None:
         respx_mock.get("/api/where/current-time.json").mock(side_effect=httpx.TimeoutException("Test timeout error"))
 
         with pytest.raises(APITimeoutError):
-            await self.client.get(
-                "/api/where/current-time.json",
-                cast_to=httpx.Response,
-                options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
-            )
+            await async_client.current_time.with_streaming_response.retrieve().__aenter__()
 
         assert _get_open_connections(self.client) == 0
 
     @mock.patch("onebusaway._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
-    async def test_retrying_status_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
+    async def test_retrying_status_errors_doesnt_leak(
+        self, respx_mock: MockRouter, async_client: AsyncOnebusawaySDK
+    ) -> None:
         respx_mock.get("/api/where/current-time.json").mock(return_value=httpx.Response(500))
 
         with pytest.raises(APIStatusError):
-            await self.client.get(
-                "/api/where/current-time.json",
-                cast_to=httpx.Response,
-                options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
-            )
-
+            await async_client.current_time.with_streaming_response.retrieve().__aenter__()
         assert _get_open_connections(self.client) == 0
 
     @pytest.mark.parametrize("failures_before_success", [0, 2, 4])
