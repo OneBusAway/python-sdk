@@ -1,6 +1,6 @@
 # OneBusAway SDK Python API library
 
-[![PyPI version](https://img.shields.io/pypi/v/onebusaway.svg)](https://pypi.org/project/onebusaway/)
+[![PyPI version](<https://img.shields.io/pypi/v/onebusaway.svg?label=pypi%20(stable)>)](https://pypi.org/project/onebusaway/)
 
 
 The Onebusaway SDK Python library provides convenient access to the Onebusaway SDK REST API from any Python 3.8+
