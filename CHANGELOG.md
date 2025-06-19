@@ -1,5 +1,26 @@
 # Changelog
 
+## 1.12.2 (2025-06-19)
+
+Full Changelog: [v1.12.1...v1.12.2](https://github.com/OneBusAway/python-sdk/compare/v1.12.1...v1.12.2)
+
+### Bug Fixes
+
+* **tests:** fix: tests which call HTTP endpoints directly with the example parameters ([355779a](https://github.com/OneBusAway/python-sdk/commit/355779aceef53b58275a4dab5020d414044adbb0))
+
+
+### Chores
+
+* **ci:** enable for pull requests ([2b9118f](https://github.com/OneBusAway/python-sdk/commit/2b9118f1154e0f8e90c71a1fb37577c63a57c63f))
+* **internal:** update conftest.py ([a2b6c3e](https://github.com/OneBusAway/python-sdk/commit/a2b6c3e1d78656155c5eb2f0a1cff69de045909b))
+* **readme:** update badges ([dc50499](https://github.com/OneBusAway/python-sdk/commit/dc504994e1f2c2c76e0a46941b97b35a90b0e5c5))
+* **tests:** add tests for httpx client instantiation & proxies ([55c4719](https://github.com/OneBusAway/python-sdk/commit/55c4719837747d638cfbb9e79f683189045338ab))
+
+
+### Documentation
+
+* **client:** fix httpx.Timeout documentation reference ([5e8cb3a](https://github.com/OneBusAway/python-sdk/commit/5e8cb3aa66d4a60f7e96d71cf5bbf2fedeb172ef))
+
 ## 1.12.1 (2025-06-13)
 
 Full Changelog: [v1.12.0...v1.12.1](https://github.com/OneBusAway/python-sdk/compare/v1.12.0...v1.12.1)
