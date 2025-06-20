@@ -1,6 +1,6 @@
 # OneBusAway SDK Python API library
 
-[![PyPI version](https://img.shields.io/pypi/v/onebusaway.svg)](https://pypi.org/project/onebusaway/)
+[![PyPI version](<https://img.shields.io/pypi/v/onebusaway.svg?label=pypi%20(stable)>)](https://pypi.org/project/onebusaway/)
 
 
 The Onebusaway SDK Python library provides convenient access to the Onebusaway SDK REST API from any Python 3.8+
@@ -138,7 +138,7 @@ client.with_options(max_retries=5).current_time.retrieve()
 ### Timeouts
 
 By default requests time out after 1 minute. You can configure this with a `timeout` option,
-which accepts a float or an [`httpx.Timeout`](https://www.python-httpx.org/advanced/#fine-tuning-the-configuration) object:
+which accepts a float or an [`httpx.Timeout`](https://www.python-httpx.org/advanced/timeouts/#fine-tuning-the-configuration) object:
 
 ```python
 from onebusaway import OnebusawaySDK
