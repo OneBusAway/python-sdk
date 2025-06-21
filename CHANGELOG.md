@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.13.0 (2025-06-21)
+
+Full Changelog: [v1.12.2...v1.13.0](https://github.com/OneBusAway/python-sdk/compare/v1.12.2...v1.13.0)
+
+### Features
+
+* **client:** add support for aiohttp ([30eada9](https://github.com/OneBusAway/python-sdk/commit/30eada97ab7083d960307901bb55ef931ff6b202))
+
 ## 1.12.2 (2025-06-19)
 
 Full Changelog: [v1.12.1...v1.12.2](https://github.com/OneBusAway/python-sdk/compare/v1.12.1...v1.12.2)
