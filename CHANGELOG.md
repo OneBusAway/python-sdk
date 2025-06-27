@@ -1,5 +1,23 @@
 # Changelog
 
+## 1.13.0 (2025-06-27)
+
+Full Changelog: [v1.12.2...v1.13.0](https://github.com/OneBusAway/python-sdk/compare/v1.12.2...v1.13.0)
+
+### Features
+
+* **client:** add support for aiohttp ([30eada9](https://github.com/OneBusAway/python-sdk/commit/30eada97ab7083d960307901bb55ef931ff6b202))
+
+
+### Bug Fixes
+
+* **ci:** release-doctor — report correct token name ([32bbbb3](https://github.com/OneBusAway/python-sdk/commit/32bbbb36efc1e3ebe55502aba1d140b0670e671c))
+
+
+### Chores
+
+* **tests:** skip some failing tests on the latest python versions ([6a88517](https://github.com/OneBusAway/python-sdk/commit/6a88517328513ff342df314e1d1da26795f3bb72))
+
 ## 1.12.2 (2025-06-19)
 
 Full Changelog: [v1.12.1...v1.12.2](https://github.com/OneBusAway/python-sdk/compare/v1.12.1...v1.12.2)
