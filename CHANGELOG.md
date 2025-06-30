@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.13.1 (2025-06-30)
+
+Full Changelog: [v1.13.0...v1.13.1](https://github.com/OneBusAway/python-sdk/compare/v1.13.0...v1.13.1)
+
+### Bug Fixes
+
+* **ci:** correct conditional ([1b938b2](https://github.com/OneBusAway/python-sdk/commit/1b938b23923b4ee59453b26a896747bd7f4d0386))
+
+
+### Chores
+
+* **ci:** only run for pushes and fork pull requests ([e15aec6](https://github.com/OneBusAway/python-sdk/commit/e15aec647d9bdbcbd061158740afa8df57f0d41c))
+
 ## 1.13.0 (2025-06-27)
 
 Full Changelog: [v1.12.2...v1.13.0](https://github.com/OneBusAway/python-sdk/compare/v1.12.2...v1.13.0)
