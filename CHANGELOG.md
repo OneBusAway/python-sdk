@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.13.2 (2025-07-05)
+
+Full Changelog: [v1.13.1...v1.13.2](https://github.com/OneBusAway/python-sdk/compare/v1.13.1...v1.13.2)
+
+### Chores
+
+* **internal:** version bump ([b017c04](https://github.com/OneBusAway/python-sdk/commit/b017c04d3b411ec13e528851f32c850839c3274d))
+
 ## 1.13.1 (2025-07-02)
 
 Full Changelog: [v1.13.0...v1.13.1](https://github.com/OneBusAway/python-sdk/compare/v1.13.0...v1.13.1)
