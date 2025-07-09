@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.13.3 (2025-07-09)
+
+Full Changelog: [v1.13.2...v1.13.3](https://github.com/OneBusAway/python-sdk/compare/v1.13.2...v1.13.3)
+
+### Chores
+
+* **internal:** bump pinned h11 dep ([495b65d](https://github.com/OneBusAway/python-sdk/commit/495b65dad98321a877258bdd87872357c245f9cf))
+* **package:** mark python 3.13 as supported ([404807c](https://github.com/OneBusAway/python-sdk/commit/404807c5890115889c90bc1236f9ca0b57a426c8))
+
 ## 1.13.2 (2025-07-05)
 
 Full Changelog: [v1.13.1...v1.13.2](https://github.com/OneBusAway/python-sdk/compare/v1.13.1...v1.13.2)
