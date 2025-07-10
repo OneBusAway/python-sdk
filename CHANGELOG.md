@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.13.4 (2025-07-10)
+
+Full Changelog: [v1.13.3...v1.13.4](https://github.com/OneBusAway/python-sdk/compare/v1.13.3...v1.13.4)
+
+### Bug Fixes
+
+* **parsing:** correctly handle nested discriminated unions ([d1bb078](https://github.com/OneBusAway/python-sdk/commit/d1bb078b61f81f9f5192505e08cea3dc7df136f4))
+
 ## 1.13.3 (2025-07-09)
 
 Full Changelog: [v1.13.2...v1.13.3](https://github.com/OneBusAway/python-sdk/compare/v1.13.2...v1.13.3)
