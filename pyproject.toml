@@ -1,6 +1,6 @@
 [project]
 name = "onebusaway"
-version = "1.13.4"
+version = "1.13.5"
 description = "The official Python library for the onebusaway-sdk API"
 dynamic = ["readme"]
 license = "Apache-2.0"
@@ -39,7 +39,7 @@ Homepage = "https://github.com/OneBusAway/python-sdk"
 Repository = "https://github.com/OneBusAway/python-sdk"
 
 [project.optional-dependencies]
-aiohttp = ["aiohttp", "httpx_aiohttp>=0.1.6"]
+aiohttp = ["aiohttp", "httpx_aiohttp>=0.1.8"]
 
 [tool.rye]
 managed = true

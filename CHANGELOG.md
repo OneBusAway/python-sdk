@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.13.5 (2025-07-12)
+
+Full Changelog: [v1.13.4...v1.13.5](https://github.com/OneBusAway/python-sdk/compare/v1.13.4...v1.13.5)
+
+### Bug Fixes
+
+* **client:** don't send Content-Type header on GET requests ([935e2d2](https://github.com/OneBusAway/python-sdk/commit/935e2d25ec8736de5b30d7653c2e85fd5620a45d))
+
+
+### Chores
+
+* **readme:** fix version rendering on pypi ([e29e75d](https://github.com/OneBusAway/python-sdk/commit/e29e75dcc69ffc9b0c434cf556cfa9b5b374d7a4))
+
 ## 1.13.4 (2025-07-10)
 
 Full Changelog: [v1.13.3...v1.13.4](https://github.com/OneBusAway/python-sdk/compare/v1.13.3...v1.13.4)
