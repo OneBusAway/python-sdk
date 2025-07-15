@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.14.0 (2025-07-15)
+
+Full Changelog: [v1.13.5...v1.14.0](https://github.com/OneBusAway/python-sdk/compare/v1.13.5...v1.14.0)
+
+### Features
+
+* clean up environment call outs ([ecac1f6](https://github.com/OneBusAway/python-sdk/commit/ecac1f6610cdae3cde3a0f982c4bc11192a5a809))
+
 ## 1.13.5 (2025-07-12)
 
 Full Changelog: [v1.13.4...v1.13.5](https://github.com/OneBusAway/python-sdk/compare/v1.13.4...v1.13.5)
