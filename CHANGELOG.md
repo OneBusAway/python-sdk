@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.14.1 (2025-07-23)
+
+Full Changelog: [v1.14.0...v1.14.1](https://github.com/OneBusAway/python-sdk/compare/v1.14.0...v1.14.1)
+
+### Bug Fixes
+
+* **parsing:** ignore empty metadata ([eef0db2](https://github.com/OneBusAway/python-sdk/commit/eef0db25134ae51703d4560860a984ddc603e114))
+* **parsing:** parse extra field types ([e477fc8](https://github.com/OneBusAway/python-sdk/commit/e477fc84dbc063d64fc6983e243f0a41a6dfd07c))
+
 ## 1.14.0 (2025-07-15)
 
 Full Changelog: [v1.13.5...v1.14.0](https://github.com/OneBusAway/python-sdk/compare/v1.13.5...v1.14.0)
