@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.14.2 (2025-07-25)
+
+Full Changelog: [v1.14.1...v1.14.2](https://github.com/OneBusAway/python-sdk/compare/v1.14.1...v1.14.2)
+
+### Chores
+
+* **project:** add settings file for vscode ([995b6d4](https://github.com/OneBusAway/python-sdk/commit/995b6d4a9aea939ac187f802cf330a0db134997d))
+
 ## 1.14.1 (2025-07-23)
 
 Full Changelog: [v1.14.0...v1.14.1](https://github.com/OneBusAway/python-sdk/compare/v1.14.0...v1.14.1)
