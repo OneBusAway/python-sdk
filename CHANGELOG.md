@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.15.0 (2025-07-31)
+
+Full Changelog: [v1.14.2...v1.15.0](https://github.com/OneBusAway/python-sdk/compare/v1.14.2...v1.15.0)
+
+### Features
+
+* **client:** support file upload requests ([27cab18](https://github.com/OneBusAway/python-sdk/commit/27cab1813ce2774ca1a88856190898d28b303c00))
+
 ## 1.14.2 (2025-07-25)
 
 Full Changelog: [v1.14.1...v1.14.2](https://github.com/OneBusAway/python-sdk/compare/v1.14.1...v1.14.2)
