@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.15.1 (2025-08-06)
+
+Full Changelog: [v1.15.0...v1.15.1](https://github.com/OneBusAway/python-sdk/compare/v1.15.0...v1.15.1)
+
+### Chores
+
+* **internal:** fix ruff target version ([5d8b092](https://github.com/OneBusAway/python-sdk/commit/5d8b092137e533550f599dc96b42202c9057d35c))
+
 ## 1.15.0 (2025-07-31)
 
 Full Changelog: [v1.14.2...v1.15.0](https://github.com/OneBusAway/python-sdk/compare/v1.14.2...v1.15.0)
