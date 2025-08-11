@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.15.2 (2025-08-10)
+
+Full Changelog: [v1.15.1...v1.15.2](https://github.com/OneBusAway/python-sdk/compare/v1.15.1...v1.15.2)
+
+### Chores
+
+* **internal:** update comment in script ([b0cd25c](https://github.com/OneBusAway/python-sdk/commit/b0cd25ccb53b773dd3df52aaf01f4d4c7cd48c60))
+* update @stainless-api/prism-cli to v5.15.0 ([af3e4cf](https://github.com/OneBusAway/python-sdk/commit/af3e4cf8c736a9dd2da2b348a55c75721e2537be))
+
 ## 1.15.1 (2025-08-06)
 
 Full Changelog: [v1.15.0...v1.15.1](https://github.com/OneBusAway/python-sdk/compare/v1.15.0...v1.15.1)
