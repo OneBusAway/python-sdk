@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.15.3 (2025-08-26)
+
+Full Changelog: [v1.15.2...v1.15.3](https://github.com/OneBusAway/python-sdk/compare/v1.15.2...v1.15.3)
+
+### Chores
+
+* **internal:** change ci workflow machines ([0225ca8](https://github.com/OneBusAway/python-sdk/commit/0225ca83be2a3f4c8466ab9416340c1bb8919daa))
+* update github action ([f1e8695](https://github.com/OneBusAway/python-sdk/commit/f1e8695c9f221b19dbeb9f0fa0fb9fd1aa9b9959))
+
 ## 1.15.2 (2025-08-10)
 
 Full Changelog: [v1.15.1...v1.15.2](https://github.com/OneBusAway/python-sdk/compare/v1.15.1...v1.15.2)
