@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.15.4 (2025-08-27)
+
+Full Changelog: [v1.15.3...v1.15.4](https://github.com/OneBusAway/python-sdk/compare/v1.15.3...v1.15.4)
+
+### Bug Fixes
+
+* avoid newer type syntax ([4100abb](https://github.com/OneBusAway/python-sdk/commit/4100abbcad60289bd7e9e8b4215e2e319f82fc55))
+
+
+### Chores
+
+* **internal:** update pyright exclude list ([c71f41b](https://github.com/OneBusAway/python-sdk/commit/c71f41b6ae8c1f774d1a70407815f5fb0f34e810))
+
 ## 1.15.3 (2025-08-26)
 
 Full Changelog: [v1.15.2...v1.15.3](https://github.com/OneBusAway/python-sdk/compare/v1.15.2...v1.15.3)
