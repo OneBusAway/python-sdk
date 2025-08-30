@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.15.5 (2025-08-30)
+
+Full Changelog: [v1.15.4...v1.15.5](https://github.com/OneBusAway/python-sdk/compare/v1.15.4...v1.15.5)
+
+### Chores
+
+* **internal:** add Sequence related utils ([767a34a](https://github.com/OneBusAway/python-sdk/commit/767a34a8634d836ec05bc577e640df14416dd9c2))
+
 ## 1.15.4 (2025-08-27)
 
 Full Changelog: [v1.15.3...v1.15.4](https://github.com/OneBusAway/python-sdk/compare/v1.15.3...v1.15.4)
