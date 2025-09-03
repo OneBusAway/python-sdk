@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.16.0 (2025-09-03)
+
+Full Changelog: [v1.15.5...v1.16.0](https://github.com/OneBusAway/python-sdk/compare/v1.15.5...v1.16.0)
+
+### Features
+
+* **types:** replace List[str] with SequenceNotStr in params ([810c88d](https://github.com/OneBusAway/python-sdk/commit/810c88dfa53496c5d0c0b913cf1944da6de86185))
+
 ## 1.15.5 (2025-08-30)
 
 Full Changelog: [v1.15.4...v1.15.5](https://github.com/OneBusAway/python-sdk/compare/v1.15.4...v1.15.5)
