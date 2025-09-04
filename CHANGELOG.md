@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.17.0 (2025-09-04)
+
+Full Changelog: [v1.16.0...v1.17.0](https://github.com/OneBusAway/python-sdk/compare/v1.16.0...v1.17.0)
+
+### Features
+
+* improve future compat with pydantic v3 ([1b63906](https://github.com/OneBusAway/python-sdk/commit/1b63906456bd2aecd39460d9b12bf45a063b7392))
+
 ## 1.16.0 (2025-09-03)
 
 Full Changelog: [v1.15.5...v1.16.0](https://github.com/OneBusAway/python-sdk/compare/v1.15.5...v1.16.0)
