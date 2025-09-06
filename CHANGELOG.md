@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.17.1 (2025-09-06)
+
+Full Changelog: [v1.17.0...v1.17.1](https://github.com/OneBusAway/python-sdk/compare/v1.17.0...v1.17.1)
+
+### Chores
+
+* **internal:** move mypy configurations to `pyproject.toml` file ([baa06e6](https://github.com/OneBusAway/python-sdk/commit/baa06e63b06e3082adc11f9a7930276c8777d527))
+* **tests:** simplify `get_platform` test ([0cced81](https://github.com/OneBusAway/python-sdk/commit/0cced81054c3e77548c7b34fe4899ccbbc9efb96))
+
 ## 1.17.0 (2025-09-04)
 
 Full Changelog: [v1.16.0...v1.17.0](https://github.com/OneBusAway/python-sdk/compare/v1.16.0...v1.17.0)
