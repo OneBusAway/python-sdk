@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.17.2 (2025-09-19)
+
+Full Changelog: [v1.17.1...v1.17.2](https://github.com/OneBusAway/python-sdk/compare/v1.17.1...v1.17.2)
+
+### Chores
+
+* **internal:** update pydantic dependency ([c13d52b](https://github.com/OneBusAway/python-sdk/commit/c13d52be2ec7ab0ff9da3f2120792d9ed247881e))
+* **types:** change optional parameter type from NotGiven to Omit ([c24d539](https://github.com/OneBusAway/python-sdk/commit/c24d539861b7594e5a88f68de5a422ab0db096e3))
+
 ## 1.17.1 (2025-09-06)
 
 Full Changelog: [v1.17.0...v1.17.1](https://github.com/OneBusAway/python-sdk/compare/v1.17.0...v1.17.1)

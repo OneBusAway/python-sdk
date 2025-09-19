@@ -8,7 +8,7 @@ from datetime import datetime
 import httpx
 
 from ..types import arrival_and_departure_list_params, arrival_and_departure_retrieve_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -51,15 +51,15 @@ class ArrivalAndDepartureResource(SyncAPIResource):
         *,
         service_date: int,
         trip_id: str,
-        stop_sequence: int | NotGiven = NOT_GIVEN,
-        time: int | NotGiven = NOT_GIVEN,
-        vehicle_id: str | NotGiven = NOT_GIVEN,
+        stop_sequence: int | Omit = omit,
+        time: int | Omit = omit,
+        vehicle_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ArrivalAndDepartureRetrieveResponse:
         """
         arrival-and-departure-for-stop
@@ -100,15 +100,15 @@ class ArrivalAndDepartureResource(SyncAPIResource):
         self,
         stop_id: str,
         *,
-        minutes_after: int | NotGiven = NOT_GIVEN,
-        minutes_before: int | NotGiven = NOT_GIVEN,
-        time: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        minutes_after: int | Omit = omit,
+        minutes_before: int | Omit = omit,
+        time: Union[str, datetime] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ArrivalAndDepartureListResponse:
         """
         arrivals-and-departures-for-stop
@@ -176,15 +176,15 @@ class AsyncArrivalAndDepartureResource(AsyncAPIResource):
         *,
         service_date: int,
         trip_id: str,
-        stop_sequence: int | NotGiven = NOT_GIVEN,
-        time: int | NotGiven = NOT_GIVEN,
-        vehicle_id: str | NotGiven = NOT_GIVEN,
+        stop_sequence: int | Omit = omit,
+        time: int | Omit = omit,
+        vehicle_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ArrivalAndDepartureRetrieveResponse:
         """
         arrival-and-departure-for-stop
@@ -225,15 +225,15 @@ class AsyncArrivalAndDepartureResource(AsyncAPIResource):
         self,
         stop_id: str,
         *,
-        minutes_after: int | NotGiven = NOT_GIVEN,
-        minutes_before: int | NotGiven = NOT_GIVEN,
-        time: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        minutes_after: int | Omit = omit,
+        minutes_before: int | Omit = omit,
+        time: Union[str, datetime] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ArrivalAndDepartureListResponse:
         """
         arrivals-and-departures-for-stop
