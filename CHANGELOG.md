@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.17.3 (2025-09-20)
+
+Full Changelog: [v1.17.2...v1.17.3](https://github.com/OneBusAway/python-sdk/compare/v1.17.2...v1.17.3)
+
+### Chores
+
+* do not install brew dependencies in ./scripts/bootstrap by default ([39dcea7](https://github.com/OneBusAway/python-sdk/commit/39dcea7358a13250e6ef328e8885052155a64445))
+
 ## 1.17.2 (2025-09-19)
 
 Full Changelog: [v1.17.1...v1.17.2](https://github.com/OneBusAway/python-sdk/compare/v1.17.1...v1.17.2)
