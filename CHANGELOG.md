@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.17.4 (2025-09-23)
+
+Full Changelog: [v1.17.3...v1.17.4](https://github.com/OneBusAway/python-sdk/compare/v1.17.3...v1.17.4)
+
+### Chores
+
+* improve example values ([7a14d29](https://github.com/OneBusAway/python-sdk/commit/7a14d29ad55a4bf845d71ea5aee8ae00a4ed3cdc))
+
 ## 1.17.3 (2025-09-20)
 
 Full Changelog: [v1.17.2...v1.17.3](https://github.com/OneBusAway/python-sdk/compare/v1.17.2...v1.17.3)
