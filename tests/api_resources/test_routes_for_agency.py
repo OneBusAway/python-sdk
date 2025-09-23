@@ -20,14 +20,14 @@ class TestRoutesForAgency:
     @parametrize
     def test_method_list(self, client: OnebusawaySDK) -> None:
         routes_for_agency = client.routes_for_agency.list(
-            "agencyID",
+            "40",
         )
         assert_matches_type(RoutesForAgencyListResponse, routes_for_agency, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: OnebusawaySDK) -> None:
         response = client.routes_for_agency.with_raw_response.list(
-            "agencyID",
+            "40",
         )
 
         assert response.is_closed is True
@@ -38,7 +38,7 @@ class TestRoutesForAgency:
     @parametrize
     def test_streaming_response_list(self, client: OnebusawaySDK) -> None:
         with client.routes_for_agency.with_streaming_response.list(
-            "agencyID",
+            "40",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -64,14 +64,14 @@ class TestAsyncRoutesForAgency:
     @parametrize
     async def test_method_list(self, async_client: AsyncOnebusawaySDK) -> None:
         routes_for_agency = await async_client.routes_for_agency.list(
-            "agencyID",
+            "40",
         )
         assert_matches_type(RoutesForAgencyListResponse, routes_for_agency, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncOnebusawaySDK) -> None:
         response = await async_client.routes_for_agency.with_raw_response.list(
-            "agencyID",
+            "40",
         )
 
         assert response.is_closed is True
@@ -82,7 +82,7 @@ class TestAsyncRoutesForAgency:
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncOnebusawaySDK) -> None:
         async with async_client.routes_for_agency.with_streaming_response.list(
-            "agencyID",
+            "40",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
