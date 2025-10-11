@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.17.5 (2025-10-11)
+
+Full Changelog: [v1.17.4...v1.17.5](https://github.com/OneBusAway/python-sdk/compare/v1.17.4...v1.17.5)
+
+### Chores
+
+* **internal:** detect missing future annotations with ruff ([9807d04](https://github.com/OneBusAway/python-sdk/commit/9807d04636cb4e62fcd4d825d1c43718d91618ec))
+
 ## 1.17.4 (2025-09-23)
 
 Full Changelog: [v1.17.3...v1.17.4](https://github.com/OneBusAway/python-sdk/compare/v1.17.3...v1.17.4)
