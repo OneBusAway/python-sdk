@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.17.6 (2025-10-18)
+
+Full Changelog: [v1.17.5...v1.17.6](https://github.com/OneBusAway/python-sdk/compare/v1.17.5...v1.17.6)
+
+### Chores
+
+* bump `httpx-aiohttp` version to 0.1.9 ([6ae619a](https://github.com/OneBusAway/python-sdk/commit/6ae619af34818d78c53716f91607e57045f503a6))
+
 ## 1.17.5 (2025-10-11)
 
 Full Changelog: [v1.17.4...v1.17.5](https://github.com/OneBusAway/python-sdk/compare/v1.17.4...v1.17.5)
