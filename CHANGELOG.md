@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.17.7 (2025-10-30)
+
+Full Changelog: [v1.17.6...v1.17.7](https://github.com/OneBusAway/python-sdk/compare/v1.17.6...v1.17.7)
+
+### Bug Fixes
+
+* **client:** close streams without requiring full consumption ([70f09eb](https://github.com/OneBusAway/python-sdk/commit/70f09ebf5cc0c72556e424744ea305f97cf87cda))
+
 ## 1.17.6 (2025-10-18)
 
 Full Changelog: [v1.17.5...v1.17.6](https://github.com/OneBusAway/python-sdk/compare/v1.17.5...v1.17.6)
