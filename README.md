@@ -77,6 +77,7 @@ pip install onebusaway[aiohttp]
 Then you can enable it by instantiating the client with `http_client=DefaultAioHttpClient()`:
 
 ```python
+import os
 import asyncio
 from onebusaway import DefaultAioHttpClient
 from onebusaway import AsyncOnebusawaySDK
@@ -84,7 +85,7 @@ from onebusaway import AsyncOnebusawaySDK
 
 async def main() -> None:
     async with AsyncOnebusawaySDK(
-        api_key="My API Key",
+        api_key=os.environ.get("ONEBUSAWAY_API_KEY"),  # This is the default and can be omitted
         http_client=DefaultAioHttpClient(),
     ) as client:
         current_time = await client.current_time.retrieve()
