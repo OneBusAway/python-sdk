@@ -47,6 +47,8 @@ class TripForVehicleRetrieveResponseDataEntrySchedule(BaseModel):
 
 
 class TripForVehicleRetrieveResponseDataEntryStatusLastKnownLocation(BaseModel):
+    """Last known location of the transit vehicle."""
+
     lat: Optional[float] = None
     """Latitude of the last known location of the transit vehicle."""
 
@@ -55,6 +57,8 @@ class TripForVehicleRetrieveResponseDataEntryStatusLastKnownLocation(BaseModel):
 
 
 class TripForVehicleRetrieveResponseDataEntryStatusPosition(BaseModel):
+    """Current position of the transit vehicle."""
+
     lat: Optional[float] = None
     """Latitude of the current position of the transit vehicle."""
 
