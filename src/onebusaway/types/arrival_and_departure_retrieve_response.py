@@ -19,6 +19,8 @@ __all__ = [
 
 
 class ArrivalAndDepartureRetrieveResponseDataEntryTripStatusLastKnownLocation(BaseModel):
+    """Last known location of the transit vehicle."""
+
     lat: Optional[float] = None
     """Latitude of the last known location of the transit vehicle."""
 
@@ -27,6 +29,8 @@ class ArrivalAndDepartureRetrieveResponseDataEntryTripStatusLastKnownLocation(Ba
 
 
 class ArrivalAndDepartureRetrieveResponseDataEntryTripStatusPosition(BaseModel):
+    """Current position of the transit vehicle."""
+
     lat: Optional[float] = None
     """Latitude of the current position of the transit vehicle."""
 
@@ -35,6 +39,8 @@ class ArrivalAndDepartureRetrieveResponseDataEntryTripStatusPosition(BaseModel):
 
 
 class ArrivalAndDepartureRetrieveResponseDataEntryTripStatus(BaseModel):
+    """Trip-specific status for the arriving transit vehicle."""
+
     active_trip_id: str = FieldInfo(alias="activeTripId")
     """Trip ID of the trip the vehicle is actively serving."""
 

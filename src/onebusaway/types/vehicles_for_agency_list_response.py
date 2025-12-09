@@ -26,6 +26,8 @@ class VehiclesForAgencyListResponseDataListLocation(BaseModel):
 
 
 class VehiclesForAgencyListResponseDataListTripStatusLastKnownLocation(BaseModel):
+    """Last known location of the transit vehicle."""
+
     lat: Optional[float] = None
     """Latitude of the last known location of the transit vehicle."""
 
@@ -34,6 +36,8 @@ class VehiclesForAgencyListResponseDataListTripStatusLastKnownLocation(BaseModel
 
 
 class VehiclesForAgencyListResponseDataListTripStatusPosition(BaseModel):
+    """Current position of the transit vehicle."""
+
     lat: Optional[float] = None
     """Latitude of the current position of the transit vehicle."""
 
