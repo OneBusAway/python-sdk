@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import os
-from typing import Any, Mapping
+from typing import TYPE_CHECKING, Any, Mapping
 from typing_extensions import Self, override
 
 import httpx
@@ -20,37 +20,8 @@ from ._types import (
     not_given,
 )
 from ._utils import is_given, get_async_library
+from ._compat import cached_property
 from ._version import __version__
-from .resources import (
-    stop,
-    trip,
-    block,
-    route,
-    shape,
-    agency,
-    config,
-    current_time,
-    trip_details,
-    search_for_stop,
-    stops_for_route,
-    trips_for_route,
-    search_for_route,
-    stops_for_agency,
-    trip_for_vehicle,
-    routes_for_agency,
-    schedule_for_stop,
-    schedule_for_route,
-    stops_for_location,
-    trips_for_location,
-    routes_for_location,
-    stop_ids_for_agency,
-    vehicles_for_agency,
-    route_ids_for_agency,
-    arrival_and_departure,
-    agencies_with_coverage,
-    report_problem_with_stop,
-    report_problem_with_trip,
-)
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
 from ._exceptions import APIStatusError, OnebusawaySDKError
 from ._base_client import (
@@ -58,6 +29,66 @@ from ._base_client import (
     SyncAPIClient,
     AsyncAPIClient,
 )
+
+if TYPE_CHECKING:
+    from .resources import (
+        stop,
+        trip,
+        block,
+        route,
+        shape,
+        agency,
+        config,
+        current_time,
+        trip_details,
+        search_for_stop,
+        stops_for_route,
+        trips_for_route,
+        search_for_route,
+        stops_for_agency,
+        trip_for_vehicle,
+        routes_for_agency,
+        schedule_for_stop,
+        schedule_for_route,
+        stops_for_location,
+        trips_for_location,
+        routes_for_location,
+        stop_ids_for_agency,
+        vehicles_for_agency,
+        route_ids_for_agency,
+        arrival_and_departure,
+        agencies_with_coverage,
+        report_problem_with_stop,
+        report_problem_with_trip,
+    )
+    from .resources.stop import StopResource, AsyncStopResource
+    from .resources.trip import TripResource, AsyncTripResource
+    from .resources.block import BlockResource, AsyncBlockResource
+    from .resources.route import RouteResource, AsyncRouteResource
+    from .resources.shape import ShapeResource, AsyncShapeResource
+    from .resources.agency import AgencyResource, AsyncAgencyResource
+    from .resources.config import ConfigResource, AsyncConfigResource
+    from .resources.current_time import CurrentTimeResource, AsyncCurrentTimeResource
+    from .resources.trip_details import TripDetailsResource, AsyncTripDetailsResource
+    from .resources.search_for_stop import SearchForStopResource, AsyncSearchForStopResource
+    from .resources.stops_for_route import StopsForRouteResource, AsyncStopsForRouteResource
+    from .resources.trips_for_route import TripsForRouteResource, AsyncTripsForRouteResource
+    from .resources.search_for_route import SearchForRouteResource, AsyncSearchForRouteResource
+    from .resources.stops_for_agency import StopsForAgencyResource, AsyncStopsForAgencyResource
+    from .resources.trip_for_vehicle import TripForVehicleResource, AsyncTripForVehicleResource
+    from .resources.routes_for_agency import RoutesForAgencyResource, AsyncRoutesForAgencyResource
+    from .resources.schedule_for_stop import ScheduleForStopResource, AsyncScheduleForStopResource
+    from .resources.schedule_for_route import ScheduleForRouteResource, AsyncScheduleForRouteResource
+    from .resources.stops_for_location import StopsForLocationResource, AsyncStopsForLocationResource
+    from .resources.trips_for_location import TripsForLocationResource, AsyncTripsForLocationResource
+    from .resources.routes_for_location import RoutesForLocationResource, AsyncRoutesForLocationResource
+    from .resources.stop_ids_for_agency import StopIDsForAgencyResource, AsyncStopIDsForAgencyResource
+    from .resources.vehicles_for_agency import VehiclesForAgencyResource, AsyncVehiclesForAgencyResource
+    from .resources.route_ids_for_agency import RouteIDsForAgencyResource, AsyncRouteIDsForAgencyResource
+    from .resources.arrival_and_departure import ArrivalAndDepartureResource, AsyncArrivalAndDepartureResource
+    from .resources.agencies_with_coverage import AgenciesWithCoverageResource, AsyncAgenciesWithCoverageResource
+    from .resources.report_problem_with_stop import ReportProblemWithStopResource, AsyncReportProblemWithStopResource
+    from .resources.report_problem_with_trip import ReportProblemWithTripResource, AsyncReportProblemWithTripResource
 
 __all__ = [
     "Timeout",
@@ -72,37 +103,6 @@ __all__ = [
 
 
 class OnebusawaySDK(SyncAPIClient):
-    agencies_with_coverage: agencies_with_coverage.AgenciesWithCoverageResource
-    agency: agency.AgencyResource
-    vehicles_for_agency: vehicles_for_agency.VehiclesForAgencyResource
-    config: config.ConfigResource
-    current_time: current_time.CurrentTimeResource
-    stops_for_location: stops_for_location.StopsForLocationResource
-    stops_for_route: stops_for_route.StopsForRouteResource
-    stops_for_agency: stops_for_agency.StopsForAgencyResource
-    stop: stop.StopResource
-    stop_ids_for_agency: stop_ids_for_agency.StopIDsForAgencyResource
-    schedule_for_stop: schedule_for_stop.ScheduleForStopResource
-    route: route.RouteResource
-    route_ids_for_agency: route_ids_for_agency.RouteIDsForAgencyResource
-    routes_for_location: routes_for_location.RoutesForLocationResource
-    routes_for_agency: routes_for_agency.RoutesForAgencyResource
-    schedule_for_route: schedule_for_route.ScheduleForRouteResource
-    arrival_and_departure: arrival_and_departure.ArrivalAndDepartureResource
-    trip: trip.TripResource
-    trips_for_location: trips_for_location.TripsForLocationResource
-    trip_details: trip_details.TripDetailsResource
-    trip_for_vehicle: trip_for_vehicle.TripForVehicleResource
-    trips_for_route: trips_for_route.TripsForRouteResource
-    report_problem_with_stop: report_problem_with_stop.ReportProblemWithStopResource
-    report_problem_with_trip: report_problem_with_trip.ReportProblemWithTripResource
-    search_for_stop: search_for_stop.SearchForStopResource
-    search_for_route: search_for_route.SearchForRouteResource
-    block: block.BlockResource
-    shape: shape.ShapeResource
-    with_raw_response: OnebusawaySDKWithRawResponse
-    with_streaming_response: OnebusawaySDKWithStreamedResponse
-
     # client options
     api_key: str
 
@@ -157,36 +157,181 @@ class OnebusawaySDK(SyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
-        self.agencies_with_coverage = agencies_with_coverage.AgenciesWithCoverageResource(self)
-        self.agency = agency.AgencyResource(self)
-        self.vehicles_for_agency = vehicles_for_agency.VehiclesForAgencyResource(self)
-        self.config = config.ConfigResource(self)
-        self.current_time = current_time.CurrentTimeResource(self)
-        self.stops_for_location = stops_for_location.StopsForLocationResource(self)
-        self.stops_for_route = stops_for_route.StopsForRouteResource(self)
-        self.stops_for_agency = stops_for_agency.StopsForAgencyResource(self)
-        self.stop = stop.StopResource(self)
-        self.stop_ids_for_agency = stop_ids_for_agency.StopIDsForAgencyResource(self)
-        self.schedule_for_stop = schedule_for_stop.ScheduleForStopResource(self)
-        self.route = route.RouteResource(self)
-        self.route_ids_for_agency = route_ids_for_agency.RouteIDsForAgencyResource(self)
-        self.routes_for_location = routes_for_location.RoutesForLocationResource(self)
-        self.routes_for_agency = routes_for_agency.RoutesForAgencyResource(self)
-        self.schedule_for_route = schedule_for_route.ScheduleForRouteResource(self)
-        self.arrival_and_departure = arrival_and_departure.ArrivalAndDepartureResource(self)
-        self.trip = trip.TripResource(self)
-        self.trips_for_location = trips_for_location.TripsForLocationResource(self)
-        self.trip_details = trip_details.TripDetailsResource(self)
-        self.trip_for_vehicle = trip_for_vehicle.TripForVehicleResource(self)
-        self.trips_for_route = trips_for_route.TripsForRouteResource(self)
-        self.report_problem_with_stop = report_problem_with_stop.ReportProblemWithStopResource(self)
-        self.report_problem_with_trip = report_problem_with_trip.ReportProblemWithTripResource(self)
-        self.search_for_stop = search_for_stop.SearchForStopResource(self)
-        self.search_for_route = search_for_route.SearchForRouteResource(self)
-        self.block = block.BlockResource(self)
-        self.shape = shape.ShapeResource(self)
-        self.with_raw_response = OnebusawaySDKWithRawResponse(self)
-        self.with_streaming_response = OnebusawaySDKWithStreamedResponse(self)
+    @cached_property
+    def agencies_with_coverage(self) -> AgenciesWithCoverageResource:
+        from .resources.agencies_with_coverage import AgenciesWithCoverageResource
+
+        return AgenciesWithCoverageResource(self)
+
+    @cached_property
+    def agency(self) -> AgencyResource:
+        from .resources.agency import AgencyResource
+
+        return AgencyResource(self)
+
+    @cached_property
+    def vehicles_for_agency(self) -> VehiclesForAgencyResource:
+        from .resources.vehicles_for_agency import VehiclesForAgencyResource
+
+        return VehiclesForAgencyResource(self)
+
+    @cached_property
+    def config(self) -> ConfigResource:
+        from .resources.config import ConfigResource
+
+        return ConfigResource(self)
+
+    @cached_property
+    def current_time(self) -> CurrentTimeResource:
+        from .resources.current_time import CurrentTimeResource
+
+        return CurrentTimeResource(self)
+
+    @cached_property
+    def stops_for_location(self) -> StopsForLocationResource:
+        from .resources.stops_for_location import StopsForLocationResource
+
+        return StopsForLocationResource(self)
+
+    @cached_property
+    def stops_for_route(self) -> StopsForRouteResource:
+        from .resources.stops_for_route import StopsForRouteResource
+
+        return StopsForRouteResource(self)
+
+    @cached_property
+    def stops_for_agency(self) -> StopsForAgencyResource:
+        from .resources.stops_for_agency import StopsForAgencyResource
+
+        return StopsForAgencyResource(self)
+
+    @cached_property
+    def stop(self) -> StopResource:
+        from .resources.stop import StopResource
+
+        return StopResource(self)
+
+    @cached_property
+    def stop_ids_for_agency(self) -> StopIDsForAgencyResource:
+        from .resources.stop_ids_for_agency import StopIDsForAgencyResource
+
+        return StopIDsForAgencyResource(self)
+
+    @cached_property
+    def schedule_for_stop(self) -> ScheduleForStopResource:
+        from .resources.schedule_for_stop import ScheduleForStopResource
+
+        return ScheduleForStopResource(self)
+
+    @cached_property
+    def route(self) -> RouteResource:
+        from .resources.route import RouteResource
+
+        return RouteResource(self)
+
+    @cached_property
+    def route_ids_for_agency(self) -> RouteIDsForAgencyResource:
+        from .resources.route_ids_for_agency import RouteIDsForAgencyResource
+
+        return RouteIDsForAgencyResource(self)
+
+    @cached_property
+    def routes_for_location(self) -> RoutesForLocationResource:
+        from .resources.routes_for_location import RoutesForLocationResource
+
+        return RoutesForLocationResource(self)
+
+    @cached_property
+    def routes_for_agency(self) -> RoutesForAgencyResource:
+        from .resources.routes_for_agency import RoutesForAgencyResource
+
+        return RoutesForAgencyResource(self)
+
+    @cached_property
+    def schedule_for_route(self) -> ScheduleForRouteResource:
+        from .resources.schedule_for_route import ScheduleForRouteResource
+
+        return ScheduleForRouteResource(self)
+
+    @cached_property
+    def arrival_and_departure(self) -> ArrivalAndDepartureResource:
+        from .resources.arrival_and_departure import ArrivalAndDepartureResource
+
+        return ArrivalAndDepartureResource(self)
+
+    @cached_property
+    def trip(self) -> TripResource:
+        from .resources.trip import TripResource
+
+        return TripResource(self)
+
+    @cached_property
+    def trips_for_location(self) -> TripsForLocationResource:
+        from .resources.trips_for_location import TripsForLocationResource
+
+        return TripsForLocationResource(self)
+
+    @cached_property
+    def trip_details(self) -> TripDetailsResource:
+        from .resources.trip_details import TripDetailsResource
+
+        return TripDetailsResource(self)
+
+    @cached_property
+    def trip_for_vehicle(self) -> TripForVehicleResource:
+        from .resources.trip_for_vehicle import TripForVehicleResource
+
+        return TripForVehicleResource(self)
+
+    @cached_property
+    def trips_for_route(self) -> TripsForRouteResource:
+        from .resources.trips_for_route import TripsForRouteResource
+
+        return TripsForRouteResource(self)
+
+    @cached_property
+    def report_problem_with_stop(self) -> ReportProblemWithStopResource:
+        from .resources.report_problem_with_stop import ReportProblemWithStopResource
+
+        return ReportProblemWithStopResource(self)
+
+    @cached_property
+    def report_problem_with_trip(self) -> ReportProblemWithTripResource:
+        from .resources.report_problem_with_trip import ReportProblemWithTripResource
+
+        return ReportProblemWithTripResource(self)
+
+    @cached_property
+    def search_for_stop(self) -> SearchForStopResource:
+        from .resources.search_for_stop import SearchForStopResource
+
+        return SearchForStopResource(self)
+
+    @cached_property
+    def search_for_route(self) -> SearchForRouteResource:
+        from .resources.search_for_route import SearchForRouteResource
+
+        return SearchForRouteResource(self)
+
+    @cached_property
+    def block(self) -> BlockResource:
+        from .resources.block import BlockResource
+
+        return BlockResource(self)
+
+    @cached_property
+    def shape(self) -> ShapeResource:
+        from .resources.shape import ShapeResource
+
+        return ShapeResource(self)
+
+    @cached_property
+    def with_raw_response(self) -> OnebusawaySDKWithRawResponse:
+        return OnebusawaySDKWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> OnebusawaySDKWithStreamedResponse:
+        return OnebusawaySDKWithStreamedResponse(self)
 
     @property
     @override
@@ -300,37 +445,6 @@ class OnebusawaySDK(SyncAPIClient):
 
 
 class AsyncOnebusawaySDK(AsyncAPIClient):
-    agencies_with_coverage: agencies_with_coverage.AsyncAgenciesWithCoverageResource
-    agency: agency.AsyncAgencyResource
-    vehicles_for_agency: vehicles_for_agency.AsyncVehiclesForAgencyResource
-    config: config.AsyncConfigResource
-    current_time: current_time.AsyncCurrentTimeResource
-    stops_for_location: stops_for_location.AsyncStopsForLocationResource
-    stops_for_route: stops_for_route.AsyncStopsForRouteResource
-    stops_for_agency: stops_for_agency.AsyncStopsForAgencyResource
-    stop: stop.AsyncStopResource
-    stop_ids_for_agency: stop_ids_for_agency.AsyncStopIDsForAgencyResource
-    schedule_for_stop: schedule_for_stop.AsyncScheduleForStopResource
-    route: route.AsyncRouteResource
-    route_ids_for_agency: route_ids_for_agency.AsyncRouteIDsForAgencyResource
-    routes_for_location: routes_for_location.AsyncRoutesForLocationResource
-    routes_for_agency: routes_for_agency.AsyncRoutesForAgencyResource
-    schedule_for_route: schedule_for_route.AsyncScheduleForRouteResource
-    arrival_and_departure: arrival_and_departure.AsyncArrivalAndDepartureResource
-    trip: trip.AsyncTripResource
-    trips_for_location: trips_for_location.AsyncTripsForLocationResource
-    trip_details: trip_details.AsyncTripDetailsResource
-    trip_for_vehicle: trip_for_vehicle.AsyncTripForVehicleResource
-    trips_for_route: trips_for_route.AsyncTripsForRouteResource
-    report_problem_with_stop: report_problem_with_stop.AsyncReportProblemWithStopResource
-    report_problem_with_trip: report_problem_with_trip.AsyncReportProblemWithTripResource
-    search_for_stop: search_for_stop.AsyncSearchForStopResource
-    search_for_route: search_for_route.AsyncSearchForRouteResource
-    block: block.AsyncBlockResource
-    shape: shape.AsyncShapeResource
-    with_raw_response: AsyncOnebusawaySDKWithRawResponse
-    with_streaming_response: AsyncOnebusawaySDKWithStreamedResponse
-
     # client options
     api_key: str
 
@@ -385,36 +499,181 @@ class AsyncOnebusawaySDK(AsyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
-        self.agencies_with_coverage = agencies_with_coverage.AsyncAgenciesWithCoverageResource(self)
-        self.agency = agency.AsyncAgencyResource(self)
-        self.vehicles_for_agency = vehicles_for_agency.AsyncVehiclesForAgencyResource(self)
-        self.config = config.AsyncConfigResource(self)
-        self.current_time = current_time.AsyncCurrentTimeResource(self)
-        self.stops_for_location = stops_for_location.AsyncStopsForLocationResource(self)
-        self.stops_for_route = stops_for_route.AsyncStopsForRouteResource(self)
-        self.stops_for_agency = stops_for_agency.AsyncStopsForAgencyResource(self)
-        self.stop = stop.AsyncStopResource(self)
-        self.stop_ids_for_agency = stop_ids_for_agency.AsyncStopIDsForAgencyResource(self)
-        self.schedule_for_stop = schedule_for_stop.AsyncScheduleForStopResource(self)
-        self.route = route.AsyncRouteResource(self)
-        self.route_ids_for_agency = route_ids_for_agency.AsyncRouteIDsForAgencyResource(self)
-        self.routes_for_location = routes_for_location.AsyncRoutesForLocationResource(self)
-        self.routes_for_agency = routes_for_agency.AsyncRoutesForAgencyResource(self)
-        self.schedule_for_route = schedule_for_route.AsyncScheduleForRouteResource(self)
-        self.arrival_and_departure = arrival_and_departure.AsyncArrivalAndDepartureResource(self)
-        self.trip = trip.AsyncTripResource(self)
-        self.trips_for_location = trips_for_location.AsyncTripsForLocationResource(self)
-        self.trip_details = trip_details.AsyncTripDetailsResource(self)
-        self.trip_for_vehicle = trip_for_vehicle.AsyncTripForVehicleResource(self)
-        self.trips_for_route = trips_for_route.AsyncTripsForRouteResource(self)
-        self.report_problem_with_stop = report_problem_with_stop.AsyncReportProblemWithStopResource(self)
-        self.report_problem_with_trip = report_problem_with_trip.AsyncReportProblemWithTripResource(self)
-        self.search_for_stop = search_for_stop.AsyncSearchForStopResource(self)
-        self.search_for_route = search_for_route.AsyncSearchForRouteResource(self)
-        self.block = block.AsyncBlockResource(self)
-        self.shape = shape.AsyncShapeResource(self)
-        self.with_raw_response = AsyncOnebusawaySDKWithRawResponse(self)
-        self.with_streaming_response = AsyncOnebusawaySDKWithStreamedResponse(self)
+    @cached_property
+    def agencies_with_coverage(self) -> AsyncAgenciesWithCoverageResource:
+        from .resources.agencies_with_coverage import AsyncAgenciesWithCoverageResource
+
+        return AsyncAgenciesWithCoverageResource(self)
+
+    @cached_property
+    def agency(self) -> AsyncAgencyResource:
+        from .resources.agency import AsyncAgencyResource
+
+        return AsyncAgencyResource(self)
+
+    @cached_property
+    def vehicles_for_agency(self) -> AsyncVehiclesForAgencyResource:
+        from .resources.vehicles_for_agency import AsyncVehiclesForAgencyResource
+
+        return AsyncVehiclesForAgencyResource(self)
+
+    @cached_property
+    def config(self) -> AsyncConfigResource:
+        from .resources.config import AsyncConfigResource
+
+        return AsyncConfigResource(self)
+
+    @cached_property
+    def current_time(self) -> AsyncCurrentTimeResource:
+        from .resources.current_time import AsyncCurrentTimeResource
+
+        return AsyncCurrentTimeResource(self)
+
+    @cached_property
+    def stops_for_location(self) -> AsyncStopsForLocationResource:
+        from .resources.stops_for_location import AsyncStopsForLocationResource
+
+        return AsyncStopsForLocationResource(self)
+
+    @cached_property
+    def stops_for_route(self) -> AsyncStopsForRouteResource:
+        from .resources.stops_for_route import AsyncStopsForRouteResource
+
+        return AsyncStopsForRouteResource(self)
+
+    @cached_property
+    def stops_for_agency(self) -> AsyncStopsForAgencyResource:
+        from .resources.stops_for_agency import AsyncStopsForAgencyResource
+
+        return AsyncStopsForAgencyResource(self)
+
+    @cached_property
+    def stop(self) -> AsyncStopResource:
+        from .resources.stop import AsyncStopResource
+
+        return AsyncStopResource(self)
+
+    @cached_property
+    def stop_ids_for_agency(self) -> AsyncStopIDsForAgencyResource:
+        from .resources.stop_ids_for_agency import AsyncStopIDsForAgencyResource
+
+        return AsyncStopIDsForAgencyResource(self)
+
+    @cached_property
+    def schedule_for_stop(self) -> AsyncScheduleForStopResource:
+        from .resources.schedule_for_stop import AsyncScheduleForStopResource
+
+        return AsyncScheduleForStopResource(self)
+
+    @cached_property
+    def route(self) -> AsyncRouteResource:
+        from .resources.route import AsyncRouteResource
+
+        return AsyncRouteResource(self)
+
+    @cached_property
+    def route_ids_for_agency(self) -> AsyncRouteIDsForAgencyResource:
+        from .resources.route_ids_for_agency import AsyncRouteIDsForAgencyResource
+
+        return AsyncRouteIDsForAgencyResource(self)
+
+    @cached_property
+    def routes_for_location(self) -> AsyncRoutesForLocationResource:
+        from .resources.routes_for_location import AsyncRoutesForLocationResource
+
+        return AsyncRoutesForLocationResource(self)
+
+    @cached_property
+    def routes_for_agency(self) -> AsyncRoutesForAgencyResource:
+        from .resources.routes_for_agency import AsyncRoutesForAgencyResource
+
+        return AsyncRoutesForAgencyResource(self)
+
+    @cached_property
+    def schedule_for_route(self) -> AsyncScheduleForRouteResource:
+        from .resources.schedule_for_route import AsyncScheduleForRouteResource
+
+        return AsyncScheduleForRouteResource(self)
+
+    @cached_property
+    def arrival_and_departure(self) -> AsyncArrivalAndDepartureResource:
+        from .resources.arrival_and_departure import AsyncArrivalAndDepartureResource
+
+        return AsyncArrivalAndDepartureResource(self)
+
+    @cached_property
+    def trip(self) -> AsyncTripResource:
+        from .resources.trip import AsyncTripResource
+
+        return AsyncTripResource(self)
+
+    @cached_property
+    def trips_for_location(self) -> AsyncTripsForLocationResource:
+        from .resources.trips_for_location import AsyncTripsForLocationResource
+
+        return AsyncTripsForLocationResource(self)
+
+    @cached_property
+    def trip_details(self) -> AsyncTripDetailsResource:
+        from .resources.trip_details import AsyncTripDetailsResource
+
+        return AsyncTripDetailsResource(self)
+
+    @cached_property
+    def trip_for_vehicle(self) -> AsyncTripForVehicleResource:
+        from .resources.trip_for_vehicle import AsyncTripForVehicleResource
+
+        return AsyncTripForVehicleResource(self)
+
+    @cached_property
+    def trips_for_route(self) -> AsyncTripsForRouteResource:
+        from .resources.trips_for_route import AsyncTripsForRouteResource
+
+        return AsyncTripsForRouteResource(self)
+
+    @cached_property
+    def report_problem_with_stop(self) -> AsyncReportProblemWithStopResource:
+        from .resources.report_problem_with_stop import AsyncReportProblemWithStopResource
+
+        return AsyncReportProblemWithStopResource(self)
+
+    @cached_property
+    def report_problem_with_trip(self) -> AsyncReportProblemWithTripResource:
+        from .resources.report_problem_with_trip import AsyncReportProblemWithTripResource
+
+        return AsyncReportProblemWithTripResource(self)
+
+    @cached_property
+    def search_for_stop(self) -> AsyncSearchForStopResource:
+        from .resources.search_for_stop import AsyncSearchForStopResource
+
+        return AsyncSearchForStopResource(self)
+
+    @cached_property
+    def search_for_route(self) -> AsyncSearchForRouteResource:
+        from .resources.search_for_route import AsyncSearchForRouteResource
+
+        return AsyncSearchForRouteResource(self)
+
+    @cached_property
+    def block(self) -> AsyncBlockResource:
+        from .resources.block import AsyncBlockResource
+
+        return AsyncBlockResource(self)
+
+    @cached_property
+    def shape(self) -> AsyncShapeResource:
+        from .resources.shape import AsyncShapeResource
+
+        return AsyncShapeResource(self)
+
+    @cached_property
+    def with_raw_response(self) -> AsyncOnebusawaySDKWithRawResponse:
+        return AsyncOnebusawaySDKWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> AsyncOnebusawaySDKWithStreamedResponse:
+        return AsyncOnebusawaySDKWithStreamedResponse(self)
 
     @property
     @override
@@ -528,231 +787,707 @@ class AsyncOnebusawaySDK(AsyncAPIClient):
 
 
 class OnebusawaySDKWithRawResponse:
+    _client: OnebusawaySDK
+
     def __init__(self, client: OnebusawaySDK) -> None:
-        self.agencies_with_coverage = agencies_with_coverage.AgenciesWithCoverageResourceWithRawResponse(
-            client.agencies_with_coverage
-        )
-        self.agency = agency.AgencyResourceWithRawResponse(client.agency)
-        self.vehicles_for_agency = vehicles_for_agency.VehiclesForAgencyResourceWithRawResponse(
-            client.vehicles_for_agency
-        )
-        self.config = config.ConfigResourceWithRawResponse(client.config)
-        self.current_time = current_time.CurrentTimeResourceWithRawResponse(client.current_time)
-        self.stops_for_location = stops_for_location.StopsForLocationResourceWithRawResponse(client.stops_for_location)
-        self.stops_for_route = stops_for_route.StopsForRouteResourceWithRawResponse(client.stops_for_route)
-        self.stops_for_agency = stops_for_agency.StopsForAgencyResourceWithRawResponse(client.stops_for_agency)
-        self.stop = stop.StopResourceWithRawResponse(client.stop)
-        self.stop_ids_for_agency = stop_ids_for_agency.StopIDsForAgencyResourceWithRawResponse(
-            client.stop_ids_for_agency
-        )
-        self.schedule_for_stop = schedule_for_stop.ScheduleForStopResourceWithRawResponse(client.schedule_for_stop)
-        self.route = route.RouteResourceWithRawResponse(client.route)
-        self.route_ids_for_agency = route_ids_for_agency.RouteIDsForAgencyResourceWithRawResponse(
-            client.route_ids_for_agency
-        )
-        self.routes_for_location = routes_for_location.RoutesForLocationResourceWithRawResponse(
-            client.routes_for_location
-        )
-        self.routes_for_agency = routes_for_agency.RoutesForAgencyResourceWithRawResponse(client.routes_for_agency)
-        self.schedule_for_route = schedule_for_route.ScheduleForRouteResourceWithRawResponse(client.schedule_for_route)
-        self.arrival_and_departure = arrival_and_departure.ArrivalAndDepartureResourceWithRawResponse(
-            client.arrival_and_departure
-        )
-        self.trip = trip.TripResourceWithRawResponse(client.trip)
-        self.trips_for_location = trips_for_location.TripsForLocationResourceWithRawResponse(client.trips_for_location)
-        self.trip_details = trip_details.TripDetailsResourceWithRawResponse(client.trip_details)
-        self.trip_for_vehicle = trip_for_vehicle.TripForVehicleResourceWithRawResponse(client.trip_for_vehicle)
-        self.trips_for_route = trips_for_route.TripsForRouteResourceWithRawResponse(client.trips_for_route)
-        self.report_problem_with_stop = report_problem_with_stop.ReportProblemWithStopResourceWithRawResponse(
-            client.report_problem_with_stop
-        )
-        self.report_problem_with_trip = report_problem_with_trip.ReportProblemWithTripResourceWithRawResponse(
-            client.report_problem_with_trip
-        )
-        self.search_for_stop = search_for_stop.SearchForStopResourceWithRawResponse(client.search_for_stop)
-        self.search_for_route = search_for_route.SearchForRouteResourceWithRawResponse(client.search_for_route)
-        self.block = block.BlockResourceWithRawResponse(client.block)
-        self.shape = shape.ShapeResourceWithRawResponse(client.shape)
+        self._client = client
+
+    @cached_property
+    def agencies_with_coverage(self) -> agencies_with_coverage.AgenciesWithCoverageResourceWithRawResponse:
+        from .resources.agencies_with_coverage import AgenciesWithCoverageResourceWithRawResponse
+
+        return AgenciesWithCoverageResourceWithRawResponse(self._client.agencies_with_coverage)
+
+    @cached_property
+    def agency(self) -> agency.AgencyResourceWithRawResponse:
+        from .resources.agency import AgencyResourceWithRawResponse
+
+        return AgencyResourceWithRawResponse(self._client.agency)
+
+    @cached_property
+    def vehicles_for_agency(self) -> vehicles_for_agency.VehiclesForAgencyResourceWithRawResponse:
+        from .resources.vehicles_for_agency import VehiclesForAgencyResourceWithRawResponse
+
+        return VehiclesForAgencyResourceWithRawResponse(self._client.vehicles_for_agency)
+
+    @cached_property
+    def config(self) -> config.ConfigResourceWithRawResponse:
+        from .resources.config import ConfigResourceWithRawResponse
+
+        return ConfigResourceWithRawResponse(self._client.config)
+
+    @cached_property
+    def current_time(self) -> current_time.CurrentTimeResourceWithRawResponse:
+        from .resources.current_time import CurrentTimeResourceWithRawResponse
+
+        return CurrentTimeResourceWithRawResponse(self._client.current_time)
+
+    @cached_property
+    def stops_for_location(self) -> stops_for_location.StopsForLocationResourceWithRawResponse:
+        from .resources.stops_for_location import StopsForLocationResourceWithRawResponse
+
+        return StopsForLocationResourceWithRawResponse(self._client.stops_for_location)
+
+    @cached_property
+    def stops_for_route(self) -> stops_for_route.StopsForRouteResourceWithRawResponse:
+        from .resources.stops_for_route import StopsForRouteResourceWithRawResponse
+
+        return StopsForRouteResourceWithRawResponse(self._client.stops_for_route)
+
+    @cached_property
+    def stops_for_agency(self) -> stops_for_agency.StopsForAgencyResourceWithRawResponse:
+        from .resources.stops_for_agency import StopsForAgencyResourceWithRawResponse
+
+        return StopsForAgencyResourceWithRawResponse(self._client.stops_for_agency)
+
+    @cached_property
+    def stop(self) -> stop.StopResourceWithRawResponse:
+        from .resources.stop import StopResourceWithRawResponse
+
+        return StopResourceWithRawResponse(self._client.stop)
+
+    @cached_property
+    def stop_ids_for_agency(self) -> stop_ids_for_agency.StopIDsForAgencyResourceWithRawResponse:
+        from .resources.stop_ids_for_agency import StopIDsForAgencyResourceWithRawResponse
+
+        return StopIDsForAgencyResourceWithRawResponse(self._client.stop_ids_for_agency)
+
+    @cached_property
+    def schedule_for_stop(self) -> schedule_for_stop.ScheduleForStopResourceWithRawResponse:
+        from .resources.schedule_for_stop import ScheduleForStopResourceWithRawResponse
+
+        return ScheduleForStopResourceWithRawResponse(self._client.schedule_for_stop)
+
+    @cached_property
+    def route(self) -> route.RouteResourceWithRawResponse:
+        from .resources.route import RouteResourceWithRawResponse
+
+        return RouteResourceWithRawResponse(self._client.route)
+
+    @cached_property
+    def route_ids_for_agency(self) -> route_ids_for_agency.RouteIDsForAgencyResourceWithRawResponse:
+        from .resources.route_ids_for_agency import RouteIDsForAgencyResourceWithRawResponse
+
+        return RouteIDsForAgencyResourceWithRawResponse(self._client.route_ids_for_agency)
+
+    @cached_property
+    def routes_for_location(self) -> routes_for_location.RoutesForLocationResourceWithRawResponse:
+        from .resources.routes_for_location import RoutesForLocationResourceWithRawResponse
+
+        return RoutesForLocationResourceWithRawResponse(self._client.routes_for_location)
+
+    @cached_property
+    def routes_for_agency(self) -> routes_for_agency.RoutesForAgencyResourceWithRawResponse:
+        from .resources.routes_for_agency import RoutesForAgencyResourceWithRawResponse
+
+        return RoutesForAgencyResourceWithRawResponse(self._client.routes_for_agency)
+
+    @cached_property
+    def schedule_for_route(self) -> schedule_for_route.ScheduleForRouteResourceWithRawResponse:
+        from .resources.schedule_for_route import ScheduleForRouteResourceWithRawResponse
+
+        return ScheduleForRouteResourceWithRawResponse(self._client.schedule_for_route)
+
+    @cached_property
+    def arrival_and_departure(self) -> arrival_and_departure.ArrivalAndDepartureResourceWithRawResponse:
+        from .resources.arrival_and_departure import ArrivalAndDepartureResourceWithRawResponse
+
+        return ArrivalAndDepartureResourceWithRawResponse(self._client.arrival_and_departure)
+
+    @cached_property
+    def trip(self) -> trip.TripResourceWithRawResponse:
+        from .resources.trip import TripResourceWithRawResponse
+
+        return TripResourceWithRawResponse(self._client.trip)
+
+    @cached_property
+    def trips_for_location(self) -> trips_for_location.TripsForLocationResourceWithRawResponse:
+        from .resources.trips_for_location import TripsForLocationResourceWithRawResponse
+
+        return TripsForLocationResourceWithRawResponse(self._client.trips_for_location)
+
+    @cached_property
+    def trip_details(self) -> trip_details.TripDetailsResourceWithRawResponse:
+        from .resources.trip_details import TripDetailsResourceWithRawResponse
+
+        return TripDetailsResourceWithRawResponse(self._client.trip_details)
+
+    @cached_property
+    def trip_for_vehicle(self) -> trip_for_vehicle.TripForVehicleResourceWithRawResponse:
+        from .resources.trip_for_vehicle import TripForVehicleResourceWithRawResponse
+
+        return TripForVehicleResourceWithRawResponse(self._client.trip_for_vehicle)
+
+    @cached_property
+    def trips_for_route(self) -> trips_for_route.TripsForRouteResourceWithRawResponse:
+        from .resources.trips_for_route import TripsForRouteResourceWithRawResponse
+
+        return TripsForRouteResourceWithRawResponse(self._client.trips_for_route)
+
+    @cached_property
+    def report_problem_with_stop(self) -> report_problem_with_stop.ReportProblemWithStopResourceWithRawResponse:
+        from .resources.report_problem_with_stop import ReportProblemWithStopResourceWithRawResponse
+
+        return ReportProblemWithStopResourceWithRawResponse(self._client.report_problem_with_stop)
+
+    @cached_property
+    def report_problem_with_trip(self) -> report_problem_with_trip.ReportProblemWithTripResourceWithRawResponse:
+        from .resources.report_problem_with_trip import ReportProblemWithTripResourceWithRawResponse
+
+        return ReportProblemWithTripResourceWithRawResponse(self._client.report_problem_with_trip)
+
+    @cached_property
+    def search_for_stop(self) -> search_for_stop.SearchForStopResourceWithRawResponse:
+        from .resources.search_for_stop import SearchForStopResourceWithRawResponse
+
+        return SearchForStopResourceWithRawResponse(self._client.search_for_stop)
+
+    @cached_property
+    def search_for_route(self) -> search_for_route.SearchForRouteResourceWithRawResponse:
+        from .resources.search_for_route import SearchForRouteResourceWithRawResponse
+
+        return SearchForRouteResourceWithRawResponse(self._client.search_for_route)
+
+    @cached_property
+    def block(self) -> block.BlockResourceWithRawResponse:
+        from .resources.block import BlockResourceWithRawResponse
+
+        return BlockResourceWithRawResponse(self._client.block)
+
+    @cached_property
+    def shape(self) -> shape.ShapeResourceWithRawResponse:
+        from .resources.shape import ShapeResourceWithRawResponse
+
+        return ShapeResourceWithRawResponse(self._client.shape)
 
 
 class AsyncOnebusawaySDKWithRawResponse:
+    _client: AsyncOnebusawaySDK
+
     def __init__(self, client: AsyncOnebusawaySDK) -> None:
-        self.agencies_with_coverage = agencies_with_coverage.AsyncAgenciesWithCoverageResourceWithRawResponse(
-            client.agencies_with_coverage
-        )
-        self.agency = agency.AsyncAgencyResourceWithRawResponse(client.agency)
-        self.vehicles_for_agency = vehicles_for_agency.AsyncVehiclesForAgencyResourceWithRawResponse(
-            client.vehicles_for_agency
-        )
-        self.config = config.AsyncConfigResourceWithRawResponse(client.config)
-        self.current_time = current_time.AsyncCurrentTimeResourceWithRawResponse(client.current_time)
-        self.stops_for_location = stops_for_location.AsyncStopsForLocationResourceWithRawResponse(
-            client.stops_for_location
-        )
-        self.stops_for_route = stops_for_route.AsyncStopsForRouteResourceWithRawResponse(client.stops_for_route)
-        self.stops_for_agency = stops_for_agency.AsyncStopsForAgencyResourceWithRawResponse(client.stops_for_agency)
-        self.stop = stop.AsyncStopResourceWithRawResponse(client.stop)
-        self.stop_ids_for_agency = stop_ids_for_agency.AsyncStopIDsForAgencyResourceWithRawResponse(
-            client.stop_ids_for_agency
-        )
-        self.schedule_for_stop = schedule_for_stop.AsyncScheduleForStopResourceWithRawResponse(client.schedule_for_stop)
-        self.route = route.AsyncRouteResourceWithRawResponse(client.route)
-        self.route_ids_for_agency = route_ids_for_agency.AsyncRouteIDsForAgencyResourceWithRawResponse(
-            client.route_ids_for_agency
-        )
-        self.routes_for_location = routes_for_location.AsyncRoutesForLocationResourceWithRawResponse(
-            client.routes_for_location
-        )
-        self.routes_for_agency = routes_for_agency.AsyncRoutesForAgencyResourceWithRawResponse(client.routes_for_agency)
-        self.schedule_for_route = schedule_for_route.AsyncScheduleForRouteResourceWithRawResponse(
-            client.schedule_for_route
-        )
-        self.arrival_and_departure = arrival_and_departure.AsyncArrivalAndDepartureResourceWithRawResponse(
-            client.arrival_and_departure
-        )
-        self.trip = trip.AsyncTripResourceWithRawResponse(client.trip)
-        self.trips_for_location = trips_for_location.AsyncTripsForLocationResourceWithRawResponse(
-            client.trips_for_location
-        )
-        self.trip_details = trip_details.AsyncTripDetailsResourceWithRawResponse(client.trip_details)
-        self.trip_for_vehicle = trip_for_vehicle.AsyncTripForVehicleResourceWithRawResponse(client.trip_for_vehicle)
-        self.trips_for_route = trips_for_route.AsyncTripsForRouteResourceWithRawResponse(client.trips_for_route)
-        self.report_problem_with_stop = report_problem_with_stop.AsyncReportProblemWithStopResourceWithRawResponse(
-            client.report_problem_with_stop
-        )
-        self.report_problem_with_trip = report_problem_with_trip.AsyncReportProblemWithTripResourceWithRawResponse(
-            client.report_problem_with_trip
-        )
-        self.search_for_stop = search_for_stop.AsyncSearchForStopResourceWithRawResponse(client.search_for_stop)
-        self.search_for_route = search_for_route.AsyncSearchForRouteResourceWithRawResponse(client.search_for_route)
-        self.block = block.AsyncBlockResourceWithRawResponse(client.block)
-        self.shape = shape.AsyncShapeResourceWithRawResponse(client.shape)
+        self._client = client
+
+    @cached_property
+    def agencies_with_coverage(self) -> agencies_with_coverage.AsyncAgenciesWithCoverageResourceWithRawResponse:
+        from .resources.agencies_with_coverage import AsyncAgenciesWithCoverageResourceWithRawResponse
+
+        return AsyncAgenciesWithCoverageResourceWithRawResponse(self._client.agencies_with_coverage)
+
+    @cached_property
+    def agency(self) -> agency.AsyncAgencyResourceWithRawResponse:
+        from .resources.agency import AsyncAgencyResourceWithRawResponse
+
+        return AsyncAgencyResourceWithRawResponse(self._client.agency)
+
+    @cached_property
+    def vehicles_for_agency(self) -> vehicles_for_agency.AsyncVehiclesForAgencyResourceWithRawResponse:
+        from .resources.vehicles_for_agency import AsyncVehiclesForAgencyResourceWithRawResponse
+
+        return AsyncVehiclesForAgencyResourceWithRawResponse(self._client.vehicles_for_agency)
+
+    @cached_property
+    def config(self) -> config.AsyncConfigResourceWithRawResponse:
+        from .resources.config import AsyncConfigResourceWithRawResponse
+
+        return AsyncConfigResourceWithRawResponse(self._client.config)
+
+    @cached_property
+    def current_time(self) -> current_time.AsyncCurrentTimeResourceWithRawResponse:
+        from .resources.current_time import AsyncCurrentTimeResourceWithRawResponse
+
+        return AsyncCurrentTimeResourceWithRawResponse(self._client.current_time)
+
+    @cached_property
+    def stops_for_location(self) -> stops_for_location.AsyncStopsForLocationResourceWithRawResponse:
+        from .resources.stops_for_location import AsyncStopsForLocationResourceWithRawResponse
+
+        return AsyncStopsForLocationResourceWithRawResponse(self._client.stops_for_location)
+
+    @cached_property
+    def stops_for_route(self) -> stops_for_route.AsyncStopsForRouteResourceWithRawResponse:
+        from .resources.stops_for_route import AsyncStopsForRouteResourceWithRawResponse
+
+        return AsyncStopsForRouteResourceWithRawResponse(self._client.stops_for_route)
+
+    @cached_property
+    def stops_for_agency(self) -> stops_for_agency.AsyncStopsForAgencyResourceWithRawResponse:
+        from .resources.stops_for_agency import AsyncStopsForAgencyResourceWithRawResponse
+
+        return AsyncStopsForAgencyResourceWithRawResponse(self._client.stops_for_agency)
+
+    @cached_property
+    def stop(self) -> stop.AsyncStopResourceWithRawResponse:
+        from .resources.stop import AsyncStopResourceWithRawResponse
+
+        return AsyncStopResourceWithRawResponse(self._client.stop)
+
+    @cached_property
+    def stop_ids_for_agency(self) -> stop_ids_for_agency.AsyncStopIDsForAgencyResourceWithRawResponse:
+        from .resources.stop_ids_for_agency import AsyncStopIDsForAgencyResourceWithRawResponse
+
+        return AsyncStopIDsForAgencyResourceWithRawResponse(self._client.stop_ids_for_agency)
+
+    @cached_property
+    def schedule_for_stop(self) -> schedule_for_stop.AsyncScheduleForStopResourceWithRawResponse:
+        from .resources.schedule_for_stop import AsyncScheduleForStopResourceWithRawResponse
+
+        return AsyncScheduleForStopResourceWithRawResponse(self._client.schedule_for_stop)
+
+    @cached_property
+    def route(self) -> route.AsyncRouteResourceWithRawResponse:
+        from .resources.route import AsyncRouteResourceWithRawResponse
+
+        return AsyncRouteResourceWithRawResponse(self._client.route)
+
+    @cached_property
+    def route_ids_for_agency(self) -> route_ids_for_agency.AsyncRouteIDsForAgencyResourceWithRawResponse:
+        from .resources.route_ids_for_agency import AsyncRouteIDsForAgencyResourceWithRawResponse
+
+        return AsyncRouteIDsForAgencyResourceWithRawResponse(self._client.route_ids_for_agency)
+
+    @cached_property
+    def routes_for_location(self) -> routes_for_location.AsyncRoutesForLocationResourceWithRawResponse:
+        from .resources.routes_for_location import AsyncRoutesForLocationResourceWithRawResponse
+
+        return AsyncRoutesForLocationResourceWithRawResponse(self._client.routes_for_location)
+
+    @cached_property
+    def routes_for_agency(self) -> routes_for_agency.AsyncRoutesForAgencyResourceWithRawResponse:
+        from .resources.routes_for_agency import AsyncRoutesForAgencyResourceWithRawResponse
+
+        return AsyncRoutesForAgencyResourceWithRawResponse(self._client.routes_for_agency)
+
+    @cached_property
+    def schedule_for_route(self) -> schedule_for_route.AsyncScheduleForRouteResourceWithRawResponse:
+        from .resources.schedule_for_route import AsyncScheduleForRouteResourceWithRawResponse
+
+        return AsyncScheduleForRouteResourceWithRawResponse(self._client.schedule_for_route)
+
+    @cached_property
+    def arrival_and_departure(self) -> arrival_and_departure.AsyncArrivalAndDepartureResourceWithRawResponse:
+        from .resources.arrival_and_departure import AsyncArrivalAndDepartureResourceWithRawResponse
+
+        return AsyncArrivalAndDepartureResourceWithRawResponse(self._client.arrival_and_departure)
+
+    @cached_property
+    def trip(self) -> trip.AsyncTripResourceWithRawResponse:
+        from .resources.trip import AsyncTripResourceWithRawResponse
+
+        return AsyncTripResourceWithRawResponse(self._client.trip)
+
+    @cached_property
+    def trips_for_location(self) -> trips_for_location.AsyncTripsForLocationResourceWithRawResponse:
+        from .resources.trips_for_location import AsyncTripsForLocationResourceWithRawResponse
+
+        return AsyncTripsForLocationResourceWithRawResponse(self._client.trips_for_location)
+
+    @cached_property
+    def trip_details(self) -> trip_details.AsyncTripDetailsResourceWithRawResponse:
+        from .resources.trip_details import AsyncTripDetailsResourceWithRawResponse
+
+        return AsyncTripDetailsResourceWithRawResponse(self._client.trip_details)
+
+    @cached_property
+    def trip_for_vehicle(self) -> trip_for_vehicle.AsyncTripForVehicleResourceWithRawResponse:
+        from .resources.trip_for_vehicle import AsyncTripForVehicleResourceWithRawResponse
+
+        return AsyncTripForVehicleResourceWithRawResponse(self._client.trip_for_vehicle)
+
+    @cached_property
+    def trips_for_route(self) -> trips_for_route.AsyncTripsForRouteResourceWithRawResponse:
+        from .resources.trips_for_route import AsyncTripsForRouteResourceWithRawResponse
+
+        return AsyncTripsForRouteResourceWithRawResponse(self._client.trips_for_route)
+
+    @cached_property
+    def report_problem_with_stop(self) -> report_problem_with_stop.AsyncReportProblemWithStopResourceWithRawResponse:
+        from .resources.report_problem_with_stop import AsyncReportProblemWithStopResourceWithRawResponse
+
+        return AsyncReportProblemWithStopResourceWithRawResponse(self._client.report_problem_with_stop)
+
+    @cached_property
+    def report_problem_with_trip(self) -> report_problem_with_trip.AsyncReportProblemWithTripResourceWithRawResponse:
+        from .resources.report_problem_with_trip import AsyncReportProblemWithTripResourceWithRawResponse
+
+        return AsyncReportProblemWithTripResourceWithRawResponse(self._client.report_problem_with_trip)
+
+    @cached_property
+    def search_for_stop(self) -> search_for_stop.AsyncSearchForStopResourceWithRawResponse:
+        from .resources.search_for_stop import AsyncSearchForStopResourceWithRawResponse
+
+        return AsyncSearchForStopResourceWithRawResponse(self._client.search_for_stop)
+
+    @cached_property
+    def search_for_route(self) -> search_for_route.AsyncSearchForRouteResourceWithRawResponse:
+        from .resources.search_for_route import AsyncSearchForRouteResourceWithRawResponse
+
+        return AsyncSearchForRouteResourceWithRawResponse(self._client.search_for_route)
+
+    @cached_property
+    def block(self) -> block.AsyncBlockResourceWithRawResponse:
+        from .resources.block import AsyncBlockResourceWithRawResponse
+
+        return AsyncBlockResourceWithRawResponse(self._client.block)
+
+    @cached_property
+    def shape(self) -> shape.AsyncShapeResourceWithRawResponse:
+        from .resources.shape import AsyncShapeResourceWithRawResponse
+
+        return AsyncShapeResourceWithRawResponse(self._client.shape)
 
 
 class OnebusawaySDKWithStreamedResponse:
+    _client: OnebusawaySDK
+
     def __init__(self, client: OnebusawaySDK) -> None:
-        self.agencies_with_coverage = agencies_with_coverage.AgenciesWithCoverageResourceWithStreamingResponse(
-            client.agencies_with_coverage
-        )
-        self.agency = agency.AgencyResourceWithStreamingResponse(client.agency)
-        self.vehicles_for_agency = vehicles_for_agency.VehiclesForAgencyResourceWithStreamingResponse(
-            client.vehicles_for_agency
-        )
-        self.config = config.ConfigResourceWithStreamingResponse(client.config)
-        self.current_time = current_time.CurrentTimeResourceWithStreamingResponse(client.current_time)
-        self.stops_for_location = stops_for_location.StopsForLocationResourceWithStreamingResponse(
-            client.stops_for_location
-        )
-        self.stops_for_route = stops_for_route.StopsForRouteResourceWithStreamingResponse(client.stops_for_route)
-        self.stops_for_agency = stops_for_agency.StopsForAgencyResourceWithStreamingResponse(client.stops_for_agency)
-        self.stop = stop.StopResourceWithStreamingResponse(client.stop)
-        self.stop_ids_for_agency = stop_ids_for_agency.StopIDsForAgencyResourceWithStreamingResponse(
-            client.stop_ids_for_agency
-        )
-        self.schedule_for_stop = schedule_for_stop.ScheduleForStopResourceWithStreamingResponse(
-            client.schedule_for_stop
-        )
-        self.route = route.RouteResourceWithStreamingResponse(client.route)
-        self.route_ids_for_agency = route_ids_for_agency.RouteIDsForAgencyResourceWithStreamingResponse(
-            client.route_ids_for_agency
-        )
-        self.routes_for_location = routes_for_location.RoutesForLocationResourceWithStreamingResponse(
-            client.routes_for_location
-        )
-        self.routes_for_agency = routes_for_agency.RoutesForAgencyResourceWithStreamingResponse(
-            client.routes_for_agency
-        )
-        self.schedule_for_route = schedule_for_route.ScheduleForRouteResourceWithStreamingResponse(
-            client.schedule_for_route
-        )
-        self.arrival_and_departure = arrival_and_departure.ArrivalAndDepartureResourceWithStreamingResponse(
-            client.arrival_and_departure
-        )
-        self.trip = trip.TripResourceWithStreamingResponse(client.trip)
-        self.trips_for_location = trips_for_location.TripsForLocationResourceWithStreamingResponse(
-            client.trips_for_location
-        )
-        self.trip_details = trip_details.TripDetailsResourceWithStreamingResponse(client.trip_details)
-        self.trip_for_vehicle = trip_for_vehicle.TripForVehicleResourceWithStreamingResponse(client.trip_for_vehicle)
-        self.trips_for_route = trips_for_route.TripsForRouteResourceWithStreamingResponse(client.trips_for_route)
-        self.report_problem_with_stop = report_problem_with_stop.ReportProblemWithStopResourceWithStreamingResponse(
-            client.report_problem_with_stop
-        )
-        self.report_problem_with_trip = report_problem_with_trip.ReportProblemWithTripResourceWithStreamingResponse(
-            client.report_problem_with_trip
-        )
-        self.search_for_stop = search_for_stop.SearchForStopResourceWithStreamingResponse(client.search_for_stop)
-        self.search_for_route = search_for_route.SearchForRouteResourceWithStreamingResponse(client.search_for_route)
-        self.block = block.BlockResourceWithStreamingResponse(client.block)
-        self.shape = shape.ShapeResourceWithStreamingResponse(client.shape)
+        self._client = client
+
+    @cached_property
+    def agencies_with_coverage(self) -> agencies_with_coverage.AgenciesWithCoverageResourceWithStreamingResponse:
+        from .resources.agencies_with_coverage import AgenciesWithCoverageResourceWithStreamingResponse
+
+        return AgenciesWithCoverageResourceWithStreamingResponse(self._client.agencies_with_coverage)
+
+    @cached_property
+    def agency(self) -> agency.AgencyResourceWithStreamingResponse:
+        from .resources.agency import AgencyResourceWithStreamingResponse
+
+        return AgencyResourceWithStreamingResponse(self._client.agency)
+
+    @cached_property
+    def vehicles_for_agency(self) -> vehicles_for_agency.VehiclesForAgencyResourceWithStreamingResponse:
+        from .resources.vehicles_for_agency import VehiclesForAgencyResourceWithStreamingResponse
+
+        return VehiclesForAgencyResourceWithStreamingResponse(self._client.vehicles_for_agency)
+
+    @cached_property
+    def config(self) -> config.ConfigResourceWithStreamingResponse:
+        from .resources.config import ConfigResourceWithStreamingResponse
+
+        return ConfigResourceWithStreamingResponse(self._client.config)
+
+    @cached_property
+    def current_time(self) -> current_time.CurrentTimeResourceWithStreamingResponse:
+        from .resources.current_time import CurrentTimeResourceWithStreamingResponse
+
+        return CurrentTimeResourceWithStreamingResponse(self._client.current_time)
+
+    @cached_property
+    def stops_for_location(self) -> stops_for_location.StopsForLocationResourceWithStreamingResponse:
+        from .resources.stops_for_location import StopsForLocationResourceWithStreamingResponse
+
+        return StopsForLocationResourceWithStreamingResponse(self._client.stops_for_location)
+
+    @cached_property
+    def stops_for_route(self) -> stops_for_route.StopsForRouteResourceWithStreamingResponse:
+        from .resources.stops_for_route import StopsForRouteResourceWithStreamingResponse
+
+        return StopsForRouteResourceWithStreamingResponse(self._client.stops_for_route)
+
+    @cached_property
+    def stops_for_agency(self) -> stops_for_agency.StopsForAgencyResourceWithStreamingResponse:
+        from .resources.stops_for_agency import StopsForAgencyResourceWithStreamingResponse
+
+        return StopsForAgencyResourceWithStreamingResponse(self._client.stops_for_agency)
+
+    @cached_property
+    def stop(self) -> stop.StopResourceWithStreamingResponse:
+        from .resources.stop import StopResourceWithStreamingResponse
+
+        return StopResourceWithStreamingResponse(self._client.stop)
+
+    @cached_property
+    def stop_ids_for_agency(self) -> stop_ids_for_agency.StopIDsForAgencyResourceWithStreamingResponse:
+        from .resources.stop_ids_for_agency import StopIDsForAgencyResourceWithStreamingResponse
+
+        return StopIDsForAgencyResourceWithStreamingResponse(self._client.stop_ids_for_agency)
+
+    @cached_property
+    def schedule_for_stop(self) -> schedule_for_stop.ScheduleForStopResourceWithStreamingResponse:
+        from .resources.schedule_for_stop import ScheduleForStopResourceWithStreamingResponse
+
+        return ScheduleForStopResourceWithStreamingResponse(self._client.schedule_for_stop)
+
+    @cached_property
+    def route(self) -> route.RouteResourceWithStreamingResponse:
+        from .resources.route import RouteResourceWithStreamingResponse
+
+        return RouteResourceWithStreamingResponse(self._client.route)
+
+    @cached_property
+    def route_ids_for_agency(self) -> route_ids_for_agency.RouteIDsForAgencyResourceWithStreamingResponse:
+        from .resources.route_ids_for_agency import RouteIDsForAgencyResourceWithStreamingResponse
+
+        return RouteIDsForAgencyResourceWithStreamingResponse(self._client.route_ids_for_agency)
+
+    @cached_property
+    def routes_for_location(self) -> routes_for_location.RoutesForLocationResourceWithStreamingResponse:
+        from .resources.routes_for_location import RoutesForLocationResourceWithStreamingResponse
+
+        return RoutesForLocationResourceWithStreamingResponse(self._client.routes_for_location)
+
+    @cached_property
+    def routes_for_agency(self) -> routes_for_agency.RoutesForAgencyResourceWithStreamingResponse:
+        from .resources.routes_for_agency import RoutesForAgencyResourceWithStreamingResponse
+
+        return RoutesForAgencyResourceWithStreamingResponse(self._client.routes_for_agency)
+
+    @cached_property
+    def schedule_for_route(self) -> schedule_for_route.ScheduleForRouteResourceWithStreamingResponse:
+        from .resources.schedule_for_route import ScheduleForRouteResourceWithStreamingResponse
+
+        return ScheduleForRouteResourceWithStreamingResponse(self._client.schedule_for_route)
+
+    @cached_property
+    def arrival_and_departure(self) -> arrival_and_departure.ArrivalAndDepartureResourceWithStreamingResponse:
+        from .resources.arrival_and_departure import ArrivalAndDepartureResourceWithStreamingResponse
+
+        return ArrivalAndDepartureResourceWithStreamingResponse(self._client.arrival_and_departure)
+
+    @cached_property
+    def trip(self) -> trip.TripResourceWithStreamingResponse:
+        from .resources.trip import TripResourceWithStreamingResponse
+
+        return TripResourceWithStreamingResponse(self._client.trip)
+
+    @cached_property
+    def trips_for_location(self) -> trips_for_location.TripsForLocationResourceWithStreamingResponse:
+        from .resources.trips_for_location import TripsForLocationResourceWithStreamingResponse
+
+        return TripsForLocationResourceWithStreamingResponse(self._client.trips_for_location)
+
+    @cached_property
+    def trip_details(self) -> trip_details.TripDetailsResourceWithStreamingResponse:
+        from .resources.trip_details import TripDetailsResourceWithStreamingResponse
+
+        return TripDetailsResourceWithStreamingResponse(self._client.trip_details)
+
+    @cached_property
+    def trip_for_vehicle(self) -> trip_for_vehicle.TripForVehicleResourceWithStreamingResponse:
+        from .resources.trip_for_vehicle import TripForVehicleResourceWithStreamingResponse
+
+        return TripForVehicleResourceWithStreamingResponse(self._client.trip_for_vehicle)
+
+    @cached_property
+    def trips_for_route(self) -> trips_for_route.TripsForRouteResourceWithStreamingResponse:
+        from .resources.trips_for_route import TripsForRouteResourceWithStreamingResponse
+
+        return TripsForRouteResourceWithStreamingResponse(self._client.trips_for_route)
+
+    @cached_property
+    def report_problem_with_stop(self) -> report_problem_with_stop.ReportProblemWithStopResourceWithStreamingResponse:
+        from .resources.report_problem_with_stop import ReportProblemWithStopResourceWithStreamingResponse
+
+        return ReportProblemWithStopResourceWithStreamingResponse(self._client.report_problem_with_stop)
+
+    @cached_property
+    def report_problem_with_trip(self) -> report_problem_with_trip.ReportProblemWithTripResourceWithStreamingResponse:
+        from .resources.report_problem_with_trip import ReportProblemWithTripResourceWithStreamingResponse
+
+        return ReportProblemWithTripResourceWithStreamingResponse(self._client.report_problem_with_trip)
+
+    @cached_property
+    def search_for_stop(self) -> search_for_stop.SearchForStopResourceWithStreamingResponse:
+        from .resources.search_for_stop import SearchForStopResourceWithStreamingResponse
+
+        return SearchForStopResourceWithStreamingResponse(self._client.search_for_stop)
+
+    @cached_property
+    def search_for_route(self) -> search_for_route.SearchForRouteResourceWithStreamingResponse:
+        from .resources.search_for_route import SearchForRouteResourceWithStreamingResponse
+
+        return SearchForRouteResourceWithStreamingResponse(self._client.search_for_route)
+
+    @cached_property
+    def block(self) -> block.BlockResourceWithStreamingResponse:
+        from .resources.block import BlockResourceWithStreamingResponse
+
+        return BlockResourceWithStreamingResponse(self._client.block)
+
+    @cached_property
+    def shape(self) -> shape.ShapeResourceWithStreamingResponse:
+        from .resources.shape import ShapeResourceWithStreamingResponse
+
+        return ShapeResourceWithStreamingResponse(self._client.shape)
 
 
 class AsyncOnebusawaySDKWithStreamedResponse:
+    _client: AsyncOnebusawaySDK
+
     def __init__(self, client: AsyncOnebusawaySDK) -> None:
-        self.agencies_with_coverage = agencies_with_coverage.AsyncAgenciesWithCoverageResourceWithStreamingResponse(
-            client.agencies_with_coverage
-        )
-        self.agency = agency.AsyncAgencyResourceWithStreamingResponse(client.agency)
-        self.vehicles_for_agency = vehicles_for_agency.AsyncVehiclesForAgencyResourceWithStreamingResponse(
-            client.vehicles_for_agency
-        )
-        self.config = config.AsyncConfigResourceWithStreamingResponse(client.config)
-        self.current_time = current_time.AsyncCurrentTimeResourceWithStreamingResponse(client.current_time)
-        self.stops_for_location = stops_for_location.AsyncStopsForLocationResourceWithStreamingResponse(
-            client.stops_for_location
-        )
-        self.stops_for_route = stops_for_route.AsyncStopsForRouteResourceWithStreamingResponse(client.stops_for_route)
-        self.stops_for_agency = stops_for_agency.AsyncStopsForAgencyResourceWithStreamingResponse(
-            client.stops_for_agency
-        )
-        self.stop = stop.AsyncStopResourceWithStreamingResponse(client.stop)
-        self.stop_ids_for_agency = stop_ids_for_agency.AsyncStopIDsForAgencyResourceWithStreamingResponse(
-            client.stop_ids_for_agency
-        )
-        self.schedule_for_stop = schedule_for_stop.AsyncScheduleForStopResourceWithStreamingResponse(
-            client.schedule_for_stop
-        )
-        self.route = route.AsyncRouteResourceWithStreamingResponse(client.route)
-        self.route_ids_for_agency = route_ids_for_agency.AsyncRouteIDsForAgencyResourceWithStreamingResponse(
-            client.route_ids_for_agency
-        )
-        self.routes_for_location = routes_for_location.AsyncRoutesForLocationResourceWithStreamingResponse(
-            client.routes_for_location
-        )
-        self.routes_for_agency = routes_for_agency.AsyncRoutesForAgencyResourceWithStreamingResponse(
-            client.routes_for_agency
-        )
-        self.schedule_for_route = schedule_for_route.AsyncScheduleForRouteResourceWithStreamingResponse(
-            client.schedule_for_route
-        )
-        self.arrival_and_departure = arrival_and_departure.AsyncArrivalAndDepartureResourceWithStreamingResponse(
-            client.arrival_and_departure
-        )
-        self.trip = trip.AsyncTripResourceWithStreamingResponse(client.trip)
-        self.trips_for_location = trips_for_location.AsyncTripsForLocationResourceWithStreamingResponse(
-            client.trips_for_location
-        )
-        self.trip_details = trip_details.AsyncTripDetailsResourceWithStreamingResponse(client.trip_details)
-        self.trip_for_vehicle = trip_for_vehicle.AsyncTripForVehicleResourceWithStreamingResponse(
-            client.trip_for_vehicle
-        )
-        self.trips_for_route = trips_for_route.AsyncTripsForRouteResourceWithStreamingResponse(client.trips_for_route)
-        self.report_problem_with_stop = (
-            report_problem_with_stop.AsyncReportProblemWithStopResourceWithStreamingResponse(
-                client.report_problem_with_stop
-            )
-        )
-        self.report_problem_with_trip = (
-            report_problem_with_trip.AsyncReportProblemWithTripResourceWithStreamingResponse(
-                client.report_problem_with_trip
-            )
-        )
-        self.search_for_stop = search_for_stop.AsyncSearchForStopResourceWithStreamingResponse(client.search_for_stop)
-        self.search_for_route = search_for_route.AsyncSearchForRouteResourceWithStreamingResponse(
-            client.search_for_route
-        )
-        self.block = block.AsyncBlockResourceWithStreamingResponse(client.block)
-        self.shape = shape.AsyncShapeResourceWithStreamingResponse(client.shape)
+        self._client = client
+
+    @cached_property
+    def agencies_with_coverage(self) -> agencies_with_coverage.AsyncAgenciesWithCoverageResourceWithStreamingResponse:
+        from .resources.agencies_with_coverage import AsyncAgenciesWithCoverageResourceWithStreamingResponse
+
+        return AsyncAgenciesWithCoverageResourceWithStreamingResponse(self._client.agencies_with_coverage)
+
+    @cached_property
+    def agency(self) -> agency.AsyncAgencyResourceWithStreamingResponse:
+        from .resources.agency import AsyncAgencyResourceWithStreamingResponse
+
+        return AsyncAgencyResourceWithStreamingResponse(self._client.agency)
+
+    @cached_property
+    def vehicles_for_agency(self) -> vehicles_for_agency.AsyncVehiclesForAgencyResourceWithStreamingResponse:
+        from .resources.vehicles_for_agency import AsyncVehiclesForAgencyResourceWithStreamingResponse
+
+        return AsyncVehiclesForAgencyResourceWithStreamingResponse(self._client.vehicles_for_agency)
+
+    @cached_property
+    def config(self) -> config.AsyncConfigResourceWithStreamingResponse:
+        from .resources.config import AsyncConfigResourceWithStreamingResponse
+
+        return AsyncConfigResourceWithStreamingResponse(self._client.config)
+
+    @cached_property
+    def current_time(self) -> current_time.AsyncCurrentTimeResourceWithStreamingResponse:
+        from .resources.current_time import AsyncCurrentTimeResourceWithStreamingResponse
+
+        return AsyncCurrentTimeResourceWithStreamingResponse(self._client.current_time)
+
+    @cached_property
+    def stops_for_location(self) -> stops_for_location.AsyncStopsForLocationResourceWithStreamingResponse:
+        from .resources.stops_for_location import AsyncStopsForLocationResourceWithStreamingResponse
+
+        return AsyncStopsForLocationResourceWithStreamingResponse(self._client.stops_for_location)
+
+    @cached_property
+    def stops_for_route(self) -> stops_for_route.AsyncStopsForRouteResourceWithStreamingResponse:
+        from .resources.stops_for_route import AsyncStopsForRouteResourceWithStreamingResponse
+
+        return AsyncStopsForRouteResourceWithStreamingResponse(self._client.stops_for_route)
+
+    @cached_property
+    def stops_for_agency(self) -> stops_for_agency.AsyncStopsForAgencyResourceWithStreamingResponse:
+        from .resources.stops_for_agency import AsyncStopsForAgencyResourceWithStreamingResponse
+
+        return AsyncStopsForAgencyResourceWithStreamingResponse(self._client.stops_for_agency)
+
+    @cached_property
+    def stop(self) -> stop.AsyncStopResourceWithStreamingResponse:
+        from .resources.stop import AsyncStopResourceWithStreamingResponse
+
+        return AsyncStopResourceWithStreamingResponse(self._client.stop)
+
+    @cached_property
+    def stop_ids_for_agency(self) -> stop_ids_for_agency.AsyncStopIDsForAgencyResourceWithStreamingResponse:
+        from .resources.stop_ids_for_agency import AsyncStopIDsForAgencyResourceWithStreamingResponse
+
+        return AsyncStopIDsForAgencyResourceWithStreamingResponse(self._client.stop_ids_for_agency)
+
+    @cached_property
+    def schedule_for_stop(self) -> schedule_for_stop.AsyncScheduleForStopResourceWithStreamingResponse:
+        from .resources.schedule_for_stop import AsyncScheduleForStopResourceWithStreamingResponse
+
+        return AsyncScheduleForStopResourceWithStreamingResponse(self._client.schedule_for_stop)
+
+    @cached_property
+    def route(self) -> route.AsyncRouteResourceWithStreamingResponse:
+        from .resources.route import AsyncRouteResourceWithStreamingResponse
+
+        return AsyncRouteResourceWithStreamingResponse(self._client.route)
+
+    @cached_property
+    def route_ids_for_agency(self) -> route_ids_for_agency.AsyncRouteIDsForAgencyResourceWithStreamingResponse:
+        from .resources.route_ids_for_agency import AsyncRouteIDsForAgencyResourceWithStreamingResponse
+
+        return AsyncRouteIDsForAgencyResourceWithStreamingResponse(self._client.route_ids_for_agency)
+
+    @cached_property
+    def routes_for_location(self) -> routes_for_location.AsyncRoutesForLocationResourceWithStreamingResponse:
+        from .resources.routes_for_location import AsyncRoutesForLocationResourceWithStreamingResponse
+
+        return AsyncRoutesForLocationResourceWithStreamingResponse(self._client.routes_for_location)
+
+    @cached_property
+    def routes_for_agency(self) -> routes_for_agency.AsyncRoutesForAgencyResourceWithStreamingResponse:
+        from .resources.routes_for_agency import AsyncRoutesForAgencyResourceWithStreamingResponse
+
+        return AsyncRoutesForAgencyResourceWithStreamingResponse(self._client.routes_for_agency)
+
+    @cached_property
+    def schedule_for_route(self) -> schedule_for_route.AsyncScheduleForRouteResourceWithStreamingResponse:
+        from .resources.schedule_for_route import AsyncScheduleForRouteResourceWithStreamingResponse
+
+        return AsyncScheduleForRouteResourceWithStreamingResponse(self._client.schedule_for_route)
+
+    @cached_property
+    def arrival_and_departure(self) -> arrival_and_departure.AsyncArrivalAndDepartureResourceWithStreamingResponse:
+        from .resources.arrival_and_departure import AsyncArrivalAndDepartureResourceWithStreamingResponse
+
+        return AsyncArrivalAndDepartureResourceWithStreamingResponse(self._client.arrival_and_departure)
+
+    @cached_property
+    def trip(self) -> trip.AsyncTripResourceWithStreamingResponse:
+        from .resources.trip import AsyncTripResourceWithStreamingResponse
+
+        return AsyncTripResourceWithStreamingResponse(self._client.trip)
+
+    @cached_property
+    def trips_for_location(self) -> trips_for_location.AsyncTripsForLocationResourceWithStreamingResponse:
+        from .resources.trips_for_location import AsyncTripsForLocationResourceWithStreamingResponse
+
+        return AsyncTripsForLocationResourceWithStreamingResponse(self._client.trips_for_location)
+
+    @cached_property
+    def trip_details(self) -> trip_details.AsyncTripDetailsResourceWithStreamingResponse:
+        from .resources.trip_details import AsyncTripDetailsResourceWithStreamingResponse
+
+        return AsyncTripDetailsResourceWithStreamingResponse(self._client.trip_details)
+
+    @cached_property
+    def trip_for_vehicle(self) -> trip_for_vehicle.AsyncTripForVehicleResourceWithStreamingResponse:
+        from .resources.trip_for_vehicle import AsyncTripForVehicleResourceWithStreamingResponse
+
+        return AsyncTripForVehicleResourceWithStreamingResponse(self._client.trip_for_vehicle)
+
+    @cached_property
+    def trips_for_route(self) -> trips_for_route.AsyncTripsForRouteResourceWithStreamingResponse:
+        from .resources.trips_for_route import AsyncTripsForRouteResourceWithStreamingResponse
+
+        return AsyncTripsForRouteResourceWithStreamingResponse(self._client.trips_for_route)
+
+    @cached_property
+    def report_problem_with_stop(
+        self,
+    ) -> report_problem_with_stop.AsyncReportProblemWithStopResourceWithStreamingResponse:
+        from .resources.report_problem_with_stop import AsyncReportProblemWithStopResourceWithStreamingResponse
+
+        return AsyncReportProblemWithStopResourceWithStreamingResponse(self._client.report_problem_with_stop)
+
+    @cached_property
+    def report_problem_with_trip(
+        self,
+    ) -> report_problem_with_trip.AsyncReportProblemWithTripResourceWithStreamingResponse:
+        from .resources.report_problem_with_trip import AsyncReportProblemWithTripResourceWithStreamingResponse
+
+        return AsyncReportProblemWithTripResourceWithStreamingResponse(self._client.report_problem_with_trip)
+
+    @cached_property
+    def search_for_stop(self) -> search_for_stop.AsyncSearchForStopResourceWithStreamingResponse:
+        from .resources.search_for_stop import AsyncSearchForStopResourceWithStreamingResponse
+
+        return AsyncSearchForStopResourceWithStreamingResponse(self._client.search_for_stop)
+
+    @cached_property
+    def search_for_route(self) -> search_for_route.AsyncSearchForRouteResourceWithStreamingResponse:
+        from .resources.search_for_route import AsyncSearchForRouteResourceWithStreamingResponse
+
+        return AsyncSearchForRouteResourceWithStreamingResponse(self._client.search_for_route)
+
+    @cached_property
+    def block(self) -> block.AsyncBlockResourceWithStreamingResponse:
+        from .resources.block import AsyncBlockResourceWithStreamingResponse
+
+        return AsyncBlockResourceWithStreamingResponse(self._client.block)
+
+    @cached_property
+    def shape(self) -> shape.AsyncShapeResourceWithStreamingResponse:
+        from .resources.shape import AsyncShapeResourceWithStreamingResponse
+
+        return AsyncShapeResourceWithStreamingResponse(self._client.shape)
 
 
 Client = OnebusawaySDK
