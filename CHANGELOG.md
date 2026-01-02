@@ -1,5 +1,33 @@
 # Changelog
 
+## 1.17.8 (2026-01-02)
+
+Full Changelog: [v1.17.7...v1.17.8](https://github.com/OneBusAway/python-sdk/compare/v1.17.7...v1.17.8)
+
+### Bug Fixes
+
+* compat with Python 3.14 ([2ebc518](https://github.com/OneBusAway/python-sdk/commit/2ebc5184554db31387b2f683265720d58dd9bb2f))
+* **compat:** update signatures of `model_dump` and `model_dump_json` for Pydantic v1 ([37abc5b](https://github.com/OneBusAway/python-sdk/commit/37abc5b808843321a5011b935590c5d3455f0c27))
+* ensure streams are always closed ([75f1288](https://github.com/OneBusAway/python-sdk/commit/75f1288ddc3202c2fe6850b8f968720ed88cb470))
+* **types:** allow pyright to infer TypedDict types within SequenceNotStr ([f10f373](https://github.com/OneBusAway/python-sdk/commit/f10f3734af08ea934c7b5be9de0cd2af106afaea))
+* use async_to_httpx_files in patch method ([bb271d4](https://github.com/OneBusAway/python-sdk/commit/bb271d4d067c06c8848488a5ba050e89b85fd671))
+
+
+### Chores
+
+* add missing docstrings ([5daefdd](https://github.com/OneBusAway/python-sdk/commit/5daefdde179696d3ade876b33b94fb79f5972155))
+* add Python 3.14 classifier and testing ([5ba9679](https://github.com/OneBusAway/python-sdk/commit/5ba9679c37d905d2b994fb3ad033825142ee19e2))
+* **deps:** mypy 1.18.1 has a regression, pin to 1.17 ([167648d](https://github.com/OneBusAway/python-sdk/commit/167648d8fb485e522aa49611ee25523190b78c9a))
+* **docs:** use environment variables for authentication in code snippets ([a2ac5df](https://github.com/OneBusAway/python-sdk/commit/a2ac5df1da8f164cbe85325385266b5340fd361b))
+* **internal/tests:** avoid race condition with implicit client cleanup ([f6c9ee8](https://github.com/OneBusAway/python-sdk/commit/f6c9ee8b1713fee3b65a599c98653d6183d6e162))
+* **internal:** add `--fix` argument to lint script ([fecb3ed](https://github.com/OneBusAway/python-sdk/commit/fecb3edeae22300f16eacd4f35da31e2243f17c8))
+* **internal:** add missing files argument to base client ([1744224](https://github.com/OneBusAway/python-sdk/commit/17442243ef6d3ca342ac4294de2257e59fdd7da4))
+* **internal:** codegen related update ([dc918e3](https://github.com/OneBusAway/python-sdk/commit/dc918e3df35585c12b7a05e433826563faccb086))
+* **internal:** grammar fix (it's -&gt; its) ([aa8df91](https://github.com/OneBusAway/python-sdk/commit/aa8df91bb2ba826f49bacf3a2a777579931487d9))
+* **package:** drop Python 3.8 support ([b633259](https://github.com/OneBusAway/python-sdk/commit/b633259385cddf32422b425a174a2a7dbe34021c))
+* speedup initial import ([d938f66](https://github.com/OneBusAway/python-sdk/commit/d938f6643cf144bb8db22d8c89024785ff5fdd97))
+* update lockfile ([4fd805d](https://github.com/OneBusAway/python-sdk/commit/4fd805dfa1c4efe2fd53d7aa46c75e368c97463f))
+
 ## 1.17.7 (2025-10-30)
 
 Full Changelog: [v1.17.6...v1.17.7](https://github.com/OneBusAway/python-sdk/compare/v1.17.6...v1.17.7)
