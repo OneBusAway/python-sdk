@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.18.0 (2026-01-14)
+
+Full Changelog: [v1.17.8...v1.18.0](https://github.com/OneBusAway/python-sdk/compare/v1.17.8...v1.18.0)
+
+### Features
+
+* **client:** add support for binary request streaming ([65e70c7](https://github.com/OneBusAway/python-sdk/commit/65e70c7ca5821ba92e25975d81f7298e6831962a))
+
 ## 1.17.8 (2026-01-02)
 
 Full Changelog: [v1.17.7...v1.17.8](https://github.com/OneBusAway/python-sdk/compare/v1.17.7...v1.17.8)
