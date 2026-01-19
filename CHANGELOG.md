@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.18.1 (2026-01-17)
+
+Full Changelog: [v1.18.0...v1.18.1](https://github.com/OneBusAway/python-sdk/compare/v1.18.0...v1.18.1)
+
+### Chores
+
+* **internal:** update `actions/checkout` version ([a74da99](https://github.com/OneBusAway/python-sdk/commit/a74da998f5ff890a42dee0d2ca3b35e5b0bee99f))
+
 ## 1.18.0 (2026-01-14)
 
 Full Changelog: [v1.17.8...v1.18.0](https://github.com/OneBusAway/python-sdk/compare/v1.17.8...v1.18.0)
