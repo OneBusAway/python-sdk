@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.18.2 (2026-01-24)
+
+Full Changelog: [v1.18.1...v1.18.2](https://github.com/OneBusAway/python-sdk/compare/v1.18.1...v1.18.2)
+
+### Chores
+
+* **ci:** upgrade `actions/github-script` ([b53a0e7](https://github.com/OneBusAway/python-sdk/commit/b53a0e7521f6bd5a5b91ca044ab1170e19f66d9c))
+
 ## 1.18.1 (2026-01-17)
 
 Full Changelog: [v1.18.0...v1.18.1](https://github.com/OneBusAway/python-sdk/compare/v1.18.0...v1.18.1)
