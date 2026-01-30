@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.19.0 (2026-01-30)
+
+Full Changelog: [v1.18.2...v1.19.0](https://github.com/OneBusAway/python-sdk/compare/v1.18.2...v1.19.0)
+
+### Features
+
+* **client:** add custom JSON encoder for extended type support ([b86708c](https://github.com/OneBusAway/python-sdk/commit/b86708cb3174d253d5a1165314e2be906fcb7f45))
+
 ## 1.18.2 (2026-01-24)
 
 Full Changelog: [v1.18.1...v1.18.2](https://github.com/OneBusAway/python-sdk/compare/v1.18.1...v1.18.2)
