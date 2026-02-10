@@ -75,10 +75,11 @@ class Querystring:
         if isinstance(value, Mapping):
             items: list[tuple[str, str]] = []
             nested_format = opts.nested_format
+            if nested_format != "dots" and nested_format != "brackets":
+                raise ValueError(f"Unknown nested_format: {nested_format}")
             for subkey, subvalue in value.items():
                 items.extend(
                     self._stringify_item(
-                        # TODO: error if unknown format
                         f"{key}.{subkey}" if nested_format == "dots" else f"{key}[{subkey}]",
                         subvalue,
                         opts,
