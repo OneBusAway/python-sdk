@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.19.1 (2026-02-10)
+
+Full Changelog: [v1.19.0...v1.19.1](https://github.com/OneBusAway/python-sdk/compare/v1.19.0...v1.19.1)
+
+### Chores
+
+* **internal:** bump dependencies ([62f3fa1](https://github.com/OneBusAway/python-sdk/commit/62f3fa13edd93af703978251b8fab75f831f7c24))
+
 ## 1.19.0 (2026-01-30)
 
 Full Changelog: [v1.18.2...v1.19.0](https://github.com/OneBusAway/python-sdk/compare/v1.18.2...v1.19.0)
