@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.19.2 (2026-02-13)
+
+Full Changelog: [v1.19.1...v1.19.2](https://github.com/OneBusAway/python-sdk/compare/v1.19.1...v1.19.2)
+
+### Chores
+
+* format all `api.md` files ([a800c7d](https://github.com/OneBusAway/python-sdk/commit/a800c7de6f87bf874032cabc42285ac1f27e4a7b))
+* **internal:** fix lint error on Python 3.14 ([790e84d](https://github.com/OneBusAway/python-sdk/commit/790e84dee02f5b6a1a4a2a5180c641c79ab7e49a))
+
 ## 1.19.1 (2026-02-10)
 
 Full Changelog: [v1.19.0...v1.19.1](https://github.com/OneBusAway/python-sdk/compare/v1.19.0...v1.19.1)
