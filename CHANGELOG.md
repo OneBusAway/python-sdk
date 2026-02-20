@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.19.3 (2026-02-20)
+
+Full Changelog: [v1.19.2...v1.19.3](https://github.com/OneBusAway/python-sdk/compare/v1.19.2...v1.19.3)
+
+### Chores
+
+* update mock server docs ([71a7ebf](https://github.com/OneBusAway/python-sdk/commit/71a7ebfcc6f43c0b67397498ace5627a6a4f6138))
+
 ## 1.19.2 (2026-02-13)
 
 Full Changelog: [v1.19.1...v1.19.2](https://github.com/OneBusAway/python-sdk/compare/v1.19.1...v1.19.2)
