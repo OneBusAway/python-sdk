@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.19.4 (2026-02-24)
+
+Full Changelog: [v1.19.3...v1.19.4](https://github.com/OneBusAway/python-sdk/compare/v1.19.3...v1.19.4)
+
+### Chores
+
+* **internal:** add request options to SSE classes ([82eb18f](https://github.com/OneBusAway/python-sdk/commit/82eb18f84a795101b3d593a4d0ca0ffe8c2f61ad))
+* **internal:** make `test_proxy_environment_variables` more resilient ([8d549cc](https://github.com/OneBusAway/python-sdk/commit/8d549cc7fd49514167e74d5c7f6889e7681223bd))
+
 ## 1.19.3 (2026-02-20)
 
 Full Changelog: [v1.19.2...v1.19.3](https://github.com/OneBusAway/python-sdk/compare/v1.19.2...v1.19.3)
