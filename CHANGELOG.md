@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.19.5 (2026-02-26)
+
+Full Changelog: [v1.19.4...v1.19.5](https://github.com/OneBusAway/python-sdk/compare/v1.19.4...v1.19.5)
+
+### Chores
+
+* **internal:** make `test_proxy_environment_variables` more resilient to env ([e583264](https://github.com/OneBusAway/python-sdk/commit/e583264585805a1f82d86dc004c34c5eb1bb3bac))
+
 ## 1.19.4 (2026-02-24)
 
 Full Changelog: [v1.19.3...v1.19.4](https://github.com/OneBusAway/python-sdk/compare/v1.19.3...v1.19.4)
