@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.19.6 (2026-03-06)
+
+Full Changelog: [v1.19.5...v1.19.6](https://github.com/OneBusAway/python-sdk/compare/v1.19.5...v1.19.6)
+
+### Chores
+
+* **test:** do not count install time for mock server timeout ([7869bca](https://github.com/OneBusAway/python-sdk/commit/7869bca87c7ed3f3ea2944f20a3d3d92abb2b374))
+
 ## 1.19.5 (2026-02-26)
 
 Full Changelog: [v1.19.4...v1.19.5](https://github.com/OneBusAway/python-sdk/compare/v1.19.4...v1.19.5)
