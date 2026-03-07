@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.19.7 (2026-03-07)
+
+Full Changelog: [v1.19.6...v1.19.7](https://github.com/OneBusAway/python-sdk/compare/v1.19.6...v1.19.7)
+
+### Chores
+
+* **ci:** skip uploading artifacts on stainless-internal branches ([0192fc9](https://github.com/OneBusAway/python-sdk/commit/0192fc9c9015032655a23bb9217d60488709a277))
+
 ## 1.19.6 (2026-03-06)
 
 Full Changelog: [v1.19.5...v1.19.6](https://github.com/OneBusAway/python-sdk/compare/v1.19.5...v1.19.6)
