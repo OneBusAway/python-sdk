@@ -11,36 +11,10 @@ __all__ = [
     "ScheduleForRouteRetrieveResponse",
     "ScheduleForRouteRetrieveResponseData",
     "ScheduleForRouteRetrieveResponseDataEntry",
-    "ScheduleForRouteRetrieveResponseDataEntryStop",
     "ScheduleForRouteRetrieveResponseDataEntryStopTripGrouping",
     "ScheduleForRouteRetrieveResponseDataEntryStopTripGroupingTripsWithStopTime",
     "ScheduleForRouteRetrieveResponseDataEntryStopTripGroupingTripsWithStopTimeStopTime",
-    "ScheduleForRouteRetrieveResponseDataEntryTrip",
 ]
-
-
-class ScheduleForRouteRetrieveResponseDataEntryStop(BaseModel):
-    id: str
-
-    lat: float
-
-    location_type: int = FieldInfo(alias="locationType")
-
-    lon: float
-
-    name: str
-
-    parent: str
-
-    route_ids: List[str] = FieldInfo(alias="routeIds")
-
-    static_route_ids: List[str] = FieldInfo(alias="staticRouteIds")
-
-    code: Optional[str] = None
-
-    direction: Optional[str] = None
-
-    wheelchair_boarding: Optional[str] = FieldInfo(alias="wheelchairBoarding", default=None)
 
 
 class ScheduleForRouteRetrieveResponseDataEntryStopTripGroupingTripsWithStopTimeStopTime(BaseModel):
@@ -83,30 +57,6 @@ class ScheduleForRouteRetrieveResponseDataEntryStopTripGrouping(BaseModel):
     ] = FieldInfo(alias="tripsWithStopTimes", default=None)
 
 
-class ScheduleForRouteRetrieveResponseDataEntryTrip(BaseModel):
-    id: str
-
-    route_id: str = FieldInfo(alias="routeId")
-
-    service_id: str = FieldInfo(alias="serviceId")
-
-    block_id: Optional[str] = FieldInfo(alias="blockId", default=None)
-
-    direction_id: Optional[str] = FieldInfo(alias="directionId", default=None)
-
-    peak_offpeak: Optional[int] = FieldInfo(alias="peakOffpeak", default=None)
-
-    route_short_name: Optional[str] = FieldInfo(alias="routeShortName", default=None)
-
-    shape_id: Optional[str] = FieldInfo(alias="shapeId", default=None)
-
-    time_zone: Optional[str] = FieldInfo(alias="timeZone", default=None)
-
-    trip_headsign: Optional[str] = FieldInfo(alias="tripHeadsign", default=None)
-
-    trip_short_name: Optional[str] = FieldInfo(alias="tripShortName", default=None)
-
-
 class ScheduleForRouteRetrieveResponseDataEntry(BaseModel):
     route_id: str = FieldInfo(alias="routeId")
 
@@ -114,13 +64,9 @@ class ScheduleForRouteRetrieveResponseDataEntry(BaseModel):
 
     service_ids: List[str] = FieldInfo(alias="serviceIds")
 
-    stops: List[ScheduleForRouteRetrieveResponseDataEntryStop]
-
     stop_trip_groupings: List[ScheduleForRouteRetrieveResponseDataEntryStopTripGrouping] = FieldInfo(
         alias="stopTripGroupings"
     )
-
-    trips: List[ScheduleForRouteRetrieveResponseDataEntryTrip]
 
 
 class ScheduleForRouteRetrieveResponseData(BaseModel):
