@@ -150,13 +150,9 @@ class VehiclesForAgencyListResponseDataList(BaseModel):
 
     last_update_time: int = FieldInfo(alias="lastUpdateTime")
 
-    location: VehiclesForAgencyListResponseDataListLocation
-
-    trip_id: str = FieldInfo(alias="tripId")
-
-    trip_status: VehiclesForAgencyListResponseDataListTripStatus = FieldInfo(alias="tripStatus")
-
     vehicle_id: str = FieldInfo(alias="vehicleId")
+
+    location: Optional[VehiclesForAgencyListResponseDataListLocation] = None
 
     occupancy_capacity: Optional[int] = FieldInfo(alias="occupancyCapacity", default=None)
 
@@ -167,6 +163,10 @@ class VehiclesForAgencyListResponseDataList(BaseModel):
     phase: Optional[str] = None
 
     status: Optional[str] = None
+
+    trip_id: Optional[str] = FieldInfo(alias="tripId", default=None)
+
+    trip_status: Optional[VehiclesForAgencyListResponseDataListTripStatus] = FieldInfo(alias="tripStatus", default=None)
 
 
 class VehiclesForAgencyListResponseData(BaseModel):

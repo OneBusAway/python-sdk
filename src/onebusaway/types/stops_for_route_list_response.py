@@ -11,16 +11,15 @@ from .shared.response_wrapper import ResponseWrapper
 __all__ = [
     "StopsForRouteListResponse",
     "StopsForRouteListResponseData",
-    "StopsForRouteListResponseDataData",
-    "StopsForRouteListResponseDataDataEntry",
-    "StopsForRouteListResponseDataDataEntryPolyline",
-    "StopsForRouteListResponseDataDataEntryStopGrouping",
-    "StopsForRouteListResponseDataDataEntryStopGroupingName",
-    "StopsForRouteListResponseDataDataEntryStopGroupingPolyline",
+    "StopsForRouteListResponseDataEntry",
+    "StopsForRouteListResponseDataEntryPolyline",
+    "StopsForRouteListResponseDataEntryStopGrouping",
+    "StopsForRouteListResponseDataEntryStopGroupingName",
+    "StopsForRouteListResponseDataEntryStopGroupingPolyline",
 ]
 
 
-class StopsForRouteListResponseDataDataEntryPolyline(BaseModel):
+class StopsForRouteListResponseDataEntryPolyline(BaseModel):
     length: Optional[int] = None
 
     levels: Optional[str] = None
@@ -28,7 +27,7 @@ class StopsForRouteListResponseDataDataEntryPolyline(BaseModel):
     points: Optional[str] = None
 
 
-class StopsForRouteListResponseDataDataEntryStopGroupingName(BaseModel):
+class StopsForRouteListResponseDataEntryStopGroupingName(BaseModel):
     name: Optional[str] = None
 
     names: Optional[List[str]] = None
@@ -36,7 +35,7 @@ class StopsForRouteListResponseDataDataEntryStopGroupingName(BaseModel):
     type: Optional[str] = None
 
 
-class StopsForRouteListResponseDataDataEntryStopGroupingPolyline(BaseModel):
+class StopsForRouteListResponseDataEntryStopGroupingPolyline(BaseModel):
     length: Optional[int] = None
 
     levels: Optional[str] = None
@@ -44,36 +43,32 @@ class StopsForRouteListResponseDataDataEntryStopGroupingPolyline(BaseModel):
     points: Optional[str] = None
 
 
-class StopsForRouteListResponseDataDataEntryStopGrouping(BaseModel):
+class StopsForRouteListResponseDataEntryStopGrouping(BaseModel):
     id: Optional[str] = None
 
-    name: Optional[StopsForRouteListResponseDataDataEntryStopGroupingName] = None
+    name: Optional[StopsForRouteListResponseDataEntryStopGroupingName] = None
 
-    polylines: Optional[List[StopsForRouteListResponseDataDataEntryStopGroupingPolyline]] = None
+    polylines: Optional[List[StopsForRouteListResponseDataEntryStopGroupingPolyline]] = None
 
     stop_ids: Optional[List[str]] = FieldInfo(alias="stopIds", default=None)
 
 
-class StopsForRouteListResponseDataDataEntry(BaseModel):
-    polylines: Optional[List[StopsForRouteListResponseDataDataEntryPolyline]] = None
+class StopsForRouteListResponseDataEntry(BaseModel):
+    polylines: Optional[List[StopsForRouteListResponseDataEntryPolyline]] = None
 
     route_id: Optional[str] = FieldInfo(alias="routeId", default=None)
 
-    stop_groupings: Optional[List[StopsForRouteListResponseDataDataEntryStopGrouping]] = FieldInfo(
+    stop_groupings: Optional[List[StopsForRouteListResponseDataEntryStopGrouping]] = FieldInfo(
         alias="stopGroupings", default=None
     )
 
     stop_ids: Optional[List[str]] = FieldInfo(alias="stopIds", default=None)
 
 
-class StopsForRouteListResponseDataData(BaseModel):
-    entry: StopsForRouteListResponseDataDataEntry
+class StopsForRouteListResponseData(BaseModel):
+    entry: StopsForRouteListResponseDataEntry
 
     references: References
-
-
-class StopsForRouteListResponseData(BaseModel):
-    data: StopsForRouteListResponseDataData
 
 
 class StopsForRouteListResponse(ResponseWrapper):
