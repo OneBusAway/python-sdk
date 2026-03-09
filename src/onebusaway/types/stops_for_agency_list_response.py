@@ -8,10 +8,10 @@ from .._models import BaseModel
 from .shared.references import References
 from .shared.response_wrapper import ResponseWrapper
 
-__all__ = ["StopsForAgencyListResponse", "StopsForAgencyListResponseList"]
+__all__ = ["StopsForAgencyListResponse", "StopsForAgencyListResponseData", "StopsForAgencyListResponseDataList"]
 
 
-class StopsForAgencyListResponseList(BaseModel):
+class StopsForAgencyListResponseDataList(BaseModel):
     id: str
 
     lat: float
@@ -35,11 +35,15 @@ class StopsForAgencyListResponseList(BaseModel):
     wheelchair_boarding: Optional[str] = FieldInfo(alias="wheelchairBoarding", default=None)
 
 
-class StopsForAgencyListResponse(ResponseWrapper):
+class StopsForAgencyListResponseData(BaseModel):
     limit_exceeded: bool = FieldInfo(alias="limitExceeded")
 
-    list: List[StopsForAgencyListResponseList]
+    list: List[StopsForAgencyListResponseDataList]
 
     references: References
 
     out_of_range: Optional[bool] = FieldInfo(alias="outOfRange", default=None)
+
+
+class StopsForAgencyListResponse(ResponseWrapper):
+    data: StopsForAgencyListResponseData
