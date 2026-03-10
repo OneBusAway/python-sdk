@@ -34,13 +34,13 @@ class SearchForRouteListResponseDataList(BaseModel):
 
 
 class SearchForRouteListResponseData(BaseModel):
-    limit_exceeded: bool = FieldInfo(alias="limitExceeded")
-
     list: List[SearchForRouteListResponseDataList]
 
     out_of_range: bool = FieldInfo(alias="outOfRange")
 
     references: References
+
+    limit_exceeded: Optional[bool] = FieldInfo(alias="limitExceeded", default=None)
 
 
 class SearchForRouteListResponse(ResponseWrapper):

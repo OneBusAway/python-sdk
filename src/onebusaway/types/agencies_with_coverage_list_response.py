@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List
+from typing import List, Optional
 
 from pydantic import Field as FieldInfo
 
@@ -28,11 +28,11 @@ class AgenciesWithCoverageListResponseDataList(BaseModel):
 
 
 class AgenciesWithCoverageListResponseData(BaseModel):
-    limit_exceeded: bool = FieldInfo(alias="limitExceeded")
-
     list: List[AgenciesWithCoverageListResponseDataList]
 
     references: References
+
+    limit_exceeded: Optional[bool] = FieldInfo(alias="limitExceeded", default=None)
 
 
 class AgenciesWithCoverageListResponse(ResponseWrapper):

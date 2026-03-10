@@ -36,11 +36,11 @@ class StopsForLocationListResponseDataList(BaseModel):
 
 
 class StopsForLocationListResponseData(BaseModel):
-    limit_exceeded: bool = FieldInfo(alias="limitExceeded")
-
     list: List[StopsForLocationListResponseDataList]
 
     references: References
+
+    limit_exceeded: Optional[bool] = FieldInfo(alias="limitExceeded", default=None)
 
     out_of_range: Optional[bool] = FieldInfo(alias="outOfRange", default=None)
 

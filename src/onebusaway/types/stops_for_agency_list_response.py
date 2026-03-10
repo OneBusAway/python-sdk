@@ -36,11 +36,11 @@ class StopsForAgencyListResponseDataList(BaseModel):
 
 
 class StopsForAgencyListResponseData(BaseModel):
-    limit_exceeded: bool = FieldInfo(alias="limitExceeded")
-
     list: List[StopsForAgencyListResponseDataList]
 
     references: References
+
+    limit_exceeded: Optional[bool] = FieldInfo(alias="limitExceeded", default=None)
 
     out_of_range: Optional[bool] = FieldInfo(alias="outOfRange", default=None)
 
