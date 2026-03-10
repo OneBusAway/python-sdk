@@ -36,13 +36,13 @@ class SearchForStopListResponseDataList(BaseModel):
 
 
 class SearchForStopListResponseData(BaseModel):
-    limit_exceeded: bool = FieldInfo(alias="limitExceeded")
-
     list: List[SearchForStopListResponseDataList]
 
     out_of_range: bool = FieldInfo(alias="outOfRange")
 
     references: References
+
+    limit_exceeded: Optional[bool] = FieldInfo(alias="limitExceeded", default=None)
 
 
 class SearchForStopListResponse(ResponseWrapper):

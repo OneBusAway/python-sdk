@@ -1,7 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from typing import List, Optional
-from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
@@ -181,9 +180,7 @@ class Situation(BaseModel):
         alias="publicationWindows", default=None
     )
 
-    reason: Optional[
-        Literal["equipmentReason", "environmentReason", "personnelReason", "miscellaneousReason", "securityAlert"]
-    ] = None
+    reason: Optional[str] = None
     """Reason for the service alert, taken from TPEG codes."""
 
     severity: Optional[str] = None

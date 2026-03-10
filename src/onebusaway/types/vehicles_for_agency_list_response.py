@@ -170,11 +170,11 @@ class VehiclesForAgencyListResponseDataList(BaseModel):
 
 
 class VehiclesForAgencyListResponseData(BaseModel):
-    limit_exceeded: bool = FieldInfo(alias="limitExceeded")
-
     list: List[VehiclesForAgencyListResponseDataList]
 
     references: References
+
+    limit_exceeded: Optional[bool] = FieldInfo(alias="limitExceeded", default=None)
 
 
 class VehiclesForAgencyListResponse(ResponseWrapper):

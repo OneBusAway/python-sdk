@@ -34,11 +34,11 @@ class RoutesForAgencyListResponseDataList(BaseModel):
 
 
 class RoutesForAgencyListResponseData(BaseModel):
-    limit_exceeded: bool = FieldInfo(alias="limitExceeded")
-
     list: List[RoutesForAgencyListResponseDataList]
 
     references: References
+
+    limit_exceeded: Optional[bool] = FieldInfo(alias="limitExceeded", default=None)
 
 
 class RoutesForAgencyListResponse(ResponseWrapper):

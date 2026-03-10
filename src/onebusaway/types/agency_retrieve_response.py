@@ -36,8 +36,6 @@ class AgencyRetrieveResponseDataEntry(BaseModel):
 class AgencyRetrieveResponseData(BaseModel):
     entry: AgencyRetrieveResponseDataEntry
 
-    limit_exceeded: bool = FieldInfo(alias="limitExceeded")
-
     references: References
 
 
