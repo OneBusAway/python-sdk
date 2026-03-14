@@ -19,7 +19,7 @@ __all__ = [
 
 
 class ArrivalAndDepartureRetrieveResponseDataEntryTripStatusLastKnownLocation(BaseModel):
-    """Last known location of the transit vehicle."""
+    """Last known location of the transit vehicle (optional)."""
 
     lat: Optional[float] = None
     """Latitude of the last known location of the transit vehicle."""
@@ -107,7 +107,7 @@ class ArrivalAndDepartureRetrieveResponseDataEntryTripStatus(BaseModel):
     last_known_location: Optional[ArrivalAndDepartureRetrieveResponseDataEntryTripStatusLastKnownLocation] = FieldInfo(
         alias="lastKnownLocation", default=None
     )
-    """Last known location of the transit vehicle."""
+    """Last known location of the transit vehicle (optional)."""
 
     last_known_orientation: Optional[float] = FieldInfo(alias="lastKnownOrientation", default=None)
     """Last known orientation value received in real-time from the transit vehicle."""
