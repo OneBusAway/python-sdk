@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.22.1 (2026-03-17)
+
+Full Changelog: [v1.22.0...v1.22.1](https://github.com/OneBusAway/python-sdk/compare/v1.22.0...v1.22.1)
+
+### Bug Fixes
+
+* **deps:** bump minimum typing-extensions version ([13f6b82](https://github.com/OneBusAway/python-sdk/commit/13f6b82ee19b6e51b29e800ce5715f967db07b64))
+* **pydantic:** do not pass `by_alias` unless set ([658f6ca](https://github.com/OneBusAway/python-sdk/commit/658f6ca0c5da679a8a771952e19fbef3654bc66b))
+
+
+### Chores
+
+* **internal:** tweak CI branches ([0187280](https://github.com/OneBusAway/python-sdk/commit/0187280015c3dd74afef273cc66cb8892ff8c772))
+
 ## 1.22.0 (2026-03-14)
 
 Full Changelog: [v1.21.0...v1.22.0](https://github.com/OneBusAway/python-sdk/compare/v1.21.0...v1.22.0)
