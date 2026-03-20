@@ -6,7 +6,7 @@ import httpx
 
 from ..types import trips_for_route_list_params
 from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from .._utils import maybe_transform, async_maybe_transform
+from .._utils import path_template, maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -77,7 +77,7 @@ class TripsForRouteResource(SyncAPIResource):
         if not route_id:
             raise ValueError(f"Expected a non-empty value for `route_id` but received {route_id!r}")
         return self._get(
-            f"/api/where/trips-for-route/{route_id}.json",
+            path_template("/api/where/trips-for-route/{route_id}.json", route_id=route_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -152,7 +152,7 @@ class AsyncTripsForRouteResource(AsyncAPIResource):
         if not route_id:
             raise ValueError(f"Expected a non-empty value for `route_id` but received {route_id!r}")
         return await self._get(
-            f"/api/where/trips-for-route/{route_id}.json",
+            path_template("/api/where/trips-for-route/{route_id}.json", route_id=route_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
