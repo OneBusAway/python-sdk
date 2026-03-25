@@ -1,5 +1,28 @@
 # Changelog
 
+## 1.22.2 (2026-03-25)
+
+Full Changelog: [v1.22.1...v1.22.2](https://github.com/OneBusAway/python-sdk/compare/v1.22.1...v1.22.2)
+
+### Bug Fixes
+
+* sanitize endpoint path params ([3d04ad1](https://github.com/OneBusAway/python-sdk/commit/3d04ad1d05edb09c8eac32fc6a0752fadf20a04e))
+
+
+### Chores
+
+* **ci:** skip lint on metadata-only changes ([dc9ab43](https://github.com/OneBusAway/python-sdk/commit/dc9ab43ae3b46cf4dee88f431b1333d9bf152b58))
+* **internal:** update gitignore ([ad43452](https://github.com/OneBusAway/python-sdk/commit/ad434527afac6ff4640dc8ba70871149a7ecab4e))
+* **tests:** bump steady to v0.19.4 ([7dc10af](https://github.com/OneBusAway/python-sdk/commit/7dc10afd245b84a539d7e37b62d3cb67dcab0407))
+* **tests:** bump steady to v0.19.5 ([d0e4a0f](https://github.com/OneBusAway/python-sdk/commit/d0e4a0fe58e465c809f224ea81f08835be586a77))
+* **tests:** bump steady to v0.19.6 ([b068311](https://github.com/OneBusAway/python-sdk/commit/b06831111127830e923c9e069bcedc089cd319c9))
+* **tests:** bump steady to v0.19.7 ([d9c7629](https://github.com/OneBusAway/python-sdk/commit/d9c762957c1bc68715a3b8f7f91b034d054fa58b))
+
+
+### Refactors
+
+* **tests:** switch from prism to steady ([9737588](https://github.com/OneBusAway/python-sdk/commit/9737588d82b10a90ecc22f6c0e9b7918362ff799))
+
 ## 1.22.1 (2026-03-17)
 
 Full Changelog: [v1.22.0...v1.22.1](https://github.com/OneBusAway/python-sdk/compare/v1.22.0...v1.22.1)
