@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.23.0 (2026-03-27)
+
+Full Changelog: [v1.22.2...v1.23.0](https://github.com/OneBusAway/python-sdk/compare/v1.22.2...v1.23.0)
+
+### Features
+
+* **internal:** implement indices array format for query and form serialization ([b5f2cbb](https://github.com/OneBusAway/python-sdk/commit/b5f2cbb5007ec41ed5e29e1efee72347521767db))
+
 ## 1.22.2 (2026-03-25)
 
 Full Changelog: [v1.22.1...v1.22.2](https://github.com/OneBusAway/python-sdk/compare/v1.22.1...v1.22.2)
