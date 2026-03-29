@@ -54,3 +54,9 @@ from .report_problem_with_stop_retrieve_params import (
 from .report_problem_with_trip_retrieve_params import (
     ReportProblemWithTripRetrieveParams as ReportProblemWithTripRetrieveParams,
 )
+from .arrivals_and_departures_for_location_list_params import (
+    ArrivalsAndDeparturesForLocationListParams as ArrivalsAndDeparturesForLocationListParams,
+)
+from .arrivals_and_departures_for_location_list_response import (
+    ArrivalsAndDeparturesForLocationListResponse as ArrivalsAndDeparturesForLocationListResponse,
+)
