@@ -196,6 +196,18 @@ Methods:
 
 - <code title="get /api/where/schedule-for-route/{routeID}.json">client.schedule_for_route.<a href="./src/onebusaway/resources/schedule_for_route.py">retrieve</a>(route_id, \*\*<a href="src/onebusaway/types/schedule_for_route_retrieve_params.py">params</a>) -> <a href="./src/onebusaway/types/schedule_for_route_retrieve_response.py">ScheduleForRouteRetrieveResponse</a></code>
 
+# ArrivalsAndDeparturesForLocation
+
+Types:
+
+```python
+from onebusaway.types import ArrivalsAndDeparturesForLocationListResponse
+```
+
+Methods:
+
+- <code title="get /api/where/arrivals-and-departures-for-location.json">client.arrivals_and_departures_for_location.<a href="./src/onebusaway/resources/arrivals_and_departures_for_location.py">list</a>(\*\*<a href="src/onebusaway/types/arrivals_and_departures_for_location_list_params.py">params</a>) -> <a href="./src/onebusaway/types/arrivals_and_departures_for_location_list_response.py">ArrivalsAndDeparturesForLocationListResponse</a></code>
+
 # ArrivalAndDeparture
 
 Types:

@@ -224,6 +224,14 @@ from .report_problem_with_trip import (
     ReportProblemWithTripResourceWithStreamingResponse,
     AsyncReportProblemWithTripResourceWithStreamingResponse,
 )
+from .arrivals_and_departures_for_location import (
+    ArrivalsAndDeparturesForLocationResource,
+    AsyncArrivalsAndDeparturesForLocationResource,
+    ArrivalsAndDeparturesForLocationResourceWithRawResponse,
+    AsyncArrivalsAndDeparturesForLocationResourceWithRawResponse,
+    ArrivalsAndDeparturesForLocationResourceWithStreamingResponse,
+    AsyncArrivalsAndDeparturesForLocationResourceWithStreamingResponse,
+)
 
 __all__ = [
     "AgenciesWithCoverageResource",
@@ -322,6 +330,12 @@ __all__ = [
     "AsyncScheduleForRouteResourceWithRawResponse",
     "ScheduleForRouteResourceWithStreamingResponse",
     "AsyncScheduleForRouteResourceWithStreamingResponse",
+    "ArrivalsAndDeparturesForLocationResource",
+    "AsyncArrivalsAndDeparturesForLocationResource",
+    "ArrivalsAndDeparturesForLocationResourceWithRawResponse",
+    "AsyncArrivalsAndDeparturesForLocationResourceWithRawResponse",
+    "ArrivalsAndDeparturesForLocationResourceWithStreamingResponse",
+    "AsyncArrivalsAndDeparturesForLocationResourceWithStreamingResponse",
     "ArrivalAndDepartureResource",
     "AsyncArrivalAndDepartureResource",
     "ArrivalAndDepartureResourceWithRawResponse",

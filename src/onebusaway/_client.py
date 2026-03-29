@@ -60,6 +60,7 @@ if TYPE_CHECKING:
         agencies_with_coverage,
         report_problem_with_stop,
         report_problem_with_trip,
+        arrivals_and_departures_for_location,
     )
     from .resources.stop import StopResource, AsyncStopResource
     from .resources.trip import TripResource, AsyncTripResource
@@ -89,6 +90,10 @@ if TYPE_CHECKING:
     from .resources.agencies_with_coverage import AgenciesWithCoverageResource, AsyncAgenciesWithCoverageResource
     from .resources.report_problem_with_stop import ReportProblemWithStopResource, AsyncReportProblemWithStopResource
     from .resources.report_problem_with_trip import ReportProblemWithTripResource, AsyncReportProblemWithTripResource
+    from .resources.arrivals_and_departures_for_location import (
+        ArrivalsAndDeparturesForLocationResource,
+        AsyncArrivalsAndDeparturesForLocationResource,
+    )
 
 __all__ = [
     "Timeout",
@@ -252,6 +257,12 @@ class OnebusawaySDK(SyncAPIClient):
         from .resources.schedule_for_route import ScheduleForRouteResource
 
         return ScheduleForRouteResource(self)
+
+    @cached_property
+    def arrivals_and_departures_for_location(self) -> ArrivalsAndDeparturesForLocationResource:
+        from .resources.arrivals_and_departures_for_location import ArrivalsAndDeparturesForLocationResource
+
+        return ArrivalsAndDeparturesForLocationResource(self)
 
     @cached_property
     def arrival_and_departure(self) -> ArrivalAndDepartureResource:
@@ -596,6 +607,12 @@ class AsyncOnebusawaySDK(AsyncAPIClient):
         return AsyncScheduleForRouteResource(self)
 
     @cached_property
+    def arrivals_and_departures_for_location(self) -> AsyncArrivalsAndDeparturesForLocationResource:
+        from .resources.arrivals_and_departures_for_location import AsyncArrivalsAndDeparturesForLocationResource
+
+        return AsyncArrivalsAndDeparturesForLocationResource(self)
+
+    @cached_property
     def arrival_and_departure(self) -> AsyncArrivalAndDepartureResource:
         from .resources.arrival_and_departure import AsyncArrivalAndDepartureResource
 
@@ -889,6 +906,18 @@ class OnebusawaySDKWithRawResponse:
         return ScheduleForRouteResourceWithRawResponse(self._client.schedule_for_route)
 
     @cached_property
+    def arrivals_and_departures_for_location(
+        self,
+    ) -> arrivals_and_departures_for_location.ArrivalsAndDeparturesForLocationResourceWithRawResponse:
+        from .resources.arrivals_and_departures_for_location import (
+            ArrivalsAndDeparturesForLocationResourceWithRawResponse,
+        )
+
+        return ArrivalsAndDeparturesForLocationResourceWithRawResponse(
+            self._client.arrivals_and_departures_for_location
+        )
+
+    @cached_property
     def arrival_and_departure(self) -> arrival_and_departure.ArrivalAndDepartureResourceWithRawResponse:
         from .resources.arrival_and_departure import ArrivalAndDepartureResourceWithRawResponse
 
@@ -1062,6 +1091,18 @@ class AsyncOnebusawaySDKWithRawResponse:
         from .resources.schedule_for_route import AsyncScheduleForRouteResourceWithRawResponse
 
         return AsyncScheduleForRouteResourceWithRawResponse(self._client.schedule_for_route)
+
+    @cached_property
+    def arrivals_and_departures_for_location(
+        self,
+    ) -> arrivals_and_departures_for_location.AsyncArrivalsAndDeparturesForLocationResourceWithRawResponse:
+        from .resources.arrivals_and_departures_for_location import (
+            AsyncArrivalsAndDeparturesForLocationResourceWithRawResponse,
+        )
+
+        return AsyncArrivalsAndDeparturesForLocationResourceWithRawResponse(
+            self._client.arrivals_and_departures_for_location
+        )
 
     @cached_property
     def arrival_and_departure(self) -> arrival_and_departure.AsyncArrivalAndDepartureResourceWithRawResponse:
@@ -1239,6 +1280,18 @@ class OnebusawaySDKWithStreamedResponse:
         return ScheduleForRouteResourceWithStreamingResponse(self._client.schedule_for_route)
 
     @cached_property
+    def arrivals_and_departures_for_location(
+        self,
+    ) -> arrivals_and_departures_for_location.ArrivalsAndDeparturesForLocationResourceWithStreamingResponse:
+        from .resources.arrivals_and_departures_for_location import (
+            ArrivalsAndDeparturesForLocationResourceWithStreamingResponse,
+        )
+
+        return ArrivalsAndDeparturesForLocationResourceWithStreamingResponse(
+            self._client.arrivals_and_departures_for_location
+        )
+
+    @cached_property
     def arrival_and_departure(self) -> arrival_and_departure.ArrivalAndDepartureResourceWithStreamingResponse:
         from .resources.arrival_and_departure import ArrivalAndDepartureResourceWithStreamingResponse
 
@@ -1412,6 +1465,18 @@ class AsyncOnebusawaySDKWithStreamedResponse:
         from .resources.schedule_for_route import AsyncScheduleForRouteResourceWithStreamingResponse
 
         return AsyncScheduleForRouteResourceWithStreamingResponse(self._client.schedule_for_route)
+
+    @cached_property
+    def arrivals_and_departures_for_location(
+        self,
+    ) -> arrivals_and_departures_for_location.AsyncArrivalsAndDeparturesForLocationResourceWithStreamingResponse:
+        from .resources.arrivals_and_departures_for_location import (
+            AsyncArrivalsAndDeparturesForLocationResourceWithStreamingResponse,
+        )
+
+        return AsyncArrivalsAndDeparturesForLocationResourceWithStreamingResponse(
+            self._client.arrivals_and_departures_for_location
+        )
 
     @cached_property
     def arrival_and_departure(self) -> arrival_and_departure.AsyncArrivalAndDepartureResourceWithStreamingResponse:
