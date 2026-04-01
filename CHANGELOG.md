@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.24.1 (2026-04-01)
+
+Full Changelog: [v1.24.0...v1.24.1](https://github.com/OneBusAway/python-sdk/compare/v1.24.0...v1.24.1)
+
+### Chores
+
+* **tests:** bump steady to v0.20.1 ([5fb2fbf](https://github.com/OneBusAway/python-sdk/commit/5fb2fbfcd95cd4db968c0c2e592c063e6b9a5135))
+* **tests:** bump steady to v0.20.2 ([007d6fd](https://github.com/OneBusAway/python-sdk/commit/007d6fdf2b3f40022fd4e40ec794defdd933115e))
+
 ## 1.24.0 (2026-03-29)
 
 Full Changelog: [v1.23.0...v1.24.0](https://github.com/OneBusAway/python-sdk/compare/v1.23.0...v1.24.0)
