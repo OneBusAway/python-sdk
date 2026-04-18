@@ -1,5 +1,24 @@
 # Changelog
 
+## 1.24.2 (2026-04-18)
+
+Full Changelog: [v1.24.1...v1.24.2](https://github.com/OneBusAway/python-sdk/compare/v1.24.1...v1.24.2)
+
+### Bug Fixes
+
+* **client:** preserve hardcoded query params when merging with user params ([fa95230](https://github.com/OneBusAway/python-sdk/commit/fa95230da42fb276e074db0d8f882d59172f867c))
+* ensure file data are only sent as 1 parameter ([abc0ea7](https://github.com/OneBusAway/python-sdk/commit/abc0ea7e46034c4d823f523cca5f2158b51a4133))
+
+
+### Performance Improvements
+
+* **client:** optimize file structure copying in multipart requests ([8bc5ca0](https://github.com/OneBusAway/python-sdk/commit/8bc5ca020f09905a0d48ab3eaeded6f3ace8773d))
+
+
+### Chores
+
+* **tests:** bump steady to v0.22.1 ([1bafb2f](https://github.com/OneBusAway/python-sdk/commit/1bafb2fd927eadf326b665dd8b50da58ecaf3048))
+
 ## 1.24.1 (2026-04-01)
 
 Full Changelog: [v1.24.0...v1.24.1](https://github.com/OneBusAway/python-sdk/compare/v1.24.0...v1.24.1)
