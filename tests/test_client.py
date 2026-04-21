@@ -423,7 +423,7 @@ class TestOnebusawaySDK:
     def test_hardcoded_query_params_in_url(self, client: OnebusawaySDK) -> None:
         request = client._build_request(FinalRequestOptions(method="get", url="/foo?beta=true"))
         url = httpx.URL(request.url)
-        assert dict(url.params) == {"beta": "true"}
+        assert dict(url.params) == {"beta": "true", "key": "My API Key"}
 
         request = client._build_request(
             FinalRequestOptions(
@@ -433,7 +433,7 @@ class TestOnebusawaySDK:
             )
         )
         url = httpx.URL(request.url)
-        assert dict(url.params) == {"beta": "true", "limit": "10", "page": "abc"}
+        assert dict(url.params) == {"beta": "true", "limit": "10", "page": "abc", "key": "My API Key"}
 
         request = client._build_request(
             FinalRequestOptions(
@@ -442,7 +442,7 @@ class TestOnebusawaySDK:
                 params={"limit": "10"},
             )
         )
-        assert request.url.raw_path == b"/files/a%2Fb?beta=true&limit=10"
+        assert request.url.raw_path == b"/files/a%2Fb?beta=true&key=My+API+Key&limit=10"
 
     def test_request_extra_json(self, client: OnebusawaySDK) -> None:
         request = client._build_request(
@@ -1341,7 +1341,7 @@ class TestAsyncOnebusawaySDK:
     async def test_hardcoded_query_params_in_url(self, async_client: AsyncOnebusawaySDK) -> None:
         request = async_client._build_request(FinalRequestOptions(method="get", url="/foo?beta=true"))
         url = httpx.URL(request.url)
-        assert dict(url.params) == {"beta": "true"}
+        assert dict(url.params) == {"beta": "true", "key": "My API Key"}
 
         request = async_client._build_request(
             FinalRequestOptions(
@@ -1351,7 +1351,7 @@ class TestAsyncOnebusawaySDK:
             )
         )
         url = httpx.URL(request.url)
-        assert dict(url.params) == {"beta": "true", "limit": "10", "page": "abc"}
+        assert dict(url.params) == {"beta": "true", "limit": "10", "page": "abc", "key": "My API Key"}
 
         request = async_client._build_request(
             FinalRequestOptions(
@@ -1360,7 +1360,7 @@ class TestAsyncOnebusawaySDK:
                 params={"limit": "10"},
             )
         )
-        assert request.url.raw_path == b"/files/a%2Fb?beta=true&limit=10"
+        assert request.url.raw_path == b"/files/a%2Fb?beta=true&key=My+API+Key&limit=10"
 
     def test_request_extra_json(self, client: OnebusawaySDK) -> None:
         request = client._build_request(
