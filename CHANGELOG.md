@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.24.3 (2026-04-23)
+
+Full Changelog: [v1.24.2...v1.24.3](https://github.com/OneBusAway/python-sdk/compare/v1.24.2...v1.24.3)
+
+### Chores
+
+* **internal:** more robust bootstrap script ([17e590e](https://github.com/OneBusAway/python-sdk/commit/17e590e3a735cc9cc5ef3f206c247e70dba7fb08))
+
 ## 1.24.2 (2026-04-18)
 
 Full Changelog: [v1.24.1...v1.24.2](https://github.com/OneBusAway/python-sdk/compare/v1.24.1...v1.24.2)
