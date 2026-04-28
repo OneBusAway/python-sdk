@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.25.0 (2026-04-28)
+
+Full Changelog: [v1.24.3...v1.25.0](https://github.com/OneBusAway/python-sdk/compare/v1.24.3...v1.25.0)
+
+### Features
+
+* support setting headers via env ([38c7369](https://github.com/OneBusAway/python-sdk/commit/38c736980e00e2981103c27070dbe0326d5c5a01))
+
+
+### Bug Fixes
+
+* use correct field name format for multipart file arrays ([a78b44f](https://github.com/OneBusAway/python-sdk/commit/a78b44f9978f721abc79ad12538c03c68032d137))
+
 ## 1.24.3 (2026-04-23)
 
 Full Changelog: [v1.24.2...v1.24.3](https://github.com/OneBusAway/python-sdk/compare/v1.24.2...v1.24.3)
