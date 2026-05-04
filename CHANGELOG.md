@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.25.1 (2026-05-01)
+
+Full Changelog: [v1.25.0...v1.25.1](https://github.com/OneBusAway/python-sdk/compare/v1.25.0...v1.25.1)
+
+### Chores
+
+* **internal:** reformat pyproject.toml ([9a19e48](https://github.com/OneBusAway/python-sdk/commit/9a19e484b2c0db02c01c4bb33c249eeb5f4ad51d))
+
 ## 1.25.0 (2026-04-28)
 
 Full Changelog: [v1.24.3...v1.25.0](https://github.com/OneBusAway/python-sdk/compare/v1.24.3...v1.25.0)
