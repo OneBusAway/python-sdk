@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.25.2 (2026-05-09)
+
+Full Changelog: [v1.25.1...v1.25.2](https://github.com/OneBusAway/python-sdk/compare/v1.25.1...v1.25.2)
+
+### Bug Fixes
+
+* **client:** add missing f-string prefix in file type error message ([7e64ef0](https://github.com/OneBusAway/python-sdk/commit/7e64ef0ae733fa7eaa144f6db52b504ec8cc9279))
+
 ## 1.25.1 (2026-05-01)
 
 Full Changelog: [v1.25.0...v1.25.1](https://github.com/OneBusAway/python-sdk/compare/v1.25.0...v1.25.1)
