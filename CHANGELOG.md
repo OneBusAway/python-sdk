@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.26.0 (2026-05-20)
+
+Full Changelog: [v1.25.2...v1.26.0](https://github.com/OneBusAway/python-sdk/compare/v1.25.2...v1.26.0)
+
+### Features
+
+* **api:** api update ([7f9712d](https://github.com/OneBusAway/python-sdk/commit/7f9712d23e5ddecb310ae8138b5a8357e69eafd4))
+* **internal/types:** support eagerly validating pydantic iterators ([48a9039](https://github.com/OneBusAway/python-sdk/commit/48a9039f0f206e11ad85df3bbe6487c1a95186aa))
+
 ## 1.25.2 (2026-05-09)
 
 Full Changelog: [v1.25.1...v1.25.2](https://github.com/OneBusAway/python-sdk/compare/v1.25.1...v1.25.2)
