@@ -46,6 +46,8 @@ class VehiclesForAgencyListResponseDataListTripStatusPosition(BaseModel):
 
 
 class VehiclesForAgencyListResponseDataListTripStatus(BaseModel):
+    """Trip-specific status for the arriving transit vehicle."""
+
     active_trip_id: str = FieldInfo(alias="activeTripId")
     """Trip ID of the trip the vehicle is actively serving."""
 
@@ -167,6 +169,7 @@ class VehiclesForAgencyListResponseDataList(BaseModel):
     trip_id: Optional[str] = FieldInfo(alias="tripId", default=None)
 
     trip_status: Optional[VehiclesForAgencyListResponseDataListTripStatus] = FieldInfo(alias="tripStatus", default=None)
+    """Trip-specific status for the arriving transit vehicle."""
 
 
 class VehiclesForAgencyListResponseData(BaseModel):
