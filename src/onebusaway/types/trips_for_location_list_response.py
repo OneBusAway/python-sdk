@@ -67,6 +67,8 @@ class TripsForLocationListResponseDataListStatusPosition(BaseModel):
 
 
 class TripsForLocationListResponseDataListStatus(BaseModel):
+    """Trip-specific status for the arriving transit vehicle."""
+
     active_trip_id: str = FieldInfo(alias="activeTripId")
     """Trip ID of the trip the vehicle is actively serving."""
 
@@ -170,6 +172,7 @@ class TripsForLocationListResponseDataList(BaseModel):
     schedule: TripsForLocationListResponseDataListSchedule
 
     status: TripsForLocationListResponseDataListStatus
+    """Trip-specific status for the arriving transit vehicle."""
 
     trip_id: str = FieldInfo(alias="tripId")
 

@@ -67,6 +67,8 @@ class TripForVehicleRetrieveResponseDataEntryStatusPosition(BaseModel):
 
 
 class TripForVehicleRetrieveResponseDataEntryStatus(BaseModel):
+    """Trip-specific status for the arriving transit vehicle."""
+
     active_trip_id: str = FieldInfo(alias="activeTripId")
     """Trip ID of the trip the vehicle is actively serving."""
 
@@ -178,6 +180,7 @@ class TripForVehicleRetrieveResponseDataEntry(BaseModel):
     situation_ids: Optional[List[str]] = FieldInfo(alias="situationIds", default=None)
 
     status: Optional[TripForVehicleRetrieveResponseDataEntryStatus] = None
+    """Trip-specific status for the arriving transit vehicle."""
 
 
 class TripForVehicleRetrieveResponseData(BaseModel):
