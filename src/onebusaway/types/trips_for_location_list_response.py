@@ -169,7 +169,7 @@ class TripsForLocationListResponseDataListStatus(BaseModel):
 
 
 class TripsForLocationListResponseDataList(BaseModel):
-    schedule: TripsForLocationListResponseDataListSchedule
+    schedule: Optional[TripsForLocationListResponseDataListSchedule] = None
 
     status: TripsForLocationListResponseDataListStatus
     """Trip-specific status for the arriving transit vehicle."""
