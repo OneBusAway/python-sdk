@@ -1,4 +1,4 @@
 configured_endpoints: 30
-openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/open-transit/open-transit-5f69b2b288261c7adfd9acb065dce897caf8782aff1687efe38ba52541ef7b96.yml
+openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/open-transit/open-transit-dee931967ba2ef46e7c8172181c5e92a5555eb0e39ac972540c2c7f9afa5a4f3.yml
 openapi_spec_hash: b03acca245aef78353d3b7a6a4a62eb2
-config_hash: c28ddf5b7754155603d9fd1c5fcaeeff
+config_hash: 90ead07431e6975682fbca7c92b7e14d
