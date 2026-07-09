@@ -74,7 +74,7 @@ class TripsForLocationResource(SyncAPIResource):
               to false.
 
           include_trip: Whether to include full trip elements in the references section. Defaults to
-              false.
+              true.
 
           time: Specific time for the query. Defaults to the current time.
 
@@ -163,7 +163,7 @@ class AsyncTripsForLocationResource(AsyncAPIResource):
               to false.
 
           include_trip: Whether to include full trip elements in the references section. Defaults to
-              false.
+              true.
 
           time: Specific time for the query. Defaults to the current time.
 
