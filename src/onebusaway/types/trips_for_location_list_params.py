@@ -31,7 +31,7 @@ class TripsForLocationListParams(TypedDict, total=False):
     include_trip: Annotated[bool, PropertyInfo(alias="includeTrip")]
     """Whether to include full trip elements in the references section.
 
-    Defaults to false.
+    Defaults to true.
     """
 
     time: int
