@@ -20,9 +20,7 @@ class TestTripsForLocation:
     @parametrize
     def test_method_list(self, client: OnebusawaySDK) -> None:
         trips_for_location = client.trips_for_location.list(
-            lat=0,
             lat_span=0,
-            lon=0,
             lon_span=0,
         )
         assert_matches_type(TripsForLocationListResponse, trips_for_location, path=["response"])
@@ -30,12 +28,12 @@ class TestTripsForLocation:
     @parametrize
     def test_method_list_with_all_params(self, client: OnebusawaySDK) -> None:
         trips_for_location = client.trips_for_location.list(
-            lat=0,
             lat_span=0,
-            lon=0,
             lon_span=0,
             include_schedule=True,
             include_trip=True,
+            lat=0,
+            lon=0,
             time=0,
         )
         assert_matches_type(TripsForLocationListResponse, trips_for_location, path=["response"])
@@ -43,9 +41,7 @@ class TestTripsForLocation:
     @parametrize
     def test_raw_response_list(self, client: OnebusawaySDK) -> None:
         response = client.trips_for_location.with_raw_response.list(
-            lat=0,
             lat_span=0,
-            lon=0,
             lon_span=0,
         )
 
@@ -57,9 +53,7 @@ class TestTripsForLocation:
     @parametrize
     def test_streaming_response_list(self, client: OnebusawaySDK) -> None:
         with client.trips_for_location.with_streaming_response.list(
-            lat=0,
             lat_span=0,
-            lon=0,
             lon_span=0,
         ) as response:
             assert not response.is_closed
@@ -79,9 +73,7 @@ class TestAsyncTripsForLocation:
     @parametrize
     async def test_method_list(self, async_client: AsyncOnebusawaySDK) -> None:
         trips_for_location = await async_client.trips_for_location.list(
-            lat=0,
             lat_span=0,
-            lon=0,
             lon_span=0,
         )
         assert_matches_type(TripsForLocationListResponse, trips_for_location, path=["response"])
@@ -89,12 +81,12 @@ class TestAsyncTripsForLocation:
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncOnebusawaySDK) -> None:
         trips_for_location = await async_client.trips_for_location.list(
-            lat=0,
             lat_span=0,
-            lon=0,
             lon_span=0,
             include_schedule=True,
             include_trip=True,
+            lat=0,
+            lon=0,
             time=0,
         )
         assert_matches_type(TripsForLocationListResponse, trips_for_location, path=["response"])
@@ -102,9 +94,7 @@ class TestAsyncTripsForLocation:
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncOnebusawaySDK) -> None:
         response = await async_client.trips_for_location.with_raw_response.list(
-            lat=0,
             lat_span=0,
-            lon=0,
             lon_span=0,
         )
 
@@ -116,9 +106,7 @@ class TestAsyncTripsForLocation:
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncOnebusawaySDK) -> None:
         async with async_client.trips_for_location.with_streaming_response.list(
-            lat=0,
             lat_span=0,
-            lon=0,
             lon_span=0,
         ) as response:
             assert not response.is_closed

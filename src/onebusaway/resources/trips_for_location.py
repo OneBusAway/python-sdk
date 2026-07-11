@@ -44,12 +44,12 @@ class TripsForLocationResource(SyncAPIResource):
     def list(
         self,
         *,
-        lat: float,
         lat_span: float,
-        lon: float,
         lon_span: float,
         include_schedule: bool | Omit = omit,
         include_trip: bool | Omit = omit,
+        lat: float | Omit = omit,
+        lon: float | Omit = omit,
         time: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -62,11 +62,7 @@ class TripsForLocationResource(SyncAPIResource):
         Retrieve trips for a given location
 
         Args:
-          lat: The latitude coordinate of the search center
-
           lat_span: Latitude span of the search bounding box
-
-          lon: The longitude coordinate of the search center
 
           lon_span: Longitude span of the search bounding box
 
@@ -75,6 +71,10 @@ class TripsForLocationResource(SyncAPIResource):
 
           include_trip: Whether to include full trip elements in the references section. Defaults to
               true.
+
+          lat: The latitude coordinate of the search center. If omitted, defaults to 0.0.
+
+          lon: The longitude coordinate of the search center. If omitted, defaults to 0.0.
 
           time: Specific time for the query. Defaults to the current time.
 
@@ -95,12 +95,12 @@ class TripsForLocationResource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
-                        "lat": lat,
                         "lat_span": lat_span,
-                        "lon": lon,
                         "lon_span": lon_span,
                         "include_schedule": include_schedule,
                         "include_trip": include_trip,
+                        "lat": lat,
+                        "lon": lon,
                         "time": time,
                     },
                     trips_for_location_list_params.TripsForLocationListParams,
@@ -133,12 +133,12 @@ class AsyncTripsForLocationResource(AsyncAPIResource):
     async def list(
         self,
         *,
-        lat: float,
         lat_span: float,
-        lon: float,
         lon_span: float,
         include_schedule: bool | Omit = omit,
         include_trip: bool | Omit = omit,
+        lat: float | Omit = omit,
+        lon: float | Omit = omit,
         time: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -151,11 +151,7 @@ class AsyncTripsForLocationResource(AsyncAPIResource):
         Retrieve trips for a given location
 
         Args:
-          lat: The latitude coordinate of the search center
-
           lat_span: Latitude span of the search bounding box
-
-          lon: The longitude coordinate of the search center
 
           lon_span: Longitude span of the search bounding box
 
@@ -164,6 +160,10 @@ class AsyncTripsForLocationResource(AsyncAPIResource):
 
           include_trip: Whether to include full trip elements in the references section. Defaults to
               true.
+
+          lat: The latitude coordinate of the search center. If omitted, defaults to 0.0.
+
+          lon: The longitude coordinate of the search center. If omitted, defaults to 0.0.
 
           time: Specific time for the query. Defaults to the current time.
 
@@ -184,12 +184,12 @@ class AsyncTripsForLocationResource(AsyncAPIResource):
                 timeout=timeout,
                 query=await async_maybe_transform(
                     {
-                        "lat": lat,
                         "lat_span": lat_span,
-                        "lon": lon,
                         "lon_span": lon_span,
                         "include_schedule": include_schedule,
                         "include_trip": include_trip,
+                        "lat": lat,
+                        "lon": lon,
                         "time": time,
                     },
                     trips_for_location_list_params.TripsForLocationListParams,

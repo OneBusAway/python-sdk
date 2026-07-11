@@ -44,9 +44,9 @@ class StopsForLocationResource(SyncAPIResource):
     def list(
         self,
         *,
-        lat: float,
-        lon: float,
+        lat: float | Omit = omit,
         lat_span: float | Omit = omit,
+        lon: float | Omit = omit,
         lon_span: float | Omit = omit,
         query: str | Omit = omit,
         radius: float | Omit = omit,
@@ -61,7 +61,11 @@ class StopsForLocationResource(SyncAPIResource):
         stops-for-location
 
         Args:
+          lat: If omitted, defaults to 0.0.
+
           lat_span: An alternative to radius to set the search bounding box (optional)
+
+          lon: If omitted, defaults to 0.0.
 
           lon_span: An alternative to radius to set the search bounding box (optional)
 
@@ -87,8 +91,8 @@ class StopsForLocationResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "lat": lat,
-                        "lon": lon,
                         "lat_span": lat_span,
+                        "lon": lon,
                         "lon_span": lon_span,
                         "query": query,
                         "radius": radius,
@@ -123,9 +127,9 @@ class AsyncStopsForLocationResource(AsyncAPIResource):
     async def list(
         self,
         *,
-        lat: float,
-        lon: float,
+        lat: float | Omit = omit,
         lat_span: float | Omit = omit,
+        lon: float | Omit = omit,
         lon_span: float | Omit = omit,
         query: str | Omit = omit,
         radius: float | Omit = omit,
@@ -140,7 +144,11 @@ class AsyncStopsForLocationResource(AsyncAPIResource):
         stops-for-location
 
         Args:
+          lat: If omitted, defaults to 0.0.
+
           lat_span: An alternative to radius to set the search bounding box (optional)
+
+          lon: If omitted, defaults to 0.0.
 
           lon_span: An alternative to radius to set the search bounding box (optional)
 
@@ -166,8 +174,8 @@ class AsyncStopsForLocationResource(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {
                         "lat": lat,
-                        "lon": lon,
                         "lat_span": lat_span,
+                        "lon": lon,
                         "lon_span": lon_span,
                         "query": query,
                         "radius": radius,
