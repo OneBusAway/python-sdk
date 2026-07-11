@@ -10,14 +10,8 @@ __all__ = ["TripsForLocationListParams"]
 
 
 class TripsForLocationListParams(TypedDict, total=False):
-    lat: Required[float]
-    """The latitude coordinate of the search center"""
-
     lat_span: Required[Annotated[float, PropertyInfo(alias="latSpan")]]
     """Latitude span of the search bounding box"""
-
-    lon: Required[float]
-    """The longitude coordinate of the search center"""
 
     lon_span: Required[Annotated[float, PropertyInfo(alias="lonSpan")]]
     """Longitude span of the search bounding box"""
@@ -33,6 +27,12 @@ class TripsForLocationListParams(TypedDict, total=False):
 
     Defaults to true.
     """
+
+    lat: float
+    """The latitude coordinate of the search center. If omitted, defaults to 0.0."""
+
+    lon: float
+    """The longitude coordinate of the search center. If omitted, defaults to 0.0."""
 
     time: int
     """Specific time for the query. Defaults to the current time."""

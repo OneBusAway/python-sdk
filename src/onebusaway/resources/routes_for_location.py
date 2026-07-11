@@ -44,9 +44,9 @@ class RoutesForLocationResource(SyncAPIResource):
     def list(
         self,
         *,
-        lat: float,
-        lon: float,
+        lat: float | Omit = omit,
         lat_span: float | Omit = omit,
+        lon: float | Omit = omit,
         lon_span: float | Omit = omit,
         query: str | Omit = omit,
         radius: float | Omit = omit,
@@ -61,6 +61,10 @@ class RoutesForLocationResource(SyncAPIResource):
         routes-for-location
 
         Args:
+          lat: If omitted, defaults to 0.0.
+
+          lon: If omitted, defaults to 0.0.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -79,8 +83,8 @@ class RoutesForLocationResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "lat": lat,
-                        "lon": lon,
                         "lat_span": lat_span,
+                        "lon": lon,
                         "lon_span": lon_span,
                         "query": query,
                         "radius": radius,
@@ -115,9 +119,9 @@ class AsyncRoutesForLocationResource(AsyncAPIResource):
     async def list(
         self,
         *,
-        lat: float,
-        lon: float,
+        lat: float | Omit = omit,
         lat_span: float | Omit = omit,
+        lon: float | Omit = omit,
         lon_span: float | Omit = omit,
         query: str | Omit = omit,
         radius: float | Omit = omit,
@@ -132,6 +136,10 @@ class AsyncRoutesForLocationResource(AsyncAPIResource):
         routes-for-location
 
         Args:
+          lat: If omitted, defaults to 0.0.
+
+          lon: If omitted, defaults to 0.0.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -150,8 +158,8 @@ class AsyncRoutesForLocationResource(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {
                         "lat": lat,
-                        "lon": lon,
                         "lat_span": lat_span,
+                        "lon": lon,
                         "lon_span": lon_span,
                         "query": query,
                         "radius": radius,
