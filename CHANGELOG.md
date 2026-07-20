@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.30.0 (2026-07-18)
+
+Full Changelog: [v1.29.0...v1.30.0](https://github.com/OneBusAway/python-sdk/compare/v1.29.0...v1.30.0)
+
+### Features
+
+* **stlc:** configurable CI runner and private-production-repo support in workflow templates ([e74f95b](https://github.com/OneBusAway/python-sdk/commit/e74f95bb8d594d496372e4f7e8b225b287db091c))
+
 ## 1.29.0 (2026-07-11)
 
 Full Changelog: [v1.28.0...v1.29.0](https://github.com/OneBusAway/python-sdk/compare/v1.28.0...v1.29.0)
