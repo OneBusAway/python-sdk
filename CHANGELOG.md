@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.30.1 (2026-08-20)
+
+Full Changelog: [v1.30.0...v1.30.1](https://github.com/OneBusAway/python-sdk/compare/v1.30.0...v1.30.1)
+
+### Chores
+
+* **internal:** allow the mock server port to be set with STAINLESS_MOCK_PORT ([2305162](https://github.com/OneBusAway/python-sdk/commit/2305162a1d7294acff8d59790654e59bdcd6c629))
+
 ## 1.30.0 (2026-07-18)
 
 Full Changelog: [v1.29.0...v1.30.0](https://github.com/OneBusAway/python-sdk/compare/v1.29.0...v1.30.0)
