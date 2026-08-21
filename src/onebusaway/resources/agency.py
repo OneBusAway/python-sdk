@@ -52,7 +52,7 @@ class AgencyResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AgencyRetrieveResponse:
         """
-        Retrieve information for a specific transit agency identified by its unique ID.
+        Retrieve information for a specific transit agency identified by its ID.
 
         Args:
           extra_headers: Send extra headers
@@ -106,7 +106,7 @@ class AsyncAgencyResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AgencyRetrieveResponse:
         """
-        Retrieve information for a specific transit agency identified by its unique ID.
+        Retrieve information for a specific transit agency identified by its ID.
 
         Args:
           extra_headers: Send extra headers
