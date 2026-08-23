@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.31.0](https://github.com/OneBusAway/python-sdk/compare/v1.30.0...v1.31.0) (2026-08-23)
+
+
+### Features
+
+* initial stlc build ([c91ec67](https://github.com/OneBusAway/python-sdk/commit/c91ec67761db717c58aa41b79debb9365c20f58c))
+
+
+### Bug Fixes
+
+* add release-please config to all targets ([f958746](https://github.com/OneBusAway/python-sdk/commit/f95874608c69011efc6217b879e2ccfbfdac7dba))
+* update agency endpoint description ([c1dfee7](https://github.com/OneBusAway/python-sdk/commit/c1dfee7a9acdd79e79cad5fbf1d429e1cd923e15))
+
+
+### Chores
+
+* add stlc promote and sync workflows ([1ce6b9c](https://github.com/OneBusAway/python-sdk/commit/1ce6b9cfe1b437adb4f53355d9a858c93287c12f))
+
 ## 1.30.0 (2026-07-18)
 
 Full Changelog: [v1.29.0...v1.30.0](https://github.com/OneBusAway/python-sdk/compare/v1.29.0...v1.30.0)
