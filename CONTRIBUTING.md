@@ -36,7 +36,7 @@ $ pip install -r requirements-dev.lock
 
 > [!WARNING]
 > Most of this SDK is generated from the OpenAPI specification using [Stainless](https://www.stainless.com/).
-> **Manual edits to generated files are discouraged**, as they will conflict with or be overwritten during future SDK generations.
+> **Manual edits to generated files are discouraged**, as they may conflict with or be overwritten during future SDK generations.
 
 If you encounter a bug or missing feature in the generated API client, types, or endpoints, please [open an issue](https://github.com/OneBusAway/python-sdk/issues) so maintainers can address it in the OpenAPI specification or generator configuration rather than patching generated files directly.
 
