@@ -34,9 +34,28 @@ $ pip install -r requirements-dev.lock
 
 ## Modifying/Adding code
 
-Most of the SDK is generated code. Modifications to code will be persisted between generations, but may
-result in merge conflicts between manual patches and changes from the generator. The generator will never
-modify the contents of the `src/onebusaway/lib/` and `examples/` directories.
+> [!WARNING]
+> Most of this SDK is generated from the OpenAPI specification using [Stainless](https://www.stainless.com/).
+> **Manual edits to generated files are discouraged**, as they may conflict with or be overwritten during future SDK generations.
+
+If you encounter a bug or missing feature in the generated API client, types, or endpoints, please [open an issue](https://github.com/OneBusAway/python-sdk/issues) so maintainers can address it in the OpenAPI specification or generator configuration rather than patching generated files directly.
+
+### Where contributions are encouraged
+
+The Stainless generator ignores custom directories and preserves hand-maintained areas. Contributions are welcome in:
+
+- `src/onebusaway/lib/` — Custom modules and helpers that extend the SDK (ignored by Stainless; see `src/onebusaway/lib/.keep`).
+- `examples/` — Example scripts, `examples/README.md`, and helper utilities under `examples/helpers/` (ignored by Stainless; see `examples/.keep`).
+- Documentation — Hand-maintained guides such as `CONTRIBUTING.md` and `examples/README.md`.
+- `tests/` — Custom test files for code added in `src/onebusaway/lib/`.
+
+### Generated files (avoid editing manually)
+
+Avoid direct edits to files generated or managed by Stainless, including:
+
+- `src/onebusaway/_client.py`, `src/onebusaway/resources/`, `src/onebusaway/types/`, and core client/runtime modules in `src/onebusaway/` (such as `src/onebusaway/_base_client.py`).
+- `tests/api_resources/` and `tests/test_client.py` (generated API resource and client tests).
+- `api.md` (generated API reference documentation).
 
 ## Adding and running examples
 
